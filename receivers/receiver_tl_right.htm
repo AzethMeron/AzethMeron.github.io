@@ -1,0 +1,53 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=_self></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>T<font size=5>URN</font> L<font size=5>IMIT CONTROL</font> (TL)<br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+
+Supports Multiplayer Game, Turn time Limit.</font></b><br><br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+      <tr>
+        <td nowrap valign=top><font class=ermtext>!!TL:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top>Turn Limit support</td>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+  <tr><a name="C"></a>
+    <td valign=top><font class=ermtext>C<font class=param>#
+    <td><b>Enable left time ticking.</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 1 - run ticking<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 0 - pause ticking<br>
+	<font class=bnotes>Comment</font>:<br>
+   The latest command works. So you can call "pause" 10 times but call "run" one time and it will run. So no calling stack present.
+  <tr><a name="E"></a>
+    <td valign=top><font class=ermtext>E<font class=param>$
+    <td><b>Enable "show left time always".</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 1 - enable<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 0 - disable<br>
+	<font class=bnotes>Comment</font>:<br>
+	If you turn it ON, it will shows seconds left always but not the latest 10 seconds as usual.
+  <tr><a name="T"></a>
+    <td valign=top><font class=ermtext>T<font class=param>#</font>/<font class=param>$
+    <td><b>Time format</b><br>
+	<table border=1 cellspacing=0 bordercolordark=0>
+	 <tr><td rowspan=9>&nbsp;&nbsp;&nbsp;<td><font class=param>#<td><font class=param>$</font> - <b>Set/check/get
+	 <tr><td>0<td>current time in ms
+	 <tr><td>1<td>current time in s
+	 <tr><td>2<td>turn start time in ms
+	 <tr><td>3<td>turn start time in s
+	 <tr><td>4<td>pause start time in ms
+	 <tr><td>5<td>pause start time in s
+	 <tr><td>6<td>turn length time in ms
+	 <tr><td>7<td>turn length time in s
+	</table> 
+  </table><br><br>
+
+  When a player gets control, the current time is stored in "turn start time". Then every second the engine checks that:<br>&nbsp;&nbsp;
+  current_time - turn_start_time &lt; turn_length<br>&nbsp;&nbsp;
+  If it is false, the turn ends.<br>&nbsp;&nbsp;
+  Now if you go to battle, the timer is paused. At this moment the current time is stored in "pause start time".<br>&nbsp;&nbsp;
+  Until "pause start time" is not 0, the turn will continue.<br>&nbsp;&nbsp;
+  Hint: to check if the turn paused or not, get "pause start time" and if it is 0, the timer runs but if it is 0, the timer is paused.<br>&nbsp;&nbsp;
+  When the timer continues (the battle is finished) "turn start time" is modified to reduce spent time for a length of the pause:<br>&nbsp;&nbsp;
+  turn_start_time = current_time - pause_start_time + turn_start_time and pause_start_time is set to 0.
+</body>
+
+</html>

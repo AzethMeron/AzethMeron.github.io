@@ -1,0 +1,828 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IF Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">D</font><span lang="de"><font face="Times New Roman CE" size="5">IALOGUE</font><font face="Times New Roman CE" size="6"> 
+  B</font><font face="Times New Roman CE" size="5">OXES</font></span><font face="Arial" size="2"><br>
+  <font color="#333333">List and explanations of
+  Dialogue Box commands (IF Receiver).</font></font></strong>
+
+<a name=expintro><p align="left"><u><font face="Arial" size="2">Introduction</font></a>
+  </u><font face="Arial" size="2"><strong><br>
+  </strong>Whenever you want to <i> display a</i> <i>message</i>  on the screen,
+  <i> ask the
+  player a</i> <i>question</i>, <i> display</i> <i>pictures</i> or <i>animations</i> for the
+  player or ask the player to <i>select between different options</i> or <i>type
+  some input</i> (e.g., a name or the answer to a riddle), you will need to use
+  a <i>Dialogue Box</i>.</font><p align="left"><font face="Arial" size="2">
+  <br>
+<a name=exptypes><u>Types of Dialogue Boxes</u><br></a>
+  There are two main types of dialogue boxes that can be accessed through ERM.
+  The first is the <i>standard dialogue</i>, which is the one you see in regular
+  Heroes games. The second is the <i>extended dialogue</i>, which is used for
+  displaying external picture and animation files, accepting typed input, and
+  displaying options with checkboxes. Which one you use will depend on the type
+  of information you wish to display. Both types may be used to display
+  information only, or may be used to display a message or picture and ask for
+  user input in one form or another, which may be as simple as choosing between
+  clicking OK or clicking Cancel. The standard dialogue box is simpler to use
+  than the extended dialogue box which requires an additional command or two to
+  set up.<br>
+  <br>
+<a name=expstddb>  <u>Using Standard Dialogue Boxes</u><br></a>
+  There are basically only two commands used for standard dialogue boxes: M
+  which is used for simple message display, and Q which is used for asking
+  Yes/No type questions and also for displaying messages with pictures. In both
+  cases there are format variations, depending on exactly what you want to do.<br>
+  <br>
+  <b><font color="#0000FF">Example of displaying a simple message dialogue
+  box with the M command:</font><br>
+  <font color="#FF0000"><br>
+  <img border="0" src="../images/dialogue/IFQ4.gif" width="320" height="192"><br>
+  !!IF:M^In this strange land, no creatures can fly, and creatures that once flew cannot be retaliated against.^;</font></b><br>
+  <font color="#FF0000">The above will display a dialogue box on the screen with
+  &quot;In this strange land, no creatures can fly, and creatures that once flew cannot be retaliated against.&quot; (without the quotes) in white text,
+  centered. At the bottom of the box will be a single OK button that the user
+  must click (or press Enter) to continue playing.<br>
+  </font><br>
+  <br>
+  <b><font color="#0000FF">Example of displaying a simple question with the Q
+  command (no pictures):</font></b><br>
+  <font color="#FF0000"><b><br>
+  <img border="0" src="../images/dialogue/IFQ5.gif" width="320" height="191"><br>
+  <br>
+  !!IF:Q2^Special rules will modify this game. Would you like to choose them?
+  (If not, one or two will be chosen randomly.)?^;</b></font><br>
+  <font color="#FF0000">The above will display a dialogue box similar to the
+  example above, and below it will be two buttons: OK and Cancel.<br>
+  Since the number 2 was put after the Q, this means that flag number 2 will be
+  set to true if OK was clicked and will be set to false if Cancel was clicked.
+  Any flag number may be chosen to store a dialogue box question response. See
+  <a target="_self" href="variable.htm">Flags
+  and Variables</a> for more information about conditional flags.</font><br>
+  <br>
+  <br>
+  <b><font color="#0000FF">Example of displaying a message and picture (no
+  question):</font>
+  <font color="#008000"><u><br>
+  </u></font></b><br>
+  <img border="0" src="../images/dialogue/IFQ.gif" width="447" height="447">
+    <b><font color="#FF0000">
+    <br>
+    <br>
+    !IF&amp;1000:Q1/20/53/1^{Magic Water Mushroom}<br>
+    The Magic Water Mushroom gives Expert Water Magic until the end of the
+    week...<br>
+    You inhale the spores of the magic mushroom...</font>
+  </b>
+  </font>
+
+  <p><b><font face="Arial" size="2" color="#FF0000">You learn Expert Water Magic!^;<br>
+  </font>
+  </b><font face="Arial" size="2" color="#FF0000">(Flag 1000 : Message won't appears if AI visits the object...)</font></p>
+  <p align="left"><b>
+  <font color="#0000FF" size="2" face="Arial">Example of displaying a message and two pictures -
+  player must click on the picture of choice before clicking the OK button:</font></b><font face="Arial" size="2">
+  <br>
+  <br>
+  <img border="0" src="../images/dialogue/IFQ7.gif" width="254" height="317">
+  <br>
+  <br>
+  <b><font color="#FF0000">!!IF&amp;1000:Q1/5/0/8/141/7^Would you like to play for<br>
+  {Resources} or {Artifacts}?^;</font></b><br>
+  <br>
+  There are more combinations and options with both commands as well. See the
+  command syntax for M and Q in the Options list below for more details.
+  <br>
+  <br>
+<a name=expextdb1><u>Using Extended Dialogue Boxes 1 - Multipurpose Dialogue<br></a>
+  </u><br>
+  If you want to accept typed user input, let a user select from up to four
+  checkboxes, and/or display up to four custom pictures or animations,
+  you will need to use an extended dialogue box. In general, you'll need to
+  store some text in z variables and then use
+  either one or two setup commands, followed by the command that displays the
+  dialogue box.&nbsp; The IF:D and IF:F commands are used to set up a
+  multipurpose extended dialogue box and IF:E is used to display it. Any
+  combination of the following options may be combined in a multipurpose
+  extended dialogue box:<br>
+  <br>
+<a name=expextdb1pic>  <i>1. Displaying Pictures:</i> Unlike the standard dialogue box, the extended</a>
+  dialogue box cannot display internal pictures, but only pictures that are
+  stored externally to the program in an appropriate directory and of a
+  specified type and size. If you need to display an internal Heroes picture,
+  you'll have to extract it or screen-capture it and save it as an external
+  image file first. The directory and file path for custom pictures (up to four
+  per dialogue box) can be
+  up to 256 characters long and starts in the Heroes3\Maps directory. The pictures
+  may be BMPs, GIFs or JPGs with a maximum size of 100 x 100 pixels. If an image
+  is smaller than the maximum size, it will be centred in the space. If the
+  image is larger, only a 100 x 100 pixel portion will be shown. For BMPs, the upper-left pixel will be interpreted as the transparent colour.
+  For GIFs, see the example GIF (ZObj001.gif) that can be found in your Heroes
+  III directory (<font SIZE="2">Heroes3\erm_help\images\Castle\ZObj001.gif). You
+  can mix and match the picture formats as you wish. The IF:D command is used to
+  set up pictures for a multipurpose extended dialogue box.</font><br>
+  <br>
+  <img border="0" src="../images/dialogue/dialogue.jpg" width="400" height="200"></font><p align="left"><font face="Arial" size="2">
+  <b><font color="#0000FF">Example:</font></b><br>
+  <font color="#FF0000"><b>!!VRz10:S^The lands you travel through are
+  mesmerizing.^;<br>
+  !!VRz11:S^<span lang="de">green</span> forest.jpg^;<br>
+  !!VRz12:S^sparkling lake.bmp^;<br>
+  !!VRz13:S^rainbow.gif^;<br>
+  !!VRz14:S^mountains.jpg^;<br>
+  !!VRz15:S^Murky Forest^;<br>
+  !!VRz16:S^Crystal Lake^;<br>
+  !!VRz17:S^Mystic Rainbow^;<br>
+  !!VRz18:S^Misty Mountains^;<br>
+  !!IF:D5/10/0/0/11/12/13/14/15/16/17/18/0/0/0/0;<br>
+  !!IF:E1/5;</b><br>
+  <br>
+  </font>In the above example, z10 stores title text for the dialogue, z11..z14 store
+  file names of images placed in the maps directory, and z15..z18 are the
+  mouse-over hint text for each of the pictures. The dialogue box number we
+  decide to use is 5 (first parameter), followed by the z variable index holding
+  the title text (10), followed by two zeroes, indicating we're not
+  using/changing the next two parameters. After that are the z variable indexes
+  for the file names (11..14) and the z variable indexes for the hint text
+  (15..18). The last four parameters are also unused in this example and so we
+  fill them with zeroes.<br>
+  Once the dialogue box is set up with the IF:D command, the !!IF:E1/5; command 
+  on the next line displays it on the screen. The first number (in this case, 
+  &quot;1&quot;) is the index for the variable that will store the selection. In the above 
+  example, this is basically just a dummy number since we haven't included any 
+  checkboxes for a selection to be made. The second number (in this case, &quot;5&quot;) 
+  is the number of the extended dialogue box as declared in the IF:D command 
+  (the first parameter after the &quot;D&quot;).</font><br>
+  <font face="Arial" size="2"><br>
+  <br>
+<a name=expextdb1ani>   <i>2. Displaying an Animation:</i> You can use the extended dialogue box to</a>
+  display an animation or movie clip in AVI format. An AVI animation can be
+  displayed instead of any picture and may be combined with pictures (e.g., you
+  could display two AVI animations, a JPG and a BMP in a single multipurpose
+  extended dialogue). AVI animations <i>must</i> be stored in uncompressed
+  format or they won't work. Like pictures, animations are also limited to 100 x
+  100 pixels. Again, IF:D is used to set up animations for a multipurpose
+  extended dialogue box.<br>
+  <br>
+<a name=expextdb1chk>  <i>3. Checkboxes:</i> If you want a player to have a choice between four (or</a>
+  fewer) options, you can use checkboxes. Above the checkboxes, you can put a
+  title message (appearing in bold yellow). Each checkbox will have a text label
+  identifying it, and can also have hint text (shows up on the bottom of the
+  dialogue when you do a mouse-over of the checkbox). And although you can't put
+  pictures on the checkboxes themselves, you can match the checkbox selections
+  to pictures displayed above if you wish. When the dialogue first displays, no
+  boxes are checked. The user can select only one checkbox; selecting another
+  unchecks the previous selection. After the user clicks OK, you can check which
+  checkbox was selected; the number will be stored in a v variable. Like picture
+  and animation setup, IF:D is used to set up checkboxes and IF:F is used to add
+  hint text (mouse-over text) to the checkboxes, if desired.<br>
+  <br>
+<a name=expextdb1inp>  <i>4. Text Input:</i> If you want to get a typed response from a player, you</a>
+  can display an input box. Above the input box you can put a title message
+  (appearing in bold yellow). The text entered by a player in an input box is
+  stored in a string variable (z variable) and could be used to name a hero or
+  town, replace hint text, appear on a sign, appear as part of another message,
+  or could be checked to see if it correctly answers a riddle or question. You
+  can also use input text in combination with the UN:N lookup command to do a
+  kind of reverse-lookup and search for a matching artifact name, monster name,
+  town building, or skill name. IF:D is used to set up text input.<br>
+  <br>
+<a name=expextdb1titl>  <i>5. Title Text:</i> Title text (in white) that appears at the top of the</a>
+  dialogue box can be set with the IF:D command, and the yellow text for
+  checkboxes can be used even if you don't use checkboxes in the dialogue.<br>
+  <br>
+<a name=expextdb1canc>  <i>6. Cancel Button:</i> The IF:F command can be used to disable or enable the</a>
+  cancel button (and keyboard escape key) for a multipurpose extended dialogue
+  box.<br>
+  <b><font color="#0000FF">Example:</font><u><font color="#008000"><br>
+  </font></u></b></font>
+  <font color="#FF0000">
+  <b><font face="Arial" size="2">
+    !#IF:F1/z21/z22/z23/z24/0;
+    </font></b><font face="Arial" size="2" color="#FF0000"> Give hints and disable cancel button
+    </font></font><font face="Arial" size="2">
+  <br>
+  <br>
+<a name=expextdb2><u>Using Extended Dialogue Boxes 2 - Single Image/Animation Dialogue</u><br></a>
+  If you wish to display a single image (BMP, GIF or JPG) or a single AVI
+  animation file, you can use the second type of extended dialogue box instead.
+  This dialogue is simpler to set up than the multi-purpose dialogue (fewer
+  parameters) and has the advantage that it can display an image or video of
+  almost any size. The main disadvantage is that you can't include any text with
+  the image or animation. When you call this dialogue, you get a simple message
+  box, with the image or AVI centred and an OK button below. The command to set
+  up this dialogue is IF:B and the command to display it is IF:P. There is,
+  however, some overlap with the IF:D command (used to set up the multi-purpose
+  extended dialogue box) -- if you use the IF:D command instead of IF:B, the
+  first picture or AVI in the parameter list is the one that will be displayed
+  with IF:P and additional pictures or animations will be ignored. If you use
+  both IF:D and IF:B, whichever command occurs last before the IF:P command will
+  be the one that sets the picture or animation to display.<br>
+  <br>
+  </font>
+  <strong><font face="Arial" size="2">
+  Extended Dialogue 3: Radio or Checkbox Dialogue (Up to 12 choices)<br>
+  <br>
+  </font></strong>
+
+  <font face="Arial" size="2">
+  <img border="0" src="../images/dialogue/checkbox.gif" width="438" height="389"><br>
+  <br>
+  <b><font color="#0000FF">Example:</font><font color="#008000"><br>
+  </font><font color="#FF0000">
+  !#VRz1:S^1111111111^;<br>
+  !#VRz2:S^222222^;<br>
+  !#VRz3:S^333333333333333^;<br>
+  !#VRz4:S^4444444^;<br>
+  !#VRz5:S^55555555555^;<br>
+  !#VRz6:S^666666666666666^;<br>
+  !#VRz7:S^7777777^;<br>
+  !#VRz8:S^88888888^;<br>
+  !#VRz9:S^999999999999^;<br>
+  !#VRz10:S^AAAAAAAAAA^;<br>
+  !#VRz11:S^BBBBBBBBBBBB^;<br>
+  !#VRz12:S^CCCCCCCC^;<br>
+  !#VRz25:S^Set you choice in forward order (all are set):^;<br>
+  !#IF:G0/100/4095/25/1/2/3/4/5/6/7/8/9/10/11/12;<br>
+  !#IF:M^Your choice is: %V100^;<br>
+  <br>
+  !#VRz25:S^Set you choice in backward order (all are reset):^;<br>
+  !#IF:G0/100/0/25/12/11/10/9/8/7/6/5/4/3/2/1;<br>
+  !#IF:M^And now your choice is: %V100^;<br>
+  <br>
+  !#VRz25:S^Set you choice for selected items:^;<br>
+  !#IF:G0/100/4095/25/1/0/3/4/0/0/7/8/9/0/0/0;<br>
+  !#IF:M^Your choice is: %V100^;<br>
+  <br>
+  !#VRz25:S^Set you choice for RADIO Buttons:^;<br>
+  !#IF:G1/100/8/25/1/2/3/4/5;<br>
+  !#IF:M^Your choice is: %V100^;<br>
+  </font>
+  </b><br>
+  <br>
+  <u>Message Handling</u><br>
+  Inside ERM messages (M and Q commands of IF receiver) you can use special syntax:<br>
+  &quot;%%&quot; -&gt; &quot;%&quot;<br>
+  &quot;%V#&quot; -&gt; current value of # flag.<br>
+  &quot;%Vf&quot;...&quot;%Vt&quot; -&gt; current value of corresponding
+  variable.<br>
+  &quot;%W1&quot;...&quot;%W100&quot; -&gt; current value of corresponding hero
+  variable.<br>
+  &quot;%X1&quot;...&quot;%X16&quot; -&gt; current value of corresponding
+  function parameter.<br>
+  &quot;%Y1&quot;...&quot;%Y100&quot; -&gt; current value of corresponding local
+  variable.<br>
+  &quot;%Z1&quot;...&quot;%Z500&quot; -&gt; current value of corresponding
+  string variable.<br>
+  &quot;%$macro$&quot; -&gt; macro name of corresponding variable<br>
+  &quot;%Dd&quot; -&gt; current day of week<br>
+  &quot;%Dw&quot; -&gt; current week<br>
+  &quot;%Dm&quot; -&gt; current month<br>
+  &quot;%Da&quot; -&gt; current day from beginning of the game<br>
+  &quot;%Gc&quot; -&gt; the color of current gamer in text<br>
+  <br>
+  <u>Lookup Command</u><br>
+  Sometimes you will know the number of a monster, artifact, town building,
+  secondary skill or spell, but won't know the name of it (especially true if
+  it's generated randomly). In this situation, you can use the UN receiver's
+  lookup command. This command lets you enter a number and get back the a text
+  name that will be stored in a z variable and may be included in a message
+  dialogue. For details on the lookup command, see the N command on the
+  <a href="../receivers/receiver_un.htm">UN
+  Receiver</a> page.</font>
+  <p align="center"><font face="Arial" size="2"><br>
+  <b><u>Dialogue Box Command Syntax</u></b></font>
+  <p align="left"><font color="#0000FF"><i>&nbsp;</i></font><strong><span lang="de"><font face="Arial" size="2"><i><font color="#0000FF">Note: Since 
+  IF receiver involves, at some point, text messages, be aware that a string 
+  cannot contain the</font> <font color="#FF0000">; </font>
+  <font color="#0000FF">,</font><font color="#FF0000"> 
+  ^</font><font color="#0000FF"> </font></i> <font color="#0000FF"><i>characters. 
+  Example</i>:</font><font color="#000080"><br>
+  </font> <font color="#FF0000">!!IF:M^this is a wrong text ; it contains 
+  ^special elements^.&nbsp; ^;<br>
+  !!VRz567:S^wrong text ; it contains ^special elements^. ^;<br>
+  !!IF:M^this is a correct&nbsp; text. It contains no &quot;special elements&quot;.&nbsp; 
+  ^;</font></font></span></strong><p align="left">&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000" cellpadding="2">
+      <tr>
+        <td width="143" height="26" nowrap><b><font color="red" size="2" class="Helvetica32" face="Arial">!!IF:<font color="darkmagenta">XXXX</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b></td>
+        <td width="100%" height="26">
+
+<font class="Helvetica32" face="Arial" size="2">Dialogue Box display, including
+player yes/no questions, text input, checkbox selection, pictures and AVI
+animations.</font>
+
+        </td>
+      </tr>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"><br>
+  Standard Dialogue 1: Simple Message Display<br>
+  </font></strong>
+<a name=m> </a>
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="57" height="32" align="left"><nobr><b><font face="Arial"><font color="red" size="2">M^<font color="darkmagenta">T</font></font><font color="darkmagenta" face="Arial" size="2">ext</font><font color="red" face="Arial" size="2">^</font></font></b></nobr></td>
+        <td width="684" height="32"><font face="Arial" size="2"><b>Show the message
+          (Text) on the screen <i>immediately</i>.</b><br>
+          The message (Text) may contain any symbols except the caret (^) and the semicolon
+          (;).</font>
+        </td>
+      </tr>
+      <tr>
+        <td width="57"><nobr><b><font color="red" size="2" face="Arial">M-1</font></b></nobr></td>
+        <td width="684"><font face="Arial" size="2"><b>Do not show the message on the screen.</b>
+          </font>
+        </td>
+      </tr>
+      <tr>
+        <td width="57"><b><font face="Arial"><font size="2" color="#FF0000">M1</font><font face="Arial" color="#FF0000" size="3">/</font><font face="Arial" size="2" color="#8B008B">$
+  </font></font></b></td>
+        <td width="684"><font face="Arial" size="2"><b>Set or get message text.</b><br>
+          &nbsp;&nbsp; M1/$ - $-index of string variable
+  </font>
+        </td>
+      </tr>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"><br>
+<a name=q>  Standard Dialogue 2: Question and Picture Display<br></a>
+  </font></strong>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" height="752">
+      <tr>
+        <td width="196" height="26" align="left" valign="top"><nobr><b><font face="Arial"><font color="red" size="2">Q#^<font color="darkmagenta">T</font></font><font color="darkmagenta" face="Arial" size="2">ext</font><font color="red" face="Arial" size="2">^</font></font></b></nobr></td>
+        <td width="545" height="26"><font face="Arial" size="2"><b>Ask the player a question (TEXT)<br>
+          </b>The answer (Ok=1,
+          Cancel=0) is put into conditional flag # (from 1 to 10). The message
+          (TEXT) may contain any symbols except ^.</font></td>
+      </tr>
+      <tr>
+        <td width="196" height="143" align="left"><b>
+        <font face="Arial" size="2" color="#FF0000">Q.../10 </font>
+        <font size="2" face="Arial"><font color="#FF0000"> 
+        <img src=../images/new.gif width="28" height="11"></font></font></b></td>
+        <td width="545" height="143">
+  <font face="Arial" size="2"><b>Question type 10.</b><br>If you use IF:Q#/... command with message type 10 (choice of two pictures plus a Cancel button), the result will be stored not in the flag variable # but in the standard ERM variable (v#) but in the range of v1..v1000 only. So you will be able to take the returned value:<br>
+&nbsp;  0 = escape pressed<br>
+&nbsp;  1 = left picture is chosen<br>
+&nbsp;  2 = right picture is chosen</td>
+      </tr>
+      <tr>
+        <td width="196" height="163" align="left" valign="top"><b><font face="Arial"><font size="2"><font color="#FF0000">Q</font><font color="#8B008B">#1</font></font><font color="#FF0000" face="Arial" size="2">/</font><font color="#8B008B" size="2">#2</font><font color="#FF0000" face="Arial" size="2">/</font><font color="#8B008B" size="2">#3</font><font color="#FF0000" face="Arial" size="2">/</font><font size="2"><font color="#8B008B">#4</font><font color="#FF0000">^</font><font color="#8B008B">Text</font><font color="#FF0000">^ </font></font></font></b></td>
+        <td width="545" height="163">
+  <p><font face="Arial" size="2">
+  <b>
+  Show a message or request with one picture.</b><br>
+  #1 - number of flag<br>
+  #2 - <a href="#Type"> type</a> of the picture (see list below)<br>
+  #3 - <a href="#Type"> subtype</a> of the picture<br>
+  #4 - type of message<br>
+  &nbsp;&nbsp;&nbsp; =1 - message (FLAG #1 WILL NOT BE SET!!!)<br>
+  &nbsp;&nbsp;&nbsp; =2 - request yes/no (stored to the flag)<br>
+  &nbsp;&nbsp;&nbsp; =4 - message with no buttons (use this format with the !?CM
+  trigger for right-click messages and use a value of -1 for type and subtype if
+  you don't want any picture displayed)</font></p>
+  <p><font face="Arial" size="2">
+  Note: You <b>must</b> include the ^Text^ parameter or it will not work. If you
+  don't want any text, use ^^.</font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="196" height="307">
+      <b>
+      <font face="Arial" size="2">
+      <font color="#FF0000">Q</font><font color="#8B008B">#1</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#2</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#3</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#4</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#5</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#6</font><font color="#FF0000">^</font><font color="#8B008B">Text</font><font color="#FF0000">^</font>
+
+      </font>
+
+      </b>
+
+        </td>
+        <td width="545" height="307">
+  <p>
+      <font face="Arial" size="2">
+      <b>
+      Show a message or request with two pictures.</b><br>
+  #1 - number of flag<br>
+  #2 - <a href="#Type"> type</a> of the picture 1<br>
+  #3 - <a href="#Type"> subtype</a> of the picture 1<br>
+  #4 - <a href="#Type"> type</a> of the picture 2<br>
+  #5 - <a href="#Type"> subtype</a> of the picture 2<br>
+  #6 - <a href="#Type"> type</a> of message<br>
+  &nbsp;&nbsp; =1 - message (FLAG #1 WILL NOT BE SET!!!)<br>
+  &nbsp;&nbsp; =2 - request yes/no (stored to the flag)<br>
+      &nbsp;&nbsp; =4 - message with no buttons (use this format with the !?CM
+      trigger for right-click messages and use a value of -1 for type and
+      subtype if you don't want any picture displayed)<br>
+  &nbsp;&nbsp; =7 - choose one of pictures (left=1, right=0)</font>
+
+  </p>
+  <p><font face="Arial"><font size="2">Note: You <b>must</b> include the ^Text^
+  parameter or it will not work. If you don't want any text, use ^^.<br>
+  </font><b><u><font face="Arial" size="2" color="#008000"><br>
+  </font>
+
+  </u><font face="Arial" size="2" color="#0000FF">
+      Examples:
+  </font>
+
+  <font face="Arial" size="2" color="#008000"><br>
+  </font>
+
+  <font face="Arial" size="2" color="#FF0000">
+  !!IF:Q1/3/100/2^Resource?^;<br>
+  !!IF:Q1/4/10/1^Resource?^;<br>
+  !!IF&amp;1:Q1/10/3/27/10/7^Make your choice^;<br>
+  !!IF&amp;1:Q1/10/3/27/10/2^Make your choice^;</font>
+
+  </b>
+
+  </font>
+
+  </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="196" height="227"><b><font face="Arial" size="2"><font color="#FF0000">Q</font><font color="#8B008B">#1</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#2</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#3</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#4</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#5</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#6</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#7</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#8</font><font color="#FF0000">^</font><font face="Arial" color="#8B008B">Text</font><font color="#FF0000">^</font></font></b></td>
+        <td width="545" height="227"><font size="2" face="Arial"><b>Show a message or request with three pictures.</b><br>
+          &nbsp;&nbsp; #1 - number of flag<br>
+          &nbsp;&nbsp; #2 - <a href="#Type"> type</a> of the picture 1<br>
+          &nbsp;&nbsp; #3 - <a href="#Type"> subtype</a>
+          of the picture 1<br>
+          &nbsp;&nbsp; #4 -
+ <a href="#Type"> type</a> of the picture 2<br>
+      &nbsp;&nbsp; #5 - <a href="#Type"> subtype</a>
+          of the picture 2<br>
+          &nbsp;&nbsp; #6 -
+ <a href="#Type"> type</a> of the picture 3<br>
+      &nbsp;&nbsp; #7 - <a href="#Type"> subtype</a>
+          of the picture 3<br>
+          &nbsp;&nbsp; #8 - type of message<br>
+  &nbsp;&nbsp;&nbsp; =1 - message (FLAG #1 WILL NOT BE SET!!!)<br>
+  &nbsp;&nbsp;&nbsp; =2 - request yes/no (stored to the flag)<br>
+          &nbsp;&nbsp;&nbsp; =4 - message with no buttons (use this format with
+          the !?CM trigger for right-click messages and use a value of -1 for
+          type and subtype if you don't want any picture displayed) </font>
+          <p><font size="2" face="Arial">Note: You <b>must</b> include the
+          ^Text^ parameter or it will not work. If you don't want any text, use
+          ^^.</font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="196" height="19"><b><font face="Arial" size="2"><font color="#FF0000">Q</font><font color="#8B008B">$</font><font color="#FF0000" face="Arial" size="3">/</font>....</font></b></td>
+        <td width="545" height="19"><font face="Arial" size="2"><b>Equal to
+          Q...^Text^ but ^Text^ is a string variable with index = the last $</b></font></td>
+      </tr>
+
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"><br>
+<a name=extdlgsetup>  Extended Dialogue 1: Multipurpose Dialogue<br></a>
+  </font></strong>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td>
+    <b><a name=d> </a>
+    <font face="Arial" size="2"><font color="#FF0000">D</font><font color="#8B008B">#</font>/<font color="#8B008B">$1</font>...<font color="#8B008B">$15</font></font></b></td>
+        <td><font face="Arial"><font size="2"><b>Use this
+          command to set up or change a Multipurpose Extended Dialogue Box to be
+          displayed with the IF:E command.</b><br>
+          &nbsp;&nbsp; # - number of dialogue (1..100)<br>
+          </font>&nbsp;&nbsp; (<font face="Arial" size="2">$=index of z
+          variable that holds text to use)<br>
+          &nbsp;&nbsp; $1 - Title Text (White) at top of dialogue box.<br>
+          &nbsp;&nbsp; $2 - Right Legend (Yellow) above input box.<br>
+          &nbsp;&nbsp; $3 - Left Legend (Yellow) of 4 checkboxes..<br>
+          &nbsp;&nbsp; $4 - Pic/AVI 1 (left) File in Heroes3/Maps folder.<br>
+          &nbsp;&nbsp; $5 - Pic/AVI 2 - File in Heroes3/ Maps folder.<br>
+          &nbsp;&nbsp; $6 - Pic/AVI 3 - File in Heroes3/ Maps folder.<br>
+          &nbsp;&nbsp; $7 - Pic/AVI 4 (right) File in Heroes3/ Maps folder.<br>
+          &nbsp;&nbsp; $8 - Legend of Picture 1 (mouse-over hint)<br>
+          &nbsp;&nbsp; $9 - Legend of Picture 2 (mouse-over hint)<br>
+          &nbsp;&nbsp; $10 - Legend of Picture 3 (mouse-over hint)&nbsp;<br>
+          &nbsp;&nbsp; $11 - Legend of Picture 4 (mouse-over hint)<br>
+          &nbsp;&nbsp; $12 - Choice 1 (checkbox) - button text.<br>
+          &nbsp;&nbsp; $13 - Choice 2 (checkbox) - button text.<br>
+          &nbsp;&nbsp; $14 - Choice 3 (checkbox) - button text.<br>
+          &nbsp;&nbsp; $15 - Choice 4 (checkbox) - button text.<br>
+          <u><b>Comments:</b></u><b><br>
+          </b>If you use 0 or an empty parameter it means <i>do not change</i>. If you use a null string ^^ for a prompt it means <i>no prompt</i>.
+          A full path name (up to 256 character) may be included for&nbsp;the
+          picture files but remember that it <i>starts</i> in the MAPS directory
+          so use &quot;..&quot; to go up one directory if required. e.g., ^../data/mypic.bmp^.
+          Maximum picture size is 100*100 but may be less (if less, the picture will be centered
+          automatically). Setup information will <i>not</i> be saved when game is saved, so always do setup immediately before
+          using IF:E command.</font></font></td>
+      </tr>
+      <tr>
+        <td><a name=e> </a><b><font face="Arial"><font size="2"><font color="#FF0000">E</font><font color="#8B008B">$1</font><font color="#FF0000">/</font></font><font color="#8B008B"><font face="Arial" size="2" color="#8B008B">$</font><font size="2">2</font></font></font></b></td>
+        <td><font face="Arial" size="2"><b>Use this command
+          to display a Multipurpose Extended Dialogue box, previously set up
+          with the IF:D (and also possibly IF:F) commands.&nbsp;</b><br>
+          &nbsp;&nbsp; $1 - an index of a v variable to store a selection<br>
+          &nbsp;&nbsp; $2 - number of extended dialogue<br>
+          <u>
+  <b>
+  Comments:</b></u><br>
+          Variable will receive 1,2,3,4 if one of the buttons was selected and
+  -1 if none were selected (just exit).
+  The text answer always (even if there was no prompt)
+  will be stored in the z1 variable.</font></td>
+      </tr>
+      <tr>
+        <td align="left"><b><font face="Arial"><font size="2" color="#FF0000">F</font><font face="Arial" size="2" color="#8B008B">#1</font><font color="#FF0000" size="2">/</font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" size="2">/</font><font face="Arial" size="2" color="#8B008B">$3</font><font color="#FF0000" size="2">/</font><font face="Arial" size="2" color="#8B008B">$4</font><font color="#FF0000" size="2">/</font><font face="Arial" size="2" color="#8B008B">$5</font><font color="#FF0000" size="2">/</font><font face="Arial" size="2" color="#8B008B">$6</font></font></b></td>
+        <td><a name=f> </a><font face="Arial" size="2">Use this command
+          to add hint text to checkboxes in a Multipurpose Extended Dialogue
+          Box. This command is an extension to the IF:D command.<br>
+          &nbsp;&nbsp; #1=number of dialog (1..100)<br>
+          &nbsp;&nbsp; $2=hint for checkbox 1 - index of z variable<br>
+          &nbsp;&nbsp; $3=hint for checkbox 2 - index of z variable<br>
+          &nbsp;&nbsp; $4=hint for checkbox 3 - index of z variable<br>
+          &nbsp;&nbsp; $5=hint for checkbox 4 - index of z variable<br>
+          &nbsp;&nbsp; $6=enable Cancel/ESC button (1) or not (0)<br>
+          <u>Comments:</u><br>
+          Setup information will <i>not</i> be saved when game is saved so always do setup immediately before using
+          IF:E command.</font>
+        </td>
+      </tr>
+  </table>
+
+    <p><b><font face="Arial" size="2" color="#0000FF">Example:</font><u><font face="Arial" size="2" color="#008000"><br>
+    </font>
+    </u></b><font face="Arial" size="2">
+    <img border="0" src="../images/dialogue/IDF.gif" width="452" height="350"><br>
+    <br>
+    </font><b><font size="2" face="Arial" color="#0000FF">Here's the code:
+    </font><font size="2" face="Arial" color="#000000"><br>
+    </font><font face="Arial" size="2" color="#FF0000">!#VRz199:S^..\Data\Zvs\Cmp.res^;<br>
+    !#VRz198:S^B21p^;<br>
+    !#VRz10:S^Time to play^;&nbsp;<br>
+    !#VRz11:S^Name yourself^;&nbsp;<br>
+    !#VRz12:S^Choose your spell^;&nbsp;<br>
+    !#VRz13:S^%Z199\21_001.BMP^;&nbsp;<br>
+    !#VRz14:S^%Z199\21_002.BMP^;&nbsp;<br>
+    !#VRz15:S^%Z199\21_003.BMP^;&nbsp;<br>
+    !#VRz16:S^%Z199\21_004.BMP^;&nbsp;<br>
+    !#VRz17:S^Bloodlust^;&nbsp;<br>
+    !#VRz18:S^Bless^;&nbsp;<br>
+    !#VRz19:S^Magic Arrow^;&nbsp;<br>
+    !#VRz20:S^Slow^;&nbsp;<br>
+    !#VRz21:S^Your hero will start with the Bloodlust spell^;&nbsp;<br>
+    !#VRz22:S^Your hero will start with the Bless spell^;&nbsp;<br>
+    !#VRz23:S^Your hero will start with the Magic Arrow spell^;&nbsp;<br>
+    !#VRz24:S^Your hero will start with the Slow spell^;&nbsp;<br>
+    !#IF:D1/z10/z11/z12/z13/z14/z15/z16/z17/z18/z19/z20/z17/z18/z19/z20;&nbsp;<br>
+    !#IF:F1/z21/z22/z23/z24/0;
+    </font></b><font face="Arial" size="2" color="#FF0000"> Give hints and disable cancel button&nbsp;
+    </font><font face="Arial" size="2" color="#008000"> <br>
+    </font>
+    <b><font face="Arial" size="2" color="#FF0000"> !#IF:E100/1;
+    </font> </b><font face="Arial" size="2" color="#FF0000"> The choice will be store in v100<b><br>
+    !#VRz400:Sz1; </b> your name&nbsp;<b><br>
+    !#VRz400:H10; </b> Check if the string is empty and Flag 10&nbsp;<b><br>
+    !#VRz400&amp;-10:S^Caneghem^; </b> if the string is empty call the hero Caneghem
+    </font></p>
+
+  <p align="center"><strong><font face="Arial" size="2">
+  Extended Dialogue 2: Single Image/Animation Dialogue<br>
+  </font></strong>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" height="134">
+      <tr>
+        <td valign="top">
+    <b>
+    <font face="Arial"><a name=b> </a>
+    <font size="2"><font color="#FF0000">B</font><font color="#8B008B">#</font><font color="#FF0000">/</font></font><font color="#8B008B" size="2" face="Arial">$1</font><font color="#FF0000" size="2">/</font><font color="#8B008B" size="2" face="Arial">$2</font></font></b></td>
+        <td valign="top"> <font face="Arial" size="2"><b>Use this
+          command to set up or change a Single Image/Animation Extended Dialogue
+          Box to be displayed with the IF:P command.</b><br>
+          &nbsp;&nbsp; # - number of dialogue (1..100)<br>
+          &nbsp;&nbsp; $1 - index of string variable that stores the name of an
+          image (BMP, GIF or JPG) or AVI file<br>
+          &nbsp;&nbsp; $2 - for AVI to repeat continuously (1) or not (0)</font></td>
+      </tr>
+      <tr>
+    <td valign="top">
+<p><b><font face="Arial" size="2"><font color="#FF0000">P</font><font color="#800080">#</font></font></b></p>
+
+    </td>
+    <td valign="top"><a name=p> </a>
+<p><font face="Arial" size="2"><b>Use this command to display a Single
+Image/Animation Extended Dialogue Box, previously set up with the IF:B command.</b><br>
+&nbsp; # - number of dialogue to display.</font></p>
+
+    </td>
+      </tr>
+  </table>
+
+  <p align="center">&nbsp;
+
+  <p align="left"><b><u><font face="Arial" size="2">Interpretation of value in
+  IF:Q</font>
+  </u></b><font face="Arial" size="2"><br>
+  The game interprets negative value for all resources as a -value/day.
+  But. If you subtract another -100000, it will be interpreted as +value+100000.<br>
+  So:<br>
+  &nbsp;&nbsp; !#IF:Q1/6/200/1^Message^;     -> Gold:  200<br>
+  &nbsp;&nbsp; !#IF:Q1/6/-200/1^Message^;    -> Gold:  200/day<br>
+  &nbsp;&nbsp; !#IF:Q1/6/-100200/1^Message^; -> Gold: -200<br>
+  <br>
+  <u>
+  The same for money:</u><br>
+  &nbsp;&nbsp; !#IF:Q1/36/-100/1^Message^;    ->  100/day<br>
+  &nbsp;&nbsp; !#IF:Q1/36/-100100/1^Message^; -> -100<br>
+  <br>
+  <u>
+  For monsters you can set their numbers:</u><br>
+  subtype=Nums*65536+subtype.<br>
+  &nbsp;&nbsp; !#IF:Q1/21/327686/1^Message^;  -> 5 Swordsmen  65536*5+6<br>
+  &nbsp;&nbsp; !#IF:Q1/21/65542/1^Message^;   -> 1 Swordsman  65536*1+6<br>
+  &nbsp;&nbsp; !#IF:Q1/21/6/1^Message^;       -> Swordsmen<br>
+<br>  <u>
+  And for secondary skills you can set skill and level:</u><br>
+  subtype = (Skill Number * 3) + Skill Level + 2.<br>
+  &nbsp;&nbsp; !#IF:Q1/20/45/1^Message^;  -> Basic Fire Magic  14*3+1+2<br>
+  &nbsp;&nbsp; !#IF:Q1/20/41/1^Message^;   -> Expert Necromancy  12*3+3+2<br>
+  <p>
+  <u>
+  <font face="Arial" size="2">
+  Pictures Types and Subtypes:</font></u></p>
+  <table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="437">
+    <tr>
+      <td width="100%" colspan="3" align="center" height="19"><b><font face="Arial"><a name="Type"><font size="2">Type</font></a>
+        <font size="2" face="Arial">
+        and subtype of Pictures using the Q command</font></font></b></td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial">&nbsp;</font></td>
+      <td width="33%" align="center" height="19">
+        <p align="center"><font face="Arial"><b><font size="2">Type</font></b><font size="2" face="Arial">&nbsp;</font></font></td>
+      <td width="34%" align="center" height="19">
+        <p align="center"><font face="Arial"><b><font size="2">Subtype</font></b><font size="2" face="Arial">&nbsp;</font></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16">
+  <p><b><font face="Arial" size="2">Resource</font></b></p>
+      </td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2">
+      <a href="../format/format_r.htm">Type (0...<span lang="de">7</span>)</a></font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">Quantity</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><p><b><font face="Arial" size="2">Artifact</font></b></p>
+      </td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2">8</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial"> <font size="2">
+      <a href="../format/format_a1.htm">Number of
+        artifact </a>
+        </font></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Spell</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 9</font></td>
+      <td width="34%" align="center" height="16"> <font face="Arial" size="2">
+      <a href="../format/format_sp.htm">Number of spell</a></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Flag</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 10</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">
+      <a href="../format/format_e1.htm">Number of flag</a></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Luck (positive)</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 11</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2"> + of luck</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Luck (neutral)</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 12</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2"> no matter</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><font size="2" face="Arial"><b>Luck
+        (negative)&nbsp;</b>Not supported in heroes.</font></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 13</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">&nbsp;- of luck</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Morale
+        (positive)</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 14</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2"> + of Morale</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Morale
+        (neutral)</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 15</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2"> no matter</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Morale
+        (negative)</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2">16</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">&nbsp;- of Morale</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Experience</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2">17</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">
+      <a href="../format/format_hl.htm">Quantity</a></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="22"><b><font face="Arial" size="2">Secondary Skill</font></b></td>
+      <td width="33%" align="center" height="22"><font face="Arial" size="2">20</font></td>
+      <td width="34%" align="center" height="22"><font face="Arial" size="2">
+      <a href="../format/format_sq.htm" title="Without exact definiton">Skill + level</a></font><b> <font face="Arial" size="2"> <a href="../format/format_ss.htm" title="For exact definition what level will have the picture">*</a></font></b></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Monster</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2">21</font></td>
+      <td width="34%" align="center" height="16"> <font face="Arial" size="2">
+      <a href="../format/format_c.htm">Type of monster</a></font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="25"><b><font face="Arial" size="2">Buildings in Towns</font></b></td>
+      <td width="33%" align="center" nowrap height="25"><font face="Arial" size="2">22....30<br>
+        =0..8 by town type <br>
+(<a href="../format/format_t.htm">Format T</a>)</font></td>
+      <td width="34%" align="center" height="25"><font face="Arial" size="2">Type of building<br>
+        (<a href="../format/format_cbl.htm">Format U</a>)</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="14"><b><font face="Arial" size="2">Primary skill</font></b></td>
+      <td width="33%" align="center" height="14"><font face="Arial" size="2">
+      <a href="../format/format_pk.htm">31...34</a><span lang="de"> (0..3)</span></font></td>
+      <td width="34%" align="center" height="14"><font face="Arial" size="2">Quantity</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Spell Points</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 35</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">Quantity</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="16"><b><font face="Arial" size="2">Money</font></b></td>
+      <td width="33%" align="center" height="16"><font face="Arial" size="2"> 36</font></td>
+      <td width="34%" align="center" height="16"><font face="Arial" size="2">Quantity</font></td>
+    </tr>
+  </table>
+
+    <p align="left"><font face="Arial"><b><font size="4">* </font></b> <font size="4"> </font><font face="Arial" size="2">Note:
+    secondary skill pictures start from 3 which is Basic Pathfinding and go up
+    to 86 which is Expert First Aid. All secondary skill pictures also include
+    the level (basic, advanced or expert).<br>
+    </font></font></p>
+
+    <p align="center"><strong><font face="Arial" size="2">
+  Extended Dialogue 3: Radio or Checkbox Dialogue (Up to 12 choice)<br>
+  </font></strong>
+
+  </p>
+<a name=g> </a>
+  <table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr>
+      <td width="50%">
+        <h3><b><font face="Arial" size="2" color="#FF0000">G</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#4</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#5</font><font face="Arial" size="2" color="#FF0000">/(up
+        to </font><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#8B008B">16</font><font face="Arial" size="2" color="#FF0000">)</font></b></h3>
+      </td>
+      <td width="50%"><font face="Arial" size="2"><b>G#1/#2/#3/#4/#5(/#6/#7/#8/#9/#10/#11/#12/#13/#14/#15/#16)<br>
+        Set up Radio or Checkbox Dialogue (Up to 12 choices)</b>
+        <br>
+  &nbsp;&nbsp; #1= 1 - Radio buttons (one choice)&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Check boxes
+        (multiple choice)<br>
+  &nbsp;&nbsp; #2= Number of v var that receive a result.<br>
+  &nbsp;&nbsp; #3= Initial state of buttons<br>
+  &nbsp;&nbsp; #4= Number of z var with a window header.<br>
+  &nbsp;&nbsp; #5= Number of z var with a name of the first item&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0-do not show<br>
+  &nbsp;&nbsp; #6= Number of z var with a name of the second item<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0-do not show<br>
+        &nbsp;&nbsp; ...<br>
+  &nbsp;&nbsp; #16= Number of z var with a name of the twelve item<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0-do not
+        show<br>
+        <u><b>Comments:</b></u><br>
+        1. State that received an stored is &quot;one bit for one item&quot;.<br>
+  &nbsp;&nbsp;Item1=1,<br>
+        &nbsp; item2=2,<br>
+        &nbsp; item3=4,<br>
+        &nbsp; item4=8,<br>
+        &nbsp; item5=16...<br>
+ So to set all items val=4095<br>
+        To set item 2,4,5,8 and 10 val=2+8+16+128<br>
+        All reset val=0</font></td>
+    </tr>
+  </table>
+
+</body>
+<SCRIPT language=JavaScript src="dlgmenu.js"></SCRIPT>
+</html>

@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>BH RECEIVER</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><span lang="de">
+<font face="Times New Roman CE" size="6">B</font><font face="Times New Roman CE" size="5">ATTLE,  </font><font face="Times New Roman CE" size="6">
+H</font><font face="Times New Roman CE" size="5">ERO</font><font face="Times New Roman CE" size="6">
+A</font><font face="Times New Roman CE" size="5">CTIONS </font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">BH</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2" color="#333333">RECEIVER</font></b>
+</p>
+
+<p>
+
+<b><font size="2" face="Arial"><font color="#333333">During combat, you may check/set/get parameters on
+the action taken by a hero.
+These receivers may be used/called only in the <a href=../other/trigger_right.htm#bg target=principal>!?BG</a>
+(<a href=../other/trigger_right.htm#br target=principal>!?BR</a>) trigger section.</font></font></b></p>
+<p>
+
+    <font face="Arial" size="2"><b><span lang="de">Note: </span></b>Now a usage of !!BG, !!BM, !!BH, !!BU, !!BF in
+    complete AI battle is
+    controlled in the ERM interpreter and you will get the corresponding error
+    message.</font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%" valign="top"><b> <font size="2" face="Arial" color="#FF0000"> !!BH</font><font size="2" face="Arial" color="#8B008B">#</font><font size="2" face="Arial" color="#FF0000">:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%" valign="top"><font size="2" face="Arial">You may check/set/get some parameters of a hero at # side      (0=left, 1=right).</font></td>
+  </tr>
+</table>
+
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b></p>
+<table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td valign="top"><b><font face="Arial"><font size="2" color="#FF0000"><a name="C">C</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#4</font></font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Cast a spell</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> - Spell number (See
+    <a href="../format/format_sp.htm">Format SP</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - Position to cast<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> - Hero Skill level (0...3)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> - Check 4 Target Monster existing (alive)</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font face="Arial"><font size="2" color="#FF0000"><a name="M">M</a></font><font face="Arial" size="2" color="#800080">$</font></font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Disable (1) or (re)enable (0) to cast spell<br>
+      <u>Comments:</u><br>
+      </b>If you re-enable spell casting after a spell has been cast, the player
+      still can't cast it immediately. The spell book will only become accessible
+      when the next creature stack belonging to that player gets a turn, <i>or,</i>
+      if the same stack gets morale and can act again immediately.</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font face="Arial"><font size="2" color="#FF0000"><a name="N">N</a></font><font size="2" color="#800080">?</font><font face="Arial" size="2" color="#800080">$</font></font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Get or check a number of the hero (-1=no hero)</b></font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font face="Arial"><font size="2" color="#FF0000"><a name="Q">Q</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font></font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Put a hex of Quick Sand or a Land Mine at a position</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> - Type (0=Quick Sand, 1=Land Mine)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - Position<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#3</font></b> - Redraw (1) or not (0)<br>
+      <b><u>     Comments:</u></b><br>
+      For Q command the position will be checked automatically<br>
+       for whether you can place a magic obstacle or not. </font></td>
+  </tr>
+</table>
+
+<p><font face="Arial"><b><u><font size="2">Grid of the battlefield</font></u></b><br>
+<img border="0" src="../images/obstacle/grid01.gif" width="382" height="241"></font></p>
+
+</body>
+
+</html>

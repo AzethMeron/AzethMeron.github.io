@@ -1,0 +1,61 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<p align=center><b><font face='Times New Roman CE' size='6'>G<font size=5>O-</font>T<font size=5>O</font><font size=5> STATEMENT</font></font></p></b>	
+<font size = 2.5>
+Go-to is a statement used to performs a one-way transfer of control to another line of code. Allows user to create loops without claiming function, loops inside loops and more.<br><br>
+There are two constructions that realise go-to functionality.<br> <br>
+<b><font size=5.5>FU:E$ - Trigger based go-to</font></b><br>
+  Go $ triggers of same kind up or down. Triggers of same kind are those with the same name (2 letters) and the same parameters. <br>
+!?OB5/5/0 and !?OB0/0/0 are different. !?OB5/5/0 and !$OB5/5/0 are different too. But !?OB5/5/0; and !?OB5/5/0&v1=0; are of the same kind. <br> <br>
+<font color=blue>Example 1</font>:<br>
+<font color=red>!?FU</font>255; <font color=darkblue>[1]</font> <br>
+...<br>
+<font color=red>!?FU</font>255; <font color=darkblue>[2]</font> <br>
+(...) <br>
+<font color=purple>!!FU</font>&1:E-1; [go to <font color=darkblue>2</font>] <br>
+<font color=purple>!!FU</font>&2:E-2; [go to <font color=darkblue>1</font>] <br>
+<font color=purple>!!FU</font>&3:E0; [usual FU:E - exit function] <br>
+<br>
+<font color=blue>Example 2</font>: A single loop:<br>
+<font color=red>!?FU</font>255;<br>
+<font color=purple>!!VR</font>y1:S0;<br>
+<br>
+<font color=red>!?FU</font>255&y1<100;<br>
+(...)<br>
+<font color=purple>!!VR</font>y1:+1;<br>
+<font color=purple>!!FU</font>:E-1;<br>
+<br>
+This is equivalent to  while y1<100 do { (...) y1 = y1 + 1; } <br>
+You can also make one loop inside another and anything you could do with regular DO, but much faster and without a need for a free function number.
+
+You can place FU:G99999; at the end of a function and you would be able to insert it into multiple scripts - it would be executed only once anyway. <br>
+<br>
+<b><font size=5.5>la$, go$ - Label based go-to</font></b><br>
+  Use !!la$ to setup a label, and !!go$ to jump to given label. <br>
+  This GOTO is preferrable. There may be 50 labels (0...49). <br><br>
+<font color=blue>Example 1</font>:<br>
+<pre>
+<font color=red>!?FU</font>255;
+<font color=purple>!!la</font>0:; [label 0]
+(...)<br>
+<font color=purple>!!la</font>1:; [label 1]
+(...)<br>
+<font color=purple>!!go</font>0&1:; [go to label 0]
+<font color=purple>!!go</font>1&2:; [go to label 1]</pre>
+<br>
+<font color=blue>Example 2</font>: A single 'for' loop:<br>
+<pre><font color=red>!?FU</font>255;
+<font color=purple>!!VR</font>y1:S0;
+<font color=purple>!!la</font>0:;  [label 0]
+<font color=purple>!!if</font>&y1<100:;
+  (...)
+  <font color=purple>!!VR</font>y1:+1;
+  <font color=purple>!!go</font>0:;  [goto label 0]
+<font color=purple>!!en</font>:;</pre>
+<br>
+This is equivalent to  while y1<100 do { (...) y1 = y1 + 1; }<br>
+You can also make one loop inside another and anything you could do with regular DO, but much faster and without a need for a free function number. 
+Labels are completely local, can't be accessed from any other trigger, including !?FU called within this context. <br><br>
+</font>
+</body></html>

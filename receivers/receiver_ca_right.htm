@@ -1,0 +1,635 @@
+<html>
+
+<head>
+<title>Town Settings</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><span lang="de"><font face="Times New Roman CE" size="6">
+C</font><font face="Times New Roman CE" size="5">ASTLE</font><font face="Times New Roman CE" size="6">
+A</font><font face="Times New Roman CE" size="5">TTRIBUTES</font><font face="Times New Roman CE" size="6">
+(CA)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b></p>
+
+<p align="left">
+
+  <b>
+  <font class="Helvetica32" face="Arial" size="2" color="#333333">
+  Used to check or modify the attributes of a town, including name, owner,
+  available creatures and internal
+  structures.</font></b></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="143" height="1" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!CA</font><font color="#800080">x</font><font color="#FF0000">/</font><font color="#800080">y</font><font color="#FF0000">/</font><font color="#800080">l:XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="1" valign="top">
+
+<font face="Arial" size="2"> Town settings for town at x/y/l coordinates.<br>
+(Towns are Type 98. See <a href="../format/format_t.htm">Format
+T</a>)</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="1" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!CA</font><font color="#800080">#:XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="1" valign="top">
+
+<font face="Arial" size="2">Indirect reference to town at x=v[#], y=v[#+1], l=v[#+2]<br>
+(Towns are Type 98. See <a href="../format/format_t.htm">Format
+T</a>)</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="1" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!CA-1</font><font color="#800080">:XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="1" valign="top">
+
+<font face="Arial" size="2">The current town.<br>
+  Be careful for you can use it only in Town screen.</font>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><font face="Arial" size="2"><b>
+OPTIONS</b></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="B">B</a>1/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Build the # structure<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B2/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Demolish the # structure<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B3/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Check if the # structure built (in flag 1)<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B3/</font><font color="#800080">#</font></b></font><b><font color="#FF0000" size=2>/1;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>checks if the # structure is built with respect to upgrades (in flag 1)<span lang="de"><br>
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+	Building list</a></font>)</span> <br> <br>
+	Example:<br>
+	!!CA-1:B3/30/1;<br>
+	!!IF&1:M^Dwelling 1 is built^;<br>
+	This will work even if you build the upgraded dwelling, or horde dwelling.<br>
+    
+    </font></td> 
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B3/</font><font color="#800080">#</font></b></font><b><font color="#FF0000" size=2>/2;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Check if the # structure is enabled (in flag 1)<span lang="de"> <br>
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B4/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Enable to build the # structure<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B5/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Disable to build the # structure<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">B6/</font><font color="#800080">#</font></b></font><b><font color="#FF0000">;</font></b><img src=../images/new.gif width="28" height="11"></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Build in town using an internal function<span lang="de">
+    </span></b><span lang="de">(see <font color="#0000FF"><a href="#list">
+    Building list</a></font>)</span></font><br>
+<font face=arial size=2>Builds a building in a town using an internal function.
+The syntax and the meaning is the same as for <font color=red><b>CA:B1/<font color=darkmagenta>#</font></b></font> but because it uses an internal function, buildings with multiple levels will be built correctly, and mage guilds will have spells automatically added (although you can still change them).
+</td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="G">G</a></font><font color="#800080">$</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a level of magic guild (in spells screen)</b></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">G</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a number of available spells ($2) in $1 level</b></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">G</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a specific spell ($3) in slot $2, level
+      $1.</b><br>
+      See <a href="../format/format_sp.htm">Format SP</a>.</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font size="2" face="Arial"><b><font color="#FF0000"><a name="H">H</a></font><font color="#8B008B">#</font><font color="#FF0000">/</font><font color="#8B008B">$</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><b><font face="Arial" size="2">Se</font></b><font face="Arial" size="2"><b>t/get/check
+      heroes in Town garrison or visitor</b></font><font size="2" face="Arial"><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#</font></b> = 0 - hero in the town garrison<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font> = 1 - hero - a town visitor<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$</b></font> - the number of hero (-1 = no one). See
+    <a href="../format/format_h.htm">Format
+      H</a><br>
+  You can get/check or set heroes. If you set it, do not forget to<br>
+      move the previous to somewhere.<br>
+    <br>
+    <span lang="de"><b>Note</b>: </span>one should be
+    careful with the H command, for checking garrison heroes- if there isn't a
+    specific check for whether it returns -1 or not, and just a check on
+    something else on the hero, it will check the current hero, which might not
+    be to good</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><a name="I"></a><b><font face="Arial" size="2">
+    <span lang="de"><font color="#FF0000">I</font><font color="#8B008B">#; </font></span></font>
+    </b><img src="../images/new.gif" width="28" height="11"></td>
+    <td width="84%" valign="top"><b><span lang="de"><font face="Arial" size="2">
+    S</font></span></b><font face="Arial" size="2"><b>et the external appearance
+    of a town</b><br>
+    Command Syntax:<br>
+    !!CA:I# - sets the external town appearance. You can use only set syntax.
+    Others make no sense.<br>
+    <br>
+    Values for #:<br>
+    0 = default (synchronizes the look with built structures, e.g., a Fort or
+    Capitol)<br>
+    -1 = completely destroyed<br>
+    1 = destroyed a bit<br>
+    2 = destroyed more<br>
+    3 = destroyed a lot</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="M">M</a>1/</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a number of available monsters<br>
+      </b> ($2- not upgraded
+creature and $3- upgraded) of level $1. See Below</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">M2/</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a number of guards&nbsp;</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Position&nbsp;<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Type<span lang="de">
+    </span>(See <a href="../format/format_c.htm">Format <span lang="de">C</span></a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> - Number</font></td>
+  </tr>
+  
+   <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">M3/</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set type and count of creatures in Portal of Summoning</b> <br>
+    &nbsp;&nbsp; <font color=purple>$1</font> - Type, -1 for no monster. </span>(See <a href="../format/format_c.htm">Format <span lang="de">C</span></a>) <br>
+    &nbsp;&nbsp; <font color=purple>$2</font> - Count. It may be anything if Type is -1. <br>
+    Note that the monster isn't defined on game start until you enter the town screen or the new week starts. This is a bug of SoD. <br>
+For example, start a game with a couple of dwellings and a Portal of Summoning in one of your castles. Save game. Enter the castle to see which type of creature is summoned. Then load the game and do the same. You may see a different creature there.
+
+    </font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">M4/</font><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">?$</font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Get/check monster growth per week</b> <br>
+    &nbsp;&nbsp; <font color=purple>#</font> - Tier of monster<br>
+    &nbsp;&nbsp; <font color=purple>?$</font> - Variable to store monster growth <br>
+	<font color=purple> Almost no documentation for that one. Need to test those things out:<br>
+	- Tiers are 0..6 or 1..7? <br>
+	- Is is get/check, or get/check/set? Cause documents use simple $ instead of ?$<br>
+	- If dwelling of given tier isn't build, what is return value?</font>
+    </font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="N">N</a>^</font><font color="#800080">text</font><font color="#FF0000">^, NzVar</font></b></font></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get a name of a Town.</b></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="O">O</a></font><font color="#800080">$</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check an owner.</b> &nbsp;<br>
+ See <a href="../format/format_e1.htm">Format
+      E1</a></font><br>
+    <br>
+    <span lang="de"><font size="2" face="Arial"><b>Note</b>:</font></span><font face="Arial" size="2"><span lang="de"> that if you want to set/get/use neutral as owner, see that neutral value
+    is -1<br>
+    To check if the owner is neutral, use
+    <b><font color="#800000"><br>
+    !!CAx/y/l:O?variable; </font></b>or<font color="#800000"><b><br>
+    !!CA#:O?variable; </b></font><br>
+    </font></b>and check if<font color="#000080"> </font><font color="#800000">
+    <b>variable</b></font><font color="#000080"> </font>is -1 (replace <font color="#800000"> variable</font><font color="#000080"> </font>with ERM variable type. See <font color="#000080">
+    <a target="principal" href="../other/variable.htm">Flag&amp;Variable</a>, <a href="receiver_vr_right.htm" target="principal">VR</a>
+    and <a href="receiver_fu_right.htm" target="principal">FU</a> </font>sections.<b><font color="#800000"><br>
+    </font></b>
+    <br>
+    </font><b>Note</b>:<i><font color="#000080"> </font></i>Please note that if owner is neutral (value for object owner is -1), there
+    is no need to get alliance team. <br>
+    &nbsp;If however you do so, the resulted team number is shown as 0 (which in most
+    cases is the same alliance number for human red player)</span></font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="P">P</a></font><font color="#800080">?$1</font><font color="#FF0000">/</font><font color="#800080">?$2</font><font color="#FF0000">/</font><font color="#800080">?$3</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Get/check a Town position.<br>
+      &nbsp;&nbsp; </b><font color="#8B008B"><b>$1</b></font> = x<br>
+      <b>&nbsp;&nbsp; </b><font color="#8B008B"><b>$2</b></font> = y<br>
+      <b>&nbsp;&nbsp; </b><font color="#8B008B"><b>$3</b></font> = Level</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="r">R</a><font color=darkmagenta>$</font>;
+    </font></b></font><img src="../images/new.gif" width="28" height="11"></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Control town building flag.<br></b>
+Check or set if a player can build this turn in a town.
+<b><font color=red>!!CA...:R<font color=darkmagenta>$</font>;</font></b><br>
+&nbsp;&nbsp;  $ = 0 if player/AI may build this turn<br>
+&nbsp;&nbsp;  $ = 1 if player/AI may not build this turn (already did)<br>
+<b><i>Comments:</i></b><br>
+&nbsp;&nbsp;  You may use R0 any number of times during the turn and thus build any number of buildings in a town. 
+
+  </tr>
+  
+  <tr>
+	<td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"> <a name ="s"></a>S</font><font color="#800080">?$</font><font color="#FF0000"></font><font color="#800080"></font><font color="#FF0000">;</font></font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Get/check town income</b> <br>
+    &nbsp;&nbsp; <font color=purple>?$</font> - Variable to store town income <br>
+	<font color=purple> Almost no documentation for that one. Need to test things out.<br>
+    </font></td>
+  </tr>
+  
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="T">T</a></font><font color="#800080">$</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Set/get/check a type of a Town (only inside).</b>
+      &nbsp; <a href="../format/format_t.htm"><br>
+      See Format T</a>.</font></td>
+  </tr>
+  <tr>
+    <td width="16%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="U">U</a></font><font color="#800080">$</font></b></font><b><font color="#FF0000">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2"><b>Get/check
+    <span lang="de">the </span>number of a Town<span lang="de"> </span></b><span lang="de">on the map list (not hero list)</span>.&nbsp;<br>
+ You can also set it but I do not recommend
+:-)</font></td>
+  </tr>
+</table>
+
+<p align="left"><font face="Arial" size="2">
+<b><u>
+Comments:<br>
+</u></b>For M1. If you have an upgraded building, the $3 is used, otherwise $2.
+</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="center">
+<u> <font face="Arial" size="2"> <b> List of all buildings</b></font></u></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td align="center"><font face="Arial" size="2"><b><a name="list">
+    </a>byte</b></font></td>
+    <td align="center"><font face="Arial" size="2"><b>bit in byte</b></font></td>
+    <td align="center"><font face="Arial" size="2"><b>building number</b></font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2"><b>building
+      name (town number), clear written if nothing</b></font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Mage
+      guild 1</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Mage
+      guild 2</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Mage
+      guild 3</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Mage
+      guild 4</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Mage
+      guild 5</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td align="center"><font face="Arial" size="2">5</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">tavern</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td align="center"><font face="Arial" size="2">6</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">shipyard
+      when it's present:))</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">0</font></td>
+    <td align="center"><font face="Arial" size="2">80</font></td>
+    <td align="center"><font face="Arial" size="2">7</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">fort</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">8</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">citadel</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">9</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">castle</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">village
+      hall</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">11</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">town
+      hall</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td align="center"><font face="Arial" size="2">12</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">city
+      hall</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td align="center"><font face="Arial" size="2">13</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">capitol</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td align="center"><font face="Arial" size="2">14</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">marketplace</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">1</font></td>
+    <td align="center"><font face="Arial" size="2">80</font></td>
+    <td align="center"><font face="Arial" size="2">15</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">resource
+      silo</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">16</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">blacksmith</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">17</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">lighthouse(0)<br>
+      mystic pond(1)<br>
+      artifact merchants(2,5,8)<br>
+      veil of darkness(4)<br>
+      escape tunnel(6)<br>
+      cage of warlords(7)</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">18</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">horde
+      buildings for non-upgraded creatures:<br>
+      Griffins, dwarves, stone gargoyles, imps, skeletons, troglodytes, goblins,
+      gnolls, pixies.</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">19</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">horde
+      buildings for upgraded creatures<br>
+      Royal griffins, battle dwarves, obsidian gargoyles, familiars, skeleton
+      warriors, infernal troglodytes, hobgoblins, gnoll marauders, sprites</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Ship (when shipyard has it)</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td align="center"><font face="Arial" size="2">21</font></td>
+    <td><font face="Arial" size="2"><span style="text-transform: capitalize">stables(0)<br>
+      fountain </span>of<span style="text-transform: capitalize"> fortune(1)<br>
+      lookout tower(2)<br>
+      brimstone clouds(3)<br>
+      necromancy amplifier(4)<br>
+      mana vortex(5)<br>
+      freelancer's guild(6)<br>
+      glyphs of fear(7)<br>
+      magic university(8)</span></font></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td align="center"><font face="Arial" size="2">22</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">brotherhood
+      of sword(0)<br>
+      dwarven treasury(1)<br>
+      library(2)<br>
+      castle gates(3)<br>
+      skeleton transformer(4)<br>
+      portal of summoning(5)<br>
+      ballista yard(6)<br>
+      blood obelisk(7)</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">2</font></td>
+    <td align="center"><font face="Arial" size="2">80</font></td>
+    <td align="center"><font face="Arial" size="2">23</font></td>
+    <td><font face="Arial" size="2"><span style="text-transform: capitalize">wall
+      of </span>Knowledge<span style="text-transform: capitalize">.(2)<br>
+      order of fire(3)<br>
+      academy of battle scholars(5)<br>
+      hall of valhalla(6)</span></font></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">24</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">horde
+      buildings for non-upgraded creatures:<br>
+      dendroid guards, hell hounds</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">25</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">horde
+      buildings for upgraded creatures:<br>
+      Dendroid soldiers, </font></span><font face="Arial" size="2"><span style="text-transform: capitalize">Cerberi</span></font></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">26</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">Grail</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">27</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">additional houses for town hall</td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td align="center"><font face="Arial" size="2">28</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">additional houses for city hall</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td align="center"><font face="Arial" size="2">29</font></td>
+    <td><font face="Arial" size="2">Additional Houses For Capitol</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td align="center"><font face="Arial" size="2">30</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      1</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">3</font></td>
+    <td align="center"><font face="Arial" size="2">80</font></td>
+    <td align="center"><font face="Arial" size="2">31</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      2</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">32</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      3</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">33</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      4</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">34</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      5</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">35</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">dwelling
+      6</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">10</font></td>
+    <td align="center"><font face="Arial" size="2">36</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">
+    dwelling 7</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">20</font></td>
+    <td align="center"><font face="Arial" size="2">37</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 1</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td align="center"><font face="Arial" size="2">38</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 2</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">4</font></td>
+    <td align="center"><font face="Arial" size="2">80</font></td>
+    <td align="center"><font face="Arial" size="2">39</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 3</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">5</font></td>
+    <td align="center"><font face="Arial" size="2">01</font></td>
+    <td align="center"><font face="Arial" size="2">40</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 4</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">5</font></td>
+    <td align="center"><font face="Arial" size="2">02</font></td>
+    <td align="center"><font face="Arial" size="2">41</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 5</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">5</font></td>
+    <td align="center"><font face="Arial" size="2">04</font></td>
+    <td align="center"><font face="Arial" size="2">42</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 6</font></span></td>
+  </tr>
+  <tr>
+    <td align="center"><font face="Arial" size="2">5</font></td>
+    <td align="center"><font face="Arial" size="2">08</font></td>
+    <td align="center"><font face="Arial" size="2">43</font></td>
+    <td><span style="text-transform: capitalize"><font face="Arial" size="2">upgraded
+      dwelling 7</font></span></td>
+  </tr>
+</table>
+
+<pre><font color=purple><b>Additions to "List of all buildings" in CA.</b> (Don't quite undestand that yet)
+20  Shipyard with a ship in it
+22  Also: Decorations, always present (8).
+23  Also: Decorations. For Village hall (1, 4, 8) or always present (0, 7).
+27  Decorations. For Town Hall (1, 4, 8) or always present (6).
+28  Decorations for City Hall (1, 4, 8)
+29  Decorations for Capitol (1, 4, 8)</font></pre>
+
+</body>
+
+</html>

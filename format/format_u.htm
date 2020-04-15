@@ -1,0 +1,769 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Format U</title>
+<base target="_self">
+<LINK href="../other/styles.css" rel=stylesheet type=text/css><LINK href="../other/styles.css" type=text/css 
+</head>
+<body background="../images/intile.jpg">
+<h3>
+<font SIZE="2">
+<b><font size="2" class="Helvetica32">FORMAT</font><font size="5" class="Helvetica32">
+</font></b><font size="5"><span lang="de">U</span> </font>
+<span lang="de" style="font-weight: 400">
+<font size="2" face="Arial" color="#333333">
+<a href="../other/format.htm">Format List</a></font></span><br>
+</font>
+
+<font size="5" class="Helvetica32">Town Buildings</font>
+</h3>
+</h3>
+<font color=purple>Im not 100% certain this format is correct, should be researched further. Based on ChangeLog0.1 </font><br><br>
+<font size = 1.7>
+?  - unknown for me. <br>
++  - upgraded version or version for upgraded dwelling support<br>
+value in parenthesis is town type<br>
+(x) means all towns<br>
+<br>
+</font>
+
+<font size=2>
+
+<table border=2 width=100% bordercolorlight=black bordercolordark=black >
+	<tr>
+		<td CLASS=middle>
+			Dword
+		</td>
+		<td CLASS=middle>
+			Bit reference
+		</td>
+		<td CLASS=middle>
+			Structure index
+		</td>
+		<td >
+			Buildings
+		</td>
+	</tr>
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000001
+		</td>
+		<td CLASS=middle>
+			0
+		</td>
+		<td>
+			Magic Guild Lvl 1
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000002
+		</td>
+		<td CLASS=middle>
+			1
+		</td>
+		<td>
+			Magic Guild Lvl 2
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000004
+		</td>
+		<td CLASS=middle>
+			2
+		</td>
+		<td>
+			Magic Guild Lvl 3
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000008
+		</td>
+		<td CLASS=middle>
+			3
+		</td>
+		<td>
+			Magic Guild Lvl 4
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000010
+		</td>
+		<td CLASS=middle>
+			4
+		</td>
+		<td>
+			Magic Guild Lvl 5,?(6,7)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000020
+		</td>
+		<td CLASS=middle>
+			5
+		</td>
+		<td>
+			Tavern
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000040
+		</td>
+		<td CLASS=middle>
+			6
+		</td>
+		<td>
+			Shipyard(0,4,7,8),?(1,2,3,5,6)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000080
+		</td>
+		<td CLASS=middle>
+			7
+		</td>
+		<td>
+			Fort
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000100
+		</td>
+		<td CLASS=middle>
+			8
+		</td>
+		<td>
+			Citadel
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000200
+		</td>
+		<td CLASS=middle>
+			9
+		</td>
+		<td>
+			Castle
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000400
+		</td>
+		<td CLASS=middle>
+			10
+		</td>
+		<td>
+			Village
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00000800
+		</td>
+		<td CLASS=middle>
+			11
+		</td>
+		<td>
+			Town Hall
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00001000
+		</td>
+		<td CLASS=middle>
+			12
+		</td>
+		<td>
+			City Hall
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00002000
+		</td>
+		<td CLASS=middle>
+			13
+		</td>
+		<td>
+			Capitol
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00004000
+		</td>
+		<td CLASS=middle>
+			14
+		</td>
+		<td>
+			Marketplace
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00008000
+		</td>
+		<td CLASS=middle>
+			15
+		</td>
+		<td>
+			Resource Silo
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00010000
+		</td>
+		<td CLASS=middle>
+			16
+		</td>
+		<td>
+			Blacksmith
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00020000
+		</td>
+		<td CLASS=middle>
+			17
+		</td>
+		<td>
+			Lighthouse(0)<br>
+			Mystic Pond(1)<br>
+			Artifact Merchants(2,5,8)<br>
+			?(3)<br>
+			Cover of Darkness(4)<br>
+			Escape Tunnel(6)<br>
+			Cage of Warlords(7)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00040000
+		</td>
+		<td CLASS=middle>
+			18
+		</td>
+		<td>
+			Griffin Bastion(0)<br>
+			Miner's Guild(1)<br>
+			Sculptor's Wings(2)<br>
+			Birthing Pools(3)<br>
+			Unearthed Graves(4)<br>
+			Mushroom Rings(5)<br>
+			Mess Hall(6)<br>
+			Captain's Quarters(7)<br>
+			Garden of Life(8)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00080000
+		</td>
+		<td CLASS=middle>
+			19
+		</td>
+		<td>
+			Griffin Bastion+(0)<br>
+			Miner's Guild+(1)<br>
+			Sculptor's Wings+(2)<br>
+			Birthing Pools+(3)<br>
+			Unearthed Graves+(4)<br>
+			Mushroom Rings+(5)<br>
+			Mess Hall+(6)<br>
+			Captain's Quarters+(7)<br>
+			Garden of Life+(8)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00100000
+		</td>
+		<td CLASS=middle>
+			20
+		</td>
+		<td>
+			?(x)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00200000
+		</td>
+		<td CLASS=middle>
+			21
+		</td>
+		<td>
+			Stables(0)<br>
+			Fountain of Fortune(1)<br>
+			Lookout Tower(2)<br>
+			Brimstone Storm clouds(3)<br>
+			Necromancy amplifier(4)<br>
+			Mana Vortex(5)<br>
+			Freelance Guild(6)<br>
+			Glyphs of Fear(7)<br>
+			Magic University(8)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00400000
+		</td>
+		<td CLASS=middle>
+			22
+		</td>
+		<td>
+			Brotherhood of the Sword(0)<br>
+			Treasure(1)<br>
+			Library(2)<br>
+			Castle Gate(3)<br>
+			Skeleton Transformer(4)<br>
+			Portal of Summoning(5)<br>
+			Ballista Yard(6)<br>
+			Blood Obelisk(7)<br>
+			?(8)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			00800000
+		</td>
+		<td CLASS=middle>
+			23
+		</td>
+		<td>
+			?(0,1,4,7,8)<br>
+			Wall of Knowledge(2)<br>
+			Order of Fire(3)<br>
+			Battle Scholar Academy(5)<br>
+			Hall of Valhalla(6)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			01000000
+		</td>
+		<td CLASS=middle>
+			24
+		</td>
+		<td>
+			?(0,2,4,5,6,7,8)<br>
+			Dendroid Saplings(1)<br>
+			Cages(3)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			02000000
+		</td>
+		<td CLASS=middle>
+			25
+		</td>
+		<td>
+			?(0,2,4,5,6,7,8)<br>
+			Dendroid Saplings+(1)<br>
+			Cages+(3)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			04000000
+		</td>
+		<td CLASS=middle>
+			26
+		</td>
+		<td>
+			Grail
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			08000000
+		</td>
+		<td CLASS=middle>
+			27
+		</td>
+		<td>
+			?(x)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			10000000
+		</td>
+		<td CLASS=middle>
+			28
+		</td>
+		<td>
+			?(x)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			20000000
+		</td>
+		<td CLASS=middle>
+			29
+		</td>
+		<td>
+			?(x)
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			40000000
+		</td>
+		<td CLASS=middle>
+			30
+		</td>
+		<td>
+			Dwelling 1
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			0
+		</td>
+		<td CLASS=middle>
+			80000000
+		</td>
+		<td CLASS=middle>
+			31
+		</td>
+		<td>
+			Dwelling 2
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000001
+		</td>
+		<td CLASS=middle>
+			32
+		</td>
+		<td>
+			Dwelling 3
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000002
+		</td>
+		<td CLASS=middle>
+			33
+		</td>
+		<td>
+			Dwelling 4
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000004
+		</td>
+		<td CLASS=middle>
+			34
+		</td>
+		<td>
+			Dwelling 5
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000008
+		</td>
+		<td CLASS=middle>
+			35
+		</td>
+		<td>
+			Dwelling 6
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000010
+		</td>
+		<td CLASS=middle>
+			36
+		</td>
+		<td>
+			Dwelling 7
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000020
+		</td>
+		<td CLASS=middle>
+			37
+		</td>
+		<td>
+			Dwelling 1+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000040
+		</td>
+		<td CLASS=middle>
+			38
+		</td>
+		<td>
+			Dwelling 2+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000080
+		</td>
+		<td CLASS=middle>
+			39
+		</td>
+		<td>
+			Dwelling 3+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000100
+		</td>
+		<td CLASS=middle>
+			40
+		</td>
+		<td>
+			Dwelling 4+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000200
+		</td>
+		<td CLASS=middle>
+			41
+		</td>
+		<td>
+			Dwelling 5+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000400
+		</td>
+		<td CLASS=middle>
+			42
+		</td>
+		<td>
+			Dwelling 6+
+		</td>
+	</tr>
+	
+	<tr>
+		<td CLASS=middle>
+			1
+		</td>
+		<td CLASS=middle>
+			00000800
+		</td>
+		<td CLASS=middle>
+			43
+		</td>
+		<td>
+			Dwelling 7+
+		</td>
+	</tr>
+	
+</table>
+</font> 
+<font size = 1.7>
+<br>
+The internal structure keeps a two 32 bit values (that you can set or get with B1 command) and every bit there means one structure. Then if the bit is set, the structure may be built only after that structure (that bit is set). If the bit is 0, there is not dependence. <br>
+So all mentioned in B2 structure bits are set to 1. Others are set to 0. If you want to modify the existing sequence, you need to use B1/?$/?$ syntax to get values, set or remove bits that you want and use B1/$/$ to set it back. <br>
+<br>
+Also, if you make this structure depends on X structure and X structure in its turn depends on Y structure, so this structure will depends not only on X but also on Y structure and you need not to set Y structure in the command. <br>
+</font>
+
+</body>
+
+</html>

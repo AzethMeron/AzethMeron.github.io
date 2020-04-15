@@ -1,0 +1,599 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Fu Receiver</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg" bgproperties=fixed>
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+F</font><font face="Times New Roman CE" size="5">UNCTION</font><font face="Times New Roman CE" size="6"> (</font></span><font face="Times New Roman CE" size="6">FU</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+<p><b><font face="Arial" size="2" color="#333333">Used to create a separate section of code that
+can be accessed from more than one place and thus reused. A function is called
+by using the function <i>receiver</i>. The function <i>trigger</i> then defines
+the start of the function code.</font></b></p>
+
+<p><tt><font face="Arial" size="2">If you want a script to occur when a<span lang="de"> 
+function </span>is <span lang="de">activated</span>, use a<span lang="de"> 
+function </span><a href="../other/trigger_right.htm#fu">TRIGGER</a></font></tt></p>
+
+<p>
+<img src="../images/new.gif" width="28" height="11">
+<font size="2"><b>NEW FU RECEIVER SYNTAX. </b><font face="Arial">See
+<a href="#newsyntax">below</a></font></font></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="143" height="32" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!FU</font><font color="#8B008B">#</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="32" valign="top">
+
+<font face="Arial" size="2">Function receiver - transfers control to ERM code following
+function trigger)<br>
+# = 1 to<span lang="de"><font color="#000080"> </font>30</span>000.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="32" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!FU</font><font color="#8B008B">#</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="32" valign="top">
+
+<font face="Arial" size="2">Local function receiver - transfers control to ERM code following
+local function trigger) See <a href="receiver_fu_right.htm#local">below</a><br>
+# = -1 to<span lang="de"><font color="#000080"> </font>-1</span>00.</font>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b>
+</p>
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="12%" valign="top" nowrap><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="C"></a>C<font color=darkmagenta>$</font>;</font></b><img src=../images/new.gif></td>
+    <td width="88%" valign="top">
+<font color="#000000" face="Arial" size="2"><b>Check for wrong y vars usage</font></b><br>
+<font face="Arial" size="2">May be used without parameters, like !!FU:C1;<br>
+&nbsp;&nbsp;&nbsp;   <b>$</b>=0 - enables run time check<br>
+&nbsp;&nbsp;&nbsp;   <b>$</b>=1 - disable run time check (default if just !!FU:C)<br>
+&nbsp;&nbsp;It will check only if you try to set a y var outside of a function body (execution time), for
+this is the main case of the problem (reading is not a problem at all if it worked correct).<br>
+&nbsp;&nbsp;  By default the checking is disabled.<br>
+&nbsp;&nbsp;  This is most logical to use as an instruction and may be useful when testing scripts. Very simple usage. <br>
+<font color=blue><b>Example:<br>
+************<br></font><font color=red>
+ZVSE<br>
+!#FU:C;<br>
+<br>
+!#TM1:S1/999/1/1;</b></font> set TM1 for red<br>
+<br>
+<font color=red><b>!?TM1;<br>
+!!VRy1:S1;<br>
+!!FU123:P;<br>
+<br>
+!?FU123;<br>
+!!VRy1:S2;<br>
+<font color=blue><b>************<br></b></font></font></b>
+&nbsp;&nbsp;    Here when the timer section is executed, you will get a message that y var is set outside
+of the function body.<br>
+</td></tr>
+  <tr>
+    <td width="12%" valign="top" nowrap><b><font face="Arial" size="2">
+    <a name="d"><font color="#FF0000">D</font></a><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">...&nbsp;<br>
+ up to 16</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">s. </font></font></b>
+    <img src="../images/new.gif" width="28" height="11"></td>
+    <td width="88%" valign="top">
+<font face="Arial" size="2"><b>Call the function at opposite side.&nbsp; <br></b>
+Syntax is the same as for FU:P <br>&nbsp;Now during a battle you may pass the 
+values of v vars to the other side and call functions at<br>
+the other side. Say, you run a user dependent script (like stack splitting). The 
+script runs at one side because it runs as a reaction to a human action (mouse 
+click). So all that you change at this side will not be changed on the other 
+side. Now you can pass all changed values to the other side not running a script 
+there.<br>
+<b>Example.</b><br>
+On the one side you run a mouse event driven script:<br>
+...<br>
+<font color="#FF0000"><b>!!VRv1234:S999;</b></font><br>
+On the other side v1234 will still keep the old value.<br>
+To fix it use:<br>
+...<br>
+<b><font color="#FF0000">!!VRv1234:S999;<br>
+!!IP:V1234/1234;</font></b><br>
+The last command will immediately send the value of v1234 to the other side.<br>
+Now to the second part of the problem. Say you use some specific command that 
+has some<br>
+effects on the battlefield (say you cast a spell with ERM).<br>
+Again, if it is done only at one side, there will be a problem because it is not 
+done on the<br>
+other side. Now you may use a distant call for those cases. This means that you 
+call a function<br>
+but it runs not at this local PC but at a distant one (the opponent's PC).<br>
+Up to 16 x parameters are transferred.<br>
+<b>Example.</b><br>
+On one side you have:<br>
+...<br>
+<b><font color="#FF0000">!!BMv10:Mi/y5/5;</font></b><br>
+To make it run correctly you should make some changes:<br>
+...<br>
+<font color="#FF0000"><b>!!BMv10:Mi/y5/5;<br>
+!!FU12345:Dv10/i/y5/5;<br>
+<br>
+!?FU12345;<br>
+!!BMx1:Mx2/x3/x4;</b></font><br>
+That is all. How it works. FU:D immediately transfer all x parameters to the 
+other side and<br>
+makes a call of FU1234 there. So BMv10:M... command runs at one PC and BMx1:M... 
+at the other PC. If you pass all in the right order, you will see the same 
+effect at both sides.<br>
+Note that you can pass some vars with IP:V command and then call FU:D to pass 
+more than 16 x parameters to the other side.<br>
+<br>
+Now, an example that you can check (tested):<br>
+<font color="#FF0000"><b>***********<br>
+ZVSE<br>
+<br>
+!?BG0;<br>
+!!IF:M^Hi!^;<br>
+!!VRv99:S99; <br>!!VRv100:S100; <br>!!VRv101:S101;<br>
+!!IP:V99/100;<br>
+!!FU123:D1/2/3/4/5;<br>
+<br>
+!?FU123;<br>
+!!IF:M^V99=%V99, V100=%V100, V101=%V101, X1=%X1, X2=%X2, X3=%X3, X4=%X4, 
+X5=%X5^;<br>
+***********<br>
+</b></font>You will see &quot;Hi!&quot; message at any action of a stack, then you will 
+see a message &quot;<i><font color="#800080">V99=99,<br>
+V100=100, V101=0, X1=1, X2=2, X3=3, X4=4, X5=5</font></i>&quot; at the other PC. Then 
+you get &quot;Hi!&quot; at the other<br>
+PC.<br>
+If you continue, you may notice that the next time the message will be: &quot;<font color="#800080"><i>V99=99, 
+V100=100,<br>
+V101=101, X1=1, X2=2, X3=3, X4=4, X5=5</i></font>&quot;. So v101 is changed. This is 
+because first you send v99<br>
+and v100 through the network and call a function that shows a message (and this 
+is why<br>
+v101 is 0). But then the BG0 trigger will work out at the defender's side and 
+v101 will be set<br>
+to 101.<br>
+This example is only an example because in the script:<br>
+<b><font color="#FF0000">!?BG0;<br>
+!!IF:M^Hi!^;<br>
+!!VRv99:S99; !!VRv100:S100; !!VRv101:S101;</font></b><br>
+will work fine (identical) at both sides.<br>
+But if you run a script as a reaction to a human related event (mouse click 
+generally), you
+need to think how to transfer changes to the other side.</font></td>
+
+  </tr>
+  <tr>
+    <td width="12%" valign="top" nowrap><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="E"></a>E;</font></b>
+  <br> <font face="Arial" size="2" color="#FF0000"><a name="E"></a>E0;</font></b>
+  </span></td>
+    <td width="88%" valign="top">
+<font color="#000000" face="Arial" size="2"><b>Exit the current function immediately</font></b><br>
+<font face="Arial" size="2">May be used in instructions: !#FU:#; <font color=purple>though not sure how this is going to work. Need tests.</font><br>
+You can use this command to avoid re-entering 
+the function.<br>
+<b><font color="#0000FF">Example</font></b><br>
+It was:<font color="#FF0000"><br>
+<b>!?FU123;</b><br>
+</font>...<font color="#FF0000"><br>
+<b>!!VRv10:S0 T10;</b></font> <font color="#FF0000">[get random value]</font><br>
+<b>
+<font color="#FF0000">!?FU123&amp;v10&lt;5;</font></b> <font color="#FF0000">[continue only if random value &lt;5]</font><br>
+...<br>
+&nbsp; Now you can do it this way:<br>
+<font color="#FF0000"><b>!?FU123;</b></font><br>
+...<br>
+<font color="#FF0000"><b>!!VRv10:S0 T10;</b> [get random value]<br>
+<b>!!FU&amp;v10&gt;=5:E;</b>&nbsp; [exit the function only if random 
+value &gt;=5]<br>
+[continue only if random value &lt;5]</font><br>
+...<br>
+<br>
+&nbsp; The plus of this technology is that you have the same set of y and<span lang="de">
+</span>other local vars and you can use it in triggers <span lang="de">a</span>lso.<br>
+<br>
+<b><font color="#0000FF">&nbsp; Another example (complete):<br>
+***************<br>
+</font></b><font color="#FF0000"><b>ZVSE<br>
+!?LE3/4/0;&nbsp;&nbsp;&nbsp; </b>[all is attached to local event]<b><br>
+!!IF:M^L0-0^;<br>
+!!FU123:P;<br>
+!!IF:M^L0-1^;<br>
+!!FU:E;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>[leave]<b><br>
+!!IF:M^L0-2^;<br>
+<br>
+!?FU123;<br>
+!!IF:M^L1-0^;<br>
+!!FU124:P;<br>
+!!IF:M^L1-1^;<br>
+!!FU:E;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>[leave]<b><br>
+!!IF:M^L1-2^;<br>
+<br>
+!?FU124;<br>
+!!IF:M^L2-0^;<br>
+!!FU125:P;<br>
+!!IF:M^L2-1^;<br>
+!!IF:M^L2-1a^;<br>
+<br>
+!?FU125;<br>
+!!IF:M^L3-0^;<br>
+!!FU126:P;<br>
+!!IF:M^L3-1^;<br>
+!!FU:E;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>[leave]<b><br>
+!!IF:M^L3-2^;<br>
+<br>
+!?FU126;<br>
+!!IF:M^L4-0^;<br>
+!!IF:M^L4-1^;<br>
+!!FU:E;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>[leave]<b><br>
+!!IF:M^L4-2^;</b><br>
+</font><font color="#0000FF">***************</font><font color="#FF0000"><br>
+</font>&nbsp; You will get the next messages:<br>
+L0-0<br>
+L1-0<br>
+L2-0<br>
+L3-0<br>
+L4-0<br>
+L4-1<br>
+L3-1<br>
+L2-1<br>
+L2-1a<br>
+L1-1<br>
+L0-1</font></tt></td>
+  </tr>
+  <tr>
+    <td width="12%" valign="top" nowrap><b><font face="Arial" size="2"><font color="#FF0000">
+    <a name="unused"></a>E</font><font face="Arial" size="2" color="#800080">$;</font> <br> 
+    <font color=red>Extended syntax</font>
+    <td width="88%" valign="top">
+<p><font face="Arial" size="2"><b>Go-to statement</b><br>
+  $ might be both positive and negative. Jump to previous/next trigger of same kind. <br>
+  Check <a href="../other/goto.htm">GoTo</a> for more information.
+<br>
+    </td>
+  </tr>
+  <tr>
+    <td width="12%" valign="top" nowrap><b><font face="Arial" size="2"><font color="#FF0000">
+    <a name="P"></a>P</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">...&nbsp;<br>
+ up to 16</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">s.</font></font></b></td>
+    <td width="88%" valign="top">
+<p><font face="Arial" size="2"><b>Call the function</b><br>
+To get access to parameters use x# (#=1...16) syntax.<br>
+They may be used anywhere (within the function) that standard variables are
+used.<br>
+When you call another function (see example), all parameters that are not set will be
+inherited.<br>
+<br>
+</font><span lang="de"><font face="Arial" size="2"><b>Note</b>: the 
+:P parameter <i>must</i> be placed in the !!FU calling (even if no values are to 
+be transfered to the function) for the command to work correctly .<br>
+<b><font color=blue>Example</font><br>
+<font color=red>!!FU1:P;</b></font> is right<br>
+but <font color=red><b>!!FU1;</font></b> is wrong command<br>
+All ERM commands (receivers, instructions) have to use at least one parameter in order to work 
+correctly.
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="12%" valign="top" nowrap><b><font face="Arial" size="2"><font color="#FF0000">
+    <a name="X"></a>X</font><font face="Arial" size="2" color="#800080"><font color=purple>#</font><font color=red>/</font><font color=purple>?$</font><font color=red>;</font></font>
+    <td width="88%" valign="top">
+<p><font face="Arial" size="2"><b>Get type of argument x<font color=purple>#</font></b><br>
+  Type is stored in <font color=purple>$</font>. Get only. <br> <br>
+  Types are: <br>
+  -2 'd?' <br>
+  -1 'd' <br>
+   0 (normal)<br>
+   1 ? <br>
+   2 =<br>
+   3 <><br>
+   4 ><br>
+   5 < <br>
+   6 >=<br>
+   7 <=<br>
+   <br>
+	Note 1: Type 'd' and checks are only hints for the function. They are handled like there was no such sign unless the function handles them differently based on FU:X value. <br>
+	Note 2: Type '=' have a special meaning in DO reciever. <br>
+    </td>
+  </tr>
+  
+</table>
+<p><span style="font-size: 10.0pt; font-family: Arial"><u>
+<b><span lang="de">Declarations and Instruction usage</span></b></u><br>
+If you call a function with an instruction, the function must be declared 
+*before* the instruction.<br>
+<br>
+So, for example, if <span lang="de">you </span>want to call function 100 at the 
+start of a map, <span lang="de">you</span> can put in the instruction !#FU100:P; 
+but it won't work if the function trigger follows the instruction. Instead, the 
+function trigger (and code within it) must be first.<br>
+<br>
+So:<br>
+<br>
+<b>ZVSE<br>
+<br>
+!?FU100;<br>
+!!IF:M^This is function 100.^;<br>
+<br>
+!#FU100:P;<br>
+</b><br>
+The above will work but if !#FU100:P; <span lang="de">would have been put</span> 
+first (right after ZVSE), it wouldn't work. You wouldn't get an error message 
+but the function wouldn't execute.</span></p>
+<p><br>
+<u><b><span lang="de"><font size="2">
+<span style="font-family: Arial">U</span></font></span><span style="font-size: 10.0pt; font-family: Arial">s<span lang="de">age 
+of</span> a variable in a function receiver<br>
+</span></b></u><span style="font-size: 10.0pt; font-family: Arial">
+<span lang="de">Y</span>ou can use a variable in a function receiver. So you 
+could put, for example, !!FUv10:P; and the function called (if it exists) would 
+be the function number *currently* stored in v10<span lang="de">.</span></span><u><b><span style="font-size: 10.0pt; font-family: Arial"><br>
+<br>
+</span></b><span lang="de"><b><font face="Arial" size="2" color="#0000FF"><br>
+Function Examples:<br>
+</font></b></span></u><font face="Arial" size="2"><b><font color="#0000FF"><br>
+Example:</font></b><font color="#008000"><br>
+</font>
+<b>
+<font color="#FF0000">
+!?FU1;<br>
+!!IF:M^Here we are before. %X1 %X16^;<br>
+!!VRx1:+1;<br>
+!!FU2:Px1;<br>
+!!IF:M^Here we are after. %X1 %X16^;</font></b>
+</font>
+</p>
+<p><font face="Arial" size="2">To call a function use a receiver FU# (#=1...1000)</font></p>
+<p><font face="Arial" size="2"><b><font color="#0000FF">Example:</font></b><font color="#008000" size="2"><br>
+</font>
+<b>
+<font color="#FF0000" size="2">
+!!FU1:P5;</font></b><font color="#FF0000" size="2"><br>
+This calls the function above with one parameter (5)</font></font></p>
+
+<p><font face="Arial" size="2"><u><b>Local Variable in functions:</b></u><br>
+In functions you have local variables (up to 100).<br>
+To get access to local variables use y# (#=1...100) syntax.<br>
+You can set/check/get these vars. Every call creates a unique set of local variables that all equal to zero at entrance.<br>
+So all operation with local variable take place inside a function only.<br>
+You can make recursive calls.<br>
+<br>
+<font color="#0000FF"><b>Another e</b></font><b><font color="#0000FF">xample:</font><u>
+<font color="#008000"><br>
+</font>
+</u></b></font><font color="#008000"></font><font color="#FF0000"><b>
+<font face="Arial" size="2">
+!!FU1:Pi/102/v10/35; </font> </b>
+<font face="Arial" size="2">
+means that in the body of the function we have:<br>
+<b>
+!?FU1;</b>  x1=i, x2=102, x3=v10, x4=35 others x5...x16 are undefined<br>
+<b>
+!!IF:M^x1=%X1, x2=%X2^;</b><br>
+<br>
+  Then if you call a function with other parameters, x1...x16<br>
+variables in a body of a function will have corresponding values.<br>
+<b>
+!!FU1:P10/20;</b> will show "x1=10, x2=20"<br>
+<b>
+!!VRv5:S33;</b>&nbsp;<br>
+<b> !!FU1:Pv5/0;</b> will show "x1=33, x2=0"<br>
+<br>
+  Y variables y1...y100 are local variables. You can use them inside<br>
+functions for any purpose. All functions have their OWN y variable<br>
+set, even if you call recursively one function. When you go out of a<br>
+function a previous set of y vars is restored.<br>
+  !!FU1:P; call FU1<br>
+<br>
+<b>
+  !?FU1;</b>          y1 is undefined (=0)<br>
+<b>
+  !!VRy1:S1;</b>      y1=1<br>
+<b>
+  !!FU2:P;</b>        call FU2<br>
+<b>
+  !!IF:M^y1=%Y1^;</b> "y1=1" (y1 take its original value 1 that was before
+                       calling FU2)<br>
+<b>
+  !?FU2;</b>     y1 is undefined (=0)<br>
+<b>
+  !</b></font></font><font face="Arial" size="2"><font color="#FF0000"><b>!VRy1:S2;</b> y1=2<br>
+<b>
+  !!IF:M^y1=%Y1^;</b> "y1=2"</font><br>
+</font></p>
+
+<p><b><u><font face="Arial" size="2" color="#000000">Can we make a generic function where I terra transform a big
+square?</font></u></b><font face="Arial" size="2" color="#008000"><br>
+</font><font face="Arial" size="2" color="#FF0000">
+But I still recommend to pass all arguments to the function like this:<br>
+!!FU#:Px1/y1/x2/y2/level/type/subtype;<br>
+<br>
+<br>
+This is a call:<br>
+<b>!!FU20000:P5/15/7/28/0/2/50;</b> x1=5,y1=15,x2=7,y2=28,level=0,type=2,subtype=50<br>
+<br>
+Function:<br>
+<b>!?FU20000;</b> transform an area<br>
+<b>!!DO20001/0/144/1:Px1/x2/x3/x4/x5/x6/x7;</b><br>
+<b>!?FU20001&amp;x16>=x1/x16&lt;=x3;</b> transform a column<br>
+<b>!!DO20002/0/144/1:Px16/x2/x4/x5/x6/x7;</b><br>
+<b>!?FU20002&amp;x16>=x2/x16&lt;=x3;</b> Transform one square<br>
+<b>!!VRv1:Sx1;</b> X coordinate<br>
+<b>!!VRv2:Sx16;</b> Y coordinate<br>
+<b>!!VRv3:Sx4;</b>   level<br>
+<b>!!TR1:Tx5/x6/d/d/d/d/d/d;</b> start retain type</font></p>
+
+<h3><span style="text-transform: uppercase"><font face="Arial" size="2">Functions</font></span>
+</h3>
+<p><font face="Arial" size="2">A function is an entry point as a trigger and a body as receivers.<br>
+The trigger is !?FU# (#=1...1000)<br>
+Receivers are any receivers.</font>
+</p>
+<p>
+<b>
+<font face="Arial" size="2">
+<font color="#0000FF">
+Example:</font><font color="#008000" size="2" face="Arial">
+<br>
+</font><font color="#FF0000" size="2" face="Arial">
+!?FU1;<br>
+!!IF:M^Here we are before. %X1 %X16^;<br>
+!!VRx1:+1;<br>
+!!FU2:Px1;<br>
+!!IF:M^Here we are after. %X1 %X16^;</font></font></b>
+</p>
+<p><font face="Arial" size="2">To call a function use a receiver !!FU# (#=1...1000)<br>
+It has only one command: P<br>
+P$/$/$... up to 16 #s.</font></p>
+<p><font face="Arial" size="2"><b><font color="#0000FF">Example:</font><font color="#008000" size="2"><br>
+</font><font color="#FF0000" size="2">
+!!FU1:P5;</font></b><font color="#FF0000"><br>
+This calls the function above with one parameter (5)</font><br>
+To get access to parameters use x# (#=1...16) syntax.<br>
+They may be used everywhere when f...t variables.<br>
+When you make a next call to another function (see example) all parameters that are not set will be inherited.</font></p>
+
+<p><font face="Arial" size="2">In functions you have local variables (up to 100).<br>
+To get access to local variables use y# (#=1...100) syntax.<br>
+You can set/check/get these variables. Every call creates a unique set of local variables that all equal to zero at entrance.<br>
+So all operation with local variables take place inside a function only.
+<br>
+You can make recursive calls.</font></p>
+
+<h3><span style="text-transform: uppercase"> <font face="Arial" size="2"> Coupling.</font></span></h3>
+<p><font face="Arial" size="2">
+You can add a code (receivers) to already exist triggers using the same triggers two or more times.<br>
+<b><font color="#0000FF">Example:</font></b>
+<font color="#008000"><br>
+</font><font color="#FF0000">
+!?FU1;<br>
+!!... receivers 1<br>
+...<br>
+!?FU1;<br>
+!!... receivers 2<br>
+...<br>
+<b>
+!!FU1:...</b><br>
+Last call execute all receivers 1 and then all receivers 2 at the same context.</font>
+</font></p>
+<p><font face="Arial" size="2"><b><font color="#0000FF">Example:</font></b><font color="#008000"><br>
+</font><font color="#FF0000">
+<b>
+!!IFv10:S5;</b><br>
+<b>
+!!SG4/3/0:M1/v10;</b> set sign message to string var z[v10] or z5<br>
+<b>
+!!SG4/3/0:M1/?z10;</b> get current sign message to z10 string var</font></font></p>
+
+<p align=center><b><a name="newsyntax"></a>NEW FU RECEIVER SYNTAX</b></p><font face=arial class=helvetica32 size=2>
+FU and DO Receivers have extended syntax to provide return values.<br>
+<br>
+&nbsp;  Now you may use "?var" syntax to return values from the call.<br>
+&nbsp;  You can use a v, y- or y variable to store the return value.<br>
+&nbsp;  Say:<br>
+<b><font color=red>!!FU...:Pv1/v2/v3/?v4;<br></font></b>
+&nbsp;  Now if you change x4 value inside of the function, say:<br>
+<b><font color=red>!!VRx4:Sx1;<br></font></b>
+&nbsp;  it will be copied to v4 after function return.<br>
+<br>
+<i>Comments:</i><br>
+&nbsp;  The value of the variable itself (v4) is not transferred to x4 at a function call. Instead the index of the var is transferred (so x4 will keep value 4).<br>
+&nbsp;  In DO loop the index value (4) will be passed at every iteration.<br>
+&nbsp;So if you set it inside of the function body, it will be copied to the variable-receiver after the end of the iteration and restored to index value at the beginning of the next iteration.<br>
+&nbsp;  Also you may use "=var" syntax to set (parse) the value at every DO loop iteration (make no difference with standard "var" syntax for FU call).<br>
+&nbsp;  Say:<br><b>
+<font color=red>!!VRv35:S10;<br>
+!!DO...:P=v35;<br></font></b>
+&nbsp;  Now if you change the v35 inside of the loop body it will be passed to the next iteration taking account changes made for v35:
+<b><font color=red>!!VRv35:Sx1+1;<br></font></b>
+&nbsp;  So now it gives you x1 equal 10,11,12,13... at every iteration.<br>
+&nbsp;  If you use the standard syntax:<br>
+<b><font color=red>!!VRv35:S10;<br>
+!!DO...:Pv35;<br></font></b>
+&nbsp;  you will have x1 = 10,10,10,... at every iteration.<br>
+<br>
+<i>Comments:</i><br>
+&nbsp;  You may use any number of such variables in the call.<br>
+&nbsp;  You may use the same var (see example below) with ? and = syntax.<br>
+&nbsp;  Example 1:<br><b>
+<font color=red>!?FU2;<br>
+!!VRx2:Sx2+17;<br>
+!!VRx3:Sx1+17;<br>
+<br>
+!?FU1;<br>
+!!FU2:P13/?y-1/?y-2;<br>
+<br>
+!#IF:M^%Y-1,%Y-2^;<br>
+!#FU1:P;<br>
+!#IF:M^%Y-1,%Y-2^;<br></font></b>
+<br>
+&nbsp;  You will see "0,0" and then "16,30".<br>
+<br>
+&nbsp;  Example 2:<br><b>
+<font color=red>!?FU2;<br>
+!!VRx2:Sx1+17;<br>
+!!IF:M^x=%X1^;<br>
+<br>
+!?FU1;<br>
+!!VRy-1:S33;<br>
+!!DO2/1/20/1:P=y-1/?y-1;<br>
+<br>
+!#FU1:P;</font><br><br></b>
+
+  You will see 33,50,67...<br><br><br><br>
+  <p align=center>
+<b><font size=5><a name=local></a>LOCAL FUNCTIONS' SYNTAX</font></b><br></p>
+Local functions are the ones with index from -1 to -100: <br>
+?FU-5;       [start local function -5]<br>
+!!FU-5:P...; [call a local function -5]<br>
+Those functions are local and can be reached ONLY by calls within this script.
+This means if you have !?FU-5; triggers used in scriptX.erm and scriptY.erm, using !!FU-5:P; within scriptX.erm will trigger ONLY !?FU-5; inside scriptY.erm. <br>
+<br>
+Also it gives a specific functionality.<br>
+Say you have two scripts: 23 and 456.<br>
+<br>
+<b>Script 23 has:</b><br>
+!?FU-34; <font color=green>#1</font><br>
+...<br>
+!?FU657;<br>
+!!FU-34:P...;<br>
+...<br>
+!?FU-34; <font color=green>#2</font><br>
+...<br>
+<br>
+<b>Script 456 has:</b><br>
+!?FU-34; <font color=green>#3</font><br>
+...<br>
+!?TM6;<br>
+!!FU-34:P...;<br>
+!!FU657:P...;<br>
+...<br>
+!?FU-34; <font color=green>#4</font><br>
+...<br>
+<br>
+Now say timer 6 executed. The ERM interpreter will find a trigger body (!?TM6) in the script 456.
+So first !?TM6 section is executed.
+Call to FU-34 will execute function <font color=green>#3</font> and then <font color=green>#4</font> because both of
+them are located in the script that call is executed (script 456).
+Then call to FU657 will move the current call scope to the script 23
+because the body of the global function 657 is located there.
+So now call to FU-34 will execute functions <font color=green>#1</font> and <font color=green>#2</font>.
+<br><br>
+This means that all local functions are independent and may be
+cross referenced only through the global function calls.<br>
+</body>
+
+</html>

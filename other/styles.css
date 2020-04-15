@@ -1,0 +1,16 @@
+td.rowforoptions {border-top:0px;border-bottom:0px;}
+.example  {color:blue; font: bold   arial;}
+.ermtext  {color: red    ; font: bold   arial;}
+td        {color: black  ; font: 10pt/12pt       arial;}
+.notes    {color: black  ; font: italic arial;}
+a         {color: blue; font: bold   arial; text-decoration:none;}
+a:hover {text-decoration:underline;}
+a.menu    {color: #FFCC66; font: bold   arial; text-decoration:none;}
+a.menuindex    {color: black; text-decoration:none; font-weight: normal;}
+.param    {color: #8B008B; font: bold   arial;}
+.norm     {color: black  ; font:        arial; font-weight: normal;}
+.bnotes   {color: black  ; font: italic arial; font-weight: bold  ;}
+.artspec  {color:yellow}
+.artcom  {color:blue}
+.artwog  {color:red}
+body  {bgproperties:fixed}

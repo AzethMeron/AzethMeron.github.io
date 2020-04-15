@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>2</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+H</font><font face="Times New Roman CE" size="5">INT</font><font face="Times New Roman CE" size="6"> 
+T</font><font face="Times New Roman CE" size="5">EXT</font><font face="Times New Roman CE" size="6"> (</font></span><font face="Times New Roman CE" size="6">HT</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font>
+</b>
+</p>
+
+<p><b><font face="Arial" size="2" color="#333333">Lets you set the hint (right-click text) for
+all adventure map objects of a specific type and subtype.</font></b>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td valign="top"><b><font face="Arial" size="2"><font color="#FF0000"> !!HT</font><font size="2" face="Arial" color="#800080">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#800080">$2</font><font size="2" face="Arial" color="#FF0000">:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Sets hint for a type and subtype
+      of objects.</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> - Type [may be a variable]<span lang="de">
+    </span>(see <a target="annexe" href="../format/format_ob.htm">Format <span lang="de">OB</span></a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Subtype (-1 = all) [may be a variable]</font>
+      <p><font face="Arial" size="2">
+     <b><u>
+      Comments:</u></b><br>
+     First always a particular position of object hint is searched for.<br>
+     If not found, the type and subtype of ANY (w,v,n) hint is searched for.<br>
+     If none found, the type and ANY subtype (-1) hint is searched for.</font></p>
+    </td>
+  </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+<p align="center"><strong><font face="Arial" size="2">OPTIONS</font></strong>
+
+</p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" height="239">
+      <tr>
+        <td width="109" height="42" valign="top"><nobr><b><font face="Arial" size="2"><font color="red"><a name="P">P</a></font><font color="darkmagenta" face="Arial" size="2">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$2</font></font></b></nobr><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td width="549" height="42" valign="top">
+
+  <font face="Arial" size="2"><b>Hint referenced by PO:N number.<br>
+  &nbsp;&nbsp; <font color="#8B008B">$1</font>
+  </b> - Position (0..15).If this number is equal
+  to the number at the position of the object (Set with !!PO:N) then use Z
+  variable ($3) as the hint text.<br>
+  <b>&nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$2</b></font> - Index of Z variable (1..500) storing hint text. (0 = delete).<br>
+  <u><b>Comments:</b></u><br>
+  Use this method when you want the object's hint text to change independently
+  for each object of this type that is
+  visited.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="109" height="48" valign="top"><nobr><b><font face="Arial" size="2"><font color="red"><a name="T">T</a></font><font color="darkmagenta" face="Arial" size="2">$</font></font></b></nobr><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td width="549" height="48" valign="top">
+
+  <font size="2" face="Arial"><b>Set a hint for all objects of type/subtype to z var $ (0-delete).</b><br>
+  <b><u>Comments:</u></b><br>
+    You can set a hint for an artifact:&nbsp;<br>
+ !!HT5/artnum:T$;<br>
+    This hint will be used if only other type of hints not set.&nbsp;</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="109" height="80" valign="top"><nobr><b><font face="Arial" size="2"><font color="red"><a name="V">V</a></font><font color="darkmagenta" face="Arial" size="2">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$3</font></font></b></nobr><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td width="549" height="80" valign="top">
+
+  <font face="Arial" size="2"><b>Hint referenced by V variable.<br>
+  &nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$1</b></font> - Index of V variable.<br>
+  <b>&nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$2</b></font> - Value (0..3). If V variable referenced with ($1) is equal to value of
+  ($2) then use Z variable ($3) as the hint text.<br>
+  <b>&nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$3</b></font> - index of Z variable (1..500) storing hint text. (0 = delete).<br>
+  <u><b>Comments:</b></u><br>
+  Use this method when you want the object's hint text to change when any
+  hero visits the object.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="109" height="58" valign="top"><nobr><b><font face="Arial" size="2"><font color="red"><a name="W">W</a></font><font color="darkmagenta" face="Arial" size="2">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$3</font></font></b></nobr><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td width="549" height="58" valign="top">
+
+  <font face="Arial" size="2"><b>Hint referenced by W variable.<br>
+  &nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$1</b></font> - Index of W variable for current hero.<br>
+  <b>&nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$2</b></font> - If W variable of current hero referenced with ($1) is equal to value of
+  ($2) then use Z variable ($3) as the hint text.<br>
+  <b>&nbsp;&nbsp;
+  </b><font color="#8B008B"><b>$3</b></font> - Index of Z variable (1..500) storing hint text. (0 = delete).<br>
+  <u><b>Comments:</b></u><br>
+  Use this method when you want the object's hint text to change for each hero
+  who has visited or not visited this type of
+  object.</font> <br>
+  <span lang="de"><font face="Arial" size="2"><br>
+  The following hero variables w101..w200 do not work with !!HT:W Here you can 
+  use only the first 100 w vars.</font></span></td>
+      </tr>
+  </table>
+
+<p><b><font face="Arial" size="2" color="#0000FF">Simple Example - setting
+hint text of all objects of the same type and subtype (no changing):</font></b><font color="#FF0000" size="2" face="Arial"><b><br>
+ZVSE<br>
+!#VRz100:S^Pointy Earsville^;<br>
+!#VRv25:S0;<br>
+!#HT98/1:V25/0/100;<br>
+<br>
+</b>
+This example changes the hint text of all Rampart towns on the map to
+&quot;Pointy Earsville&quot; at map start.
+</font></p>
+<p><b><font color="#0000FF" size="2" face="Arial">A more complex example, illustrating all three
+commands is shown below. Place this ERM code in an event on a test map and
+include three rows of the three kinds of mushroom buildings with four mushroom
+buildings per row:</font><font color="#FF0000" size="2" face="Arial"><br>
+ZVSE<br>
+!#HT63/18:V10/0/10; !#VRz10:S^Init 63/18^;<br>
+!#HT63/18:V10/1/11; !#VRz11:S^One 63/18^;<br>
+!#HT63/18:V10/2/12; !#VRz12:S^Two 63/18^;<br>
+!#HT63/18:V10/3/13; !#VRz13:S^Tree 63/18^;<br>
+!#VRv10:S0;<br>
+!?OB63/18; !!VRv10:+1;<br>
+<br>
+!#HT63/14:W10/0/20; !#VRz20:S^Init 63/14^;<br>
+!#HT63/14:W10/1/21; !#VRz21:S^One 63/14^;<br>
+!#HT63/14:W10/2/22; !#VRz22:S^Two 63/14^;<br>
+!#HT63/14:W10/3/23; !#VRz23:S^Tree 63/14^;<br>
+!#HT63/14:W10/4/24; !#VRz24:S^Four 63/14^;<br>
+!#HT63/14:W10/5/25; !#VRz25:S^Five 63/14^;<br>
+!?OB63/14; !!IF:W-1; !!VRw10:+1;<br>
+<br>
+!#HT63/30:P0/30; !#VRz30:S^Init 63/30^;<br>
+!#HT63/30:P1/31; !#VRz31:S^One 63/30^;<br>
+!#HT63/30:P2/32; !#VRz32:S^Two 63/30^;<br>
+!#HT63/30:P3/33; !#VRz33:S^Tree 63/30^;<br>
+!#HT63/30:P4/34; !#VRz34:S^Four 63/30^;<br>
+!#HT63/30:P5/35; !#VRz35:S^Five 63/30^;<br>
+!?OB63/30; !!PO998:Nd1;<br>
+</font>
+</b></p>
+
+</body>
+
+</html>

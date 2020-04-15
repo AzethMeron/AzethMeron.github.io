@@ -1,0 +1,1077 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Bless</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">B</font><font face="Times New Roman CE" size="5">LESSINGS</font><font face="Times New Roman CE" size="6"> </font>
+  <font face="Times New Roman CE" size="5"><span lang="de">AND</span></font><font face="Times New Roman CE" size="6"> 
+  C</font><font face="Times New Roman CE" size="5">URSES</font></strong><p align="left"><font face="Arial" size="2"><b>
+  <font color="#333333">Give,
+  remove or adjust blessings and curses on a specific hero.</font></b></font><p align="center">&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+      <tr>
+        <td width="143" height="16" nowrap><b><font color="red" size="2" class="Helvetica32" face="Arial">!!HE<font color="darkmagenta">#</font>:</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">Y</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$1</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$2</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$3</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$4</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="100%" height="16">
+
+<font class="Helvetica32" face="Arial" size="2">
+  Place a blessing or curse on the hero number of # (see
+<a href="../format/format_h.htm">Format
+          H</a> - each hero has a unique number in the game).</font>
+
+        </td>
+      <tr>
+        <td width="143" height="66" nowrap><b><font face="Arial" size="2"><font color="#FF0000">!!HE</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">/</font><font color="#8B008B">#3</font><font size="3" color="#FF0000">:</font></font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">Y</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$1</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$2</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$3</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$4</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="100%" height="66">
+
+<font face="Arial" size="2"><font class="Helvetica32">Place a blessing or curse
+on the hero </font> at x,y,l
+coordinates<font class="Helvetica32" size="3"><br>
+&nbsp;&nbsp;
+</font>
+
+#1 = x<br>
+&nbsp;&nbsp; #2 = y<br>
+&nbsp;&nbsp; #3 = level <font class="Helvetica32"> (0-ground,
+1-Underground)</font></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="48" nowrap><b><font face="Arial" size="2"><font color="#FF0000">!!HE-1:</font></font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">Y</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$1</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$2</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$3</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$4</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="100%" height="48">
+
+<font face="Arial" size="2">Place a blessing or curse on the hero who activated the trigger. Using this
+format simplifies things greatly as you do not need to keep changing the
+coordinates for every !!HE command if you move the trigger event or
+object.&nbsp;</font>
+
+        </td>
+      </tr>
+  </table>
+
+  <p align="center">
+
+  <font size="2">
+  <b>
+
+  <font face="Arial" size="2">
+  <br>
+  Options<br>
+</font>
+
+ </b>
+  </font>
+
+  <table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr>
+      <td width="19%"><b><font size="2" face="Arial"><font color="#FF0000">Y</font><font size="2" face="Arial" color="#8B008B">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$2</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$3</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#8B008B">$4</font></font></b></td>
+
+    <td width="181%">
+
+<font face="Arial" size="2"><b>Add/change/remove a curse.</b><br>
+&nbsp;&nbsp; $1 - number of curse from 1 to 65<br>
+&nbsp;&nbsp; $2 - the power of curse (not used for Blinding and Lock)<br>
+&nbsp;&nbsp; $3 - the length in days of the curse<br>
+&nbsp;&nbsp; $4 - what to do<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = set<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 = add/sub<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 = del<br>
+Special case: HE:Y0/0/0/3 - remove all curses/blessings from the hero.<br><br>
+<b><u>Comments:</u></b><br>
+  Every hero can have only one curse of each type. So when you add/sub (sub is addition of negative value), that means that the power
+  and the length will be changed to a sum of old and new values. If you del the curse, the power and length parameters do not matter.
+</font>
+
+    </td>
+  </tr>
+  <tr>
+    <td width="19%"><b><font size="2" face="Arial"><font color="#FF0000">Y2/</font><font size="2" face="Arial" color="#8B008B">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$2</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#8B008B">#
+</font>
+
+      </font>
+
+      </b></td>
+    <td width="181%">
+  <p>
+
+<font size="2" face="Arial"><b>Slot lock curse</b><br>
+&nbsp;&nbsp; <font color=purple>$1</font> - number of slot to lock (-1=random slot). <br>
+&nbsp;&nbsp; <font color=purple>$2</font> - the length in days of the curse. <br>
+&nbsp;&nbsp; <font color=purple>#</font> - set(1) add(2) or del(0). <br>
+<font color=purple>Okay information in changelogs are weird, claims $2 to be number of slot which would be inconsistent with normal HE:Y. We need to test this out</font><br>
+  If the slot has an artifact, it will be <i>hidden</i> and appear at the same place when curse has gone.<br>
+  <pre>Here's the list of slot lock indexes (it's not the same as format AP):
+0   head
+1   shoulders
+2   neck
+3   right hand
+4   left hand
+5   torso
+6   rings
+7   feet
+8   misc. slots
+9   ballista (war machine 1)  
+10  ammo cart (war machine 2)  
+11  first aid tent (war machine 3)  
+12  catapult  
+13  spell book</pre>
+</font>
+
+      </p>
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="19%"><b><font size="2" face="Arial"><font color="#FF0000">Y/</font><font size="2" face="Arial" color="#8B008B">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$2</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#8B008B">$3
+</font>
+
+      </font>
+
+      </b></td>
+    <td width="181%">
+  <p>
+
+<font size="2" face="Arial"><b>New HE:Y syntax</b><br>
+&nbsp;&nbsp; <font color=purple>$1</font> - number of curse from 1 to 65 <br>
+&nbsp;&nbsp; <font color=purple>$2</font> - the power of curse (not used for Blinding and Lock) <br>
+&nbsp;&nbsp; <font color=purple>$3</font> - set(1) add(2) or del(0). <br>
+<br>
+HE:Y now supports all syntax variations, so 4th parameter is usually unneeded.<br>
+Examples:<br>
+!!HE-1:Yv1/v2/v3 - set curse.<br>
+!!HE-1:Yv1/dv2/dv3 - add/sub curse.<br>
+!!HE-1:Yv1/0/0 - delete curse.<br>
+!!HE-1:Yv1/?v2/?v3 - get curse.<br>
+The only case when 4th is needed:<br>
+HE:Y0/0/0/3 - remove all curses/blessings from the hero.<br>
+</font>
+
+      </p>
+    </td>
+  </tr>
+
+  </table>
+
+  <p>&nbsp;</p>
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr>
+      <td width="109" valign="top"><b><font face="Arial" size="2" color="#FF0000">Curses</font></b></td>
+      <td width="46" valign="middle">&nbsp;</td>
+      <td width="439" valign="top"><b><font face="Arial" size="2" color="#FF0000">Explanations
+        and settings</font></b></td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 1.Blinding.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+  <img border="0" src="../images/curse/curse1.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top">
+  <font face="Arial"> <b><font size="2">Hero cannot explore anything around.<br>
+  </font>
+  </b><font size="2">Type=1</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 2.One hero's slot occupied by a lock.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse2.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">One hero's
+        slot occupied by a lock</font></b><font size="2"><br>
+        Type=2 <br>
+        Value=number of slot (-1=any)</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 3.No diplomacy.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+  <img border="0" src="../images/curse/curse3.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top">
+  <font face="Arial"> <b><font size="2">No  monster will join the hero.<br>
+  </font>
+  </b><font size="2">Type=3</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 4.Money loss.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+  <img border="0" src="../images/curse/curse4.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top">
+  <font face="Arial"> <b><font size="2">Owner loses money daily.<br>
+  </font>
+  </b><font size="2">Type=4 <br>
+  Value=amount of gold to lose.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 5.Resource bonus.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+  <img border="0" src="../images/curse/curse5.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top">
+  <font face="Arial"> <b><font size="2">Get additional resources daily.<br>
+  Crystal, Gems, Mercury, Sulphur.<br>
+  </font>
+  </b><font size="2">Type=5 <br>
+  Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 6.Loss of mana points daily.</font></b></td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse6.GIF" width="44" height="44"></td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Loss of mana
+        points daily.</font></b><font size="2"><br>
+        Type=6 <br>
+        Value=points to lose</font></font></td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 7.Add of mana points daily.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse7.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Add of mana
+        points daily.</font></b><font size="2"><br>
+        Type=7 <br>
+        Value=points to add.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 8.Set scouting radius to 2.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse8.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Set scouting
+        radius to 2.</font></b><font size="2"><br>
+        Type=8.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 9.Add experience daily.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse9.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Add experience
+        daily.</font></b><font size="2"><br>
+        Type=9. <br>
+        Value=exp to add.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+  <font face="Arial"> <b><font size="2">10.Slow.</font></b><font size="2">.</font></font>
+      </td>
+      <td width="46" valign="middle">
+  <img border="0" src="../images/curse/curse10.GIF" width="44" height="44"></td>
+      <td width="439" valign="top">
+  <font face="Arial"> <b><font size="2">Slow<br>
+  </font>
+  </b><font size="2">Type=10. <br>
+  Value=movements to lose</font></font></td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 11.not yet.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse11.GIF" width="44" height="44"></td>
+      <td width="439" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 12.not yet.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse12.GIF" width="44" height="44"></td>
+      <td width="439" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 13.not yet.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse13.GIF" width="44" height="44"></td>
+      <td width="439" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 14.not yet.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse14.GIF" width="44" height="44"></td>
+      <td width="439" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 15.Resource bonus.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse15.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Wood.</font></b><font size="2"><br>
+        Type=15 <br>
+        Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 16.Resource bonus.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse16.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Ore.</font></b><font size="2"><br>
+        Type=16 <br>
+        Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 17.Resource bonus.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse17.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Gems.</font></b><font size="2"><br>
+        Type=17 <br>
+        Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 18.Resource bonus.</font>
+ </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse18.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Mercury.</font></b><font size="2"><br>
+        Type=18<br>
+        Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+  <font face="Arial"> <b><font size="2">19.Resource bonus. </font> </b><font size="2">.</font></font>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse19.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Sulphur.</font></b><font size="2"><br>
+        Type=19 <br>
+        Value=amount of resources to get</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 20.Resource bonus.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse20.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Crystal.</font></b><font size="2"><br>
+        Type=20 <br>
+        Value=amount of resources to get.</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 21.Resource bonus.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse21.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Gold.</font></b><font size="2"><br>
+        Type=21 <br>
+        Value=amount of resources to get</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+  <font face="Arial"> <b><font size="2">22...63 Cannot visit an object on the map.</font></b></font>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse22.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">23</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse23.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">24</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse24.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">25</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse25.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">26</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse26.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">27</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse27.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">28</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse28.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">29</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse29.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">30</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse30.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">31</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse31.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">32</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse32.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">33</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse33.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">34</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse34.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">35</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse35.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">36</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse36.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">37</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse37.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">38</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse38.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">39</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse39.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">40</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse40.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">41</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse41.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">42</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse42.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">43</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse43.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">44</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse44.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">45</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse45.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">46</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse46.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">47</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse47.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">48</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse48.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">49</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse49.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">50</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse50.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">51</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse51.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">52</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse52.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">53</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse53.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">54</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse54.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">55</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse55.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">56</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse56.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">57</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse57.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">58</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse58.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">59</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse59.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">60</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse60.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">61</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse61.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <font size="2" face="Arial"><b>62</b></font>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse62.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Cannot visit
+        an object on the map.<br>
+        </font>
+        </b><font size="2">Type=22...63<br>
+        The picture shows the object that cannot be visited</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b><font face="Arial" size="2">63</font></b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse63.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial" size="2"><b>Not yet working.</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 64.Resource bonus.</font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse64.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial"><b><font size="2">Get additional
+        resources daily. Wood, Ore.</font></b><font size="2"><br>
+        Type=64 <br>
+        Value=amount of resources to g</font></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2"> 65.Speed up.<br>
+ </font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      <img border="0" src="../images/curse/curse65.GIF" width="44" height="44">
+      </td>
+      <td width="439" valign="top"><font face="Arial" size="2"><b>Increase
+        Hero's movement.</b><br>
+        Type=65. <br>
+        Value=movements to add.</font>
+      </td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

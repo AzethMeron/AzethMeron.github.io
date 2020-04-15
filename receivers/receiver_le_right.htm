@@ -1,0 +1,245 @@
+<html>
+
+<head>
+<title>LE Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">L</font><font face="Times New Roman CE" size="5">OCAL</font><font face="Times New Roman CE" size="6">
+  E</font><font face="Times New Roman CE" size="5">VENT</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">LE</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong>
+
+  <p><b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <font color="#333333">Used to modify the attributes of a local (placed) event in the specified position on the map.</font></font></b><p>
+  <tt><font face="Arial" size="2">If you want a script to occur when an
+  <span lang="de">event</span> is <span lang="de">activated</span>, use an
+  <span lang="de">even</span>t <a href="../other/trigger_right.htm#le">TRIGGER</a></font></tt><br>
+  <tt><span lang="de"><font size="2" face="Arial"><b>Note:</b> </font></span>
+  <font size="2" face="Arial">v998/v999/v1000 variables will store the location
+  of the current event visited. Also, you can refer to it easily with an
+  indirect reference (for example: !!<span lang="de">LE</span>998:...; ) <br>
+  <br>
+  </font>
+  </tt><span lang="de"><b>
+        <font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"> </font></b></span>
+  <tt>
+  <font size="2" face="Arial">Now you can use the !!LE receiver to program
+  Pandora's Box.<br>
+  All LE commands should work. To trigger it, use !?OB trigger with any<br>
+  kind of syntax.<span lang="de"> </span>Note: you still can't change the number
+  of secondary skills, artifacts,
+  or spells (same as an event), only change existing ones.</font></tt><p>&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" height="78">
+      <tr>
+        <td width="143" height="48" valign="top"><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!LE<font color="darkmagenta">#1</font>/<font color="darkmagenta">#2</font>/<font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td width="100%" height="48" valign="top">
+
+<font class="Helvetica32" face="Arial" size="2">&nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = x<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = y<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = Level</font>
+
+        </td>
+      <tr>
+        <td width="143" height="18" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!LE</font><font color="#8B008B">$</font></font><nobr><font color="red" size="2" class="Helvetica32" face="Arial">:<font color="darkmagenta">XXXX</font>;</font></nobr></b></td>
+        <td width="100%" height="18" valign="top">
+
+<font face="Arial" size="2">Coordinates are in v[$],v[$+1],v[$+2]</font>
+
+        </td>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"> OPTIONS</font></strong>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" cellspacing="1">
+    <tbody>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="A">A</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get artifact</b><br>
+          <font color="#8B008B" class="Helvetica32"><b>
+          $2</b></font> (<a href="../format/format_a1.htm">Format
+          A1</a>) in position <font color="#8B008B" class="Helvetica32"><b> #1</b></font> of the table of artifacts given by
+          the event. You can only CHANGE the artifact present by another one. If
+          there is no artifact in that position it will not be set.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="A">A</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2">G</font></b></span><b><font face="Arial" size="2">et
+        the number of artifacts</font></b><font face="Arial" size="2"><br>
+        You can use a set syntax but it will change nothing.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="b">B1/<font color=darkmagenta>$</font>;
+        </a></b></font></nobr>
+        <img src="../images/new.gif" width="28" height="11"><nobr><font color="red" size="2" face="Arial"><b><a name="b"><br>
+B2/<font color=darkmagenta>#</font>/<font color=darkmagenta>$</font>; </a></b>
+        </font></nobr>
+        <img src="../images/new.gif" width="28" height="11"><nobr><font color="red" size="2" face="Arial"><b><a name="b"><br>
+B3/<font color=darkmagenta>$</font>; </a></b></font></nobr>
+        <img src="../images/new.gif" width="28" height="11"><nobr><font color="red" size="2" face="Arial"><b> <a name="b"><br>
+B4/<font color=darkmagenta>$</font>; </a></b></font></nobr>
+        <img src="../images/new.gif" width="28" height="11"><nobr><font color="red" size="2" face="Arial"><b><a name="b"><br></td>
+        <td width="423" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2">Control artifacts.</b><font face="Arial" size="2"><br>
+
+<b><font color=red>B1/<font color=darkmagenta>$</font>;</b></font> - get/check number of artifacts in the bonus list (you cannot set it).<br>
+<b><font color=red>  B2/<font color=darkmagenta>#</font>/<font color=darkmagenta>$</font>;</b></font> - get/set/check an artifact $ at position # (0...) in the bonus list.<br>
+<b><font color=red>  B3/<font color=darkmagenta>$</font>;</b></font> - add an artifact $ to the end of the bonus list.<br>
+<b><font color=red>  B4/<font color=darkmagenta>$</font>;</b></font> - remove artifact at position $ (0...) in the bonus list.<br>
+<b><i>  Comments:</i></b><br>
+  We have the LE:A command already but it allows only to change artifacts in the bonus list. This new command lets you set, add and remove new artifacts from Local Events and Pandora's Boxes, like the CB:A command does for Creature Banks.<br>
+  You can make an almost unlimited list of artifacts for any Local Event or Pandora's Box.<br>
+  You cannot set a spell scroll as an artifact; the game will treat it wrong and then crash.
+
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="C">C</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get a &quot;gift&quot; monster</b><br>
+          in position #1 (from 0 to 6) of type
+          $2 (<a href="../format/format_c.htm">Format C</a>) and number $3.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="D">D</a></font><font color="#8B008B">#</font><font color="#FF0000">1/</font><font color="#8B008B">#2</font></b></font><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top">
+  <p><font face="Arial" size="2"><b>Disable/Enable event for human</b><br>
+  Disable: #2=1or Enable: #2=0<br>
+  event for gamer #1 (0...7) (<a href="../format/format_e1.htm">Format E1</a>)</font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="E">E</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get experience to $.</b>
+          </font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="F">F</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font>/<font color="darkmagenta">$4</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get four primary skills.<br>
+          </b>(See <a href="../format/format_pk.htm">Format PK</a>)</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="G">G</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get the guardian monster<br>
+          </b>in position #1 (from 0 to 6) of type $2
+          (<a href="../format/format_c.htm">Format C</a>) and
+          number $3.<br>
+          <b><u>Comments:</u></b><br>
+          This only saves the guardians but does not turn them on.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="I">I</a></font><font color="#8B008B">#</font></b></font><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Disable/Enable event for
+          AI</b><br>
+          Enable (#=1) or disable (#=0)</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="L">L</a></font><font color="#8B008B">#</font></b></font><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Cancel (#=1) or do not cancel (#=0) event after first visit</b></font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="M">M</a>^<font color="darkmagenta">TEXT</font>^</b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set message text to TEXT. It may contain any symbols except
+          ^ or the semicolon (;).</b></font></td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b>M<font color="darkmagenta">#</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set message text to that of the timed event number #.</b></font></td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b>M-1</b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Do not show the message on the screen.</b>
+          </font>
+        </td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b>Mz<font color="darkmagenta">#</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Get message text from string variable</b></font></td>
+      <tr>
+        <td width="78" valign="top"><b><font face="Arial" size="2" color="#FF0000">M1/</font><font face="Arial" size="2" color="#8B008B">$
+          </font><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr><font face="Arial" size="2" color="#FF0000"><br>
+M1/-1</font><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set and&nbsp; get the string parameters.</b><br>
+          You can use it when M command is used to set name/message.<br>
+          &nbsp;&nbsp;
+  </font>
+          <b><font face="Arial" size="2" color="#FF0000">M1/</font><font face="Arial" size="2" color="#8B008B">$
+          </font></b><font face="Arial" size="2"> - <font color="#8B008B"><b>$ </b></font>=
+          index of string var<br>
+          &nbsp;&nbsp;
+  </font>
+          <b><font face="Arial" size="2" color="#FF0000">M1/-1</font></b><font face="Arial" size="2">
+          - Disable (restore default) message.<br>
+          <b><u>Comments:</u></b><br>
+Now you can not only set but also get the string parameters. You can use it when M command is used to set name/message.
+  </font>
+        </td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="N">N</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get secondary skill</b><br>
+          $2 (<a href="../format/format_ss.htm">Format
+          SS</a>), level $3 (0 = basic, 1 = advanced, 2 =
+          expert) in position #1 of the table of secondary skill given by the
+          event. You can only CHANGE the skill present for another one. If there
+          is no skill in that position it will not be set.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="N">N</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2">G</font></b></span><b><font face="Arial" size="2">et
+        the number of secondary skills</font></b><font face="Arial" size="2"><br>
+        You can use a set syntax but it will change nothing.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="O">O</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get morale (from -3 to 3).</b></font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="P">P</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get spell points (may be negative).</b></font></td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="R">R</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/get the amount of resource #1  </b>(<a href="../format/format_r.htm">Format
+          R</a><b>) to $2 (may be negative).</b></font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="S">S</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get spell</b><br>
+          $2 (<a href="../format/format_sp.htm">Format
+          SP</a>) in position #1 of the table of spells given by the
+          event. You can only CHANGE the spell present by another one. If
+          there is no spell in that position it will not be set.</font></td>
+      </tr>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="S">S</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2">G</font></b></span><font face="Arial" size="2"><b>et
+        the number of spells</b><br>
+        You can use a set syntax but it will change nothing.</font></td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="U">U</a><font color="darkmagenta">$</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Set/Check/Get luck (from -3 to 3).</b></font></td>
+      <tr>
+        <td width="78" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="X">X</a><font color="darkmagenta">#</font></b></font></nobr><b><nobr><font color="red" size="2" class="Helvetica32" face="Arial">;</font></nobr></b></td>
+        <td width="423" valign="top"><font face="Arial" size="2"><b>Turn the guardians on if # is non-zero, otherwise turn them off.<br>
+          </b>The
+          check for the presence of the guardians is not made. So it must be set
+          by G#1/$2/$3 option or preset with the map editor.</font></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><u><b><font face="Arial" size="2">Comments</font>:<br>
+  </b></u><font face="Arial" size="2">If an Event was set to cancel after being visited and
+  <b><i>was</i></b> visited already, you <i><b>cannot</b></i> bring it back to life. It is completely
+  gone. So
+  we recommend you always set it to be not cancelled
+  and play with the enable/disable player command.<br>
+  <br>
+  There is now a check to see if a local event being referenced with ERM
+  exists. If it does, Flag 999 will be set to 0 and all commands executed.<br>
+  If it does not exist, Flag 999 will be set to 1 and all LE commands skipped.</font></p>
+<table width=100%><tr><td width=100% align=right><font size=1>Last Update: 23:38 GMT +4 September 07, 2004
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>EA RECEIVER</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+E</font><font face="Times New Roman CE" size="5">XPERIENCE</font><font face="Times New Roman CE" size="6">
+A</font><font face="Times New Roman CE" size="5">DDING</font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">EA)<BR></font><span lang="de"></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b></p>
+<p> <font face="Arial" size="2"> <b><font color="#333333">Receiver for adding stack experience support to ERM.
+</font></b></font> </p>
+
+<p> <font face="Arial" size="2"> <b>
+
+</b></font> </p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="21%" nowrap valign="top"> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">
+        !!EA<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td width="100%" height="32" valign="CENTER" ROWSPAN=2>
+
+<font face="Arial" size="2">Receiver for adding stack experience support to ERM. # is a type of monster.</font>
+
+        </td>
+<tr>
+<td width=21% valign=top> <b> <font color=red size=2 face=arial class=helvetica32>
+!#EA<font color=darkmagenta>$</font>:<font color=darkmagenta>XXXX</font>;
+      </tr>
+  </table>
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+
+<!--
+<tr> <td width=21% valign=top>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> DDR
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>f
+</b>
+
+</td> </tr>
+-->
+<table border="2" width="100%" bordercolorlight="#000000" bordercolor="#000000">
+<tr> <td width=21% valign=top> <a name=a> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> A<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set an AI modifier.</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;$1 - difficulty level index (0...4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$2 - modifier<br>
+&nbsp;&nbsp;   This modifier is a multiplier that is used for AI hero's experience to get the resulting experience distributed to his/her stacks.<br>
+&nbsp;&nbsp;   It is 1 (easy), 2, 3, 4, 5 (Impossible) by default.
+</td> </tr>
+<tr> <td width=21% valign=top> <a name=b> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <nobr><b> B<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</nobr></font><br>...<font color=darkmagenta>$15</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/get an experience line.</b><br>
+&nbsp;&nbsp;#1 - bonus line index (0...19) (you cannot "get" it)<br>
+&nbsp;&nbsp;$2 - Flags. For now:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       0 - ability is disabled<br>
+&nbsp;&nbsp;&nbsp;&nbsp;       1 - ability is enabled<br>
+&nbsp;&nbsp;$3 - ability (ASCII code of a char, see <a href=../format/format_se1.htm target=annexe>Format SE1</a>)<br>
+&nbsp;&nbsp;$4 - modifier (this is a numeric representation of a char or a number for "#..." parameter, standards are <a href=../format/format_se5.htm target=annexe>here</a>))<br>
+&nbsp;&nbsp;$5 - a value for a Rank 0 (no experience)<br>
+&nbsp;&nbsp;  ...<br>
+&nbsp;&nbsp;$15 - a value for a Rank 10 (max experience)<br>
+</td> </tr>
+<tr> <td width=21% valign=top><a name=c> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> C<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/get an experience Cap.</b><br>
+ This is the maximum percent of experience that a unit can gain from a single battle.
+</td> </tr>
+<tr> <td width=21% valign=top><a name=h> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> H<font color=darkmagenta>$1</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set a human experience modifier</b> <br>
+$1 - modifier<br>
+&nbsp;&nbsp;   This modifier is a multiplier that is used for human control heroes to determine the experience gained by each army stack after a victorious battle. The default value is 100 (100% of the experience the hero gains from the battle).<br>
+<b><i>Comments:</i></b><br>
+&nbsp;&nbsp;  Settings are stored in a saved game.<br>
+&nbsp;&nbsp;  For A, S and T and H commands the type of monster in EA$ may be any, say, 0 because it is not used.
+</td> </tr>
+
+<tr> <td width=21% valign=top><a name=f> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> F<font color=darkmagenta>$</font>1/<font color=darkmagenta>$</font>2;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Get a number of the bonus line that has a specific ability or find the number of the next free line.</b> <br>
+<font color=darkmagenta>$1</font> - ability number (ASCII code of a char, see <a href=../format/format_se1.htm target=annexe>Format SE1</a>)<br>
+<font color=darkmagenta>$2</font> - line index (-1,0,1..13)<br>
+<b><i>Comments:</i></b><br>
+You may only get or check the second parameter but not set it. So the call like this is a standard:<br>
+<b><font color=red>!!EA<font color=darkmagenta>...</font>:F<font color=darkmagenta>65</font>/<font color=darkmagenta>?v100</font>;<br></font></b>
+&nbsp;&nbsp;  This will return the index of a line that keeps 'A' (65) bonus ability for a creature (attack bonus).<br>
+&nbsp;&nbsp;  If the line is not found, it will return a line that is empty.<br>
+&nbsp;&nbsp;  If you set $1 to 0, you will find the first free bonus line.<br>
+&nbsp;&nbsp;  If $2 returns -1, there is no more room in the ability list for this creature.<br>
+</td> </tr>
+<tr> <td width=21% valign=top><a name=f1> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> F<font color=darkmagenta>$</font>1/<font color=darkmagenta>$</font>2/<font color=darkmagenta>$</font>3;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Extended syntax for EA:F command:<br> <font color=red>!!EA:F<font color=darkmagenta>$</font>1/<font color=darkmagenta>$</font>2/<font color=darkmagenta>$</font>3;</b></font><br>
+&nbsp;&nbsp;  <font color=darkmagenta>$1</font> is an ability type (ASCII code of a char, see <a href=../format/format_se1.htm target=annexe>Format SE1</a>)<br>
+&nbsp;&nbsp;  <font color=darkmagenta>$2</font> is a modifier (-1 = does not matter, takes the first found)<br>
+&nbsp;&nbsp;  <font color=darkmagenta>$3</font> is a var to store the search result.<br>
+</td> </tr>
+
+<tr> <td width=21% valign=top> <a name=m> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> M<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/get experience multiplier</b><br>
+The value of $ is 1000 times more than used. So for 0.75 you will get
+750. If you want to set it to 1, you should use M1000;
+</td> </tr>
+<tr> <td width=21% valign=top> <a name=l> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> L<font color=darkmagenta>$</font>;
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/get an experience scale and limit.</b><br>
+&nbsp;&nbsp;This sets the stack experience needed for a creature to reach rank 10, and from this number the
+experience needed for each rank up to 10 is also derived and automatically calculated by the
+game (as a percentage of this total).<br>
+<font color=blue><b>Example:<br>
+********<br>
+ <font color=red>!!EA141:L30000;</b><font color=black> [Set rank 10 experience for Mummies to 30000 points]<br></font></font><b>
+********
+</td> </tr>
+<tr> <td width=21% valign=top><a name=s> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> S<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set an AI modifier.</b><br>
+&nbsp;&nbsp;$1 - difficulty level index (0...4)<br>
+&nbsp;&nbsp;$2 - modifier<br>
+&nbsp;This modifier is additional experience that is used for AI hero's experience to get the resulting experience distributed to his/her stacks.<br>
+&nbsp;It is 50 (easy), 100, 200, 300, 400 (Impossible) by default.<br>
+
+
+</td> </tr>
+<tr> <td width=21% valign=top> <a name=t> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> T<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set an AI modifier.</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;$1 - difficulty level index (0...4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$2 - modifier<br>
+   This modifier is a multiplier that is used for AI hero's experience to get the resulting experience distributed to AI town garrison stacks. If the EA:A modifier is set to 0, the town garrison experience will be 0 regardless of the value set here.
+   It is 10 (easy), 25, 50, 75, 100 (Impossible) by default.
+
+</td> </tr>
+<tr> <td width=21% valign=top> <a name=u>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> U<font color=darkmagenta>$</font>;
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/get experience upgrade multiplier.</b><br>
+The value of $ is 1000 times more than used (<a href=#m target=_self>see M command</a>).
+</td> </tr>
+</table>
+
+<p alicn=left> <b>&nbsp;&nbsp;&nbsp; Support for stack experience on the battle field.</b><br>
+&nbsp;&nbsp; You can set experience points, experience lines and experience parameters for any creature on the battle field.<br>
+&nbsp;&nbsp;  Use any !!EA command for this. To refer to a stack on a battle field you need to mention a stack index in negative range:<br><b>
+<font color=red>!!EA<font color=darkmagenta>-1</font>:...  </b> </font>stack 0 <br><b>
+<font color=red>!!EA<font color=darkmagenta>-2</font>:...  </b></font>stack 1 <br><b>
+<font color=red>.. <br>
+!!EA<font color=darkmagenta>-42</font>:... </b></font>stack 41 <br>
+  As before you can use a positive value to apply the command to a type of creature.
+  You may set experience parameters for any stack on the battlefield, right in 
+<a href= ../other/trigger_right.htm#ba target=principal>BA0 (BA50)</a> trigger sections or later during a battle.
+</p><br>
+
+<table width=100% border=1 bordercolorlight=black bordercolordark=black>
+<tr> <td width=21% valign=top><a name=e> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>E<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>/<font color=darkmagenta>$4</font>;</font>
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set experience for a battlefield stack. </b> <br><font color=red>
+<b>E<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>/<font color=darkmagenta>$4</font>;</font></b><br>
+&nbsp;&nbsp;  $1 - experience points<br>
+&nbsp;&nbsp;  $2 - modifier (as for HE:C modifier - parameter 6)<br>
+&nbsp;&nbsp;  $3 - creature type<br>
+&nbsp;&nbsp;  $4 - creature number<br>
+&nbsp;&nbsp;    You may use d modifier for $3 and $4 to not change the default creature type (will be set automatically to a correct creature type).<br>
+&nbsp;&nbsp;  <b><i>  Example:</i><br>
+<font color=red>!!EA-2:E1000/2/d/d;</font><br></b>
+  Set (2) experience points (1000) for creatures that are located in a stack number 1 on the battle field.<br>
+<i>  Comment: </i><br>
+You may use this command ONLY for a stack on a battlefield.<br>
+So it should be !!EA-1:... !!EA-42:...
+</td> </tr>
+<tr> <td width=21% valign=top><a name=d> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>D<font color=darkmagenta>?$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Check if experience bonus lines were copied to a stack on the battlefield. </b> <br>
+&nbsp;&nbsp;<b>#</b> is a stack index (reversed) -1...-42<br>
+&nbsp;&nbsp;<b>$</b> a variable to get a "copied" value.<br>
+<i>  Comments:</i><br>
+&nbsp;&nbsp;  If $ returns 0, the settings are taken from a default creature type bonuses and were not copied to a temporary BF settings for this stack. Actually it may happen if you summon a stack.<br>
+&nbsp;&nbsp;  If $ returns number 1...7, the stack bonus lines was copied and that was a stack 0...6 in an attacking army.<br>
+&nbsp;&nbsp;  If $ returns number 8...14, the stack bonus lines was copied and that was a stack 0...6 in an defending army.<br>
+&nbsp;&nbsp;  If $ returns -1, this is a stack that was not in an attacking or defending army but bonus lines for it were copied already.<br>
+&nbsp;&nbsp;  So if you summon a stack and use this command, it returns 0 (bonus line was not copied). If then you use any command of EA:MULPCBO to not check but set anything for this particular stack and then check EA:D again, it will return -1.<br>
+&nbsp;&nbsp;  The typical sequence is:<br>
+&nbsp;&nbsp;&nbsp;- check whether the bonus lines is copied with EA:D<br>
+&nbsp;&nbsp;&nbsp;- if no, use EA:O to copy them.<br>
+&nbsp;&nbsp;&nbsp;- now make any particular change with EA:MULPCB<br>
+</td> </tr>
+<tr> <td width=21% valign=top><a name=o> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>O<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b><font color=red>EA<font color=darkmagenta>#</font>:O<font color=darkmagenta>$</font>;</font> Copy all bonus lines and parameters. </b> <br>
+
+<b><font color=darkmagenta>  # </font></b>is a target creature type or stack.<br>
+<b><font color=darkmagenta>  $ </font></b>is a source creature.<br>
+<i>  Comments:</i><br>
+&nbsp;&nbsp;  This command copies all bonus lines and experience parameters of one creature (on the battlefield or a type of creature) to a creature/stack.<br>
+<b><font color=red>  Example:<br>
+&nbsp;&nbsp;!!EA<font color=darkmagenta>-2</font>:O<font color=darkmagenta>0</font>;<br></font></b>
+&nbsp;&nbsp;  This command will set all bonus lines stack 1 on a battlefield (-2) to have the bonus lines of Pikemen.<br>
+&nbsp;&nbsp;  Also all experience parameters (Upgrade multiplier and so on) are also copied.<br>
+&nbsp;&nbsp;  This command is useful if you summon a stack and you want it to have specific lines of another monster or for dynamic changing of any stack experience parameters.<br>
+&nbsp;&nbsp;  This command does not set experience points itself.
+</td> </tr>
+<tr> <td width=21% valign=top>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>O<font color=darkmagenta>$</font>/<font color=darkmagenta>#2</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b> Extended syntax for EA:O command: <font color=red>EA<font color=darkmagenta>#1</font>:O<font color=darkmagenta>$</font>/<font color=darkmagenta>#2</font>;</font></b> <br>
+Extended EA:O command. You may use it with the first syntax and also:<br>
+<b><font color=red>EA<font color=darkmagenta>#1</font>:O<font color=darkmagenta>$</font>/<font color=darkmagenta>#2</font>;</font></b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>#1</b>  - destination stack<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>$&nbsp;</b>   - source stack<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>#2</b>  - copying modifier<br>
+<br>
+<table>
+<tr><td><b>#2:</b> </td></tr>
+<tr><td><font size=2>
+0 (default) - just copy source to destination<br>
+1 - if destination on Battlefield (BF):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to destination plus all the same type of friendly stacks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if destination is a standard creature index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nothing will be done<br>
+2 - if destination on BF:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to destination plus all the same type of enemy stacks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if destination is a standard creature index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nothing will be done<br>
+3 - if destination on BF:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to destination plus all the same type of attacker's stacks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if destination is a standard creature index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to all the same type of attacker's stacks<br>
+4 - if destination on BF:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to destination plus all the same type of defender's stacks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if destination is a standard creature index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to all the same type of defender's stacks<br>
+5 - if destination on BF:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to destination plus all the same type stacks<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if destination is a standard creature index:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- copy to all the same type of stacks<br>
+</td></tr></table>
+
+</td> </tr>
+<tr> <td width=21% valign=top><a name=r> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>R<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Artifact support for battlefield stacks. </b> <br>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b>EA...:R<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;</font></b> - set/check/get artifact and option<br>
+&nbsp;&nbsp;  $1 = artifact index<br>
+&nbsp;&nbsp;  $2 = artifact option<br>
+<i>Comments:<br></i>
+&nbsp;&nbsp;  For now only one artifact index ($1) is supported - 156 (banner).<br>
+&nbsp;&nbsp;  For now only options 0...8 ($2) are supported.<br>
+
+
+</td> </tr>
+</table>
+</body>
+</html>

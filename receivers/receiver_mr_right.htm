@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><span lang="de">
+<span style="text-transform: uppercase">
+<font face="Times New Roman CE" size="6">S</font><font face="Times New Roman CE" size="5">tack
+</font><font face="Times New Roman CE" size="6">M</font><font face="Times New Roman CE" size="5">agic
+</font><font face="Times New Roman CE" size="6">R</font><font face="Times New Roman CE" size="5">esistance
+</font><font face="Times New Roman CE" size="6">
+(MR)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b><font face="Arial" size="2" color="#333333">You may call it ONLY from
+inside !?MR trigger sections.</font></b></p>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+    <a name="D"></a>D</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></td>
+    <td width="87%"><font face="Arial" size="2"><b>Basic (without
+    resistance) damage.</b><br>
+    <br>
+    <u><b>Comments:</b></u><br>
+    This may be got or set. Both make sense. If you change this in !?MR0, your
+    value will be used as a basic spell damage for the creature by resistance
+    calculating routine.<br>
+    <br>
+    <u><b>Comments:</b></u><br>
+    If you check it in !?MR0, it will be equal to D$ value. Setting this value
+    in !?MR0 makes no sense for this value will be set by resistance calculating
+    routine. Though it is very useful to be set in !?MR1. Using this way you can
+    ignore a default WoG resistance and set your<br>
+    own value that will be returned as a final damage applied to the creature
+    stack.</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+    <a name="F"></a>F</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></td>
+    <td width="87%"><b><font face="Arial" size="2">Final (corrected) damage.</font></b></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+    <a name="M"></a>M</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></td>
+    <td width="87%"><font face="Arial" size="2"><b>Monster type</b>. (<span lang="de">See
+    </span><a href="../format/format_c.htm">Format C</a>).<br>
+    <br>
+    <u><b>Comments:</b></u><br>
+    Usually you can use it for getting the number but you can also set the value
+    (make sense only in !?MR0 trigger) to simulate the resistance (actually
+    there is only golems resistance and Elementals sensitivity).</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+    <a name="N"></a>N</font><font face="Arial" size="2" color="#8B008B">?$<span lang="de">;</span></font></td>
+    <td width="87%"><font face="Arial" size="2"><b>Stack number on the battlefield</b> (0...41).<br>
+    <br>
+    <u><b>Comments:</b></u><br>
+    You can only get this value. There is a VERY IMPORTANT thing here! You know
+    that the AI calculates losses without real battle if no human player takes
+    part in the battle. Moreover, the AI calculates possible battles every AI
+    hero step to estimate whether it may attack a human hero or not. This means
+    that this command will work ONLY if there is a real battle (even if it is a
+    quick battle, it IS a real battle). You know that we have flag 1000 in !?BA
+    trigger to determine a real battle. So all that was said about !?BA trigger
+    is identical for !?MR<br>
+    trigger. Anyway, there is a check and you will get a syntax error if you try
+    to use N$ command not in the real battle.<br>
+	<br>
+	<font color=purple><b> ERA Note:</b><br>
+	This command returns invalid numbers.
+	A workaround script for WoG. version 3.58f: 
+	</font><pre>
+	!?FU29999; Get mon ID ;vx1 - stack (init=-1)
+	!!UN:C42147184/4/?y1; 
+	!!VRy1:+56; 
+	!!UN:Cy1/4/?y2; Get target position of a spell.
+	!!FU|y2<0/y2>186:E;
+	!!BU:Ey2/?y3; Get monster ID at position y2
+	!!FU&y3=-1:E;
+	!!VRvx1:Sy3;
+	!?MR1;
+	!!VRv2:S-1;
+	!!FU29999:Pv2;
+	!!FU&v2=-1:E;
+	</pre>
+	</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+    <a name="S"></a>S</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></td>
+    <td width="87%"><font face="Arial" size="2"><b>Spell number.</b> (<span lang="de">See
+    </span><a href="../format/format_sp.htm">Format SP</a>).<br>
+    <br>
+    <b><u>Comments:</u></b><br>
+    Again, most useful to get the index but if you set it in !?MR0, you can
+    adjust Elementals sensitivity, for example. The basic damage is calculated
+    before the triggers work so changing the spell number does not change the
+    damage.</font></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Macro definitions</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><span lang="de">
+<font face="Times New Roman CE" size="6">M</font><font face="Times New Roman CE" size="5">ACROS</font><font face="Times New Roman CE" size="6"> 
+(</font></span><font face="Times New Roman CE" size="6">M<span lang="de">C</span></font><span lang="de"><font face="Times New Roman CE" size="6">)<br>
+</font></span><font color="#333333" face="Arial" size="2">RECEIVER</font></b></p>
+<p align="left"><b><font size="2" face="Arial"><font color="#333333">Sets up macros. You can use a text name for variables.</font>
+<br>
+Applicable to f...t, v# or w# variables.</font></b></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+      <tr>
+        <td width="135" height="64" nowrap><b><font face="Arial" size="2"><font color="#FF0000">!!MC@:S</font><font color="#8B008B">Var@</font><font color="#FF0000">;</font></font></b></td>
+        <td width="523" height="64">
+
+<font class="Helvetica32" face="Arial" size="2">Set up macros. Use to assign a
+text name to a variable.<br>
+Applicable to variables f..t, v# or w#.</font>
+
+        </td>
+      </tr>
+  </table>
+
+<h3><font face="Arial" size="2"><span style="text-transform: uppercase">Notes:</span></font>
+</h3>
+<p><font size="2" face="Arial">
+First you should set up the macro in INSTRUCTIONS before first using of macro name:<br>
+!#MCv100:S@Var 100@;<br>
+Variable v100 has now a second name &quot;Var 100&quot;. The length of a
+macro name is limited by 8 chars. You can use longer names but only first 8 characters will be used to find a variable by name.<br>
+You can change a macro name at any time if you set it not in an instruction but in a receiver.<br>
+Then you can use a macro name at any place where you can use a variable. It must be enclosed in '$'
+signs.<br>
+<b>
+<font color="#0000FF">
+Example:</font></b>
+<font color="#008000"><br>
+</font>
+<font color="#FF0000">
+<b>
+!!HE-1:P?$Var 100$/?v1000/0;
+</b>
+<br>
+</font>
+<b>
+<font color="#008000">
+<br>
+</font><font color="#FF0000">
+!!IF&amp;$Var 100$=v1000/v100=5:...;</font></b><br>
+<font color="#FF0000">
+You can set a macro name for z# string variables.</font></font>
+</p>
+<p><font face="Arial" size="2"><b><font color="#0000FF">
+Example:</font></b><font color="#008000" size="2"><br>
+</font><b><font color="#FF0000">!!IF:M^This is %$players$ and this is %$value$.^;</font></b><br>
+<font color="#FF0000">
+  Macro name is inside $$ and has a % sign before.</font></font>
+</p>
+
+</body>
+
+</html>

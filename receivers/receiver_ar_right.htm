@@ -1,0 +1,166 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>AR Receiver Options</title>
+<base target="annexe">
+</head>
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+  <p align="center"><strong>
+
+  <font face="Times New Roman CE" size="6">
+  <span lang="de">A</font><font face="Times New Roman CE" size="5">RTIFACTS</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">AR</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span>
+
+  <font face="Arial" size="2" color="#333333">
+  RECEIVER</font></strong>
+
+  <p>
+
+  <b><font class="Helvetica32" face="Arial" size="2" color="#333333">
+  Used to modify the attributes of an artifact or resource at the specified
+  location or with a specified reference number.
+  </font>
+
+  </b>
+
+  <p>
+
+  <font face="Arial" size="2">
+  &nbsp;
+</font>
+
+<table border="2" width="100%" height="1" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td valign="center"><nobr>
+
+<b><font face="Arial" size="2" color="#FF0000">!!AR</font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font color="red" face="Arial" size="2">;</font></b></td>
+    <td height="1" width="394" valign="top"><font face="Arial" size="2"><b>Artifact OR resource</b> at
+      x,y,l coordinates<br>
+      Artifact :
+      </font><font face="Arial" size="2"><a href="../format/format_a1.htm">Format A1</a>
+      (Artifacts are Type 5, Scrolls are Type 93)<br>
+      Resource : <a href="../format/format_r.htm">Format R</a>  (Resources are Type 79)</font></td>
+  </tr>
+    <td valign="center"><nobr><font face=arial size=2 color=red>
+<b>!!AR<font color=darkmagenta>$</font>:<font color=darkmagenta>XXXX</font>;</b></td>
+    <td height="1" width="394" valign="top"><font face="Arial" size="2"><b>New style for AR receiver - indexed.</b><br>
+Coordinates are in v[$],v[$+1],v[$+2]
+</td>
+  </tr>
+  <tr>
+    <td height="1" width="118"><b><font face="Arial" size="2" color="#FF0000">!!AR</font><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font color="red" face="Arial" size="2">;</font></b></td>
+    <td height="1" width="394"><font face="Arial" size="2"><b>Artifact OR resource</b> with
+      # (integer value) as 1st text in message box<br>
+      <i>This syntax is an old style and is no longer supported.</i> </font></td>
+  </tr>
+</table>
+
+  <p align="center"><strong>
+
+  <font face="Arial" size="2">
+ OPTIONS</font>
+
+  </strong>
+
+  <table border="2" bordercolorlight="#000000" width="100%" bordercolordark="#000000" height="336">
+    <tbody>
+      <tr>
+        <td valign="top" height="48"><nobr><b><font color="red" face="Arial" size="2"><a name="G">G</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="48">
+
+  <font face="Arial" size="2">
+  <b>
+  Set/Check/get the guardian monster in position #1</b> (from 0 to 6) of type $2 (<a href="../format/format_c.htm">Format
+  C</a>) and
+          number $3. This only saves the guardians but does not turn them on.
+  Use X option to turn them on.<br>
+  Check possibilities when placed asterisk.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" height="32"><nobr><b><font color="red" face="Arial" size="2"><a name="M">M</a>^<font color="darkmagenta">TEXT</font>^</font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="32">
+
+  <font face="Arial" size="2">
+  <b>
+  Set message text to TEXT.</b> The text's length <i>may</i> exceed the
+          original one. It may contain any symbols except ^ and the semicolon.</font>
+
+        </td>
+      <tr>
+        <td valign="top" height="16"><nobr><b><font color="red" face="Arial" size="2">M<font color="darkmagenta">#</font></font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="16">
+
+  <font face="Arial" size="2">
+  <b>
+  Set message text to that of the timed event number #.</b></font>
+
+        </td>
+      <tr>
+        <td valign="top" height="16"><nobr><font color="red" size="2" face="Arial"><b>M-1</b></font></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="16"><font face="Arial" size="2"><b>Restores default message for artifact.</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" height="16"><nobr><font color="red" size="2" face="Arial"><b>Mz<font color="darkmagenta">#</font></b></font></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="16"><font face="Arial" size="2"><b>Set/Get message text from string variable.</b></font></td>
+      </tr>
+      <tr>
+        <td valign="top" height="96"><b><font face="Arial" size="2" color="#FF0000">M1/</font><font face="Arial" size="2" color="#8B008B">$</font><font color="red" face="Arial" size="2">;</font><font face="Arial" size="2" color="#FF0000"><br>
+M1/-1</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="96"><font face="Arial" size="2"><b>Set and&nbsp; get the string parameters.</b> You can use it when M command is used to set name/message.<br>
+          &nbsp;&nbsp;
+  </font>
+          <b><font face="Arial" size="2" color="#FF0000">M1/</font><font face="Arial" size="2" color="#8B008B">$</font><font color="red" face="Arial" size="2">;</font></b><font face="Arial" size="2">
+          - <font color="#8B008B"><b>$ </b></font>= Index of string var<br>
+          &nbsp;&nbsp;
+  </font>
+          <b><font face="Arial" size="2" color="#FF0000">M1/-1</font><font color="red" face="Arial" size="2">;</font></b><font face="Arial" size="2">
+          - Disable (restore default) message.<br>
+Now you can not only set but also get the string parameters. You can use it when M command is used to set name/message.
+  </font>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" height="32"><b><font face="Arial" size="2"><font color="#FF0000"><a name="V">V</a></font><font color="#8B008B">$</font></font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="32"><font face="Arial" size="2"><b>Set/Check/get the number of spell to set up the Scroll.</b>
+        <a href="../format/format_sp.htm">Format SP</a><br>
+          When used with a resource,
+          sets/checks/gets amount of resource.</font></td>
+      </tr>
+      <tr>
+        <td valign="top" height="32"><nobr><b><font color="red" face="Arial" size="2"><a name="X">X</a><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="32">
+
+  <font face="Arial" size="2">
+  <b>
+  Turn the guardians on if # is non-zero, otherwise turn them off.</b> The
+          check for the presence of the guardians is not made. So it must be set
+          by G#1/$2/$3 option or preset with the map editor.</font>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><font color="#000000" face="Arial" size="2"><u><b>Comments:</b></u><br>
+  Artifacts and resources share
+  common ERM numbering.</font>
+  <p><font face="Arial" size="2"><b><u>Important Note:</u></b><br>
+  Most of these commands will not work on an artifact or resource pile unless
+  the artifact has some setup already done in the editor. This can be as simple
+  as clicking the customize checkbox on the Guardians tab of the artifact or
+  resource. If the artifact or resource pile has no setup, the command will
+  generate an ERM error message. However, the V$ command will work correctly
+  even if the scroll or resource does <i>not</i> have any setup.</font>
+  </p>
+
+</body>
+
+</html>

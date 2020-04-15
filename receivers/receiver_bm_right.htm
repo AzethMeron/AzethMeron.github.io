@@ -1,0 +1,374 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>1</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+B</font><font face="Times New Roman CE" size="5">ATTLE,  </font><font face="Times New Roman CE" size="6">
+M</font><font face="Times New Roman CE" size="5">ONSTER</font><font face="Times New Roman CE" size="6">
+P</font><font face="Times New Roman CE" size="5">ARAMETERS</font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">BM</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p align="left"><b><font face="Arial" size="2">
+      Y<font color="#333333">ou may check/set/get some parameters of a stack of monsters during combat (<a href=../other/trigger_right.htm#br target=principal>!?BR trigger</a>)</font></font></b> </p>
+
+<p align="left">
+    <font face="Arial" size="2"><b><span lang="de">Note: </span></b>Now a usage of !!BG, !!BM, !!BH, !!BU, !!BF in
+    complete AI battle is
+    controlled in the ERM interpreter and you will get the corresponding error
+    message.</font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+        <td width="137" height="19" valign="top">
+          <h3><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">!!BM</font><font color="#800080" size="2" face="Arial">#</font><font color="#FF0000" size="2" face="Arial">:</font><font color="#800080" size="2" face="Arial">XXXX</font><font color="#FF0000" size="2" face="Arial">;</font></b></font></h3>
+        </td>
+        <td width="521" height="19" valign="top"><font face="Arial" size="2">Check/Set/Get some parameters of a stack of monsters&nbsp;<br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font> - number of a stack (0...41).&nbsp;<br>
+ Usually it is used like 0...20      for a first (0) player and 21...41 for a second (1) player.</font></td>
+  </tr>
+</table>
+
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b></p>
+
+<table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="A">A</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Attack
+      with bonuses</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="B">B</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Number of
+      monsters in the stack (at the beginning of the battle).</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><font face="Arial" size="2" color="#FF0000"><b><a name="C">C</a></b></font><b><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#4</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#5</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Cast a spell</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> - spell number (<a href="../format/format_sp.htm">Format SP</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - position to cast<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> - Monster skill level (0...3)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> - Hero (???)
+    <span lang="de">Spell power</span> (0...3)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#5</b></font> - Check 4 Target Monster existing (alive)<br>
+    <br>
+    <span lang="de"><b>Note:</b> </span></font>
+    <tt style="font-family: Arial"><span style="font-size: 10.0pt">Parameter 5
+    must be a 1. This tells it to check if the target stack is </span></tt>
+    <span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">alive (not wiped out) before casting,
+    otherwise it will crash if it tries to cast on an invalid target. For the
+    resurrection spells you might want to try a 0 here so that they can be used
+    to revive dead stacks </tt></span></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="D">D</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Defence with bonuses</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="E">E</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Spell
+      numbers (not a number of a spell)</b><br>
+      <u><b>Comments:</b><br>
+      </u>This is the number of times remaining that this stack can cast its
+      spell this combat. So Archangels will start with this value set to 1;
+      after they Resurrect something, this will be 0.&nbsp;<br>
+      For BG triggers, the value changes <i>after</i> the trigger for them casting
+      the spell.</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="F">F</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Monster
+      flag (as for MA:X)</b><br>
+      <br>
+      <b><u>Comments<br>
+      </u></b>Four of the previously unknown MA:X values are used to handle<br>
+      the flow of combat:<br>
+      &nbsp; 0x01000000 = 16777216 - set if this stack has had morale this round<br>
+      &nbsp; 0x02000000 = 33554432 - set if this stack is waiting<br>
+      &nbsp; 0x04000000 = 67108864 - set if this stack is done acting for this
+      round<br>
+      &nbsp; 0x08000000 = 134217728 - set if this stack is defending<br>
+      &nbsp; 0x00400000 = 4194304 - set if the stack is summoned (vanishes when killed)<br>
+      &nbsp; 0x00800000 = 8388608 - set if the stack is a clone (blue colour and 1 hit kills)<br>
+      &nbsp; 0x00C00000 = 12582912 - set for a stack that is created by the Clone spell. This is the sum of the bits above (summon) + (clone).<br>
+
+      <br>
+      To check these bits, use BR:F, then use VR:&amp; with the value
+      corresponding to the bit you're interested in. So:<br>
+      <font color="#FF0000"><b>!!BRx16:F?i;</b> [read flags]<br>
+      <b>!!VRi:&amp;33554432;</b> [just look at waiting bit]<br>
+      <b>!!IF&amp;i&gt;0:M^This stack is waiting.^;</b></font></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="G">G</a></font><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font></font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Set/check/get active spell parameters</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#</font></b> - Spell number (<a href="../format/format_sp.htm">Format SP</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Set/check/get level in school of the spell<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Set/check/get a power&nbsp;</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="H">H</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Hit
+      points</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="I">I</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Side index as for heroes (0:left, 1:right)</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="J">J</a></font><font face="Arial" size="2" color="#800080">?$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Get or check for number of active spells</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="K">K</a></font><font face="Arial" size="2" color="#800080">#</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Strike a monster with #damage points</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="L">L</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Hit
+      points lost by the next monster in the stack</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><font face="Arial" size="2" color="#FF0000"><b><a name="M">M</a></b></font><b><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Apply a spell to the monster&nbsp;</b><br>
+      &nbsp;&nbsp; #1 = number of spell&nbsp;(See
+    <a href="../format/format_sp.htm">Format
+      SP</a>)<br>
+      &nbsp;&nbsp; #2 = duration in turns&nbsp;<br>
+      &nbsp;&nbsp; #3 = level of skill (0-no, 1-basic, 2-advanced, 3-expert)<br>
+      <b><u>Comments:<br>
+      </u></b>If you cast a spell that a monster already has, it will be
+      ignored. But you can use &quot;Dispel&quot; spell :-)<br>
+      In format SP, the special monster abilities aren't listed, but some were
+      determined through testing:<br>
+      70. Stone<br>
+      71. Poison<br>
+      72. Bind<br>
+      73. Disease<br>
+      74. Paralyze<br>
+      75. Age<br>
+      You can set those 6 fine with BR:M, except that a creature with Bind on it
+      will never get to move (duration is ignored), and a Poisoned creature
+      doesn't take damage in the first round of combat. And of course there is
+      no graphic to show the condition being caused, but the condition itself is
+      displayed correctly and works fine - a Stoned creature looks like it's
+      made of stone and doesn't get to act, etc.</font>
+      <p><font face="Arial" size="2">You can set any other spell with BM:M, even
+      ones that have no meaning in combat - for example you can give a creature
+      &quot;summon boat&quot; for 3 turns.<br>
+      The graphic will show up when you right-click on the creature, and be
+      listed as &quot;summon boat.&quot; The creature will have a green
+      number-of-creatures (indicating it's assumed to be a friendly spell),
+      except for a few spells that show up as red (magic arrow and implosion
+      were two).</font></p>
+      <p><font face="Arial" size="2">Additionally spell numbers from 76 on
+      appear to be used for creature
+      abilities that have a picture and effect but don't permanently affect
+      the target (i.e. aren't displayed when you right click on the creature
+      later). You can set these for creatures with BR:M, but it either shows
+      no picture (but shows the name if you put the mouse over the empty
+      square), or crashes when you look at the creature (and it's not
+      consistent - usually it crashes, but sometimes you see a blank square).&nbsp;<br>
+      And if you use BG:C to try to &quot;cast&quot; one of these spells, it
+      either does
+      nothing or crashes. However I worked out a few names anyway, and perhaps
+      they'll be useful to know eventually:<br>
+      76. Death Cloud<br>
+      77. Thunderbolt<br>
+      78. ?<br>
+      79. Death Stare<br>
+      80. Acid Breath</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="N">N</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Number of
+      monsters in the stack (current).</b><br>
+      <b><u>Comments:</u></b><br>
+      A stack of Vampire Lords has 100 initially, and grows to 120. 10 are
+      killed, but the remaining 110 do over 400 damage. Does the stack return to
+      120?<br>
+      There is 3 numbers:<br>
+      &nbsp; N1. Current number.<br>
+      &nbsp; N2. Number before current attack (equal to N1 if this stack
+      attacks)<br>
+      &nbsp; N3. Number at the beginning of the battle.<br>
+      Vampire will always grow no more than N3. Playing with these 3 numbers,
+      you can get different results.</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="O">O</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Number of a (hero's) army slot (0...6,-1)</b><br>
+      <b><u>Comments:</u></b><br>
+      If O$ sets to -1, the stack will not appear in (hero's) army
+      after the battle (summoned creatures).<br>
+      If O$ sets to -1, the stack will not appear in (hero's) army&nbsp;<br>
+       after the battle (summoned creatures).</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="P">P</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Position
+      on a battle field</b></font></td>
+  </tr>
+  <tr>
+    <td width="100" valign="top" colspan="2" align="left"><font face="Arial" size="2">
+      <img border="0" src="../images/obstacle/grid01.gif" width="382" height="241" align="center"></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b>      <font face="Arial" size="2" color="#FF0000"><a name="Q">Q</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Put a hex of Quick Sand or a
+      Land Mine at a position</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> - Type (0=Quick Sand, 1=Land Mine)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - Position<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> - Redraw (1) or not (0)<br>
+      <u><b>     Comments:</b></u><br>
+      For Q command the position will be checked automatically
+       for whether you can place a magic obstacle or not.&nbsp;<br>
+      You can use a stack number 0 for a left side and 21 for right
+       side to be always sure that the magic obstacle will be placed
+       (stack may be dead - all that is needed is a side number).</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="R">R</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Number of retaliations for attack (check for
+      Royal Griffin)</b><br>
+      <u><b>Comments:</b></u><br>
+      This is the number of retaliations this stack has left this round. It starts
+      each round at 1 and becomes 0 once the stack retaliates.&nbsp;<br>
+      For Royal Griffins it's set to 5000 each round and counts down.</font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="S">S</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Speed</b></font></td>
+  </tr>
+  <tr>
+    <td width="101" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="T">T</a></font><font face="Arial" size="2" color="#800080">$</font></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font></td>
+    <td valign="top"><font face="Arial" size="2"><b>Type of a
+      monster </b>(<a href="../format/format_c.htm">Format C</a>)</font></td>
+  </tr>
+<tr> <td width=29% valign=top> <a name=u> </a><font color=red size=2 face=arial><b>
+U<font color=darkmagenta>1</font>/<font color=darkmagenta>$</font>; <img src=..\images\new.gif><br>
+U<font color=darkmagenta>2</font>/<font color=darkmagenta>$</font>; <img src=..\images\new.gif><br>
+U<font color=darkmagenta>3</font>/<font color=darkmagenta>$</font>; <img src=..\images\new.gif><br>
+</td><td width=71%><font face=arial size=2><b>Setting monster stats.</b><br>
+<b><font color=red>!!BM...:U<font color=darkmagenta>1</font>/<font color=darkmagenta>$</font>;</font></b> - get/check/set stack's minimum damage<br>
+<b><font color=red>!!BM...:U<font color=darkmagenta>2</font>/<font color=darkmagenta>$</font>;</font></b> - get/check/set stack's maximum damage<br>
+<b><font color=red>!!BM...:U<font color=darkmagenta>3</font>/<font color=darkmagenta>$</font>;</font></b> - get/check set stack's number of shots<br>
+
+</td></tr>
+<tr> <td width=29% valign=top> <a name=u> </a><font color=red size=2 face=arial><b>
+U<font color=darkmagenta>4</font>/<font color=darkmagenta>$</font>; <img src=..\images\new.gif><br>
+</td><td width=71%><font face=arial size=2><b>Change a spell to cast for a creature: <br><font color=red>!!BM..:U<font color=darkmagenta>4</font>/<font color=darkmagenta>$</font>;</b><br></font>
+This command may be used for monster spell checking and changing.<br>
+<i>  Comments:</i><br>
+&nbsp;&nbsp;  You may only change the spell for creatures that cast spells already but you should choose a spell of the same kind. For example, if a creature normally casts a spell on a friendly unit (say Ogre Magi's Blood Lust), you may change it to any other single-stack beneficial spell (say Mirth or Haste) but not to another type of spell (such as Slow or Magic Arrow), otherwise the AI will never use it. However, if you only need a human player to be able to cast the spell with that creature, almost all spells will work.<br>
+&nbsp;&nbsp;  This example also "fits" a Commander case. They are set to cast spells like Ogre Magi. So to make a "monster" Commander cast spells you need to set it to any correct value.<br>
+&nbsp;&nbsp;  Also note that this command has no effect on creatures whose spell is determined randomly each round, such as Master Genies and Faerie Dragons.
+</td></tr>
+<tr> <td width=29% valign=top> <a name=u> </a><font color=red size=2 face=arial><b>
+U<font color=darkmagenta>5</font>/<font color=darkmagenta>$</font>; <img src=..\images\new.gif><br>
+</td><td width=71%><font face=arial size=2><b>Stack's clones<br><font color=red>!!BM..:U<font color=darkmagenta>5</font>/<font color=darkmagenta>$</font>;</b><br></font>
+&nbsp;&nbsp;&nbsp;$ - index of this stack's clone.<br>
+&nbsp;&nbsp;&nbsp;   If there is no clone for this stack, it returns -1, otherwise it returns 0...41 - a number of the stack that IS a clone of this one.<br>
+&nbsp;&nbsp;&nbsp;BTW, you can set it. So if you clone a stack and then reset this field to -1, the cloned stack will not be a clone of this one.
+
+</td></tr>
+  <tr>
+    <td width="101" valign="top"><a name="V"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">V</font></b></span></a><b><span lang="de"><font face="Arial" size="2" color="#800080">#</font></span></b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">;</font></b></font><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td valign="top"><font face="Arial" size="2"><b>Show combat
+    animations<br>
+    <b>#</b> is a number of animation<br>
+    This will show the animation on the stack.<br>
+    (<span lang="de">See </span><a href="../format/format_ac.htm">Format
+    <span lang="de">AC</span></a>)</font></td>
+  </tr>
+  
+  </td></tr>
+  <tr>
+    <td width="101" valign="top"><a name="V"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">V</font></b></span></a><b><span lang="de"><font face="Arial" size="2" color="#800080">#<font color=red>/</font>$<font color=red>;</font></span>
+    </b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial"></font></b></font><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td valign="top"><font face="Arial" size="2"><b>Show combat
+    animations with bad effect </b><br>
+    This will show the animation on the stack.<br>
+    <b>#</b> is a number of animation<br>
+    <b>$</b>=1 show stack getting hurt<br>
+    <b>$</b>=0 just show animation, same as V#<br>
+    (<span lang="de">See </span><a href="../format/format_ac.htm">Format
+    <span lang="de">AC</span></a>)</font></td>
+  </tr>
+  
+  </td></tr>
+  <tr>
+    <td width="101" valign="top"><a name="V"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">V</font></b></span></a><b><span lang="de"><font face="Arial" size="2" color="#800080">$1<font color=red>/</font>$2<font color=red>/</font>$3<font color=red>;</font></span>
+    </b><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial"></font></b></font><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td valign="top"><font face="Arial" size="2"><b>Show custom animation </b><br>
+    <b>$1</b> Type (see below)<br>
+    <b>$2</b> Bad effect (0 - just show the animation, 1 - show monster getting hit)<br>
+    <b>$3</b> Name of def file with animation (this can be any existing def file) Any z-variable or a ^^ constant<br> <br>
+    Types: <br>
+    0 - The bottom of animation is at the bottom of the creature (e.g. Prayer)<br>
+    1 - Animation center is in the center of the creature (e.g. Air Shield)<br>
+    2 - Animation is over the creature (e.g. Lightning)<br>
+    4 - Animation is near the attacking hero (e.g Land Mine)<br>
+    15 - Animation is in the center of battlefield (flying Desrupting Ray, Death Cloud)<br>
+    Flag 256 - semi-transparent animation (add it to the type)<br>
+    </font></td>
+  </tr>
+</table>
+
+<p><font face="Arial" size="2"><b>How do we read the flag notation again? (e.g.
+0x200) -- what does this mean? The value seemed to be always be 512. How
+does 0x200=512 again?</b><br>
+<b>By Donald<br>
+</b><br>
+To look at just one bit, use &amp; with the value of your bit, then see if the
+result is nonzero.
+</font></p>
+
+<p><font face="Arial" size="2">
+0x200 is C notation for hexadecimal values. 0x means, look out, a hexadecimal is
+coming! Then the digits that follow are in base 16, where 0-9 equal 0-9, and A-F
+equal 10-15. The last digit is the 1's place, the digit before it 16's, the
+digit before it 16*16 = 256's, before that 16*16*16 = 4096's, and so on. It's
+just like base 10 except with 16's.
+</font></p>
+
+<p><font face="Arial" size="2">
+512 = 2 * 256. So in hexadecimal it's 0x200 - 2 * 256 + 0 * 16 + 0 * 1.
+</font></p>
+
+<p><font face="Arial" size="2">
+To read the value, load it into a variable, say v1, then use VRv1:&amp;512, then
+FU1&amp;v1&lt;&gt;0 or whatever. The &amp; command clears all bits except the
+ones you specify. Thus it lets you ignore those bits and just see the ones you
+want. Similarly | sets the bits you specify, regardless of the other bits.
+</font></p>
+
+<p><font face="Arial" size="2">
+So if you want to know if a monster stack is defending, you go <br>
+<b><font color="#FF0000">
+!!BMx16:F?i; [read the flags into a 32-bit variable]<br>
+!!VRi:&amp;134217728; [just look at the bit that means defending]<br>
+!!FU1&amp;i&lt;&gt;0:P; [if defending call function 1]<br>
+!!FU1&amp;i=134217728:P; [this also calls function 1 if defending]<br>
+!!FU2&amp;i=0:P; [if not defending call function 2]<br>
+</font></b>
+</font></p>
+
+</body>
+
+</html>

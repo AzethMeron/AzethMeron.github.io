@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-au">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>MO Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">M</font><font face="Times New Roman CE" size="5">ONSTER AT</font><font face="Times New Roman CE" size="6">
+  P</font><font face="Times New Roman CE" size="5">OSITION</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">MO</font><span lang="de"><font face="Times New Roman CE" size="6">) 
+  - </font><font face="Times New Roman CE" size="5">MAP</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong>
+  <p><b><font class="Helvetica32" face="Arial" size="2">
+  <font color="#333333">Used to modify the attributes of the monsters in the specified position.</font></font></b><p>&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000" height="59">
+      <tr>
+        <td width="143" height="26" nowrap valign="top"><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!MO<font color="darkmagenta">#1</font>/<font color="darkmagenta">#2</font>/<font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td width="100%" height="26" valign="top">
+
+<font face="Arial" size="2">
+
+<font class="Helvetica32">
+  The monsters in the specified position </font> (affects monster at x,y,l coordinates)<font class="Helvetica32">.</font>
+
+</font>
+
+        </td>
+      <tr>
+        <td width="143" height="33" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!MO</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">/</font><font color="#8B008B">#3</font><font color="#FF0000">/</font><font color="#8B008B">#4</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="33" valign="top">
+
+<font face="Arial" size="2">
+
+<font class="Helvetica32">
+  The monsters in the specified position </font> (affects monster at x,y,l coordinates)<font class="Helvetica32" face="Arial" size="2">.</font><br>
+#4 parameter is dummy parameter used to disable check
+  for monster at this location at map start up.<br>
+Use this command with UN:I</font><br>
+<font face="Arial" size="2"><u><b>Comments:</b></u><br>
+     Now also MO$/$/$ and MO$/$/$/1 are the same.<br>
+     In both cases the presence of the Monster on a map at game start     is not
+needed so this format is now redundant but still supported for compatibility..</font>
+
+        </td>
+      <tr>
+        <td width="143" height="1" nowrap valign="top"><b><font face="Arial" size="2" color="#FF0000">!!MO</font><font face="Arial" size="2" color="#8B008B">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" height="1" valign="top">
+
+<font face="Arial" size="2" color="#000000">New style for MO receiver - indexed.<br>
+&nbsp;- coordinates are in v[$],v[$+1],v[$+2]</font>
+
+        </td>
+  </table>
+  <p align="center"><strong><font face="Arial" size="2">OPTIONS</font></strong>
+
+  <div align="justify">
+
+  <table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="A">A</a><font color="darkmagenta">$</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2"><b>Set/Check/Get reward
+          artifact
+          to $.</b> (<a href="../format/format_a1.htm">Format A1</a>)</font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="B">B</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2"><b>Set/Check/Get the amount of resource #1
+          (</b><a href="../format/format_r.htm">Format R</a><b>) to $2 (may be
+          negative)</b></font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="G">G</a><font color="darkmagenta">$</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2"><b>Set/Check/Get the number of monsters to $.</b></font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="M">M</a>^<font color="darkmagenta">TEXT</font>^</font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2"><b>Set message text to TEXT.<br>
+          </b>The text's length must not exceed the
+          original one. It may contain any symbols except ^ and semicolon.</font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial">M<font color="darkmagenta">#</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2"><b>Set message text to that of the timed event number #.</b></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><nobr><font color="red" size="2" face="Arial"><b>M-1</b></font></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td valign="top"><font face="Arial" size="2"><b>Do not show the message on the screen.</b>
+          </font>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top"><nobr><font color="red" size="2" face="Arial"><b>Mz<font color="darkmagenta">#</font></b></font></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td valign="top"><font face="Arial" size="2"><b>Set/Get message text from string variable</b></font></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><font face="Arial" size="2" color="#FF0000">M1/</font><font face="Arial" size="2" color="#8B008B">$
+          </font><font face="Arial" size="2" color="#FF0000">;<br>
+M1/-1;</font></b></td>
+        <td valign="top"><font face="Arial" size="2"><b>Set and&nbsp; get the string parameters. You can use it when M command is used to set name/message.</b><br>
+          &nbsp;&nbsp; M1/$ - $=index of string var<br>
+          &nbsp;&nbsp; M1/-1 - disable (restore default) message.<br>
+Now you can not only set but also get the string parameters. You can use it when M command is used to set name/message.
+  </font>
+        </td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="O">O</a><font color="darkmagenta">#</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2">
+          <b>
+          Set/Check/Get the grow checkbox.</b><br>
+          </font>&nbsp;&nbsp; <font face="Arial" size="2">if #=1 then the amount of monsters won't grow,
+          if not 1, they will..</font></td>
+      <tr>
+        <td width="62" valign="top"><b>
+<font color="red" size="2" face="Arial">
+<a name="R">R</a>
+<font color="#8B008B">$</font>;</font></b><font size=2>(old)<b><br>
+<font color="red" size="2" face="Arial">R<font color="#8B008B">$</font>/<font color="#8B008B">1</font>;</font></b><font size=2>(new)</td>
+        <td width="100%" valign="top">
+        <p align="left"><font face="Arial" size="2">
+          <b>
+Set/Check/Get a monster stack's aggression<br>
+Old style<br>
+&nbsp;&nbsp;$</b> is 0 if monster will always join and is 1 if monster will never join<br>
+<b>New style</b><br>&nbsp;&nbsp;$ is a level of aggression (get/check/set)<br>
+        
+        &nbsp;&nbsp; Level of aggressions:<br>
+        &nbsp;&nbsp; 0 - compliant<br>
+        &nbsp;&nbsp; 1...9 - gradation of aggression<br>
+        &nbsp;&nbsp; 10 - savage<br>
+        <br>
+        <i>Internal Heroes values</i>:<br>
+        &nbsp;Savage = 10<br>
+        &nbsp;Hostile = Random from 4 to 10<br>
+        &nbsp;Aggressive = Random from 1 to 10<br>
+        &nbsp;Friendly = Random from 1 to 7<br>
+ &nbsp;Compliant = 0<br>
+&nbsp;&nbsp; You see that now you will have more smooth and less random aggression scale. Though you can use random generator anyway.</td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="U">U</a><font color="darkmagenta">#</font></font></b></nobr><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2">
+          <b>
+          Set/Check/Get the escape ability</b><br>
+          &nbsp;&nbsp;&nbsp; if #=1 then the monsters can't escape, if not 1,
+          they can escape.</font></td>
+    </tbody>
+  </table>
+
+  </div>
+
+  <p><font face="Arial" size="2"><b><u>Comments:</u></b><br>
+  Commands M, B and A may be used for monsters that
+  are set up
+  (message, resource or artifact bonus) when placed on the map.</font></p>
+  <p><font face="Arial" size="2">
+  You also cannot set the message and gift for them, but can quantity, aggression and so.
+  Do not forget that you can make all set up when monster is placed already.</font></p>
+  <p><font face="Arial" size="2">For all new placed monsters you can apply all commands.<br>
+  </font></p>
+
+</body>
+
+</html>

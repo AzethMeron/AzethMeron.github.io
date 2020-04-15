@@ -1,0 +1,1420 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Nouvelle page 4</title>
+<base target="annexe">
+<style>
+B.var { color:darkmagenta }
+</style>
+</head>
+
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+U</font><font face="Times New Roman CE" size="5">NIVERSAL</font><font face="Times New Roman CE" size="6">
+C</font><font face="Times New Roman CE" size="5">OMMANDS</font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">UN</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2" color="#333333">RECEIVER</font></b></p>
+<p align="left"><b>
+<font class="Helvetica32" face="Arial" size="2" color="#333333">Used for
+universal commands that make changes to the map and/or game.&nbsp;</font></b></p>
+<table border="2" bordercolorlight="#000000" bordercolordark="#000000"><tr>
+    <td width=24%><font face="Arial" size="2"><b><font color="#FF0000"><nobr>!!UN:<font color="#8B008B">XXXX<font color="#FF0000">;</td>
+    <td><font size="2" face="Arial">Universal commands. These
+      commands relate to changes on the heroes map.</font></td>
+  </tr>
+</table>
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b></p>
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="8469">
+  <tr>
+    <td width="24%" valign="top" height="80"><b><font face="Arial" size="2"><font color="#FF0000"><a name="A">A</a></font><a name="A"><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="76%" height="80"><font face="Arial" size="2"><b>Set/check/get artifact
+      enabling to appear on the map</b><br>
+      &nbsp;&nbsp; # - artifact number (<a target="annexe" href="../format/format_a1.htm">Format A1</a>)<br>
+      &nbsp;&nbsp; $ - variable to set/get or check value<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1-artifact disabled<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0-artifact enabled</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font class="Helvetica32" color="#FF0000">A</font><font class="Helvetica32" color="#8B008B">#1</font><font class="Helvetica32" color="#FF0000">/</font><font class="Helvetica32" color="#8B008B">#2</font><font class="Helvetica32" color="#FF0000">/</font><font class="Helvetica32" color="#8B008B">$<span lang="de">;</span></font></b></font></td>
+    <td width="76%" valign="top">
+      <p align="left"><font face="Arial" size="2"><font class="Helvetica32"><b>Get/check/set
+      an artifact's info</b><br>
+      &nbsp;&nbsp; #1 - Artifact number </font>(<a target="annexe" href="../format/format_a1.htm">Format
+      A1</a>)<font class="Helvetica32"><br>
+      &nbsp;&nbsp; #2 - Type of info</font><br>
+      &nbsp;&nbsp;&nbsp; <font class="Helvetica32">&nbsp;&nbsp; </font>=&nbsp; 1
+      - Cost<br>
+      &nbsp;&nbsp;&nbsp; <font class="Helvetica32">&nbsp;&nbsp; </font>=&nbsp; 2
+      - Position on body (<a target="annexe" href="../format/format_p2.htm">Format P2</a>)<br>
+      <font class="Helvetica32">&nbsp;&nbsp; </font>&nbsp;&nbsp;&nbsp; =&nbsp; 3
+      - Type (artifact class: see below)<br>
+      &nbsp;&nbsp;&nbsp; <font class="Helvetica32">&nbsp;&nbsp; </font>=&nbsp; 4
+      - Number of combo artifact (<a target="annexe" href="../format/format_co.htm">Format CO</a>)<br>
+      &nbsp;&nbsp; <font class="Helvetica32">&nbsp;&nbsp;&nbsp;</font> =&nbsp; 5
+      - Part of combo artifact (<a target="annexe" href="../format/format_co.htm">Format CO</a>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 8 - Gives spell or not<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 9 - Artifact name<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =10 - Artifact description<br>
+      <font class="Helvetica32">&nbsp;&nbsp; </font><font class="Helvetica32" face="Arial" size="2">$
+      - Value<br>
+      </font><u><b>Comments:</b></u><br>
+      <b>1.</b><i>Cost</i>: This value appears to be 1/5th the purchase price of
+      an artifact from a town Artifact Merchant if you possess no additional
+      marketplaces. The Grail and new WoG artifacts all have an initial value of
+      0.<br>
+      <b>2.</b><i> Position on body</i>: If you place an artifact in an
+      incorrect position with ERM it will&nbsp;still function the same way. For
+      example, you can set Sandals of the Saint to work in the head slot instead
+      of feet and when you equip them on your head, you get all the statistic
+      bonuses (and lose them when you take the sandals off).<br>
+      If a hero has an artifact already equipped and you change the position of
+      that artifact type with ERM, the artifact will be left there (fully
+      functioning) until you remove it; at that point you simply can't reequip
+      it at that position.<br>
+      <b>3.</b> <i>Type:</i> This value sets the class of artifact - no class,
+      which includes spell books, war machines and the Grail (1), treasure (2),
+      minor (4), major (8) or relic (16), which also includes combo artifacts
+      and the three new WoG artifacts. Other values could probably be set as a
+      way of making a type of custom class.<br>
+      <b>4.</b> <i>Number of Combo Artifact</i>: Each combination artifact has a
+      number that identifies it. The first one, Angelic Alliance, is number 0
+      and the last one, Cornucopia, is number 11. Non-Combo artifacts have a
+      value of -1.<br>
+      <b>5.</b> <i>Part of a Combo Artifact</i>: If the artifact is one that
+      makes up a combo artifact, it will have the combo artifact number here.
+      For any artifact that isn't part of a combo (including combo artifacts
+      themselves), it will have a value of -1 instead.<br>
+      <b>8.</b> <i>Gives spell:</i> This is set to 0 for most artifacts and 1
+      for artifacts like tomes, Spellbinders Hat, Sea Captain's Hat -- basically
+      anything that gives you an additional spell. There's currently no way of
+      checking which spells are added, however, short of comparing all spells a
+      hero knows before and after picking up the artifact, nor any way to set
+      the spell given by the artifact.<br>
+      Setting this value to 0 (if it's normally 1) stops you getting the spells
+      from the artifact. This is a neat way to disable these types of artifacts
+      but still let them appear on the map and be equipped -- good for making
+      artifacts with new abilities but not the old ones.<br>
+      <b>9.</b> <i>Artifact Name: </i>This lets you set a new name for the
+      artifact. $ is the index number of a z variable in which you've stored a
+      new name for the artifact. A value of 0 restores the original name. A neat
+      trick is to change the name and description of an artifact just prior to
+      displaying it in a dialogue box -- this lets you make use of any of the
+      artifact pictures for other display purposes.<br>
+      <b>10.</b> <i>Artifact Description:</i> This lets you set a new
+      description for the artifact. $ is the index number of a z variable&nbsp;
+      in which you've stored a new description for the artifact. A value of 0
+      restores the original description.</font>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="24%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000">A<span lang="de">;</span></font><img src=../images/new.gif width="28" height="11"><br>(Combo)</b></td>
+    <td width="76%" height="16"><font face="Arial" size="2"><b>Extended UN:A command syntax for Combination Artifact management</b><br>
+Combination artifact management:<br>
+  <b><font color=darkmagenta><font color=red>!!UN:A</font>#<font color=red>/</font>$<font color=red>/</font>#1<font color=red>/</font>#2 <font color=red>{/</font>#3<font color=red>/</font>#4<font color=red>/</font>#5<font color=red>/</font>#6<font color=red>/</font>#7<font color=red>/</font>#8<font color=red>/</font>#9<font color=red>/</font>#10<font color=red>/</font>#11<font color=red>/</font>#12<font color=red>/</font>#13<font color=red>/</font>#14<font color=red>};</font></b><br></font>
+  Build/remove a Combo Art.<br>
+  # - Combo index (0...31)<br>
+  $ - set/check/get Combo Art Num (0...MaxArtNum)<br>
+  #1 - Part 1 of Combo art<br>
+  #2 - Part 2 of Combo art<br>
+  #3 - Part 3 of Combo art (optional)<br>
+  .<br>
+  .<br>
+  #14 - Part 14 of Combo art (optional)<br>
+  Results.<br>
+  Combo art is set up.<br>
+  If successful ERM Flag 1 is set to 1 otherwise to 0.<br>
+  <i>Comments.</i><br>
+0. You may use an instruction syntax !#UN:A<br>
+1. All Combo settings are kept in a specific table. This table is extended up to 32 entries. So we can have up to 32 combo arts. All standard combos are already in the table (first 12 entries).<br>
+2. You may check whether the table entry is empty or not:<br>
+<b><font color=red>!!UN:A5/?v100/0/0;<br></b></font>
+  Get the combo art number in an entry 5 of a Combo Table to v100. Two zeros in the end is needed to have at least 4 parameters.<br>
+  In a check/get syntax extra (zeros) parameters are ignored.<br>
+  <i>NOTE.</i> The empty entry in the Combo table keeps a combo art number 0.<br>
+So in an example above, v100 will have 0 if the entry is empty and you can use it.<br>
+  You may delete a combo art without adding a new one. Use Combo Art number 0 to do it.<br> <b>Example:<br></b>
+<b><font color=red>!!UN:A5/0/0/0;<br></b></font>
+  First 0 means remove Combo info in entry 5 of the combo table.<br>
+The next two zeros are just to make sure that we have 4 parameters, no less.<br>
+<br>
+  <i>Important:</i> only artifacts with an index below 160 may be a part of a Combo artifact although any artifact be used for the assembled combination.
+
+</font></td>
+ </tr>
+  <tr>
+    <td width="24%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000"><a name="B">B</a><span lang="de">;</span></font></b></td>
+    <td width="76%" height="16"><font face="Arial" size="2"><b>Remove a description/hint for an object</b></font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font color="#FF0000" face="Arial" size="2">B</font><font face="Arial" size="2"><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></font></b></td>
+    <td width="76%" valign="top"><font face="Arial" size="2"><b>Set operation or
+      new chests and Mithril</b><br>
+      </font>&nbsp;&nbsp; <font face="Arial" size="2"><font color="#8B008B"><b>#</b></font>
+      = Type&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Mithril<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1...6 - new chests<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$</b></font> = Operation
+      (0-standard,1-advanced)<br>
+      <b><u><a name="chests"></a>The new Chests</u></b><br>
+      <img border="0" src="../images/castle/Zchst1.gif" width="32" height="32">: Type 101 Subtype 1<br>
+      <img border="0" src="../images/castle/Zchst2.gif" width="32" height="32">: Type 101 Subtype 2<br>
+      <img border="0" src="../images/castle/Zchst3.gif" width="32" height="32">: Type 101 Subtype 3<br>
+      <img border="0" src="../images/castle/Zchst4.gif" width="32" height="32">: Type 101 Subtype 4<br>
+
+    <img border="0" src="../images/castle/Zchst5.gif" width="28" height="29">:&nbsp;
+      Type 101 Subtype 5<br>
+      <img border="0" src="../images/castle/Zchst6.gif" width="25" height="33">:&nbsp;
+      Type 101 Subtype 6<br>
+            <br>
+      <u><b>The new resource : Mithril&nbsp;</b><br>
+      </u>&nbsp;<img border="0" src="../images/castle/Zmithr.gif" width="64" height="32"> : Type 79
+      Subtype 7<u><br>
+      <b>Comments:</b></u><br>
+      For all new chests (type 101, subtype 1...6) standard operation means a
+      standard Treasure Chest. Extended gives nothing to a visiting Hero (assumed
+      that all is defined through the ERM). In both cases, the chest will
+      disappear after being taken.<br>
+      For Mithril (type 79, subtype 7) standard operation means that when you
+      (or AI) pick it up, you will get a random type of resource (except wood or
+      ore) and quantity that is set up for the stack in the map editor (for gold
+      will be *100). Extended operation means that Mithril will be added to the
+      Mithril stock of the player and you can check and set it with UN:R#/7/$.<br>
+      Both work for human or AI. The AI treats Mithril as gold when deciding to
+      pick it up or not.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="18"><b><font color="#FF0000" face="Arial" size="2">B</font><span lang="de"><font face="Arial" size="2" color="#8B008B">7..10</font></span><font face="Arial" size="2"><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></font></b><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="18"><font face="Arial" size="2"><b>Extended UN:B
+    commands for new Commander Stones</b><br>
+    <u><b>Comments</b></u>:</font><p><font face="Arial" size="2">type is 101.
+    subtypes:</font></p>
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="17%" id="AutoNumber1">
+      <tr>
+        <td width="41" align="center">7</td>
+        <td width="92%">
+    <font face="Arial" size="2">
+        <img border="0" src="../images/castle/Zcbon006.gif" width="64" height="64"></font></td>
+      </tr>
+      <tr>
+        <td width="41" align="center">8</td>
+        <td width="92%">
+    <font face="Arial" size="2">
+        <img border="0" src="../images/castle/Zcbon106.gif" width="64" height="64"></font></td>
+      </tr>
+      <tr>
+        <td width="41" align="center">9</td>
+        <td width="92%">
+    <font face="Arial" size="2">
+        <img border="0" src="../images/castle/Zcbon203.gif" width="64" height="64"></font></td>
+      </tr>
+      <tr>
+        <td width="41" align="center">10</td>
+        <td width="92%">
+    <font face="Arial" size="2">
+        <img border="0" src="../images/castle/Zcbon303.gif" width="64" height="64"></font></td>
+      </tr>
+    </table>
+    <font face="Arial" size="2">Power Stones work as follows:<br>
+    <br>
+    1) Non-WoGified WoG Map without ERM, WoG Options set to Commanders Disabled,<br>
+    *or* Non-WoGified WoG Map with Commanders enabled by ERM, Power Stones
+    disabled by ERM<br>
+    (!#UN:P3/0; and !#UN:B7/0; !#UN:B8/0; !#UN:B9/0; !#UN:B10/0;).<br>
+    *or* WoGified Map with Commanders disabled through WoG Options, Power Stones<br>
+    option enabled or disabled.<br>
+    Result: Power Stones act as standard treasure chests.<br>
+    <br>
+    2) Non-WoGified WoG Map without ERM, WoG Options set to Commanders Enabled,<br>
+    *or* Non-WoGified WoG Map with Commanders enabled by ERM (!#UN:P3/0),<br>
+    Power Stones enabled by ERM or NOT disbled by ERM (!#UN:B7/1; etc. -- the<br>
+    default for Power Stones is enabled if no UN:B commands for them is inclued).<br>
+    *or* WoGified Map with Commanders Enabled through WoG Options, Power Stones
+    option<br>
+    option enabled or disabled.<br>
+    Result if hero has a live Commander: Commander gains bonus from Power Stone.<br>
+    Result if hero has a dead or no Commander: Option to destroy Power Stone or
+    leave it.<br>
+    <br>
+    3) Non-WoGified WoG Map with Commanders disabled by ERM (!#UN:P3/1;).<br>
+    Result: Power Stones act as more valuable treasure chests (up to 7500
+    gold/7000 exp.).</font></td>
+  </tr>
+  
+   <tr>
+    <td width="24%" valign="top" height="96"><font face="Arial" size="2"><b><font color="#FF0000"><a name="C">C</a></font><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2<span lang="de">;</span></font></b></font></td>
+    <td width="76%" height="96">
+      <p><font face="Arial" size="2"><b>Write/Read an integer at address</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b># </b></font>- Address in memory (in decimal)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$1 </font></b>- Size of integer in bytes (1, 2 or 4)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$2 </font></b>- Integer to write (decimal) or name of variable to store value<br>
+      <u><b>Comment:</b></u><br>
+      <font color=purple>I think that $1 should be # rather than $. <br>
+      It is taken from ERA 2.9 ERM help and isn't actually tested quite yet.
+      </font></font></p>
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top" height="96"><font face="Arial" size="2"><b><font color="#FF0000"><a name="D">D</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3<span lang="de">;</span></font></b></font></td>
+    <td width="76%" height="96">
+      <p><font face="Arial" size="2"><b>Make a square of water passable for hero</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1 </b></font>= x<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2 </font></b>= y<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#3 </font></b>= Level<br>
+      <u><b>Comment:</b></u><br>
+      The square is impassable for boats</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="48"><b><font size="2" face="Arial" color="#FF0000">D</font><font size="2" face="Arial" color="#8B008B">#1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">#2</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">#3</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$<span lang="de">;</span></font></b></td>
+    <td width="76%" height="48"><font size="2" face="Arial"><b>Additional syntax for D
+      commands:&nbsp;<br>
+      Place/remove path (logs) over water</b><br>
+      &nbsp;&nbsp; $ means place (1) or remove (0) logs</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="E">E</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3<span lang="de">;</span></font></b></font></td>
+    <td width="76%">
+      <p><font face="Arial" size="2"><b>Check where to place an object.&nbsp;</b><br>
+      This command will check if a map square is available to place a one square
+      object.<br>
+      Receiver UN, command E#1/#2/#3 in form Ex/y/l<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font>= X<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font>= Y<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font>= Level<br>
+      <b><u>Comments:</u></b><br>
+      As a result the flag 1 will be set to TRUE (1) if the space is NOT
+      available (a yellow or red square) and FALSE (0) if it is available. It
+      does not mean that you cannot use this command to check if the place is
+      ready to place a bigger object (more than 1x1). But you should check at
+      least an <i>accessible point</i> (the trigger square (yellow square in the
+      editor). Trigger squares must not overlap each other.</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="F">F</a></font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font></font><font face="Arial" color="#FF0000" size="2">/</font><font face="Arial" size="2"><font color="#800080">$3</font><font color="#FF0000">/</font><font color="#800080">$4</font><font color="#FF0000">/</font><font color="#800080">$5<span lang="de">;</span></font></font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Provoke a fire (if possible)</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = x<br>
+      <font color="#8B008B"><b>&nbsp;&nbsp; $2</b></font> = y<br>
+      <b><font color="#8B008B">&nbsp;&nbsp; $3</font></b> = l<b><font color="#8B008B"><br>
+      &nbsp;&nbsp; $4</font></b> = dx<b><font color="#8B008B"><br>
+      &nbsp;&nbsp; $5 </font></b>= dy<br>
+      <u><b>Comments:</b><br>
+      </u>I just wanted to check out the Fire-function. I used this script.
+      There are only Oak Trees, no stones, mountains or anything else. So, the
+      ERM-help says &quot;when it's possible&quot;, but when is it?<br>
+      This is possible only for one object now. Go to the map editor -&gt;
+      castle section -&gt; the latest element.<br>
+      If you place this tree on the map, it starts to fire as you could<br>
+      see this with Gorynych' town.<br>
+      We want to have more objects like this (more trees) but we have no ready.
+      We can make a dynamic animation like burning trees, flooding and anything
+      else. All is ready but we have no objects.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="G">G0</a>/</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$3</font><font face="Arial" size="2" color="#FF0000">;
+      </font></b></td>
+    <td width="76%">
+      <font face="Arial" size="2"><b>Set secondary skill text.</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> is a skill number (0...27)<span lang="de">
+      </span>(<span lang="de">see </span>
+      <a target="annexe" href="../format/format_ss.htm">Format <span lang="de">SS</span></a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> is a type of text (0...3)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - name of skill<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - basic level description<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - advanced level description<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 - expert level description<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$3</font></b> is a number of z vars (1...1000) or 0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 means to restore original text<br>
+      <b><u>  Comments.</u></b><br>
+  All is similar to artifacts.<br>
+  You should set z vars to correspondent text (you can use only global<br>
+      z vars z1...z1000)<br>
+  Then set the the text.<br>
+  If you change the text in this used z var - it will immediately<br>
+      appear as a new text for this skill. So do not use this var for other<br>
+      tasks.<br>
+      <b><u>  Example:</u></b><br>
+      !#VRz10:S^My new Name^;<br>
+      !#VRz11:S^My new Basic Description^;<br>
+      <br>
+      !$LE7/5/0;<br>
+      !!UN:G0/2/0/10;<br>
+      !!UN:G0/2/1/11;<br>
+      <br>
+      !$LE8/5/0;<br>
+      !!UN:G0/2/1/0;<br>
+      <br>
+  It will set the Logistic skill name and description to the new texts<br>
+      if you visit a local event at 7/5/0. The description of the basic<br>
+      level of the Logistic <span lang="de">w</span>ill be restored if you visit a local event at<br>
+      8/5/0.</font>
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top" height="131"><b><font face="Arial" size="2" color="#FF0000">G1/</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="76%" height="131">
+      <font face="Arial" size="2"><b>Change Monster names.</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> - Number of Monster<span lang="de">
+      (see <a target="annexe" href="../format/format_c.htm">Creature Format</a>)</span><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - Type of text<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - Singular name<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - Plural name<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - Specialty text<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 - Def file name (in battle, e.g. 'CGTITA.DEF')<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 - Sound prefix (4 first letters in sounds, e.g. 'gtit')<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$</b></font> - z variable (or its number) that keep the new text<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 means restore original</font>
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">G<span lang="de">2</span>/</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B"><span lang="de">#2</span></font><font face="Arial" size="2" color="#FF0000">/</font><span lang="de"><font face="Arial" size="2" color="#8B008B">#3</font></span><font face="Arial" size="2" color="#FF0000">;
+      </font></b><font size="2">
+    <img border="0" src="../images/new.gif" width="28" height="11"><br>
+&nbsp;</font></td>
+    <td width="76%">
+      <font face="Arial" size="2"><b>Set the text and
+      picture for hero specialities.</b><br>
+      #1-number of hero.(<span lang="de">see </span>
+      <a target="annexe" href="../format/format_h.htm">Format <span lang="de">H</span></a><span lang="de">)</span><br>
+      <span lang="de">#</span>2<span lang="de">- set<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 1-small specialty picture (seen in hero meeting screen, etc.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      2-specialty description text<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      3-standard speciality picture<br>
+See <a href=../format/format_hs.htm>Format HS</a> for specizlity pictures.
+<br>
+      #3-<span lang="de"> is:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; -</span>z variable index (0 to restore)<span lang="de">
+      if #2=2<br>
+&nbsp;&nbsp;&nbsp;&nbsp; -</span>number of the picture (0-155)<span lang="de">
+      if #2=3</span><br>
+      <br>
+      The pictures match the current hero specialty pictures so for example, if
+      <br>
+      you wanted a picture of gems, you could use 111 (Saurug's specialty) for<br>
+      the picture number. In the future, additional specialty pictures will be
+      <br>
+      added.<br>
+      <br>
+      <font color=purple>
+      Help additions:<br>
+UN:G2 description in erm_help is wrong<br>
+#2 = 0: Speciality name. It's "Griffins" for Edric<br>
+#2 = 1: Long speciality name. It's "Creature Bonus: Griffins" for Edric<br>
+However, I have no idea where these strings are used in the the game. :) (only know that speciality name is used in Advanced Options on map start, but maybe somewhere else too)<br>
+Small speciality picture is always the same as the normal one.<br>
+      </font></font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="H">H</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3</font><font color="#FF0000">/</font><font color="#800080">#4</font><font color="#FF0000">/</font><font color="#800080">#5<span lang="de">;</span></font></b></font></td>
+    <td width="76%">
+      <p><font face="Arial" size="2"><b>Hide part of the map (round area)</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font>  = x<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font>  = y<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font>  = Level<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> = Owner (<a target="annexe" href="../format/format_e1.htm">Format
+      E1</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#5</b></font>  = Radius<br>
+      <b><u>Comments:</u></b><br>
+      The shroud will be replaced for all players <i>except</i> the owner.</font></p>
+    </td>
+  </tr>
+<td width=24% valign=top>
+<font face=arial size=2 color=red><b><a name=i>
+I<font color=darkmagenta>#1</font>/<font color=darkmagenta>#2</font>/<font color=darkmagenta>#3</font>/<font color=darkmagenta>#4</font>/<font color=darkmagenta>#5</font>...<br></font>
+up to 9 parametres</td><td><font face=arial size=2><b>Place an object.</b><br>
+&nbsp;&nbsp;<b class=var>#1</b> = x<br>
+&nbsp;&nbsp;<b class=var>#2</b> = y<br>
+&nbsp;&nbsp;<b class=var>#3</b> = Level<br>
+&nbsp;&nbsp;<b class=var>#4</b> = Type of object (see <a href=../format/format_ob.htm>Format OB</a>)<br>
+&nbsp;&nbsp;<b class=var>#5</b> = Subtype of object<br>
+If you use only 5 parameters you cannot set another terrain type and cancel redraw (terrain=-1, redraw=1)<br>
+&nbsp;&nbsp;<b class=var>#6</b> = Terrain type (see <a href=../format/format_tr.htm>Format TR</a>)<br>
+&nbsp;&nbsp;<b class=var>#7</b> = Redraw needed (1) or not (0)<br><br><br>
+<b>Additional syntax: You can place an object which functions as object type/subtype but looks like an object type2/subtype2.</b><br>
+If you do so then:<br>
+&nbsp;&nbsp;<b class=var>#1</b> = x<br>
+&nbsp;&nbsp;<b class=var>#2</b> = y<br>
+&nbsp;&nbsp;<b class=var>#3</b> = Level<br>
+&nbsp;&nbsp;<b class=var>#4</b> = Type of object (see <a href=../format/format_ob.htm>Format OB</a>)<br>
+&nbsp;&nbsp;<b class=var>#5</b> = Subtype of object<br>
+&nbsp;&nbsp;<b class=var>#6</b> = Type2 of object to look like (see <a href=../format/format_ob.htm>Format OB</a>)<br>
+&nbsp;&nbsp;<b class=var>#7</b> = Subtype2 of object to look like<br>
+If you use only 7 parameters you cannot set another terrain type and cancel redraw (terrain=-1, redraw=1)<br>
+&nbsp;&nbsp;<b class=var>#8</b> = Terrain type (see <a href=../format/format_tr.htm>Format TR</a>)<br>
+&nbsp;&nbsp;<b class=var>#9</b> = Redraw needed (1) or not (0)
+</td></tr>
+
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="J">J</a>0/</font><font color="#8B008B">#</font><font color="#FF0000">/</font></b></font><span lang="de"><b><font face="Arial" size="2" color="#800080">$;</font></b></span></td>
+    <td width="76%"><tt><font face="Arial" size="2"><b>Disable spells</b><br>
+      &nbsp; <font color="#8B008B"><b>#</b></font> - number of spell 0...69<span lang="de">
+    </span></font></tt><font face="Arial" size="2">(<a href="../format/format_sp.htm">see
+    Format <span lang="de">SP</span></a>)</font><tt><font face="Arial" size="2"><br>
+      &nbsp; <font color="#8B008B"><b>$</b></font> -&nbsp; 0 = Enabled<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = Disabled<br>
+      <b><u>Comments:</u></b><br>
+      This disabling only works for mage guilds and pyramids, but you can check
+      the value set here and use in any ERM script. Since mage guild and pyramid
+      spells are set at the start of a map (before it fully loads), it makes
+      sense to use this command in an instruction or in a function called from
+      an instruction.<br>
+      <br>
+      There is another internal
+      structure that is changing when shrines are being placed (every placed
+      shrine marks a corresponding spell as disabled), so for shrines, this
+      disabling will not work. However, you could set a disabled spell and then
+      disable it in the shrine with a shrine receiver after checking the value
+      with this command.</font></tt></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="4"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="4"><span lang="de"><b><font face="Arial" size="2">S</font></b></span><font face="Arial" size="2"><b>et/check/get
+    a hero level limit for a map</b><br>
+    <font color="#8B008B">$1</font> is a level limit (you can set/check/get it)<br>
+    <font color="#8B008B">$2</font> is an XP amount for this level<br>
+    <u><b>Comments:</b></u><br>
+    Whenever you set or get the level value, the XP amount is always for<span lang="de">
+    </span>the current level limit. So if you set the level, it will return an
+    XP<span lang="de"> </span>for this new just set level. So to set and
+    meanwhile get the level and<span lang="de"> </span>level XP, you can use one
+    command:<br>
+    !!UN:J1/35/?y10;<br>
+    Here you set the level to 35 and get an experience for this level to<span lang="de">
+    </span>y10.<br><br>
+	<font color=purple>Untested ERA 2.9 Note: the experience values returned for parameter 2 are incorrect, and the command can cause Hero's experience to become negative! Use the Map Editor instead of this ERM command.
+</font>
+	</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="26"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="26"><b><span lang="de"><font face="Arial" size="2">S</font></span></b><font face="Arial" size="2"><b>et,
+    check or get a difficulty level chosen by player</b><br>
+    Set, check or get a difficulty level chosen by player.<br>
+    If you set the level it may not always keep its value later so use with
+    caution.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2"><b><span lang="de">L</span>oad
+    an external file with WoGification settings</b><br>
+&nbsp;With this command you can customize the way a map is wogified. The loaded
+    setting<br>
+    will override the settings in the WoG Options screen.<br>
+    <br>
+    Syntax:<br>
+    !#UN:J3/^the path to the file^;<br>
+    The path may have a folders in relative or absolute path (based on<span lang="de">
+    </span>the WoG folder), like this:<br>
+    ^MyOptions.xxx^ - a file in the Heroes home folder<br>
+    ^maps\opt.yyy^ - a file in the maps folder<br>
+    ^.\maps\opt.yyy^ - the same as above (&quot;.&quot; means the current folder)<br>
+    ^C:\xxx.yyy^ - a file in the C: root folder<br>
+    ^..\mysets\set001.zzz^ - a file in mysets folder that is a child<span lang="de">
+    </span>folder for the parent folder for the heroes home folder<span lang="de">.</span></font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">4</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2"><b>Control AI "thinking" radius</b><br>
+$&nbsp;=&nbsp;32000 is a SoD default<br>
+&nbsp;&nbsp;&nbsp;=&nbsp;4096 is a current WoG default<br>
+  This is not a number of squares to analyze, but is the total range of an AI hero based on its movement points and the terrain. For grass, one square of distance is about 100 points.
+  This is not saved in the saved game.<br>
+  You can change this value at any moment, for example, making one AI player or even a specific hero more clever than another.<br>
+  <i>Caution:</i> if this value is set too low, an AI hero may just sit there and not move at all.
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">5</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Disable Autosave </b><br>
+&nbsp;&nbsp;$ = 1 enable autosave<br>
+&nbsp;&nbsp;$ = 0 disable autosave<br>
+<i>Comments:<br></I>
+&nbsp;&nbsp;  The state of disabling won't be saved in a save game file, so if you need autosave to remain disabled, you should also put this command after a Load Game trigger (!?GM0).<br>
+&nbsp;&nbsp;  In most cases it isn't advisable to disable the autosave, because the autosave provides an important backup for the player in case anything goes wrong.<br>
+
+
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">6</font><font face="Arial" size="2" color="#FF0000">/<font face="Arial" size="2" color="#800080">#</font>/<font face="Arial" size="2" color="#800080">$</font>;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Generate a random artifact </b><br>
+ <b> #</b> - (set) artifact level (-1=random, 1=no class, 2=treasure, 4=minor, 8=major, 16=relic)<br>
+  <b>$</b> - (get/check) random artifact of a level<br>
+<i>  Comments:<br></i>
+  This function returns only enabled artifacts. Artifact level 1 includes The Grail, Spell Book, Spell Scroll, and all War Machines.<br>
+<b>  Example:</b><br>
+<font color=red><b>!!UN:J6/2/?v10;</b></font> - get a random Treasure artifact to v10<br>
+  You can add level numbers together to cover several classes. e.g., 18=treasure & relic.
+  If you generate more than one random artifact number from the same trigger, the artifact numbers will be unique, so you can be assured of getting a selection of different artifacts without duplicates.
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">7</font><font face="Arial" size="2" color="#FF0000">/<font face="Arial" size="2" color="#800080">#</font>/<font face="Arial" size="2" color="#800080">$</font>;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Control a town's Artifact Merchant </b><br>
+&nbsp;&nbsp;<b>#</b> - slot index (0...6)<br>
+&nbsp;&nbsp;<b>$</b> - artifact in the slot<br>
+<i>  Comments:<br></i>
+  You may use set, get or check syntax.<br>
+  -1 means no artifact.<br>
+  <b>Example:<br>
+<font color=red>!!UN:J7/3/?v10;</b></font> - get artifact in slot 3<br>
+<font color=red><b>!!UN:j7/v5/v20;</font></b> - set artifact in slot v5 to v20
+
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">8</font><font face="Arial" size="2" color="#FF0000">/<font face="Arial" size="2" color="#800080">$1</font>/<font face="Arial" size="2" color="#800080">$2</font>;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"><br>
+<font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">8</font><font face="Arial" size="2" color="#FF0000">/<font face="Arial" size="2" color="#800080">$</font>/<font face="Arial" size="2" color="#800080">^text^</font>;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Check if a file exists</b><br>
+&nbsp;&nbsp;&nbsp;$1 - modifier<br>
+&nbsp;&nbsp;&nbsp;$2 - index of z var (local, standard or extended from ERT)<br>
+  z[$2] or ^text^ - a file name (with possible path)<br>
+  Return:<br>
+  Flag 1 set to 1 if file exists otherwise 0.<br>
+  Modifiers:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0 - location is in Heroes home folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1 - in DATA folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2 - in MAPS folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3 - in RANDOM_MAPS folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4 - in GAMES folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;5 - in DATA\S folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;6 - in DATA\P folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;7 - in DATA\ZVS\LIB1.RES folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;8 - in DATA\ZVS\CMP.RES folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;9 - in ERM_HELP folder<br>
+&nbsp;&nbsp;&nbsp;&nbsp;11 - in MODS folder<br>
+&nbsp;&nbsp;  The main purpose of the modifier is to not worry about path. For example, you have a picture in a script folder. Now this is DATA\S but later we can transfer them to other folder. Using the modifier you need not know exactly where the script folder is located, you just need to use a modifier 5.<br>
+<b>  Example:<br></b>
+&nbsp;  <b>UN:J8/1/^mypic.bmp^ </b>- checks for ..\DATA\mypic.bmp<br>
+&nbsp;&nbsp;  <b>UN:J8/1/^P\mypic.bmp^</b> - checks for ..\DATA\P\mypic.bmp<br>
+&nbsp;&nbsp;  <b>UN:J8/2/^mypic.bmp^ </b>- checks for ..\MAPS\mypic.bmp<br>
+<br>
+&nbsp;&nbsp;Modifier 10 - an absolute path. With this modifier, the file name is the exact name with possible path.<br>
+<b>  Example.</b> <br>If the modifier is 10 and the name is "Hello.txt", the file will be searched for in the current folder. Current folder for Heroes is most probably a Heroes home folder. If the name is "C:\Hello.txt", the file will be searched for in the root of disk C:
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">9</font><font face="Arial" size="2" color="#FF0000">/<font face="Arial" size="2" color="#800080">$1</font>/<font face="Arial" size="2" color="#800080">$2</font>;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Get a path for a file</b><br>
+&nbsp;&nbsp;  This command gets Heroes 3 paths so you can create a full path for a file if you need, taking into account a particular player's Heroes folder location.<br>
+<b>  !!UN:J9/$1/$2;<br></b>
+  The command gets a corresponding path to a z variable.<br>
+&nbsp;&nbsp;<b>  $1</b> - modifier (the same as for UN:J8)<br>
+&nbsp;&nbsp;  <b>$2 </b>- index of z var (local or standard)<br>
+  <b>Example:</b><br>
+&nbsp;&nbsp;  It copies an absolute path to the z variable. Say we have heroes installed to C:\HOMM\WOG, the command <b>UN:J9/2/10</b> will copy to z[10] the next path: "C:\HOMM\WOG\". You can just add a name of file you want to use and then use it in any way you want.
+</td>
+  </tr>  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">10;</font><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Output variables to WOGERMLOG.TXT</b><br>
+Use UN:J10 command at any time (writes all non-zero variables to a file).<br>
+ The log will be stored in WOGERMLOG.TXT.
+</td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">11</font><font size=2><font color=red>/<font color=purple>$</font>;</font>
+    </font>
+    <font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b><font color=purple>Don't understand this one, sorry</font></b><br>
+  $ is a flag that allows to stay on a battle screen a right mouse
+click stack info dialog (0, default) or work a standard way like in
+SoD (1). This flag is stored in saved game, so you can set it once per a
+game.
+</td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top" height="5"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">J</font><font face="Arial" size="2" color="#800080">12</font><font size=2><font color=red>/z<font color=purple>#</font>;</font>
+    </font>
+    <font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%" height="5"><font face="Arial" size="2">
+<b>Get map file name</b><br>
+&nbsp;&nbsp;<font color=red>z</font><font color=purple>#</font> - z-var to store the name (z-1...z-10, z1...z1000) <br>
+ If you want to use a different INI file for different map, you may
+now check the map name.
+</td>
+  </tr>
+  
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="K">K</a></font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$<span lang="de">;</span></font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Set up *new week* property.</b><br>
+      &nbsp;&nbsp; <b><font color="#FF0000">K</font><font color="#8B008B">1/$</font></b>
+      - disable ($=1) all *week of ...*&nbsp;(monster +5, Imp*2) or enable ($=0)
+      as usual.<br>
+      &nbsp;&nbsp;<font color="#FF0000"> </font><b><font color="#FF0000">K</font><font color="#8B008B">2/$</font></b>
+      - set the message of new week to string variable $.</font><p>
+          <font SIZE="2" face="Arial"><span lang="de"><b>Note:</b></span> it
+          wont disable weeks/months generated by Deities of Fire- imps/familiars
+          will get extra growth and be spawned all over the map regardless</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="112"><b><font face="Arial" size="2" color="#FF0000"><a name="L">L</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#4<span lang="de">;</span></font></b></td>
+    <td width="76%" height="112"><font face="Arial" size="2"><b>Move a view to the position</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = x<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = y<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = Level<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> = delay after (1000 is
+      a second?)<br>
+      <u><b>Comments:</b><br>
+      </u>It work like Eye of the Magi but does not open a view</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="106"><b><font face="Arial" size="2" color="#FF0000"><a name="L">L</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font></b><font size="2">;
+      </font></td>
+    <td width="76%" height="106"><font face="Arial" size="2"><b>  Set/check/get Obelisk visited.</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> - player number (-2,-1,0...7)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2 = to all<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1 = to current<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> - Obelisk index (-1,0...47)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1 = to all;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = Obelisk visited 1 or not 0;</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="M">M</a></font><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Set new<i> &quot;Month of the&quot;</i>
+      properties.</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">M0</font></b> - Original behaviour<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>M1</b></font> - Disable weeks of
+      monster*2 and all/2<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>M2/$</b></font> - Set up a week of $
+      monster (monster*2)<span lang="de"> </span>(<a href="../format/format_c.htm">see
+    Format <span lang="de">C</span></a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>M3</b></font> - Set up a week of
+      plague (all/2)<br>
+      <u><b>Comments:</b></u><br>
+      &nbsp;* 2nd parameter ($) only applies to M2.<br>
+    <br>
+    <b><span lang="de">Note:</span></b></font><font SIZE="1" face="Arial"> </font>
+          <font SIZE="2" face="Arial">it wont disable
+    weeks/months generated by Deities of Fire- imps/familiars will get extra
+    growth and be spawned all over the map regardless</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font class="Helvetica32" face="Arial" size="2" color="#FF0000"><a name="N">N</a>0/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">z
+      var index</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$<span lang="de">;</span><br>
+      </font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">N1/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">z
+      var index</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$<span lang="de">;</span><br>
+      </font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">N2/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">z
+      var index</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$1</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$2<span lang="de">;</span><br>
+      </font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">N3/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">z
+      var index</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$1</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$2<span lang="de">;</span><br>
+      </font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">N4/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">z
+      var index</font><font class="Helvetica32" face="Arial" size="2" color="#FF0000">/</font><font class="Helvetica32" face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></b></td>
+    <td width="76%"><font class="Helvetica32" face="Arial" size="2"><b>Name
+      Lookup.</b>&nbsp;<br>
+      This command lets you get the name of an artifact, spell, building,
+      monster or secondary skill by specifying its number and assign it a z
+      string variable so you can use it in a message.<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>N0/zvarind/$;</b></font> - name of artifact ($=artifact number)<span lang="de">
+    </span></font><font face="Arial" size="2">(<a href="../format/format_a1.htm">see
+    Format <span lang="de">A1</span></a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>N1/zvarind/$;</b></font> - name of spell name ($=spell number)<span lang="de">
+    </span></font><font face="Arial" size="2">(<a href="../format/format_sp.htm">see
+    Format <span lang="de">SP</span></a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>N2/zvarind/$1/$2;</b></font> - name of building ($2)<span lang="de">
+    </span></font><font face="Arial" size="2">(<a href="../format/format_u.htm">see
+    Format <span lang="de">U</span></a>)</font><font class="Helvetica32" face="Arial" size="2"> inside town type
+      ($1)<span lang="de"> </span></font><font face="Arial" size="2">(<a href="../format/format_t.htm">see
+    Format <span lang="de">T</span></a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>N3/zvarind/$1/$2;</b></font> - name of monster ($1=monster number)<span lang="de">
+    </span></font><font face="Arial" size="2">(<a href="../format/format_c.htm">see
+    Format <span lang="de">C</span></a>)</font><font class="Helvetica32" face="Arial" size="2"> in
+      singular ($2=0) or plural ($2=1)<b><br>
+      &nbsp;&nbsp; </b><font color="#8B008B"><b>N4/zvarind/$;</b></font> - name of secondary skill ($=skill number)<b><span lang="de">
+    </span></b></font><font face="Arial" size="2">(<a href="../format/format_ss.htm">see
+    Format <span lang="de">SS</span></a>)</font><font class="Helvetica32" face="Arial" size="2"><b><br>
+      <br>
+      <font color="#0000FF">Example:</font><font color="#008000"><br>
+      </font><font color="#FF0000">!#UN:N0/z100/5;<br>
+      !#UN:N1/z101/6;<br>
+      !#UN:N2/102/7/1;<br>
+      !#UN:N3/103/8/0;<br>
+      !#UN:N3/104/8/1;<br>
+      !#IF:M^=%Z100=%Z101=%Z102=%Z103=%Z104=^;</font></b></font></td>
+  </tr>
+<tr><td width=24% valign=top><b><font face=arial size=2 color=darkmagenta>
+<font color=red>N5/</font>#1<font color=red>/</font>#2<font color=red>/</font>#3<font color=red>/</font>#4<font color=red>;<img src=../images/new.gif width="28" height="11">
+</td><td><font face=arial size=2>
+<b>Write z variables to an external file
+</b>
+Write z variable to wog.ini file [common] section:<br>
+<b><font color=red>!!UN:N5/#1/#2/#3/#4;</font> </b>- save z string to wog.ini file<br>
+<b>  #1</b> - z var index of string to write string data from<br>
+<b>  #2</b> - option index (any positive value)<br>
+<b>  #3</b> - (optional parameter) z var index of user-defined section to use instead of [common]<br>
+<b>  #4</b> - (optional parameter) z var index that keeps the filename (without ".INI" part) with possible path. <br><i>Note:</i> if you include parameter 4, you must also include parameter 3.
+
+</td></tr>
+<tr><td width=24% valign=top><b><font face=arial size=2 color=darkmagenta>
+<font color=red>N6/</font>#1<font color=red>/</font>#2<font color=red>/</font>#3<font color=red>/</font>#4<font color=red>;<img src=../images/new.gif width="28" height="11">
+</td><td><font face=arial size=2>
+<b>Read z variables from an external file
+</b>
+Read z variable from wog.ini file [common] section:<br>
+<b><font color=red>!!UN:N6/#1/#2/#3/#4;</font></b> - load z string from wog.ini file<br>
+<b>  #1</b> - z var index of string to load string data into<br>
+<b>  #2 </b>- option index (any positive value)<br>
+<b>  #3</b> - (optional parameter) z var index of user-defined section to use instead of [common]<br>
+<b>  #4 </b>- (optional parameter) z var index that keeps the filename (without ".INI" part) with possible path. Note: if you include parameter 4, you must also include parameter 3.<br>
+<br>
+  <i>Comments:<br></i>
+  You may save and load regular or local z variables.<br>
+Option index should be unique to a save/load procedure (one option number per z variable).<br>
+  So if you save a z var as an option 123456, you need to load the saved value (to any other z var) using the same option 123456.<br>
+  The value is not stored in a saved game but is stored in an external INI file (wog.ini, if parameter 4 is omitted). You may use these commands without problem in instructions.<br>
+<br>
+  So to store a variable z-1 named "The_Main_Var" in a file "My.var" in GAMES folder (section "MyLocalSettings"), with option index 4, use:<br>
+<font color=red><b>!!VRy1:S4;<br>
+!!VRz-1:S^The_Main_Var^;<br>
+!!VRz-2:S^MyLocalSettings^;<br>
+!!VRz-3:S^GAMES\My.var^;<br>
+!!UN:N5/z-1/y1/-2/-3;<br>
+</td></tr>
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="O">O</a></font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3<span lang="de">;</span></font></b></font></td>
+    <td width="76%"><font face="Arial" size="2"><b>Delete an object.</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = x<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = y<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> = Level<br>
+      <u><b>Comments:</b></u><br>
+      For this command, x, y and level refer to the lower right corner of the
+      object and <i>not</i> to the trigger square. Sometimes this square will
+      not even appear to be part of the object, so it's best to check in the
+      editor; click once on the object and look for the white rectangle that
+      appears around it--the lower-right square in this rectangle is the square
+      that x/y/l refers to.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">O</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3</font><font color="#FF0000">/</font><font color="#800080">h<span lang="de">;</span></font></b></font></td>
+    <td width="76%"><font face="Arial" size="2"><b>Delete object at x/y/l and a
+      description/hint (if was set).</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">h = 1</font></b> - delete
+      description/hint<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>h = 0</b></font> - do not delete<br>
+      For the style Ox/y/l description/hint will not be deleted (h=0).</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><a name="P"><font color="#FF0000" size="2" face="Arial">P</font><font size="2" face="Arial" color="#8B008B">$</font></a><font size="2" face="Arial" color="#8B008B"><span lang="de">;</span></font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Setting lvl8 dwellings
+      behaviour<br>
+      &nbsp;&nbsp; <font color="#8B008B">$ =1 </font>- Standard behaviour for lvl8 dwellings (=0-as usual)</b><br>
+      <u><b>Comments:<br>
+      </b></u>Standard behaviour means that the level 8 dwelling will function
+      like any other dwelling in the game, so you must visit it each week to
+      recruit level 8 creatures there and they won't appear in the upgraded
+      level 7 dwelling for the associated town.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$;
+      </font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Set WOG options</b></font><br>
+      &nbsp;&nbsp; <font face="Arial" size="2"><font color="#8B008B"><b>#</b></font>
+      - Number of option</font><br>
+      &nbsp;&nbsp; <font face="Arial" size="2"><font color="#8B008B"><b>$</b></font>
+      - Option state<br>
+      <b><u>Comments</u></b><br>
+      # = 0 and $ = Lvl8 dwelling SoD (1) or WoG (0) [doubling for !!UN:P$]<br>
+      # = 1 and $ = Towers Experience SoD (1) or WoG (0)<br>
+      # = 2 and $ = Leave Monsters on the map SoD (1) or WoG (0)<br>
+      # = 3 and $ = Disable Commanders (1) or Enable Commanders (0)<span lang="de"> See below for more info.</span><br>
+      </font><font face="Arial" size="2"># = 4 and $ = Disable Town Demolition
+      by a player (1) or Enable Town Demolition by a player (0)<br>
+  # = 5 and $ = WoGify: random maps and maps beginning "wogify_" (0), all WoG format maps (1), all Heroes 3 maps of any format (2)<br>
+  # = 6 and $ = Heroes start with Commanders (0) or they must be hired (1)<br>
+&nbsp;&nbsp;      <u><b>Comments:</b></u><br>
+&nbsp;&nbsp;&nbsp;&nbsp;  Both WoGified and Non-WoGified WoG maps with <span lang="de">no</span> scripts will use the WoGify Options selected for enabling or disabling the features above.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;  To set Commanders so they must be hired at a town for 100 gold instead of heroes automatically starting with them, you must use UN:P6/1
+      <i>before</i> the UN:P3/0 command. You can put this all into one line as:<br>
+ !!UN:P6/1 P3/0; if you wish.<br><br>
+# = 9 and $ = Sylvan Centaur creation enabled (1) or disabled (0)<br>
+&nbsp;&nbsp;<B>Comment</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;If enabled, Sylvan Centaurs can be created for free by control-clicking on a stack of Centaur Captains or Grand Elves in the Hero screen (does not work in any other screen). An equal number from both stacks is replaced with Sylvan Centaurs. Thus 10 Grand Elves plus 10 Centaur Captains equal 10 Sylvan Centaurs.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>Note:</i> Sylvan Centaurs start at 0 experience and do not keep any stack experience that the Centaur Captains or Grand Elves had before combining.<br><br>
+# = 10 and $ = Troop Stacks left will rejoin (1) or won't rejoin (0) their owner.<br>
+&nbsp;&nbsp;<b>Comment</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;If enabled, troop stacks left by right-clicking will rejoin their owner when they're "attacked" by that player.
+&nbsp;&nbsp;&nbsp; <i>Note: </i>all previous stack experience is lost when a troop stack is left by right-clicking.<br><br>
+
+# = 900 and $ = Stack Experience Disabled (0) or Enabled (1). <br><br>
+
+&nbsp;&nbsp;&nbsp; If enabled, troop stacks lead by a hero gain experience if they win the battle. Experience is equal to the experience the hero gains from the battle. When it gains enough experience, a troop stack will gain a rank and may gain bonuses to attack, defense, damage, speed, health, and special abilities. If you combine two experience stacks, their experience is averaged. Each stack can improve up to rank 10. Right-click on a stack's portrait in its info screen to see its current stack experience details.
+
+
+# = 901 and $ = Stack Experience System:<br>
+&nbsp;&nbsp;  $=0 - Equal shares and each creature gains full experience.<br>
+&nbsp;&nbsp;  $=1 - Weighted Shares: Lower level creatures gain more than higher level creatures.<br>
+&nbsp;&nbsp;  $=2 - Weighted Shares: Higher level creatures gain more than lower level creatures.<br>
+&nbsp;&nbsp;  $=3 - Equal shares: divided by all creatures.<br>
+<br>
+&nbsp;&nbsp;<i> Note:</i> the stack experience system is currently tested with option 0 (the default). Other options were earlier attempts at finding the best system to use, but although rejected, they have been left in place in case anyone wishes to experiment with them anyway. If you do want to try another system (UN:P1..UN:P3), you'll need to also set a higher experience multiplier using the EA:H command for humans, and EA:A (possibly also EA:S and/or EA:T) for AI players since experience is divided by all creatures in the battle and thus significantly lower.<br><br>
+
+
+# = 902 and $ = can (1) or cannot(0)leave artifact on the map.<br>
+&nbsp;&nbsp;This lets you enable leaving of artifacts from a hero's backpack by right-clicking on an empty map square. This is done in the same way that you leave troops.<br><br>
+
+&nbsp;&nbsp;  You may use an old option 2 (may not leave troop) and a new 902 (may leave artifacts) together:<br><br>
+
+<table><tr><td colspan=2><font size=2>UN:P</td><td><font size=2>Meaning</td></tr>
+<tr><td><font size=2>2&nbsp;&nbsp;</td><td><font size=2>902</td><td>&nbsp;</td></tr>
+<tr><td><font size=2>0</td><td><font size=2>0</td><td><font size=2>may leave troops only.</td></tr>
+<tr><td><font size=2>0</td><td><font size=2>1</td><td><font size=2>may leave troops or artifacts.</td></tr>
+<tr><td><font size=2>1</td><td><font size=2>0</td><td><font size=2>may NOT leave anything.</td></tr>
+<tr><td><font size=2>1</td><td><font size=2>1</td><td><font size=2>may leave artifacts only.</td></tr>
+</table>
+<br>
+# = 903 and $ =  cheating is enabled (0) or disabled (1)<br><br>
+
+&nbsp;&nbsp;Disables the cheat codes and menu (if normally enabled). If the cheat menu is enabled, it will still appear (even if disabled with this option), but clicking on menu items has no effect.
+<br>
+&nbsp;&nbsp;<i>Note:</i> Although cheat codes do not normally work in multiplayer games, this option will prevent players using the cheat codes and menu by loading saved games in single player mode.
+<br><br>
+
+# = 904 and $  =<br>
+&nbsp;&nbsp;  $=0 - Error message shown as normal and P905 is set to 1 if an error occurs<br>
+&nbsp;&nbsp;  $=1 - Error messages are disabled but P905 is set to 1 if an error occurs.<br>
+
+&nbsp;&nbsp;  This is ERM Error message disabling feature.<br>
+&nbsp;&nbsp;  If it is 1, all error messages are disabled, but if any error happens, option 905 will be set to 1.<br>
+&nbsp;&nbsp;  If it is 0, the message will be shown as normal and option 905 will be set to 1.<br>
+&nbsp;&nbsp;  Moreover, if the messages are disabled, the execution of the script will not be interrupted (the current trigger section). So you may use "risky" commands.<br>
+<b>  Example:<br>
+  !?FU...<br>
+  ...<br>
+  !!UN:P904/1 P905/0;</b> disable error messages<br>
+  <b>  !!HE-1:N?v99;</b> get default hero index to v99<br>
+<b>  !!UN:P905/?i;</b><br>
+  <b>!!FU&i>0:E;</b> leave if error<br>
+<br>
+  If you use a standard version:<br>
+<b>  !?FU...<br>
+  ...<br>
+  !!HE-1:N?v99;</b><br>
+<br>
+  produces an error message if a default hero is undefined here.<br><br>
+
+
+# = 906 and $ = Disable gaining of stack experience.<br>
+&nbsp;&nbsp;  $=0 - creatures may gain stack experience from battles (if P900=1).<br>
+&nbsp;&nbsp;  $=1 - creatures may NOT gain stack experience from battles.<br>
+<br>
+&nbsp;&nbsp;  If you set it to 1 and the stack experience system is enabled, stacks will not gain experience from battles, but you can still give stack experience with ERM.
+</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080"><span lang="de">3</span></font><font face="Arial" size="2" color="#FF0000">/</font><span lang="de"><font face="Arial" size="2" color="#800080">#</font></span><font face="Arial" size="2" color="#800080">;
+      </font></b><font face="Arial" size="2"><b><font color="#800080">
+    </font></b></font></td>
+    <td width="76%"><font face="Arial" size="2"><b>Commander enabling/disabling</b><span lang="de">
+    </span>Now if a map has internal scripts and does not have<span lang="de"> </span>
+    !#UN:P3/# command, the map is running<span lang="de">
+    </span>in WoG 3.56 environment (without<span lang="de"> </span>Commanders
+    and all). But if the map<span lang="de"> </span>has this command (no matter
+    !#UN:P3/0 or !#UN:P3/1), the map is<span lang="de"> </span>treated as a new
+    one and runs in WoG 3.57 environment (so all<span lang="de"> </span>hard
+    coded WoG features are taken from WoGification setup or installed<span lang="de">
+    </span>by !#UN:P instructions).<br>
+    This will fix the problem with impossibility to enable Commanders<span lang="de">
+    </span>with !#UN:P3/0 instructions unless used in the timer trigger section.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080">7</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#;</font></b></span><font face="Arial" size="2"><b><font color="#800080">
+    </font></b></font></td>
+    <td width="76%"><font face="Arial" size="2"><b><span lang="de">Dwelling
+    accumulation enabling /disabling</span></b><br>
+    New hard coded flag to make all external dwelling<span lang="de">s</span>
+    accumulate creatures every week.<br>
+    You can turn it on !#UN:P7/1; or off !#UN:P7/0; (default).<br>
+    </font><span style="font-family: Arial"><font size="2"><span lang="de">&nbsp;&nbsp;
+    <font color="#800080">#</font> = </span>0<span lang="de"> </span>creature
+    dwellings reset start of each week<span lang="de"><br>
+&nbsp;&nbsp; <font color="#800080">#</font> = 1 </span>creature dwellings
+    accumulate unpurchased creatures from week-to-week.</font></span></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080">8</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#;</font></b></span><font face="Arial" size="2"><b><font color="#800080">
+    <img border="0" src="../images/new.gif" width="28" height="11"></font></b></font></td>
+    <td width="76%"><font face="Arial" size="2"><span lang="de"><b>Guards
+    accumulation enabling/disabling</b><br>
+    N</span>ew hard coded flag to make all external dwelling guards accumulate
+    creatures every week. <br>
+    You can turn it on !#UN:P8/1; or off !#UN:P8/0; (default).<br>
+    <span lang="de">&nbsp;&nbsp; </span></font><span style="font-family: Arial">
+    <font size="2"><span lang="de"><font color="#800080">#</font> = </span>0<span lang="de">
+    </span>creature dwellings with guards keep the same number of guards<span lang="de"><br>
+&nbsp;&nbsp; <font color="#800080">#</font> = 1 </span>creature dwellings with
+    guards accumulate undefeated guards from week-to-week..</font></span></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="48"><font color="#FF0000" face="Arial" size="2"><b><a name="Q">Q</a></b></font><font face="Arial" size="2"><b><font color="#800080">#<span lang="de">;</span><br><font color=red>Q</font>$1<font color=red>/</font>$2</font>;<img src=../images/new.gif width="28" height="11"></font></b></font></td>
+    <td width="76%" height="48"><font face="Arial" size="2"><b>Win or lose the game for
+      CURRENT player.<br>
+      &nbsp;&nbsp; </b><font color="#8B008B">#</font><b> </b>= 0 to lose the
+      game<b><br>
+      &nbsp;&nbsp; <font color="#8B008B">#</font> </b>= 1 to win<br><br>
+      &nbsp;      &nbsp;If you use a dummy second argument, it will Win or Lose the game using a different function than before. So if you found any problems with the old function, try with the new one instead.<br>
+<b>  Example:<br>
+  !!UN:Q0/1; </b>to lose (for current player)<br>
+<b>  !!UN:Q1/1;</b> to win (for current player)
+
+
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="67"><font face="Arial" size="2"><b><font color="#FF0000"><a name="R">R</a></font><font color="#800080">#<span lang="de">;</span></font></b></font></td>
+    <td width="76%" height="67"><font face="Arial" size="2"><b>Redraw the screen</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>1</b></font> - Redraw map, heroes screen and chosen hero screen<br>
+      </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial" size="2">
+      (all at right side).<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">2</font></b> - Redraw status line with resources.</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+      R3/</font><font face="Arial" size="2" color="#8B008B">#</font><span lang="de"><font face="Arial" size="2" color="#800080">;</font></span></b></td>
+    <td width="76%"><font face="Arial" size="2">
+      <b>Redraw the hero Screen inside CM2 Trigger</b><br>
+      This command only works in a CM2 trigger while the hero screen is
+      displayed. Trying to use it elsewhere will cause a game crash. You can
+      redraw the screen with every mouse click if you need to update it. e.g. if
+      you change a hero's skills or picture while the hero screen is displayed.<br>
+      &nbsp;&nbsp; </font><font face="Arial" size="2">
+      # is a hero number (-1 = current).</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">
+      R<span lang="de">4</span>/</font><font face="Arial" size="2" color="#8B008B">#</font><span lang="de"><font face="Arial" size="2" color="#800080">;</font></span></b><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="76%"><font face="Arial" size="2"> <b>Redraws town
+    screen.<br>
+    </b><br>
+    <u><b>Comments:</b></u><br>
+    This command must only be used while inside a town screen or it may crash
+    the game. It is primarily of use if a new visiting or garrison hero is added
+    to a town (with ERM while in the town screen), or if new troops are added to
+    a visiting or garrison hero (again, with ERM while in the town screen).</font></td>
+  </tr>
+<tr>
+<td width=24% valign=top><font color=red size=2 face=arial><b>
+R5/<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;<img src=../images/new.gif width="28" height="11"></td><td><font size=2 face=arial>
+<b>Set the appearance of the mouse pointer</b><br>
+&nbsp;&nbsp;<b>$1</b> - mouse pointer type (0..4, see <a href=../format/format_pm.htm target=annexe>Format PM</a>)<br>
+&nbsp;&nbsp;<b>$2</b> - mouse pointer subtype (0..[depends on type])<br>
+&nbsp;  <i>Comments:<br></i>
+&nbsp;  Displaying any dialog restores the pointer to an arrow.<br>
+&nbsp;  If you set a pointer to any shape, it will be restored to a default pointer if you move it unless you disable pointer changing with the UN:R7 command.
+</td></tr>
+<td width=24% valign=top><font color=red size=2 face=arial><b>
+R6/<font color=darkmagenta>$</font>;<img src=../images/new.gif width="28" height="11"></td><td><font size=2 face=arial>
+<b>Set the delay</b><br>
+&nbsp;&nbsp;<b>$</b> - delay, ms (1000 ms = 1 second)
+</td></tr>
+<td width=24% valign=top><font color=red size=2 face=arial><b>
+R7/<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>;<img src=../images/new.gif width="28" height="11"><br>
+R7/<font color=darkmagenta>$</font>;<img src=../images/new.gif width="28" height="11"></td><td><font size=2 face=arial>
+<b>Control mouse pointer</b><br>
+Some more commands for mouse control.<br>
+&nbsp;&nbsp;&nbsp;<b>  !!UN:R7/$1/$2;<br></b>
+  may be<br>
+&nbsp;&nbsp;&nbsp;<b>  !!UN:R7/$1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  $1</b> - show (0) / hide (1) mouse pointer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>  $2 </b>- enable (0) / disable (1) later pointer changing<br>
+<i>  Comments:<br></i>
+&nbsp;&nbsp;&nbsp;  When you visit some objects (like fishing well) when !?OB trigger works out, the mouse pointer IS disabled. So to be sure that when your long script works with hourglass pointer, you may turn it ON manually.<br>
+&nbsp;&nbsp;&nbsp;  Then if you disable pointer changing, it prevents the pointer from changing until:<br>
+&nbsp;&nbsp;&nbsp;  - starting a new game;<br>
+&nbsp;&nbsp;&nbsp;  - loading a game;<br>
+&nbsp;&nbsp;&nbsp;  - any standard message appears (may be with ERM);<br>
+&nbsp;&nbsp;&nbsp;  - any extended WoG dialog shown.<br>
+  So for fishing well, it may be:<br>
+&nbsp;&nbsp;&nbsp;<b>!!UN:R5/1/1; !!UN:R7/0/1;<br></b>
+  then if you want to show a message or a question:<br>
+&nbsp;&nbsp;&nbsp;<b>!!IF:M...<br></b>
+  disable pointer changing again:<br>
+&nbsp;&nbsp;&nbsp;<b>!!UN:R5/1/1; !!UN:R7/0/1;<br></b>
+  until the end of the script where you can enable pointer changing again:<br>
+&nbsp;&nbsp;&nbsp;<b>!!UN:R7/0/0;</b>
+</td></tr>
+  <tr>
+    <td width="24%" valign="top" height="96"><font face="Arial" size="2"><b><font color="#FF0000"><a name="S">S</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3</font><font color="#FF0000">/</font><font color="#800080">#4</font><font color="#FF0000">/</font><font color="#800080">#5<span lang="de">;</span></font></b></font></td>
+    <td width="76%" height="96"><font face="Arial" size="2"><b>Open (show) part of the map
+      (round area)</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font>  = X<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font>  = Y<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font>  = L<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> = Owner (<a href="../format/format_e1.htm">Format
+      E1</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#5</b></font> = Radius</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="T">T</a></font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$<span lang="de">;</span></font></b></td>
+    <td width="76%">
+      <p align="left"><font face="Arial" size="2"><b>Set a type of monster to
+      hire in towns.</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> - Type of a town
+      (0...8) (<a href="../format/format_t.htm">Format T</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> - Dwelling level
+      (0...6)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> - Basic (0) or
+      upgraded (1)<br>
+      &nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>$</b></font>&nbsp; - Type of
+      monster to hire (<a href="../format/format_c.htm">Format C</a>)<br>
+      <u><b>Comments.&nbsp;</b></u><br>
+      <b>1.</b> It works only in Towns and for AI as well.<br>
+      <b>2</b>. You can set it with !#UN. Do not forget that you can
+      &quot;force&quot; the AI to prefer hiring of one monster to another by
+      setting &quot;AI Value&quot; parameter for monster by !!(#)MA:I<br>
+      <b>3</b>. Additional resources supposed to be only for level 7 dwelling.</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="U">U</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><span lang="de"><font face="Arial" size="2" color="#8B008B">?</font></span><font face="Arial" size="2" color="#800080">$1<span lang="de">;</span></font></b></td>
+    <td width="76%"><font face="Arial" size="2"><b>Calculate all objects on the
+      map</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> = Type of object (<a href="../format/format_ob.htm">Format
+      OB</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Subtype of object
+      (-1 = any)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> = <span lang="de">N</span>umber
+    of objects of type #1, subtype #2 (check or get syntax only)</font><br>
+    <font face="Arial" size="2"><br>
+      <b><font color="#0000FF">Example:&nbsp;</font><font color="#008000"><br>
+      </font><font color="#FF0000">U54/i/?n; </font></b><font color="#FF0000">n
+      now have a number of objects type 54 and subtype i</font></font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="224"><b><font face="Arial" size="2" color="#FF0000">U</font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#4<span lang="de">;</span></font></b></td>
+    <td width="76%" height="224"><font face="Arial" size="2"><b>Get coordinates of an object</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> = Type of object (<a href="../format/format_ob.htm">Format
+      OB</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Subtype of object
+      (-1 = any)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#3</font></b> = Number of object
+      (1...final object number)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#4</font></b> = Index of first v
+      variable to store the coordinates<br>
+      i.e., v[#4]=x, v[#4+1]=y, v[#4+2]=l<br>
+      <b><font color="#0000FF">Example:&nbsp;</font><font color="#008000"><br>
+      </font><font color="#FF0000">U54/i/3/324; </font></b><font color="#FF0000">v324,v325
+      and v326 now keep coordinates of object type 54, subtype i and number 3</font><font color="#008000"><b><br>
+      </b></font><u><b>Comments:</b></u><br>
+      All objects are calculated:<br>
+      (first) left to right<br>
+      (second) up to down<br>
+      (third) surface to underground<br>
+	  <br>
+	  This method requires to iterate through entire list of objects, skipping (#3-1) every time it is called. Decent if you need to reach specified object, but very slow in loops.<br>
+		If you want to do some operations on all objects of given type and subtype, relative method is MUCH faster.
+	  </font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000">U<font color="#800080">#1</font><font color="#FF0000">/<font color="#800080">#2<font color="#FF0000">/<font color="#800080">-1<font color="#FF0000">/</font><font color="#800080">#3;</span></font></b><img src=../images/new.gif><br>
+<b><font face="Arial" size="2" color="#FF0000">U<font color="#800080">#1</font><font color="#FF0000">/<font color="#800080">#2<font color="#FF0000">/<font color="#800080">-2<font color="#FF0000">/</font><font color="#800080">#3;</span></font></b><img src=../images/new.gif></td>
+    <td width="76%"><font face="Arial" size="2"><b>Get coordinates of an object (relative method)</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> = Type of object (<a href="../format/format_ob.htm">Format
+      OB</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Subtype of object
+      (-1 = any)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#3</font></b> = find NEXT (-1) or PREVIOUS (-2) object <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a href=#-1engine target=_self>see here for information</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#4</font></b> = Index of first v
+      variable to store the coordinates<br>
+     <br>
+	 This is much faster version than previous method and preffered way to make loops.
+	
+</td>
+  </tr>  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="V">V</a></font><font face="Arial" size="2" color="#8B008B">?$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">?$2<span lang="de">;</span></font></b></td>
+    <td width="76%"><font size="2" face="Arial"><b>Gets the version of WoG and
+      ERM being used.</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> version of WoG (now
+      356 as 3.56)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> version of ERM (now
+      250 as 2.50)<br>
+      <br>
+      <u><b>Comments:</b></u><br>
+      You can only get or check but not set the values:<br>
+      e.g., <b><font color="#FF0000">!!UN:V?i/?j;</font></b><font color="#008000"><br>
+      </font><b><u><font color="#000000">Recommendation</font></u></b><font color="#008000"><b><u>:</u></b><br>
+      </font><font color="#000000">Use the instruction <b>!#UN:V</b> to check
+      version and then display a message for the player at the <i>start</i> of
+      the map that they have an older version of the Add-on (if they do). This is
+      better then them getting half way through the map before finding out they
+      can't finish it.</font></font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">V</font><font color="#800080">?$1</font><font color="#FF0000">/</font><font color="#800080">?$2</font><font face="Arial" color="#FF0000" size="2">/</font><font color="#800080">$?3</font><font color="#FF0000">/</font><font color="#800080">?$4</font><font color="#FF0000">/</font><font color="#800080">?$5<span lang="de">;</span></font></font></b></td>
+    <td width="76%"><font size="2" face="Arial"><b>Gets the version of WoG and
+      ERM being used.<br>
+      Additional Syntax<br>
+      </b>&nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> - Get or check the
+      WoG version<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Get or check the ERM
+      version<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> - Get or check
+      &quot;one or more humans&quot; in the game<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+      1 for one human<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+      2 for more than one human&nbsp;<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$4</b></font> - Get or check
+      &quot;one or more PCs&quot; in the game<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 for
+      one PC (no net), =1 for more than one PC (net)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$5</font></b> - Get or check type of
+      the game<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 - Single
+      Player&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 1 - IPX<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2 - TCP/IP<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3 - Hot
+      Seat<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 4 - Direct
+      Connect<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 5 - Modem</font></td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">V</font><font color="#800080">...<font color="#FF0000">/</font><font color="#800080">?$6</font><font color="#FF0000">/</font><font color="#800080">?$7</font>;<img src=../images/new.gif width="28" height="11"></span></font></font></b></td>
+    <td width="76%"><font size="2" face="Arial"><b>Extended UN:V command to see if a player used cheat codes</b><br>
+Now you can check also whether the cheat menu is enabled or disabled and check if a player has tried to use cheat codes during the game.<br>
+&nbsp;<b>  !!UN:V?$1/?$2/$?3/?$4/?$5/?$6/?$7;<br></b>
+&nbsp;&nbsp;&nbsp;    $6 =1 if cheat menu is enabled and =0 if disabled.<br>
+&nbsp;&nbsp;&nbsp;    $7 =1 if the player used cheat codes till now, 0=no.<br>
+<i>  Comments:<br></i>
+&nbsp;&nbsp;&nbsp;  1. You may not enable or disable the cheat menu to be SHOWN but you may check it.<br>
+&nbsp;&nbsp;&nbsp;  2. In multiplayer, neither cheat codes nor cheat menu works.<br>
+&nbsp;&nbsp;&nbsp;  3. If you disable cheating, it works for keyboard codes and for cheat menu (even if it is enabled).
+</td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top" height="144"><b><font face="Arial" size="2"><font color="#FF0000"><a name="W">W</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font></font><font face="Arial" color="#FF0000" size="2">/</font><font face="Arial" size="2"><font color="#800080">#3</font><font color="#FF0000">/</font><font color="#800080">#4</font><font color="#FF0000">/</font><font color="#800080">#5<span lang="de">;</span></font></font></b></td>
+    <td width="76%" height="144">
+      <p><font face="Arial" size="2"><b>Make a &quot;line&quot; of water
+      passable for hero</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> = X1<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = Y1<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = X2<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> = Y2<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#5</b></font> = Level<br>
+      <u><b>Comment:</b></u><br>
+      This line is impassable for a boat. This is a line so be careful when
+      using it.<br><b>Sixth dummy parameter. </b> <br>You can add it if you want to set log 
+      option (if 1 then place path otherwise remove path logs)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="24%" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="X">X</a></font><font face="Arial" size="2" color="#8B008B">?$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">?$2<span lang="de">;</span></font></b></td>
+    <td width="76%"><font size="2" face="Arial"><b>Get a size of map</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> will receive the size
+      of the map (X=Y)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> will be 0 if you have
+      one level and 1 if you have two levels<br>
+      You can only GET or CHECK values but not SET them.<br>
+      <b><font color="#0000FF">Example:</font><font color="#008000"><br>
+      </font><font color="#FF0000">!#UN:X?i/?j;<br>
+      !#VRz1:S^only one level^; !#VRz1&amp;j=1:S^two levels^;<br>
+      !#IF:M^Map is X=%Vi by Y=%Vi and has %Z1.^;</font></b></font></td>
+  </tr>
+</table>
+<p><font face="Arial" size="2"><u><b>Placing Objects (with I option):</b><br>
+</u>These objects <i>should</i> work correctly without additional set up. Many
+may be customized with a specific object receiver if desired.<br>
+<br>
+Artifacts (type=5, subtype=0-143) - Receiver: !!AR<br>
+Boats (type=8, subtype=0-2)<br>
+Creature Generators (type=17, subtype=0-88 and 20, subtype=?) - Receiver: !!DW<br>
+Garrison (type=33, subtype=0 for standard, =1 for anti-magic) - Receiver: !!GR<br>
+Grail (type=36, subtype=0)<br>
+Lighthouse (type=42, subtype=0-7 for player colours or -1 for neutral) &nbsp;-
+Receiver: !!MN (same as for mines)<br>
+Marletto Tower (type=23, subtype=0)<br>
+Monolith Two Way (type=45, subtype=0-7)<br>
+Mine (type=53, subtype=0-7) - Receiver: !!MN<br>
+Monster (type=54, subtype=0-144) - Receiver: !!MO<br>
+Ocean Bottle (type=59, subtype=0) - Receiver: !!SG (same as for signs)<br>
+Redwood Observatory (type=58, subtype=0)<br>
+Resource (type=79, subtype=0-6) - Receiver: !!AR (same as for artifacts)<br>
+Sanctuary (type=80, subtype=0)<br>
+Shipyard (type=87, subtype=0-7 for player colours or -1 for neutral) &nbsp;-
+Receiver: !!SY<br>
+Sign (type=91, subtype=0) - Receiver: !!SG<br>
+Spell Scroll (type=93, subtype=0-69) - Receiver: !!AR<br>
+Town (type=98, subtype=0-8) - Receiver: !!CA<br>
+University (type=104, subtype=0) - Receiver: !!UR<br>
+Witch Hut (type=113, subtype=0-27) - Receiver: !!WH<br>
+<br>
+These objects will probably need additional set up with their specific object
+receiver to work correctly:<br>
+<br>
+Campfire (type=12, subtype=0) - Receiver: !!FR<br>
+Corpse (skeleton) (type=22, subtype=0) - Receiver: !!SK<br>
+Event (type=25, subtype=0) - Receiver: !!LE - if placed with I option, this
+event will initially be set as enabled to all players and will <i>not</i> be
+cancelled after the first visit.<br>
+Lean To (type=39, subtype=0) - Receiver: !!LN<br>
+Learning Stone (type=100, subtype=0) - Receiver: !!ST<br>
+Magic Shrine (type=88,89,90, subtype=0) - Receiver: !!SR<br>
+Magic Spring (type=48, subtype=0) - Receiver: !!SP<br>
+Mystical Garden (type=55, subtype=0) - Receiver: !!GD<br>
+Obelisk (type=57, subtype=0) - Receiver: !!MT<br>
+Pyramid (type=63, subtype=0)&nbsp; - Receiver: !!PM<br>
+Scholar (type=81, subtype=0) - Receiver: !!SC<br>
+Swan Pond (type=14, subtype=0) - Receiver: !!SW<br>
+Treasure Chest (type=101, subtype=0) - Receiver: !!CH<br>
+Tree of Knowledge (type=102, subtype=0) - Receiver: !!KT<br>
+Wagon (type=105, subtype=0) - Receiver: !!WG<br>
+Warrior's Tomb (type=108, subtype=0) - Receiver: !!WT<br>
+Water Wheel (type=109, subtype=0) - Receiver: !!WM<br>
+Windmill (type=112, subtype=0) - Receiver: !!ML<br>
+<br>
+These objects will NOT work properly and may possibly cause game instabilities,
+map crashes or other problems if placed:<br>
+<br>
+Pandora's Box (type=6)<br>
+Hero (type=34) - <i>(use the HE:P command to place a hero on the map instead)</i><br>
+Prison (type=62)<br>
+Seer's Hut (type=83)<br>
+Quest Guard (type=215)</font></p>
+<p><font face="Arial" size="2"><u>Other Objects<br>
+</u>Some other objects not listed above (aside from rocks, trees, etc.) may need
+to be set up with the generic object command; you can try changing their control
+number so as not to duplicate an existing object of the same type, but this is
+by no means guaranteed to work. Also, some objects not listed may actually work
+fine with no set up required--but they have not been tested yet. Proceed at your
+own risk.<br>
+<br>
+<u><b>About deleting objects</b></u><br>
+There are several tables for every object on the map. And cross reference links
+not always exist. Usually the Heroes use a way to find for positions. When you
+delete an object, some tables still are the same (keep info about deleted object).
+If then you add a new object of the same type at the same place, the new info is
+also added to those tables. But then when the game need to get info about this
+new object, it starts to search it in the table by position. Obviously, that the
+info for the first (deleted) object will be found first. This is not very good
+:-(<br>
+Good that we know it now. And Donald's proposition to set up an old object
+before deletion look fine. I still recommend both set up an old object, delete
+it, place a new one and set it up again :-)<br>
+Remember that this problem is possible for objects of the same type and not
+every type.<br><br>
+
+
+<a name=-1engine><u><b>New faster method for U command (search object engine)</u></b><br>
+Now if you use a search object syntax UN:Utype/subtype/index/varindex you can set index to -1
+or -2 (it was allowed to be 1...N before). A value of -1 means it will search for the next
+object of a type, using the coordinates of the previously found object of the same type while a
+value of -2 means the same but it will search for the previous object of a type on the map,
+starting from the last coordinates.<br>
+  In the standard syntax (index=1...N), UN:U is searching for each object from the beginning of
+the map and skips them until the index object is found. Thus it is a long process on larger
+maps, especially if there are a lot of objects of the specified type.<br>
+  With the new syntax (index=-1 or index=-2) the coordinates returned in
+v[varindex]/v[varindex+1]/v[varindex+2] are used, and a search for an object of the type
+specified starts from the next square on the map for -1 or the previous square for -2, not from
+the beginning. This means that the process should be faster, but it requires that you HAVE NOT
+CHANGED the returned coordinates of the previous search in V vars.<br>
+  Moreover, for the first (or last) object you should use a standard syntax OR you may set
+V[xcoord] var to -1 for the first object or -2 for the last object (see examples below).<br>
+<br>
+ If you use -1 and -2 as an index of the object to find you may move forward and backward from
+the current object. You may use them in any order.<br>
+<br>
+  <b><font color=blue>Examples:</font></b><br>
+<hr align=left>
+  It works <b><font color=red>fine<br>
+!!UN:U53/-1/1/1; </font></b>     (get location of mine 1: v1/v2/v3)<br>
+<b><font color=red>...<br>
+!!VRv1:S99;           </font></b>(change v1 to anything)<br>
+<b><font color=red>...<br>
+!!UN:U53/-1/2/1;      </font></b>(get location of mine 2: v1/v2/v3)<br>
+<hr align=left>
+  It works <font color=blue><b>WRONG!!!</font></b> for v1 was modified<br>
+<b><font color=red>!!UN:U53/-1/1/1;   </font></b>   (get location of mine 1: v1/v2/v3)<br>
+<b><font color=red>...<br>
+!!VRv1:S99;       </font></b>    (change v1 to anything)<br>
+<b><font color=red>...<br>
+!!UN:U53/-1/-1/1;     </font></b>(get location of NEXT mine (2): v1/v2/v3)<br>
+<hr align=left>
+  It works <b><font color=red>fine<br>
+!!UN:U53/-1/1/1;    </font></b>  (get location of mine 1: v1/v2/v3)<br>
+<b><font color=red>...         </font></b>          (v1/v2/v3 are NOT modified)<br>
+<b><font color=red>!!UN:U53/-1/-1/1;     </font></b>(get location of NEXT mine (2): v1/v2/v3)<br>
+<b><font color=red>...       </font></b>            (v1/v2/v3 are NOT modified)<br>
+<b><font color=red>!!UN:U53/-1/-1/1;    </font></b> (get location of NEXT mine (3): v1/v2/v3)<br>
+<hr align=left>
+  It works <b><font color=red>fine<br>
+!!VRv1:S-1;        </font></b>   (start search from the first object on the map)<br>
+<b><font color=red>!!UN:U53/-1/-1/1;</font></b>     (get location of NEXT mine (1): v1/v2/v3)<br>
+<b><font color=red>...                 </font></b>  (v1/v2/v3 are NOT modified)<br>
+<b><font color=red>!!UN:U53/-1/-1/1;   </font></b>  (get location of NEXT mine (2): v1/v2/v3)<br>
+<b><font color=red>...              </font></b>     (v1/v2/v3 are NOT modified)<br>
+<b><font color=red>!!UN:U53/-1/-1/1;</font></b>     (get location of NEXT mine (3): v1/v2/v3)<br>
+<br>
+<br>
+To see a demonstration of how this syntax works, the following sample script may be used with a
+randomly generated XL 2 levels SoD map. It runs through all Creature banks in forward and then
+backward order.<br>
+<br>
+<b><font color=blue>Example: <br>
+<hr align=left>
+ZVSE<br></font></b>
+<br>
+<b><font color=red>!#TM1:S1/999/1/1;</font></b> set TM1 for red<br>
+<br>
+<b><font color=red>!?TM1;<br>
+!!UN:U16/-1/?v100;<br>
+!!VRv1:S-1;<br>
+!!IF:M^Found %V100 Creature Banks. Now run through all of them.^;<br>
+!!DO123/1/v100/1:P;<br>
+<br>
+!!IF:M^Put Shroud.^;<br>
+!!UN:H72/72/0/1/100;  </font></b>Close for Red<br>
+<b><font color=red>!!UN:H72/72/1/1/100; </font></b> Close for Red<br>
+<br>
+<b><font color=red>!!VRv1:S-2;<br>
+!!IF:M^Now run in backward order.^;<br>
+!!DO124/1/v100/1:P;<br>
+<br>
+!?FU123;<br>
+!!UN:U16/-1/-1/1;<br>
+!!UN:Sv1/v2/v3/0/3; </font></b> Open for Red<br>
+<b><font color=red>!!UN:Lv1/v2/v3/100;</font></b> Move a look for 100 ms<br>
+<br>
+<b><font color=red>!?FU124;<br>
+!!UN:U16/-1/-2/1;<br>
+!!UN:Sv1/v2/v3/0/3; </font></b> Open for Red<br>
+<b><font color=red>!!UN:Lv1/v2/v3/100; </font></b>Move a look for 100 ms<br>
+
+
+</td></tr></table>
+</body>
+
+</html>

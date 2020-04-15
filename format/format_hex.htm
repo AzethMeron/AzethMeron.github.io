@@ -1,0 +1,22 @@
+<html><head><LINK href="../other/styles.css" 
+type=text/css rel=stylesheet></head><body 
+background="../images/intile.jpg"><font size=2><b>FORMAT <font size=5>Hex 
+</font></b><font><a href="../other/format.htm"><U>Format List</u></a><b><font 
+size=5><br>Bit values</font><br><br>
+<table border=2 width=100% bordercolorlight=black bordercolordark=black>
+<tr><td align=center>#bit<td>value
+<script>
+function power(a)
+{
+var res=1;
+ for(i=0;i<=a-1;i++)
+  res*=2;
+return res;
+}
+for(i=0;i<=31;i++)
+ document.write("<tr><td>"+i+"<td>"+power(i));
+//document.write("<tr><td align=center colspan=2>dword 1");
+//for(i=32;i<=43;i++)
+// document.write("<tr><td>"+i+"<td>"+power(i));
+</script>
+</table>

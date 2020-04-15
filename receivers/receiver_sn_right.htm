@@ -1,0 +1,114 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">S</font><font face="Times New Roman CE" size="5">OUND </font>
+<font face="Times New Roman CE" size="6">S</font><font face="Times New Roman CE" size="5">UPPORT </font><span lang="de">
+<font face="Times New Roman CE" size="6">&nbsp;(</span>SN<span lang="de">)</span></font><span lang="de"><span lang="de"><font face="Arial" size="2"><br>
+</font></span></span><font face="Arial" size="2"><font color="#333333">RECEIVER - SEE ALSO <a href="../other/trigger_right.htm#SN">!?SN</a> TRIGGER</font></font></b>
+</p>
+
+<p><b><font face="Arial"><font size="2" color="#333333">The SN Receiver lets you 
+manage sound files at almost any type.<br>
+</font><font size="2" color="#FF0000"></font></font><font size="2" color="#333333"><font face="Arial"> </font></font></p>
+
+<p><font face="Arial" size="2">General informations:<br>
+- Paths are relative to DATA folder. <br>
+- <font color=darkgreen>I think only .wav and .82M files are supported (not tested). </font><br>
+- Sound files must be shorter than 10 seconds. Longer sounds will only play the first 10 seconds.<br>
+- Loaded files are "unloaded" when no longer required. Object object-connected sounds are likely to be loaded multiple times while loops are generally loaded once.
+- When trying to play sound, the game checks whether this soundfile is already loaded. If yes, it just runs another copy. If no, it loads the sound again. To search for the name it uses only the first 12 characters <br>
+</font><b><font size="2" color="#333333"><br>
+<br> 3.59 changed the way <font color=red>!?SN</font> trigger works. Now it is triggered the moment sound is loaded, which doesn't always happen at the same time it is played. 
+This allowed to use this receiver with many new sounds (including monster sounds during combat!) <a href="../format/format_sn.htm">Format SN</a> doesn't cover all of them.
+&nbsp;</font></b></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width=100 height="16" nowrap><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!SN</font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td height="16">
+
+<p><b>Manage sound files</p>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="45">
+  <tr>
+    <td width="13%" valign="top" height="18"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="S"></a>S</font></b></span><b><font face="Arial" size="2"><font color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%" height="18"><font face="Arial" size="2"><span lang="de"><b>
+    Get/Check/Set the sound file name to a z variable.</b></span></font> <br>
+    <font face="Arial" size="2" class=param>$ - might be z-var or ^^ constant</font><br>
+	<font face="Arial" size="2">It is recommanded way of replacing sounds.</font>
+	</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="15"><a name="pz"></a><b>
+    <font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2"><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%" height="15"><b><span lang="de"><font face="Arial" size="2">
+    Play a sound file now named $.</font></span><font face="Arial" size="2">
+    
+    </font></b><font face="Arial" size="2"><span lang="de">(see
+    <a href="../format/format_sn.htm">Format SN</a><span lang="de">)</span><br>
+    <font class=param>$ - might be z-var or ^^ constant</font><br>
+	This will trigger <a href="../other/trigger_right.htm#sn">SN trigger</a>.
+	</font>
+    </td>
+  </tr>
+</table>
+</b>
+
+<p><font face="Arial" size="2">Here is a short tour of how to change sounds for 
+objects.<br>
+For example, we may want to change a sound when we visit a learning stone.<br>
+First we need a file with a new sound. We'll use a sound file named 1.wav in 
+this example. Then we need a &quot;silent&quot; file to replace original sound. This will prevent &quot;resource not found&quot; message 
+(you may find the ZQUIET.WAV file in the data folder).<br>
+Now place some learning stones on the map and add an ERM script:<br>
+***************<br>
+<b><font color="#FF0000">ZVSE</font></b><br>
+<b><font color="#FF0000">!?OB100;</font></b> visit learning stone<br>
+<b><font color="#FF0000">!!VRz10:S^../data/1.wav^;</font></b> external WAV or 
+82M file<br>
+<b><font color="#FF0000">!!SN:Pz10;</font></b> Play it now !<br>
+<br>
+<b><font color="#FF0000">!?SN;</font></b> sound trigger<br>
+<b><font color="#FF0000">!!SN:S?z-10;</font></b> store a sound file name<br>
+<b><font color="#FF0000">!!VRi:S0; !!VRz-9:S^Gazebo.wav^; !!VRi&amp;z-10=z-9:S1;</font></b> 
+learning stone?<br>
+<b><font color="#FF0000">!?SN&amp;i=1;</font></b> continue if learning stone<br>
+<font color="#FF0000"><b>!!VRz-10:S^ZQUIET.WAV^;</b> </font>nothing just silence<br>
+<b><font color="#FF0000">!!SN:Sz-10;</font></b> shut up !</font></p>
+
+<b>
+<p><font face="Arial" size="2">Some sounds won't trigger !?SN</b>, for example button.wav.</font></p>
+
+<p><font face="Arial" size="2"><b>Creature sounds easily explained: </b><br>
+Every creature has 5 corresponding sounds, first 4 letters of those represent creature type. 
+Next four letters stands for different actions: <br>
+- attk - attack <br>
+- dfnd - defend (being attacked while defending) <br>
+- kill - happens when stack wiped out <br>
+- move - moving sound <br>
+- wnce - receive damage, unless defending <br>
+In brief tests, all names of in-game creature sounds came up lower-case, but you should check this on your own with every modified creature. <br>
+
+</font></p>
+
+</body>
+
+</html>

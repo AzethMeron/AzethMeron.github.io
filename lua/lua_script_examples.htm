@@ -1,0 +1,94 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<a name=introduction></a><font face="Times New Roman CE"><b><font size=6><font size=7>L</font>UA: SCRIPT EXAMPLES</font></b></font></p>
+<font size=2>
+<font size=3><b>Get random file matching given mask</b></font><br>
+Wrapper for WoG path.find() function that allows to easily get random file matching given mask. Both input and output values are relative to /Mods/ directory.
+<pre>GetRandFile = function(filemask)
+	-- Initialising temp values
+	local i = 1 -- tables in Lua should start with index 1
+	local filetab = {}
+	-- Getting all matching files into array
+	for file in path.find("Mods/"..filemask,false) do
+		filetab[i] = file
+		i = i+1
+	end
+	-- If found none, return nil
+	if filetab == nil then
+		return nil
+	end
+	-- Getting Mods/ dir
+	local dir = nil
+	for tmp in path.find("Mods",true) do
+		dir = tmp
+	end
+	if dir == nil then
+		return nil
+	end
+	-- Returning given string
+	local output = filetab[math.random(#filetab)]
+	output = string.gsub(output,dir,"")
+	return (output)
+end</pre>
+<br>
+<font size = 3><b>Shuffle combat music</b></font> <br>
+Uses GetRandFile() located in "Scripts/Library.lua" file and some path-containing variables from "Scripts/Paths.lua". 
+<pre>local Lib = require "Library"
+local Paths = require "Paths"
+
+SetMusic = function(index,filename) 
+	if filename == nil then
+		print("NewMusic.lua: Tried to set 'nil' music")
+		return nil
+	end
+	correctedname = string.gsub("..\\"..Paths.mods..filename,".mp3","")
+	MP:S(index,correctedname)
+end
+
+ParseMusicTable = function(musictable)
+	for index,filemask in pairs(musictable) do
+		local filepath = Lib.GetRandFile(filemask)
+		SetMusic(index,filepath)
+	end
+end
+
+ShuffleMusicCombat = function()
+	local combat_table = { [41] = (Paths.mp3.."/combat/combat*.mp3"),
+	[42] = (Paths.mp3.."/combat/combat*.mp3"),
+	[43] = (Paths.mp3.."/combat/combat*.mp3"),
+	[44] = (Paths.mp3.."/combat/combat*.mp3") }
+	ParseMusicTable(combat_table)
+end</pre>
+<br>
+<font size = 3><b>Mute all given sounds, save names of others to LuaLog.txt: </b></font> <br>
+Useful for researching unlisted sounds for <a href="../receivers/receiver_sn.htm" target=sommaire>SN receiver</a>.
+<pre>internal_sounds_table_objects = {
+	"newday.wav",
+	"newweek.wav",
+	"newmonth.wav",
+	"Danger.wav",
+	"flagmine.wav",
+	"view.wav"
+}
+
+SN.first? = function() 
+	local played_sound = SN:S(?z)
+	for index,internal in pairs(internal_sounds_table_objects) do
+		if played_sound == internal then
+			SN:S("ZQUIET.WAV") -- SILENCE!
+			return true
+		end
+	end
+	print(played_sound) -- for research purposes
+end</pre>
+</font></font>
+</body>
+
+</html>

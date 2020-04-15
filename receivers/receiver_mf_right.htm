@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">M</font><font face="Times New Roman CE" size="5"><span lang="de">ONSTER</span> </font>
+<font face="Times New Roman CE" size="6"><span lang="de">F</span></font><font face="Times New Roman CE" size="5"><span lang="de">IGHTS</span> </font>
+<font face="Times New Roman CE" size="6"><span lang="de">
+&nbsp;(</span>M<span lang="de">F)</span></font><span lang="de"><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b><font face="Arial" size="2" color="#333333"><span lang="de">R</span>eceiver 
+for a stack taking physical damage<br>
+</font></b><font face="Arial" size="2">See
+<a target="_self" href="../other/trigger_right.htm#mf">M<span lang="de">F</span>
+<span lang="de">Trigger</span></a></font></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="21%" height="16" nowrap><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!<span lang="de">MF</span></font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td width="100%" height="16">
+
+<p><b>Receiver for a stack taking physical damage.</b></p>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="45">
+  <tr>
+    <td width="13%" valign="top" height="18"><a name="D"></a><a name="A">
+    <span lang="de"><b><font face="Arial" size="2" color="#FF0000">D</font></b></span></a><b><font face="Arial" size="2"><a name="A"><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="87%" height="18"><span lang="de"><b><font face="Arial" size="2">A</font></b></span><b><font face="Arial" size="2"> 
+    damage</font></b></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="15"><a name="E"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="A">E</a></font></b></span><b><font face="Arial" size="2"><a name="A"><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="87%" height="15"><b><font face="Arial" size="2"><span lang="de">E</span>nable 
+    (1)/disable(0) taking a damage</font></b></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="15"><a name="F"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="A">F</a></font></b></span><b><font face="Arial" size="2"><a name="A"><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="87%" height="15"><span lang="de"><b><font face="Arial" size="2">A</font></b></span><b><font face="Arial" size="2"> 
+    corrected damage</font></b></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="15"><a name="N"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="A">N</a></font></b></span><b><font face="Arial" size="2"><a name="A"><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="87%" height="15"><span lang="de"><b><font face="Arial" size="2">A</font></b></span><b><font face="Arial" size="2"> 
+    stack number (0...41)</font></b></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="15"><a name="w"></a><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">W</font></b></span><b><font face="Arial" size="2"><a name="A"><font face="Arial" size="2" color="#8B008B">$</font></a><font face="Arial" size="2" color="#8B008B"><span lang="de">;</span></font></font></b></td>
+    <td width="87%" height="15"><span lang="de"><b><font face="Arial" size="2">
+Get/check a type of attacker</b><br>
+$ = 2 - tower shot<br>
+&nbsp;&nbsp;= 1 - moat<br>
+&nbsp;&nbsp;= 0 - other<br>
+</b></td>
+  </tr>
+</table>
+
+<p><font face="Arial" size="2"><u><b>Comments:</b></u><br>
+You may check a stack number to get detailed info on this stack.<span lang="de">
+</span>Damage and a corrected damage keep the same value on trigger<br>
+switching (first !?MF1 trigger section). We recommend not to change D$<span lang="de">
+</span>value for it is the initial damage that the game wants to apply to the<span lang="de">
+</span>stack and if you have more than one !?MF1; trigger section, this<span lang="de">
+</span>command may be used to find the initial damage value. Instead you can<span lang="de">
+</span>set a new damage value with the F$ command. Anyway, the real damage that<span lang="de">
+</span>is used by the game after the trigger works out is taken from the F$<span lang="de">
+</span>command. You may ignore the damage completely by using the E$ command<span lang="de">
+</span>(it is enabled by default).<br>
+<br>
+To simulate a block ability with ERM you can use a !?MF1; trigger,<span lang="de">
+</span>calculate a chance to work out, disable damage with !!MF:E0; command,<span lang="de">
+</span>show the block animation with !!BM:Q84; (set a bit &quot;took a defen<span lang="de">c</span>e<span lang="de">
+</span>action&quot;, if you want) and add a corresponding message to the battle<span lang="de">
+</span>log with !!MM:Sz#; command</font>.</p>
+
+</body>
+
+</html>

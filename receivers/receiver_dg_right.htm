@@ -1,0 +1,50 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>D<font size=5>IGGING FOR</font> G<font size=5>RAIL</font> (DG)</font><br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Used for commands regarding digging for grail. <br>
+Use only within <a href="../other/trigger_right.htm#dg" target=principal>!?DG</a> trigger.<br>
+<br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+	
+	<tr>
+	<td nowrap valign=top><font class=ermtext>!!DG:<font class=param>XXXX</font>;</font>
+	<td width=100% valign=top>Digging for grail</td>
+	<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+	
+	<tr>
+	<a name="G"></a>
+    <td valign=top><font class=ermtext>G<font class=param>$1</font>; <br>
+    <td><b>Get/check/set if player has found Grail</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> = 0 grail not found<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> = 1 grail found<br>
+	
+	<tr>
+	<a name="P"></a>
+    <td valign=top><font class=ermtext>P<font class=param>$1</font>/<font class=param>$2</font>/<font class=param>$3</font>; <br>
+    <td><b>Get/check/set coordinates</b><br>
+   
+	<tr>
+	<a name="R"></a>
+    <td valign=top><font class=ermtext>R<font class=param>#1</font>;
+    <td><b>Enable/disable standard reaction</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> = 0 disabled <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> = 1 enabled <br>
+	
+	</table><br><br>
+	<font color=black> </b>
+Example:
+<pre><font color=red>!?DG;</font>
+<font color=purple>!!DG</font>:G?y-1; [found Grail?]
+<font color=purple>!!FU</font>&y-1=0:E; [exit if not found]
+<font color=purple>!!DG</font>:R0; [no standard reaction]
+<font color=purple>!!VR</font>z1:S^UltimateArtifact.wav^;
+<font color=purple>!!SN</font>&1000:Pz1; [play Grail sound, if it's the player's hero]
+<font color=purple>!!IF</font>&1000:M^Congratulations! After spending many hours digging here, your hero has uncovered A SKELETON!^; [show message]
+<font color=purple>!!HE</font>-1:C2/56/1/1; [give 1 skeleton]</pre>
+</font>
+</body>
+
+</html>

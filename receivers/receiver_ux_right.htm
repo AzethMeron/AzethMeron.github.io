@@ -1,0 +1,58 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>U<font size=5>NIVERSAL</font><font size=5> EXTENDED</font> (UX)<br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Used for universal commands that make changes to the map and/or game.
+</font></b><br><br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+      <tr>
+        <td nowrap valign=top><font class=ermtext>!!UX:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top>Universal commands. These commands relate to many different things.</td>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+
+  <tr><a name="G"></a>
+    <td valign=top><font class=ermtext>G<font class=param>#</font>/<font class=param>$</font>;
+    <td><b> Get/check/set town-specific grail effect state</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - Town (See <a href="../format/format_t.htm">Format T</a>)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - variable to store/set state <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ = 1 enabled <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ = 0 disabled <br>
+	For example, UX:G8/0 will disable the Conflux grail effect of learning all spells.
+
+  <tr><a name="K"></a>
+    <td valign=top><font class=ermtext>K<font class=param>#</font>/<font class=param>?$</font>;
+    <td><b>Check if key is pressed right now</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - key code (See <a href="../format/format_vk.htm">Format VK</a>)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - variable to store the key state <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ = 1 key pressed <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ = 0 key NOT pressed
+	
+   
+  <tr><a name="M"></a>
+    <td valign=top><font class=ermtext>M<font class=param>$1</font>/<font class=param>$2</font>;
+    <td><b>Get/check/set mouse coordinates</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - X coordinate<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - Y coordinate<br>
+	<font class=bnotes>Comment</font>:<br>
+	The coordinates may be negative or more than 800,600 if the mouse is outside the Heroes window.
+	 
+  <tr><a name="S"></a>
+    <td valign=top><font class=ermtext>S<font class=param>#</font>/<font class=param>$</font>;
+    <td><b>Get/check/set a big brunch of global (internal) strings</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - string index (See <a href="../format/format_is.htm">Format IS</a>)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - string, z-variable or z-variable index. 0 restores default. <br>
+  
+  <tr><a name="T"></a>
+    <td valign=top><font class=ermtext>T<font color=purple>$</font>;
+    <td><b>Get current time or show dialog with time delta</b><br>
+	Returns time that ellapsed after the Windows was started in milliseconds when used with get (or check) syntax. When used with set syntax it subtracts the value passed as parameter from the current time and shows the differance in a message.<br>
+	<br>Example <br>
+	!!UN:T?y10;<br>
+	[some calculations that take much time...]<br>
+	!!UN:Ty10;<br>
+  </table><br><br>
+</body>
+
+</html>

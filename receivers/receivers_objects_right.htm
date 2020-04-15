@@ -1,0 +1,498 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Object Receivers</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<h1 align="center"><span style="text-transform: uppercase">
+<font face="Times New Roman CE">M<font size="5">ISCELLANEOUS</font>
+<br>
+O<font size="5">bject</font>
+<strong>R<font size="5">ECEIVERS </font>
+</strong></font></span>
+</h1>
+
+<h1 align="left"><font class="Helvetica32" face="Arial" size="2"><b>Many of the
+map objects have their own specific receivers that can be used to change, set up
+or check or store (in variables) their properties. No check for the object's
+existence is made at map startup, but one is made when the command is executed.
+When you see the &quot;Number&quot; of the object, that means that you can set
+the number of this object from 0 to 31. This number is used when hero visits the
+object as a check value (visited/not).</b><br>
+<br>
+Note that you can use indirect syntax to refer ANY of this receivers, for example <br>
+&nbsp;&nbsp;!!MN998:XXXX<br>
+will execute XXXX commands for mine with location stored in v998/v999/v1000.
+</font>
+</h1>
+
+</font>
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!MN</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top">
+    <p align="justify"><font face="Arial" size="2"><b><font color="#FF0000">!!MN</font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3</font><font color="#FF0000">:</font></b>
+      <a name="Mine"><b>Mine</b> </a> at x,y,l
+      coordinates<br>
+      (Mines are Types 53 and 220)<br>
+      <b><font color="#FF0000"><br>
+      O</font><font color="#800080">$</font></b> - Set/check an owner<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0...7= See
+    <a href="../format/format_e1.htm">Format E1</a><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2=current player<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1=nobody's<br>
+      <b><font color="#FF0000">
+      O</font><font color="#800080">$</font><font color="#FF0000">/1</font> </b> the same as MN:O$ but without redrawing <br>
+      <br>
+      <b><font color="#FF0000">R</font><font color="#800080">$</font></b> - Set/check produced resource type (0...6). See
+    <a href="../format/format_r.htm">Format<span lang="de">_</span>R</a>.<b><font color="#FF0000"><br>
+      R</font><font color="#8B008B">$</font><font color="#FF0000">/1 </font></b> the same as MN:R$ but without redrawing <font color="#FF0000"><b><br>
+      <br>
+      M</b></font><b><font color="#800080">#1/$2</font><font color="#FF0000">/</font><font color="#800080">$3</font></b> -
+      Change/check guards<br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>#1</b></font> - Number of slot (0...7)<br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>$2 </b></font> - Monsters type (-1 means free slot). See
+    <a href="../format/format_c.htm">Format
+      C</a>.<br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>$3</b></font> - Number of Monsters<br>
+      <font color="#000000"><b><u>Comments:</u></b></font><br>
+      You can't set guards on a mine that doesn't have an owner unless the mine
+      is an abandoned mine.</font> <br>
+    <br>
+          <font SIZE="2" face="Arial"><span lang="de"><b>Note:</b> </span>
+    if someone wishes to loop through all mines, (s)he should
+    <span lang="de">u</span>se the &quot;no redraw&quot;
+          option, or else the loop will take longer than other, comparable
+          loops<span lang="de"> </span>(for example, a loop through all heroes)</font></td>
+  </tr>
+  <tr>
+    <td height="80" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SC</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="80" width="354" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">!!SC</font><font color="#800080">x</font><font color="#FF0000">/</font><font color="#800080">y</font><font color="#FF0000">/</font><font color="#800080">l:</font></b>
+      <a name="Scholar"><b>S</b><b>cholar</b> </a> at x,y,l
+      coordinates<br>
+      (Scholars are Type 81)<br>
+      <br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">T</font><font color="#8B008B">$</font></b> - Type of bonus:
+      0=primary skill, 1=secondary skill, 2=spell<br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">P</font><font color="#8B008B">$</font> <font color="#FF0000">
+      </font> </b> - Primary skill index.
+      See <a href="../format/format_pk.htm">Format PK</a> </font><font face="Arial" size="2"><br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">S</font><font color="#8B008B">$</font></b> - Secondary skill index.
+      See </font><font face="Arial" size="2"><a href="../format/format_ss.htm">Format SS</a>.<br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">L</font><font color="#8B008B">$</font></b> <font color="#FF0000"> </font> - Spell index. See </font><font face="Arial" size="2">
+    <a href="../format/format_sp.htm">Format SP</a>.</font></td>
+  </tr>
+  <tr>
+    <td height="144" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!CH</font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="144" width="354" valign="top"><font face="Arial" size="2">
+      <b><font color="#FF0000">!!CH</font><font color="#800080">x</font><font color="#FF0000">/</font><font color="#800080">y</font><font color="#FF0000">/</font><font color="#800080">l</font>:</b>
+      <a name="Chest"><b>Treasure Chest</b> </a> at x,y,l coordinates<br>
+      (Treasure Chests are Type 101)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">S</font><font color="#8B008B">$</font></b> - Type of bonus Art.=1 or
+      Gold / Experience=0<br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">A</font><font color="#8B008B">$</font></b><font color="#8B008B">
+      </font> - Artifact number (</font><font face="Arial" size="2"><a href="../format/format_a1.htm">Format A1</a>)<br>
+      &nbsp;&nbsp; <b> <font color="#FF0000">B</font><font color="#8B008B">$</font></b> - Bonus as
+      gold/experience to $<br>
+      $ may be 0...15<br>
+      gold = $*500<br>
+      experience =$*500-500<br>
+      If $=0, that means that you get 0 gold and -500 exp.<br>
+      As you can see, you can give a hero up to 7500 gold or 7000 exp.</font></td>
+  </tr>
+  <tr>
+    <td height="64" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="64" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Warrior Tomb">Warrior's
+      Tomb</a></b> at x,y,l coordinates<br>
+      (Warrior's Tombs are Type 108)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#8B008B">A</font><font color="#FF0000">$</font></b> -
+      Artifact number (</font><font face="Arial" size="2"><a href="../format/format_a1.htm">Format A1</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B" size="2" face="Arial">S</font><font size="2" face="Arial" color="#FF0000">$</font></b> - has
+      artifact=1 or not=0</font></td>
+  </tr>
+  <tr>
+    <td height="48" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!KT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="48" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!KT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Knowledge Tree">Tree of Knowledge</a></b>
+      at
+      x,y,l coordinates<br>
+      (Trees of Knowledge are Type 102)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">S</font><font color="#8B008B">$</font></b> -
+      Type of tree:<br>
+      &nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial" size="2">
+      =0 (Free)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 (2000 gold)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =2 (10 gems)<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font></b> -
+      Number of the Knowledge Tree (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!FR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!FR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Campfire">Campfire</a></b> at
+      x,y,l coordinates<br>
+      (Campfires are Type 12)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">B</font><font color="#8B008B">$1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font></b> -
+      Bonus type ($1) (<a href="../format/format_r.htm">Format R</a>) and value ($2)<br>
+      <b><u>Comments:</u></b><br>
+      Campfires always have a resource as well as gold. So if the value of $2 is
+      5, it will have 5 of the resource ($1) and 500 gold.</font></td>
+  </tr>
+  <tr>
+    <td height="48" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!LN</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="48" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!LN</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Lean">Lean</a>  To</b> at
+      x,y,l coordinates<br>
+      (The Lean To is Type 38)<br>
+      <br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>B$1/$2</b></font> - Bonus type ($1)
+      (<a href="../format/format_r.htm">Format R</a>) and value ($2)<br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>N$</b></font> - Number of the Lean
+      To (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!ST</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!ST</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Learning Stone">Learning Stone</a></b> at
+      x,y,l coordinates<br>
+      (Learning Stones are Type 100)<br>
+      <br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>N$ </b></font> - Number of the Learning Stone (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="80" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WG</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="80" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WG</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Wagon">Wagon</a></b> at x,y,l
+      coordinates<br>
+      (Wagons are Type 105)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">S</font><font color="#8B008B">$</font></b> -
+      Has bonus=1 or not=0<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">B</font><font color="#8B008B">$</font></b> -
+      Bonus is artifact=1 or resource=0<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">A</font><font color="#8B008B">$</font></b> -
+      Artifact number. See </font><font face="Arial" size="2">
+    <a href="../format/format_a1.htm">Format A1</a><br>
+      &nbsp;&nbsp; <b><font color="#FF0000">R</font><font color="#8B008B">$1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font></b> -
+      Resource type ($1) and value ($2). See <a href="../format/format_r.htm">Format R</a>.</font></td>
+  </tr>
+  <tr>
+    <td height="61" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SK</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="61" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SK</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2"> <b> <a name="Skeleton">Skeleton</a>
+      (Corpse)</b> at x,y,l
+      coordinates<br>
+      (Skeletons are Type 22)<br>
+      <br>
+      &nbsp;&nbsp;<font color="#FF0000"> <b>A$</b></font> - Artifact number. See </font><font face="Arial" size="2">
+    <a href="../format/format_a1.htm">Format A1</a><br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font></b><font color="#FF0000">
+      </font> - Number of the Skeleton (0...31)<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">S</font><font color="#8B008B">$</font></b> -
+      Has artifact=1 or not=0</font></td>
+  </tr>
+  <tr>
+    <td height="48" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SP</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="48" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SP</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Magic Spring">Magic Spring</a></b> at
+      x,y,l coordinates<br>
+      (Magic Springs are Type 48)<br>
+      <br>
+      &nbsp;&nbsp; <font color="#FF0000"><b>S$</b></font> - Loaded=1 or empty=0<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font></b><font color="#8B008B">
+      </font> - Number of the Magic Spring (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WM</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WM</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2"><font color="#FF0000">
+      </font><a name="Water Wheel"><b>Water Wheel</b> </a> at
+      x,y,l coordinates<br>
+      (Water Wheels are Type 109)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">B</font><font color="#8B008B">$</font></b> -
+      Gold value</font></td>
+  </tr>
+  <tr>
+    <td height="48" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SW</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="48" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SW</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Lake of Swan">Swan Pond</a></b> at x,y,l coordinates<br>
+      (Swan Ponds are Type 14)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">B</font><font color="#8B008B">$</font></b> -
+      Value of luck 1...3<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font><font color="#FF0000">
+      </font></b> - Number of the Lake (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!MT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!MT</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Obelisk">Obelisk</a></b>
+      at x,y,l coordinates<br>
+      (Obelisks are Type 57)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font></b> -
+      Number of the Obelisk (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="31" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!GD</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="31" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!GD</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Mystical Garden">Mystical Garden</a></b> at
+      x,y,l coordinates<br>
+      (Mystical Gardens are Type 55)<br>
+      <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">B</font><font color="#8B008B">$</font></b> -
+      Type of resource [usually = 5]. See <a href="../format/format_r.htm">Format R</a> <br>
+      &nbsp;&nbsp; <b><font color="#FF0000">T</font><font color="#8B008B">$</font>
+      </b> - Bonus type is resource=1 or gold=0<br>
+      &nbsp;&nbsp; <b><font color="#FF0000">N</font><font color="#8B008B">$</font></b> -
+      Number of the Mystical Garden (0...31)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!ML</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!ML</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <b><a name="Windmill">Windmill</a></b> at x,y,l
+      coordinates<br>
+      (Windmills are Type 112)<br>
+      <br>
+      <b><font color="#FF0000">B</font><font color="#8B008B">$1</font><font color="#FF0000">/$2</font></b> -
+      Resource type ($1) and value ($2). See <a href="../format/format_r.htm">Format R</a></font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!DW</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><font face="Arial" size="2"><b><font color="#FF0000">!!DW</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">/</font><font color="#8B008B">#3</font></b>:
+      <b><a name="Monster dwelling">Monster dwelling</a></b> at x,y,l
+      coordinates<br>
+      (Monster Dwellings are Types 17 and 20, See
+    <a href="../format/format_cg.htm">Format
+      CG</a>)<br>
+      <b><font color="#FF0000"><br>
+      M</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">/</font><font color="#8B008B">$3</font></b> - set the monster to hire<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Slot (0...3) - you can hire up to 4 different monsters at one
+      dwelling.<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Type of the monster (-1=disable this slot)
+      (<a href="../format/format_c.htm">Format C</a>)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#3</font></b> = Number to hire<b><font color="#FF0000"><br>
+      <br>
+      G</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">/</font><font color="#8B008B">$3
+      </font></b> - set the monster as a Guard<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Slot (0...6)<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Type of the monster (-1=no monster there). See
+      </font><font face="Arial" size="2"><a href="../format/format_c.htm">Format C</a><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3 </b></font> = Number of Monsters<br>
+      <b><font color="#FF0000"><br>
+      O</font><font color="#8B008B">$</font></b> - Set up an owner (-1=nobody's)<br><br>
+<b>O$/1;</b> pass control over a dwelling to another player<br>
+&nbsp;&nbsp;  <b>$</b> = is a new owner.<br>
+&nbsp;&nbsp;  The second parameter is a dummy but use 1 there.<br>
+<br>
+&nbsp;&nbsp;  This syntax chenges the owner plus calls an internal structure to adjust all growth numbers for the previous and a new owner.<br>
+&nbsp;&nbsp;  Should work in MP mode.
+</font><p>
+    <font face="Arial" size="2"><b>Note:</b></font><font face="Arial" color="#000080" size="2"> </font>
+    <font face="Arial" size="2">if someone wants to set up a dwelling to sell more than one creature
+    type, none of the creatures should be level 1, or there will be trouble
+    because level 1 creature are normally handed out for free&nbsp;</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WH</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!WH</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">:
+      <b><a name="Witch Hut"> Witch
+      Hut</a></b> at x,y,l coordinates.<br>
+      (Witch Huts are Type 113)<br>
+      <br>
+      Command <font color="#800080"><b> S$</b></font> can set/check/get the skill to 0...27 (<a href="../format/format_ss.htm">Format
+      SS</a>)</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SY</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SY</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:
+      </font></b><font face="Arial" size="2"><a name="Shipyard"><b>Shipyard</b> </a> at x,y,l
+      coordinates<br>
+      (Shipyards are Type 87)<br>
+      <br>
+      <b><font color="#FF0000">O</font><font color="#8B008B">$</font></b> : Set/check/get the owner (0...7,-1). See </font>
+      <font face="Arial" size="2"><a href="../format/format_e1.htm">Format E1</a></font>
+      <p><font face="Arial" size="2"><b><font color="#FF0000">P</font><font color="#8B008B">$1</font><font color="#FF0000">/</font><font color="#8B008B">$2
+      : </font></b>Set the point on the map where the boat will
+      be placed if you buy it. By default this is x+1
+      and y+1 from right bottom corner of the
+      shipyard. You can place it not only on water :-)<br>
+      If the point is out of the map, you cannot buy a boat.</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!GR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!GR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:
+      </font></b><font face="Arial" size="2"><a name="Garnisson"><b>Garrison</b></a>
+      </font><font face="Arial" size="2">at x,y,l coordinates<br>
+      (Garrisons are Types 33 and 219) </font>
+      <p><font face="Arial" size="2"> <b><font color="#FF0000">O</font><font color="#800080">$</font></b>
+      : Set/check/get the owner
+      (0...7,-1). See </font><font face="Arial" size="2">
+      <a href="../format/format_e1.htm">Format E1</a>.</font></p>
+      <p><font face="Arial" size="2"><b><font color="#FF0000">G</font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">#3</font></b>
+      : Set/check/get the monster as a Guard<br>
+      &nbsp;&nbsp; <b>
+      <font color="#800080">#1</font> </b> = Slot (0...6)<br>
+      &nbsp;&nbsp; <b>
+      <font color="#800080">#2</font> </b> = Type of the monster (-1=no monster there). See </font><font face="Arial" size="2">
+      <a href="../format/format_c.htm">Format C</a><br>
+      &nbsp;&nbsp; <b>
+      <font color="#800080">#3</font> </b> = Number of Monsters</font></p>
+      <p><font face="Arial" size="2"><b><font color="#800080">F</font><font color="#FF0000">$</font></b>
+      : Set/check/get if you can delete the guards
+      (1=no, 0=yes).</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2">
+      <a name="Magic shrine"><b>Magic shrine</b></a> at x,y,l
+      coordinates<br>
+      (Magic Shrines are Types 88, 89 and 90)<br>
+      <br>
+      <b><font color="#FF0000">S</font><font color="#8B008B">$</font></b> : Set/get/check the spell number (see </font><font face="Arial" size="2">
+    <a href="../format/format_sp.htm">Format SP</a>)
+      f</font><font face="Arial" size="2">or any kind of Shrine.</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!UR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b>
+
+    </td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!UR</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font></b><font face="Arial" size="2" color="#FF0000"><b>
+      </b></font><font face="Arial" size="2"> at x,y,l
+      coordinates- <b><a name="University">University<br>
+      </a></b>(Universities are Type 104)<br>
+      <br>
+      <b><font color="#FF0000">S</font><font color="#800080">$1</font><font color="#FF0000">/</font><font color="#800080">$2</font><font color="#FF0000">/</font><font color="#800080">$3</font><font color="#FF0000">/</font><font color="#800080">$4</font></b><font color="#800080">
+      </font> are the skills that will be offered. See </font><font face="Arial" size="2">
+    <a href="../format/format_ss.htm">Format SS</a>.<br>
+ You can now place a new university correctly with the UN:I
+      command and
+      set the skills offered with the UR receiver.</font></td>
+  </tr>
+  <tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SG</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td height="32" width="354" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!SG</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:
+      - </font></b><font face="Arial" size="2"><a name="Sign"><b>Sign</b> </a> or <b> bottle</b> at x,y,l
+      coordinates.<br>
+      (Signs are Type 91. Bottles are Type 59)<br>
+      <br>
+      For Sign (t=91, terrain dependable) or
+      Bottle (t=59) you can set any message.&nbsp;<br>
+ M#,
+      M^...^, M-1 - restore the default message. When placed on the map the
+      message is any from default list.</font></td>
+  </tr>
+<tr>
+    <td height="32" width="133" valign="top">
+<b><font face="Arial" size="2" color="#FF0000">
+!!CB<font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">/</font><font color="#8B008B">#3</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></b></td>
+
+<td height="32" width="354" valign="top">
+<b><font face="Arial" size="2" color="#FF0000">
+!!CB<font color="#8B008B">#1</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font> - </font></b>
+<font face="Arial" size="2"><a name="cbank"><b>Creature Bank</a> at x,y,l coordinates.</b><br>
+<br>
+Commands:<br>
+&nbsp;&nbsp;
+
+<b><font color=red>M<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font></font></b>
+
+ - set/get/check a bonus creature type $1 and number $2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;        The number of bonus creatures should be >0 and <128.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;        To remove bonus creatures, set it to type -1 and number 0.<br>
+&nbsp;&nbsp;
+<b><font color=red>
+G<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font></font></b>
+ - set/get/check a guard creature in slot #1 (0...7), to type $2 and number $3.<br>
+&nbsp;&nbsp;
+<b><font color=red>R<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font></font></b>
+ - set/get/check a resource bonus. Resource type #1 and amount $2. You may set all 7 resources simultaneously.<br>
+&nbsp;&nbsp;
+
+<b><font color=red>T<font color=darkmagenta>$</font></font></b>
+ - set/get/check whether CrBank is taken already (1) or not yet (0). Note, that if you reset a bank to not taken (set to 0), you still should set at least one guard stack unless you want the next hero that visits to get the treasure for free.<br>
+&nbsp;&nbsp;
+<b><font color=red>V<font color=darkmagenta>$</font></font></b> - set/check/get a word of visiting of a player. This is a bit mask, so red is 1, blue is 2, tan is 4, green is 8 and so on.<br>
+<br>
+  Artifact bonus.<br>
+&nbsp;&nbsp;<b>
+<font color=red>A1<font color=darkmagenta>/</font>$</font></b>
+
+ - get/check number of artifacts in the bonus list (you cannot set it).<br>
+&nbsp;&nbsp;
+
+<b><font color=red>A2<font color=darkmagenta>/</font>$</font></b>
+ - get/set/check an artifact $ at position # (0...) in the bonus list.<br>
+&nbsp;&nbsp;
+
+<b><font color=red>A3<font color=darkmagenta>/</font>$</font></b>
+ - add an artifact $ to the end of the bonus list.<br>
+&nbsp;&nbsp;
+
+<font color=red><b>A4<font color=darkmagenta>/</font>$</font></b>
+ - remove artifact at position $ (0...) in the bonus list.<br>
+<i><b>Comments</b></i>.<br>
+  You can make an almost unlimited list of artifacts for any Creature Bank.<br>
+  You cannot set a scroll as an artifact; the game will treat it wrong and then crash.<br>
+  The CB receiver should also work with Dragon Utopia, Crypt, Derelict Ship, and Shipwreck.<br>
+
+
+</td>
+  </tr>
+</table>
+
+<p><b><u><font face="Arial" size="2">Comments:</font></u></b></p>
+
+<p><font face="Arial" size="2">In most cases it is inadvisable to try to set up
+objects using an immediate instruction (!#) at map start-up rather than using a
+standard receiver that follows a trigger. This is because these object setup
+commands often don't work as immediate instructions, or worse, will cause the
+map to crash.</font></p>
+
+<p><font face="Arial" size="2">Now you can not only set but also get the string
+parameters. You can use it when M command is used to set name/message.<br>
+<b><font color="#0000FF">
+Example:</font></b>
+<font color="#008000">
+<br>
+</font><font color="#FF0000">
+<b>
+!!IFv10:S5;</b><br>
+<b>
+!!SG4/3/0:M1/v10;</b> set sign message to string var z[v10] or z5<br>
+<b>
+!!SG4/3/0:M1/?z10;</b> get current sign message to z10 string var</font></font></p>
+
+<p><font face="Arial" size="2">Be careful: don't use OB command with an object
+with 2 entrance (yellow case)<br>
+  When you place an object, it will set up only first right bottom
+entrance square that will be met. Then you should manually copy a
+control word from that square to all other yellow squares of this
+object.<br>
+<br>
+</font>
+<font face="Arial" size="2"><b>How I check if AI visit objects?</b> <br>
+When any hero visits an object the AI flag is stored in flag1000. So you can use
+it like here: <br>
+<b>
+<font color="#FF0000">
+!?OB...; <br>
+!!IF&amp;1000:M^Player^;<br>
+!!IF&amp;-1000:M^AI^; <br>
+</font></b></font>
+</p>
+
+</body>
+
+</html>

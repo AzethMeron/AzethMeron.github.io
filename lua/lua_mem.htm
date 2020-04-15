@@ -1,0 +1,103 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<a name=introduction></a><font face="Times New Roman CE"><b><font size=6>LUA: MEMORY READ/WRITE</font></b></font></p>
+<font size=2>
+<pre>
+mem.u1[address] - unsigned integer 1 byte
+mem.u2 - unsigned 2 bytes
+mem.u4 - unsigned 4 bytes
+mem.u8 - unsigned 8 bytes
+mem.i1 - unsigned 1 byte
+mem.i2 - unsigned 2 bytes
+mem.i4 - unsigned 4 bytes
+mem.i8 - unsigned 8 bytes
+mem.r4 - real number, 4 bytes
+mem.r8 - real number, 8 bytes
+mem.pchar
+mem.EditPChar
+mem.EditConstPChar
+mem.DynStr - standard Heroes dynamic string
+
+
+Dll usage example:
+mem.dll.kernel32.SetCurrentDirectory("c:/")
+mem.dll[AppPath.."zvslib1.dll"]._AboutZvslib1()
+
+mem.LoadDll(path, calling_conversion)
+E.g. mem.LoadDll("kernel32.dll").SetCurrentDirectory("c:/")
+
+mem.GetProcAddress(dll, proc)
+
+
+mem.call(address, calling_conversion, params...)
+ calling_conversion: 0 = stdcall or cdecl, 1 = thiscall, 2 = fastcall
+Alternative form:
+mem.call{p = address, cc = calling_conversion, params..., ret = "i2"}
+ "ret" parameter is optional, "i4" is assumed by default. Other possible values:
+ ret = true  -- convert to boolean
+ ret = ""  -- convert to string
+ ret = <structure class>  -- create a structure from returned address
+
+mem.malloc(size)
+mem.free(p)
+mem.realloc(p, size)
+mem.new(size, f, ...)
+
+mem.copy(dest, src, count)
+
+mem.fill(dest, n, c)
+
+
+Hooks:
+
+HookData
+properties:
+ EAX, AX, AL, AH, EBX, ... 
+ FLAGS, ZF, CF, ...
+ (all are also available in lower case)
+methods: 
+ push(val)
+ pop()
+ popu()
+ ret(n)
+ getparams(nreg, nstack, [stack_start])
+
+
+mem.autohook(ptr, f, [size])
+ f(HookData, retaddr)
+ return true to supress jump to standard code
+
+mem.autohook2(ptr, f, [size])
+ f(HookData, retaddr)
+ return true to supress jump to standard code
+
+mem.hookfunction(ptr, nreg, nstack, f, [size])
+ f(HookData, original_function, params...)
+
+mem.hookcall(ptr, nreg, nstack, f)
+ f(HookData, original_function, params...)
+
+mem.hook(ptr, f, [size])
+ f(HookData)
+
+mem.jmphook(ptr, f, [size])
+ f(HookData)
+
+mem.nop(ptr, n)
+
+mem.hookalloc()
+mem.hookfree(ptr)
+
+
+Structures...
+ </pre> </font></font>
+</body>
+
+</html>

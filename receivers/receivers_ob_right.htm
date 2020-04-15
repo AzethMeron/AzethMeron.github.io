@@ -1,0 +1,208 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OB Receivers</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<h1 align="center"><span style="text-transform: uppercase">
+<font face="Times New Roman CE"><span lang="de">O<font size="5">BJECTs</font> (</span>Ob<span lang="de">)</span></font><strong><span lang="de"><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong></span></h1>
+
+<p align="left"><b><font class="Helvetica32" face="Arial" size="2">
+  <font color="#333333">Used to modify the attributes of an object at the specified position.</font></font></b></p>
+
+<p align="left"><b><font class="Helvetica32" face="Arial" size="2">
+  The
+  generic object receiver is used to enable/disable and set generic attributes
+  while the specific object receivers may be used to change object-specific
+  settings (e.g., the type and number of resources given by a windmill).</font></b></p>
+
+<p align="left"><tt><font face="Arial" size="2">If you want a script to occur 
+when an object is visited, use an object <a href="../other/trigger_right.htm#ob">TRIGGER</a></font></tt><b>
+<br>
+
+  </b>
+
+<tt><span lang="de"><font size="2" face="Arial"><b>Note:</b> </font></span>
+<font size="2" face="Arial">v998/v999/v1000 variables will store the location of 
+the current object visited. Also, you can refer to it easily with an indirect 
+reference (for example: OB998:XXXX = OBv998/v999/v1000:XXXX; ) </font><br>
+<br>
+  <font size="2" face="Arial"><span lang="de">For a more detailed and explained 
+version of OB receiver, read
+<a target="_self" href="../other/tutor_right.htm#howto5">the 
+OB trigger &amp; receiver easily explained</a> (ERM for dummies, by Qurqirish 
+Dragon)</span></font></tt></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr>
+        <td width="138" height="18" nowrap valign="top"><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!OB</font><font class="Helvetica32" size="2" face="Arial" color="#8B008B">#<span lang="de">x</span>/#<span lang="de">y</span>/#<span lang="de">l</span></font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td width="520" height="18" valign="top">
+
+<font size="2" face="Arial">Generic object receiver used to enable/disable and
+set the type and other general characteristics of an object.</font> <br>
+<font face="Arial" size="2">
+<span lang="de">x, y = area coordinates<br>
+l&nbsp;&nbsp;&nbsp;&nbsp; = level (0-ground, 1-underground)</span></font></td>
+    </tr>
+  </table>
+
+<h1 align="center"><span style="text-transform: uppercase"><font face="Arial" size="2"><strong>OPTIONS</strong>
+</font>
+</span>
+</h1>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="264">
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><font face="Arial" size="2" color="#FF0000"><b><a name="B">B</a></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Remove a description
+      hint for an object.</b></font></td>
+  </tr>
+  <tr>
+    <td width="11%" height="19" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="C">C</a></font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="19" valign="top"><font face="Arial" size="2"><b>Set/check/get control word of object</b> <br>
+	Ignores hero on top of object.
+	</font></td>
+  </tr>
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="D">D</a></font><font face="Arial" size="2" color="#800080">#</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Disable to gamer of # 
+    colour (see</b> <a href="../format/format_e1.htm">Format E1</a><b>)
+      to use object</b>
+  </tr>
+  <tr>
+    <td width="11%" height="1" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="E">E</a></font><font face="Arial" size="2" color="#800080">#</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="1" valign="top"><font face="Arial" size="2"><b>Enable to gamer of # 
+    colour
+      (see</b> <a href="../format/format_e1.htm">Format E1</a><b>)
+      to use object</b>
+  </tr>
+  <tr>
+    <td width="11%" height="1" nowrap valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="H"> H</a></font><font face="Arial" size="2" color="#8B008B">$</font><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="89%" height="1" valign="top"><font face="Arial" size="2"><b>Replace a hint
+      (right-click text) for any object.</b><br>
+      Set the message to z variable value ($ = z variable index number)
+ </tr>
+  <tr>
+    <td width="11%" height="160" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="M">M</a></font><font face="Arial" size="2" color="#8B008B">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$3</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="160" valign="top"><font face="Arial" size="2"><b>This command can disable many messages and questions for objects at any
+      time:</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">$1</font></b> - Owner for whom (-1 for all).
+      (see <a href="../format/format_e1.htm">Format E1</a>)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$2</b></font> <font color="#8B008B"> </font> - Disabling (1) next message of this object.<br>
+      &nbsp;&nbsp; <b><font color="#800080">$</font></b><font color="#800080" size="2" face="Arial"><b>3</b></font> - next state of $2 after message virtually or really appears<br>
+ This is not a real disabling, this is AUTO answering
+      (mostly &quot;No&quot;). All messages that appears with ERM IF receiver
+      will
+      be shown as usual.<br>
+      <b>
+      <font color="#0000FF">
+      Example:</font></b>
+      <font color="#008000"><br>
+      </font>
+      <font color="#FF0000">
+      <b>!!OB1/2/0:M-1/1/0</b>; - next visitor of any colour won't get the
+      message / request or in other words it will seems as though gamer answer &quot;No&quot;, or pushes the button.
+      This need a test. I can improve a syntax, just think it over.</font>
+ </tr>
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="R">R</a></font><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Enable to ALL gamers to use object</b>
+  </tr>
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="S">S</a></font><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Disable to ALL gamers to use object</b><br>
+	This will seriously screw up AI, so use with caution.
+  </tr>
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="T">T</a></font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Set/check/get type of object
+      </b>
+      (see <a href="../format/format_ob.htm">Format OB</a>)<br>
+	  Ignores hero on top of object.
+	  </font></td>
+  </tr>
+  <tr>
+    <td width="11%" height="16" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="U">U</a></font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="89%" height="16" valign="top"><font face="Arial" size="2"><b>Set/check/get subtype of object
+      </b>
+      (see <a href="../format/format_ob.htm">Format OB</a>)</font></td>
+  </tr>
+</table>
+
+<p align="left"><u><font face="Arial" size="2"><b>Comments:</b></font></u>
+</p>
+
+<p align="left"><font face="Arial" size="2">For OB receiver you can set/check/get the type of objects, subtype
+      and control word (complex object depended format).<br>
+      That is enough to make a duplicate of any objects not for view but for nature.</font><font face="Arial" size="2"><br>
+<br>
+When an object is disabled on the map, ERM receivers for the corresponding object
+      will still be executed in any case of attempt to visit the object.
+Disabling only disables the <i>normal</i> function of that object.</font>
+</p>
+
+<p><font face="Arial" size="2">Now you can not only set but also get the string
+parameters. You can use it when M command is used to set name/message.<br>
+<b><font color="#0000FF">
+Example:</font></b>
+<font color="#008000">
+<br>
+</font><font color="#FF0000">
+<b>
+!!IFv10:S5;</b><br>
+<b>
+!!SG4/3/0:M1/v10;</b> set sign message to string var z[v10] or z5<br>
+<b>
+!!SG4/3/0:M1/?z10;</b> get current sign message to z10 string var</font></font></p>
+
+<p><font face="Arial" size="2">Be careful: don't use OB command with an object
+with 2 entrances (yellow square)<br>
+  When you place an object, it will set up only first right bottom
+entrance square that will be met. Then you should manually copy a
+control word from that square to all other yellow squares of this
+object.<br>
+<br>
+<b><u>How to check if the AI visits an object</u></b> <br>
+When any hero visits an object the AI flag is stored in flag1000. Flag 1000 is
+set to True for a human player and False for the AI. So you can use
+it like this: <br>
+<font color="#FF0000"><b>
+!?OB...; <br>
+!!IF&amp;1000:M^Player^;</b></font>
+</font>
+<font color="#FF0000" face="Arial" size="2"><b><br>
+!!IF&amp;-1000:M^AI^; <br>
+</b></font>
+
+<br>
+
+<b><u><font>Internal ERM structures overflow</u></b> <br>
+<font face="Arial" size="2">
+<b>JG:</b> copied from WoG 3.59 alpha 8 docs: <br>
+I checked the old enough Perfecto's report that right mouse click on
+a map start giving you "Cannot add more objects." later in the game.
+<br>
+Here is a reason why it happens.
+<br>
+The next !!OB command: H,M,D,E,S,R add another object in the ERM
+internal structures anyway EVEN if you use a check syntax
+(!!OB...:H?v10;). So later in the game, the internal table is
+overflowed and a player gets the message. This is how it works now.
+<br>
+Should be fixed now, but be aware of this old problem.
+
+</font></font>
+
+</p>
+
+</body>
+
+</html>

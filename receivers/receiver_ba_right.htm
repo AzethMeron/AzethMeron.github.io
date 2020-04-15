@@ -1,0 +1,282 @@
+<html>
+
+<head>
+<title>AR Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">B</font><font face="Times New Roman CE" size="5">ATTLE</font><font face="Times New Roman CE" size="6">
+  A</font><font face="Times New Roman CE" size="5">TTRIBUTES</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">BA</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2" color="#333333">RECEIVER</font>
+
+  </strong>
+
+  <p>
+
+  <b><font class="Helvetica32" face="Arial" size="2" color="#333333">
+  Used to set up the attributes of a battle. Generally it makes sense to set up
+  only after !?BA# trigger.(<a href=../other/trigger_right.htm#ba target=principal>BA0/BA1/BA50/BA51</a>)
+  </font>
+
+  </b>
+
+  <p>
+
+  <tt><span lang="de"><font size="2" face="Arial"><b>Note:</b> </font></span>
+  <font size="2" face="Arial">v998/v999/v1000 variables will store the location
+  of the current battle visited. Also, you can refer to it easily with an
+  indirect reference (for example: !!<span lang="de">BA</span>998:...; ) </font>
+  </tt>
+
+  <p>
+
+  <font face="Arial" size="2">
+  &nbsp;
+</font>
+
+<table border="2" height="2" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td height="2" width="110" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!BA</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="2" width="548" valign="top"><font face="Arial" size="2">Set up
+      the attributes of a battle.</font></td>
+  </tr>
+</table>
+
+  <p align="center"><strong>
+
+  <font face="Arial" size="2">
+ OPTIONS</font>
+
+  </strong>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" height="271">
+    <tbody>
+      <tr>
+    <td width="17%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="A"></a>A</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></span></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b><span lang="de">
+    G</span>et or check (NOT set) an AI only battle</b><br>
+    $ = 1 if this battle is theoretical only (complete AI battle)<br>
+    $ = 0 if this is a real battle or quick battle.<br>
+    So you can always check whether you can use battle receivers for this <br>
+    battle or not (see comments below).<br>
+    <br>
+    <b>Comments.</b><br>
+    You may use set syntax, but this means nothing.<br>
+    If we have any battle on the map (Hero to Hero, Hero to Monsters, Hero to
+    defended object...), the !?BA# trigger works always. Also a corresponding
+    receiver !!BA... works fine. <br>
+    But. If this is a battle WITHOUT human (completely AI battle, not quick auto
+    battle!), there is NO REAL battle simulation. AI just calculates possible
+    losses using AI value of creatures, no more.<br>
+    This means that in such battles none of the next receivers may be used
+    (corresponding triggers also will not work in this case):<br>
+    !!BG, !!BM, !!BH, !!BU, !!BF<br>
+    This is important for all of them treat a combat manager as filled by <br>
+    correct values, though actually, this is not.<br>
+    Game will most probably crash if this is the first battle since game <br>
+    start or a result is undetermined otherwise.<br>
+    Warning! Even for Human battle, the combat manager IS NOT READY in !?BA0
+    trigger section. So you cannot use<br>
+    !?BA0;<br>
+    !!BH0:N?v426;<br>
+    BH receiver should be used only in BH trigger section.<br>
+    I see that using BA:A may be not the easiest way to track it and made
+    another change.<br>
+    We have flag1000 as a marker of HUMAN/<span lang="de">AI</span> owner of a hero.<br>
+    For the battle trigger !?BA# this flag is set to inverse &quot;complete AI <br>
+    battle&quot; flag. So you can use it to check like this:<br>
+    !?BA1&amp;1000;<br>
+    Here you run !?BA trigger section only if this is a real battle (there <br>
+    is at least one human as an opponent).<br>
+    In many senses this flag1000 value is the same as before<br>
+    I think that this is enough for other battle triggers: !?BG, !?BR and <br>
+    !?BF must not be called in theoretical battles (complete AI battles).<br>
+&nbsp;</font></td>
+      </tr>
+      <tr>
+    <td width="17%" valign="top"><b><font size="2" face="Arial" color="#FF0000"><a name="B">B</a></font><font size="2" face="Arial" color="#8B008B">#<font color="red" face="Arial" size="2">;</font></font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Set the background picture
+      for the battle.</b><br>
+      &nbsp;&nbsp; -1 = default<br>
+      &nbsp;&nbsp; 1. sand/shore<br>
+      &nbsp;&nbsp; 2. sand/mesas<br>
+      &nbsp;&nbsp; 3. dirt/birches<br>
+      &nbsp;&nbsp; 4. dirt/hills<br>
+      &nbsp;&nbsp; 5. dirt/pines<br>
+      &nbsp;&nbsp; 6. grass/hills<br>
+      &nbsp;&nbsp; 7. grass/pines<br>
+      &nbsp;&nbsp; 8. lava<br>
+      &nbsp;&nbsp; 9. magic plains<br>
+      &nbsp;&nbsp; 10. snow/mountains<br>
+      &nbsp;&nbsp; 11. snow/trees<br>
+      &nbsp;&nbsp; 12. subterranean<br>
+      &nbsp;&nbsp; 13. swamp/trees<br>
+      &nbsp;&nbsp; 14. fiery fields<br>
+      &nbsp;&nbsp; 15. rock lands<br>
+      &nbsp;&nbsp; 16. magic clouds<br>
+      &nbsp;&nbsp; 17. lucid pools<br>
+      &nbsp;&nbsp; 18. holy ground<br>
+      &nbsp;&nbsp; 19. clover field<br>
+      &nbsp;&nbsp; 20. evil fog<br>
+      &nbsp;&nbsp; 21. &quot;favourable winds&quot; text on magic plains
+      background<br>
+      &nbsp;&nbsp; 22. cursed ground<br>
+      &nbsp;&nbsp; 23. rough<br>
+      &nbsp;&nbsp; 24. ship to ship<br>
+      &nbsp;&nbsp; 25. ship<br>
+      <br>
+      <b><u>Comments:<br>
+      </u></b>Background 21 is clearly a placeholder; I guess they were going to
+      have a favourable winds combat screen but didn't get around to it.<br>
+      Background 24 has built-in obstacles - the space between the ships; I
+      don't yet know if those hexes are obstacles or not if you don't use BF:C,
+      but of course if you do use BF:C, they aren't.</font></td>
+      </tr>
+      <tr>
+    <td width="17%" valign="top"><b><font size="2" face="Arial" color="#FF0000">B</font><font face="Arial" size="2"><font color="#FF0000">^</font><font color="#8B008B">file.pcx</font><font color="#FF0000">^<font color="red" face="Arial" size="2">;</font></font></font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Set a custom picture for a battlefield.</b><br>
+      <b><u>     Comments:</u></b><br>
+      Path to the file.pcx is taken from DATA folder. As usual       filename+extension must not be longer than 12 chars.</font></td>
+      </tr>
+      <tr>
+        <td width="109" height="42" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="D">D</a></font><font color="darkmagenta"><font size="2">#</font><font color="red" face="Arial" size="2">;</font></font></b></nobr></td>
+        <td width="549" height="42" valign="top">
+
+  <font face="Arial" size="2"><b>Disable/Enable the battle.</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#&nbsp; = 1</b></font> to disable (battle is automatically won)<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#&nbsp; = 0</b></font> to enable the battle</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="109" height="58" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2" color="#FF0000"><a name="E">E</a></font><font face="Arial" size="2" color="#8B008B">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></span></td>
+        <td width="549" height="58" valign="top">
+
+  <tt style="font-family: Arial"><span style="font-size: 10.0pt">$ - is a state
+  of the battle:</span></tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+  </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+  <tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =2 is an AI vs non-active Human battle
+  (runs at distant PC)</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+  </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+  <tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 is a Human vs Human battle (runs at
+  two PCs)</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+  </span></font><tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =0 is all other battles
+  (runs at this PC)</tt></span></td>
+      <tr>
+        <td width="109" height="58" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="H">H</a></font><font color="darkmagenta" face="Arial" size="2">#</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$<font color="red" face="Arial" size="2">;</font></font></b></nobr></td>
+        <td width="549" height="58" valign="top">
+
+  <font face="Arial" size="2"><b>Set the Hero&nbsp;# that's fighting the battle.</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font>&nbsp; = 0 for attacker<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">#&nbsp;</font></b> = 1 for defender<br>
+  &nbsp;&nbsp;<b><font color="#8B008B"> $</font></b>&nbsp; = Hero number. $ = -<span lang="de">2</span> for no hero (defender only). See <a href=../format/format_h.htm>format H</a></font>
+
+        </td>
+      <tr>
+        <td width="109" height="80" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="M">M</a><font color="darkmagenta">#</font></font><font color="darkmagenta" face="Arial" size="2">1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">$2<font color="red" face="Arial" size="2">;</font></font></b></nobr></td>
+        <td width="549" height="80" valign="top">
+
+  <font face="Arial" size="2"><b>Set the Monsters that are fighting the battle.</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Attacker's monsters (0) or defender's monsters (1) See <a href=../format/format_c.htm>format C</a><br>
+  &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Slot number (0..6)<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> = Monster type (use -1 for a slot with no monsters)<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> = Number of monsters</font>
+
+        </td>
+      <tr>
+        <td width="109" height="67" valign="top"><tt style="font-family: Arial">
+        <span style="font-size: 10.0pt; font-weight: 700"><font color="#FF0000">
+        O<a name="O"></a></font><font color="#8B008B">$1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">;</font></span></tt></td>
+        <td width="549" height="67" valign="top">
+
+  <span style="font-size: 10.0pt; font-family: Courier New">
+  <tt style="font-family: Arial"><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; $1 - is an attacker owner (Hero's owner)</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+  </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+  <tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp; $2 - is a defender owner (Hero's or
+  monsters owner)<br>
+  </tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+  <span lang="de"><b>Note</b>:</span><br>
+  </span></font><tt style="font-family: Arial">This may
+  be used in !?BA0,!?BA1,!?BA50 and !?BA51 triggers section&nbsp;or in any other
+  battle based triggers.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+  </span></font><tt style="font-family: Arial">Only check or get syntax is
+  available. You can set it by this<span lang="de"> </span>command will not
+  change it.</tt></span></td>
+      <tr>
+        <td width="109" height="67" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="P">P</a></font><font color="darkmagenta" face="Arial" size="2">$</font><font color="red" face="Arial" size="2"><font color="darkmagenta">1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3<font color="red" face="Arial" size="2">;</font></font></font></b></nobr></td>
+        <td width="549" height="67" valign="top">
+
+  <font face="Arial" size="2"><b>Position on the map (for background picture and
+  terrain bonuses only).</b><br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> = x<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> = y<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$3</font></b> = Level</font>
+
+        </td></tr>
+
+<tr> <td width=21% valign=top><b> <a name=q><font size=2 face=arial color=red>Q</a><font color=darkmagenta>$</font>; <img src=..\images\new.gif></td><td width=71%> <font face=arial size=2>
+<b>Quick Combat battles control: <font color=red>!!BA:Q<font color=darkmagenta>$</font>; </b><br>
+<b>!!BA:Q<font color=darkmagenta>$</font></b></font> - set/check/get Quick Battle flag.<br>
+  $ = 1 if quick battle is enabled and 0 if disabled.
+</td></tr>
+<tr> <td width=21% valign=top><b> <a name=s><font size=2 face=arial color=red>
+S</a><font color=darkmagenta>$</font>; <img src=..\images\new.gif></td><td width=71%> 
+<font face=arial size=2>
+<b>Get/check siege battle type <font color=red>!!BA:S<font color=darkmagenta>$</font>; </b><br></font>
+&nbsp;  $ - type<br>	
+&nbsp;&nbsp; = 0 ordinary battle<br>
+&nbsp;&nbsp; = 1 a siege with a Fort<br>
+&nbsp;&nbsp; = 2 a siege with a Citadel<br>
+&nbsp;&nbsp; = 3 a siege with a Castle<br>
+&nbsp;<i>  Comment.</i><br>
+&nbsp;&nbsp;  You may not set this parameter.<br>
+
+    </tbody>
+  </table>
+
+  <p><font face="Arial" size="2"><u><b>Notes about the !?BA Trigger (that must precede
+  the BA receiver)</b></u><br>
+  This Trigger is for every battle. But if you use 0 (!?BA0), this will be triggered at
+  the beginning of the battle and if you use 1 (!?BA1), this will be triggered
+  at the end of the battle.</font>
+  </p>
+
+  <p><font face="Arial" size="2">Every time a battle takes place this trigger will work.
+  <span lang="de">I</span>t will work<span lang="de"> f</span>or ANY number
+  of battle<span lang="de">s and for all battles</span>.<span lang="de"> Y</span>ou
+  can<span lang="de"> (and should)</span> use only one trigger<span lang="de"> f</span>or
+  all your script<span lang="de">s</span> and gain access at every battle
+  whenever it happen<span lang="de">ds</span>. If you want for example<span lang="de">
+  to</span> make some help for every Sunday, just check the day and make it with
+  receivers.</font>
+  </p>
+
+  <p><font face="Arial" size="2"><u>The !!BA command appears to work fine, but how do we:<br>
+  </u>
+  &nbsp;&nbsp; <u>a) tell who won the battle?<br>
+  </u>
+  &nbsp;&nbsp; <u>b) tell where the battle is occurring?</u><br>
+  It must not be too hard. You have both (or one left) heroes when the
+  battle start. So check their owners before and after the battle&nbsp; (who has lost will have a different one after the
+  battle :-)<br>
+  And I let you ability to set or check the battle location.<br>
+  Just use P command with *get* syntax: <b><font color="#FF0000"> !!BA:P?v100/?v200/?v300;</font></b></font>
+  </p>
+
+  <p><font face="Arial" size="2">Note: checking the location after a battle
+  won't work because
+  the hero moves (vanishes) from the location <i>after</i> the end of battle
+  check is all done. Same with monsters -- they vanish only <i>after</i> it has
+  completed. So the easiest way to do it seems to be to check the current
+  hero's owner&nbsp; -- if it's -1 then the hero has lost the battle.</font> </p>
+
+</body>
+
+</html>

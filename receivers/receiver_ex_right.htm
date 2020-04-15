@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>EA RECEIVER</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+EX</font><font face="Times New Roman CE" size="5">PERIENCE</font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">EX)<BR></font><span lang="de"></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b></p>
+<p> <font face="Arial" size="2"> <b><font color="#333333">Receiver for creature stack experience.
+</font></b></font> </p>
+
+<p> <font face="Arial" size="2"> <b>
+
+</b></font> </p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="21%" nowrap valign="top"> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">
+        !!EX<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>:<font color=darkmagenta>XXXX</font>;
+</font></b></nobr></td>
+        <td width="100%" valign="CENTER">
+
+<font face="Arial" size="2"><b>$1</b> - hero index (-1, 0...MaxHeroInd, see 
+<a href=../format/format_h.htm target=annexe>format H</a>)<br>
+    <b>$2</b> - slot index (0...6)</font>
+        </td>
+<tr>
+<td nobr width=22% valign=top> <b> <font color=red size=2 face=arial class=helvetica32>
+!!EX<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>/<font color=darkmagenta>$4</font>:<font color=darkmagenta>XXXX</font>;
+</td><td><font face=arial size=2>
+&nbsp;<b>$1</b> - x coordinate (0...)<br>
+&nbsp;<b>$2</b> - y coordinate (0...)<br>
+&nbsp;<b>$3</b> - level of the map (0,1)<br>
+&nbsp;<b>$4</b> - slot index (0...6)<br>
+Here you may give the location of a Hero, Town, Mine, or Garrison at position x/y/l.
+
+
+</td>
+      </tr>
+<tr>
+   <td valign=top>
+ <b> <font color=red size=2 face=arial class=helvetica32>
+!!EX<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>/<font color=darkmagenta>$4</font>/<font color=darkmagenta>$5</font>:<font color=darkmagenta>XXXX</font>;</td><td>
+   <font size="2" face="Arial">&nbsp; <b>$1</b> - x position<br>
+&nbsp; <b>$2</b> - y position<br>
+&nbsp; <b>$3</b> - map level<br>
+&nbsp; <b>$4</b> - slot index (0...6)<br>
+&nbsp; <b>$5</b> - type of owner<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 1 = Hero<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2 = Town<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3 = Mine<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4 = Garrison<br>
+&nbsp;&nbsp;&nbsp;&nbsp; other = any first found<br>
+   <i>&nbsp;&nbsp; Comments</i><br>
+&nbsp;&nbsp; If you use 4 parameters, the fifth one will default to &quot;any first 
+   found&quot;. The searching goes in the order: heroes, towns, mines, garrisons.</font></td></tr>
+  </table>
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+
+<!--
+<tr> <td width=21% valign=top>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> DDR
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>f
+</b>
+
+</td> </tr>
+-->
+<table border="2" width="100%" bordercolorlight="#000000" bordercolor="#000000">
+<tr> <td width=21% valign=top><a name=a> </a>
+<font color=red face=arial class=helvetica32 size=2> <b> A<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>; 
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/check/get stack info.</b><br>
+    <b>$1</b> - monster type<br>
+    <b>$2</b> - number of creatures<br>
+    <b>$3</b> - experience per creature<br>
+</td> </tr>
+<tr> <td width=21% valign=top><b><font face="arial" size="2" color="#FF0000">C</font><font face="arial" size="2" color="#800080">$1</font><font face="arial" size="2" color="#FF0000">/</font><font face="arial" size="2" color="#800080">$2</font><font face="arial" size="2" color="#FF0000">/</font><font face="arial" size="2" color="#800080">$3</font><font face="arial" size="2" color="#FF0000">(/</font><font face="arial" size="2" color="#800080">$4</font><font face="arial" size="2" color="#FF0000">/</font><font face="arial" size="2" color="#800080">$5</font><font face="arial" size="2" color="#FF0000">/</font><font face="arial" size="2" color="#800080">$6</font><font face="arial" size="2" color="#FF0000">);</font></b></td> <td width=79%> 
+  <font face="Arial" size="2"><b>EX Receiver command for stack combining</b><br>&nbsp;
+  <b>$1 = </b>type of source stack<br>&nbsp; $1 = 0 - hero by type<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $2 - hero index (-1 = current)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $3 - hero's slot (0...6)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 - warning type (see below)<br>
+  <br>
+  &nbsp; $1
+  = 1 - hero by position<br>
+  &nbsp; $1
+  = 2 - town by position<br>
+  &nbsp; $1
+  = 3 - mine by position<br>
+  &nbsp; $1
+  = 4 - garrison by position<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $2 - x position<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $3 - y position<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $4 - map level<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $5 - army slot (0...6)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $6- warning type()<br>
+<br>  <u>Returns.</u><br>
+  The function set v1 variable.<br>
+  &nbsp;
+  = -1 - stack of different creatures (nothing combined)<br>
+  &nbsp;
+  =&nbsp; 0 - error occurred (nothing combined)<br>
+  &nbsp;
+  =&nbsp; 1 - combined successfully<br>
+  <br>
+  <i>Comments.</i><br>
+  This function will add the source stack to the main stack assuming they are of 
+  the same creature type. All experience is distributed. Artifacts are summed.
+  <br>
+  If you set warning type to 1 (default is 0), you will not get a message that 
+  creature types of two stacks are different. You may use it.<br>
+  <b>Example:</b><br>
+  A hero visits an object and his stack 3 is added to stack 1 (they should be of 
+  the same type):<br>
+  <b><font color="#FF0000">!?OB5/3/0;<br>
+  !!EX-1/1:C0/-1/3;</font></b><br>
+  <b>Another example.</b><br>
+  You visit an object and you current hero &quot;adds&quot; a stack number 1 in a town 
+  with an entrance at 3/2/0 to the stack number 3.<br>
+  <font color="#FF0000"><b>!?OB5/3/0;<br>
+  !!EX-1/3:C2/3/2/0/1;</b></font></font></td> </tr>
+<tr> <td width=21% valign=top><a name=t> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> T<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/check/get stack monster type.</b><br>
+<b>$</b> - monster type
+
+</td> </tr>
+<tr> <td width=21% valign=top><a name=n> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> N<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/check/get stack number of creatures.</b><br>
+<b>$</b> - number of creatures.
+
+</td> </tr><tr> <td width=21% valign=top><a name=e> </a>
+<font face=arial class=helvetica32 size=2><font color=red face=arial class=helvetica32 size=2> <b> E<font color=darkmagenta>$</font>;
+
+</td> <td width=79%> <font size=2 face=Arial class=helvetica32>
+<b>Set/check/get stack experience.</b><br>
+<b>$</b> - experience.
+</td> </tr></table>
+
+<p align=center><font size=2><b>ARTIFACT SUPPORT FOR STACK ARTIFACTS.</b></font></p><br>
+
+<table bordercolorlight=black bordercolordark=black border=2>
+<tr><td valign=top><a name=r> </a><font face=arial size=2 color=red><b>R<font color=darkmagenta>$1</font>
+/<font color=darkmagenta>$2</font>;
+</td><td>
+<font face="Arial">
+<b><font size="2">Set/check/get artifact and option</font></b><font size="2"><br>
+&nbsp;  <b>$1</b> = artifact index<br>
+&nbsp;  <b>$2</b> = artifact option<br>
+<b><i>Comments:</i></b><br>
+&nbsp;  For now only one artifact index is supported - 156 (Warlord's banner).<br>
+&nbsp;  For now only options 0...8 are supported </font></font>
+
+</td></tr><tr><td><nobr><font color="#FF0000" face="Arial" size="2"><b>R</font><font face="Arial" size="2" color="#800080">$1</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#800080">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#800080">$3</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#800080">$4</font><font color="#FF0000" face="Arial" size="2">;</font></b></td>
+  <td>
+  <font face="Arial" size="2">
+  <b>Extended syntax for stack artifacts<br>&nbsp;&nbsp; $1</b> - has art or not 
+  (0=no, 1=yes)<br>
+&nbsp;&nbsp; <b>$2</b> - type of art (for now only 156).<br>
+&nbsp;&nbsp; <b>$3</b> - subtype of art (options 0...15 - we use not all yet)<br>
+&nbsp;&nbsp; <b>$4</b> - number of art copies (0...3)<br>
+&nbsp; <i>Comments</i><br>
+&nbsp; You can use get or set syntax.</font></td></tr></table>
+
+
+</body>
+</html>

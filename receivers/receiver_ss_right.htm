@@ -1,0 +1,119 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<p align="center"><b><font face="Times New Roman CE" size="6">S</font><font face="Times New Roman CE" size="5">PELLS </font>
+<font face="Times New Roman CE" size="6">S</font><font face="Times New Roman CE" size="5">UPPORT </font><span lang="de">
+<font face="Times New Roman CE" size="6">&nbsp;(</span>SS<span lang="de">)</span></font><span lang="de"><span lang="de"><font face="Arial" size="2"><br>
+</font></span></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b><font face="Arial"><font size="2" color="#333333">The SS Receiver lets you change parameters of spells.<br><br>
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td nowrap><font class=ermtext>!!SS:<font class=param>XXXX</font>;</td>
+        <td width=100%><b>Spells support<br>
+        </b>See <a href=../format/format_sp.htm>Format SP</a>
+        <b></td></tr>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+<tr><td nowrap valign=top><a name="A"></a><font class=ermtext>A<font class=param>$</font>
+   <td valign=top><b>Set abbreviation name.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - string.<br>
+   See comments <a target=_self href=#string.f>below</a>.
+<tr><td nowrap valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>$</font>
+   <td valign=top><b>Set/check/get mana Cost.</b><br>
+   &nbsp;&nbsp;<font class=param>#</font> - level (0..3, referring to Magic School skill)<br>
+   &nbsp;&nbsp;<font class=param>$</font> - mana cost<br>
+<tr><td nowrap valign=top><a name="D"></a><font class=ermtext>D<font class=param>#</font>/<font class=param>$</font>
+   <td valign=top><b>Set/check/get description.</b><br>
+   &nbsp;&nbsp;<font class=param>#</font> - level (0..3, referring to Magic School skill)<br>
+   &nbsp;&nbsp;<font class=param>$</font> - string.<br>
+   See comments <a target=_self href=#string.f>below</a>.
+<tr><td nowrap valign=top><a name="E"></a><font class=ermtext>E<font class=param>#</font>/<font class=param>$</font>
+   <td valign=top><b>Set/check/get effect number.</b><br>
+   &nbsp;&nbsp;<font class=param>#</font> - level (0..3, referring to Magic School skill)<br>
+   &nbsp;&nbsp;<font class=param>$</font> - effect.<br>
+   For different spells it means different things.
+<tr><td nowrap valign=top><a name="F"></a><font class=ermtext>F<font class=param>$</font>
+   <td valign=top><b>Set/check/get Flags.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - flags.<pre>
+0x00000001 - Battlefield spell
+0x00000002 - MAP spell
+0x00000004 - Has a time scale
+0x00000008 - Creature Spell
+0x00000010 - target - single stack
+0x00000020 - target - single shooting stack
+0x00000040 - has mass version at expert level
+0x00000080 - target - any location
+0x00000100 - target - obstacle
+0x00000200 - damage spell
+0x00000400 - Mind spell
+0x00000800 - friendly and has mass version
+0x00001000 - cannot be cast on SIEGE_WEAPON
+0x00002000 - Spell from Artifact
+0x00004000 - protection spell
+0x00008000 - AI
+ (Meteor Shower, Magic Arrow, Ice Bolt, Lightning Bolt, 
+  Implosion, Frost Ring, Fireball, Meteor Shower, 
+  Titan's Bolt, not Chain Lightning, not Inferno)
+0x00010000 - AI area effect
+0x00020000 - AI
+ (Armageddon, Destroy Undead, Death Ripple)
+0x00040000 - AI
+ (Bless, Curse, Bloodlust, Precision, Weakness, Stone Skin, 
+  Disrupting Ray, Prayer, Mirth, Sorrow, Fortune, Misfortune, 
+  Haste, Slow, Slayer, Frenzy, Clone, Blind, Teleport, 
+  Counterstrike, Berserk, Shield, Air Shield, Fire Shield, 
+  Protection from Air, Protection from Fire, Prot. from Water, 
+  Prot. from Earth, Anti-Magic, Dispel, Magic Mirror, Cure)
+0x00080000 - AI number/ownership of stacks may be changed 
+0x00100000 - AI
+ (Summon Boat, Fly, Water Walk, Dimension Door, Town Portal, Earthquake, Titan's Lightning Bolt)
+</pre>
+<tr><td nowrap valign=top><a name="H"></a><font class=ermtext>H<font class=param>#</font>/<font class=param>$</font>
+   <td valign=top><b>Set/check/get chances of appearing in towns.</b><br>
+   &nbsp;&nbsp;<font class=param>#</font> - town type (see <a href=../format/format_t.htm>format T</a>)<br>
+   &nbsp;&nbsp;<font class=param>$</font> - chance of appearing.<br>
+<tr><td nowrap valign=top><a name="I"></a><font class=ermtext>I<font class=param>#</font>/<font class=param>$</font>
+   <td valign=top><b>Set/check/get AI value</b><br>
+   &nbsp;&nbsp;<font class=param>#</font> - level (0..3, referring to Magic School skill)<br>
+   &nbsp;&nbsp;<font class=param>$</font> - AI value.<br>
+<tr><td nowrap valign=top><a name="L"></a><font class=ermtext>L<font class=param>$</font>
+   <td valign=top><b>Set/check/get spell level.</b><br>
+<tr><td nowrap valign=top><a name="N"></a><font class=ermtext>N<font class=param>$</font>
+   <td valign=top><b>Set/check/get spell name.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - string.<br>
+   See comments <a target=_self href=#string.f>below</a>.
+<tr><td nowrap valign=top><a name="O"></a><font class=ermtext>O<font class=param>$</font>
+   <td valign=top><b>Set/check/get target type.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - type<br>
+   &nbsp;&nbsp; 1 = target is friendly stack<br>
+   &nbsp;&nbsp;-1 = target is enemy stack<br>
+   &nbsp;&nbsp; 0 = any hex<br>
+<tr><td nowrap valign=top><a name="P"></a><font class=ermtext>P<font class=param>$</font>
+   <td valign=top><b>Set/check/get spell power.</b><br>
+   For different spells it means different things.
+<tr><td nowrap valign=top><a name="S"></a><font class=ermtext>S<font class=param>$</font>
+   <td valign=top><b>Set/check/get spell's magic schools bits.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - dword of flags.<br>
+   Only first 4 bits are used. <br>
+   &nbsp;&nbsp;1 = Air Magic School<br>
+   &nbsp;&nbsp;2 = Fire Magic School<br>
+   &nbsp;&nbsp;4 = Water Magic School<br>
+   &nbsp;&nbsp;8 = Earth Magic School<br>
+   
+<tr><td nowrap valign=top><a name="W"></a><font class=ermtext>W<font class=param>$</font>
+   <td valign=top><b>Set/check/get wave sound file.</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - file name<br>
+   See comments <a target=_self href=#string.f>below</a>. <br>
+   The file should be in Heroes3.snd or in DATA folder directly.
+<tr><td nowrap valign=top><a name="X"></a><font class=ermtext>X<font class=param>$</font>
+   <td valign=top><b>Set/check/get DEF animation (index).</b><br>
+   &nbsp;&nbsp;<font class=param>$</font> - index.<br>
+   Default indexes are stored <a href=../format/format_si.htm>here</a>.
+</table></font></font></font></font></font></b><br>
+<a name="string.f"></a><b>Comments for strings in A,N,D,W commands</b>:<br>
+&nbsp;&nbsp;You may not get the default file name now but you can set it (and check later) through z vars.<br>
+&nbsp;&nbsp;You may use a standard Z vars [1...1000] or a static Z vars from ERT file [>1000].<br>
+&nbsp;&nbsp;If you set the name and then check it, you will receive an index of Z var you set the name.<br>
+&nbsp;&nbsp;If you did not set the name, you will get 0.<br>
+</body></html>

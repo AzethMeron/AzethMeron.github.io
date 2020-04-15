@@ -1,0 +1,1017 @@
+<html>
+
+<head>
+<title>Receivers list</title>
+<base target="_self">
+</head>
+<body background="../images/intile.jpg" bgproperties="fixed">
+<h1 align="center"><font face="Times New Roman CE">R<font size="5">ECEIVERS</font><br>
+</font><font class="Helvetica32" size="2" face="Arial"><strong>
+<font color="#333333">List and
+Definition of All Receivers</font></strong></font></h1>
+
+<h1 align="center"><span style="font-weight: 400"><font class="Helvetica32" size="2" face="Arial">
+
+<a href="#RECEIVERS LIST:">Jump to Receivers List</a></font></span>
+
+</h1>
+
+<p align="left"><font face="Arial" size="2"><u><br>
+Introduction</u><br>
+Receivers are ERM codes that affect heroes, objects, events, timers, functions,
+messages or game settings. Most receivers have multiple commands that can be
+used with them for doing different things. For example, the LE receiver affects
+local events on a map and there are different commands for changing the
+properties of the event.<br>
+<br>
+<u>How to Use Receivers</u><br>
+Receivers are placed in timed events on lines following after a trigger that
+serves as a header. They are executed one at a time until the end of the timed
+event or a new trigger is reached. More than one receiver may be placed on a
+line but for clarity and ease of debugging your script, it's usually best to
+keep it to one per line.<br>
+<br>
+<u>Receiver Syntax</u><br>
+All receivers begin with a double exclamation mark (!!) and end with a semicolon
+(;). Immediately following the !! is a two-letter receiver code, such as AR for
+artifact, HE for hero, LE for local event or OB for object. The next part after
+this code depends on the type of receiver. Some receivers have one or more
+parameters before the colon (:), each parameter being an integer number, while
+other receivers have no parameters before the colon. Following the colon are the
+receiver's commands. Commands take many forms and may include one or more
+parameters each; they are represented in the list below as XXXX. Replace XXXX
+with the appropriate command or commands. After the last command, a semicolon (;)
+must be used to mark the end of the
+receiver code.<br>
+<br>
+</font><tt style="font-family: Arial"><span lang="de">
+<font size="2">All ERM commands (receivers, instructions) have
+to use at least one parameter in order to work correctly.</font></span></tt><font face="Arial" size="2"><br>
+<br>
+  If a command parameter is shown as $ it means that its value can be stored in
+  a variable. If it's shown as # it means that it can only be set, but not read.
+  And if it's shown as ?$ it means it can be read but not set.<br>
+<br>
+<font color="#0000FF"><b>Example of receiver syntax:</b></font><br>
+<font color="#FF0000"><b>!!LE12/21/0:E1000;</b></font><br>
+<br>
+<font color="#000000">In the above example, a local event on the map at x=12,
+y=21 and level=0 (surface) is being modified so that it now gives 1000
+experience to a hero.<br>
+</font>
+<br>
+<u>Relative Syntax</u><br>
+Often you don't want to replace a value but simply add or subtract from that
+value. For example, if you give a hero experience, you want to add to that
+hero's current experience rather than replacing it completely with a new, set
+value. Likewise for a player's gold or other resources. To accomplish this, we
+use a relative syntax: the lowercase d as a prefix to the number.<br>
+<b><font color="#0000FF">Example of relative syntax:</font><br>
+<font color="#FF0000">!!HE-1:Ed500;</font></b><br>
+<br>
+In the above example, 500 experience points are added to the current hero's
+present experience total. If we had used E500 rather than Ed500, the hero's
+experience would be set to 500 rather than increased by 500. To subtract 500
+experience, use Ed-500 instead. If you wish to leave a parameter unchanged, use
+d0 or simply d on its own.<br>
+<br>
+<u>Current Date Syntax</u><br>
+In a similar fashion to using the prefix d, we can use the prefix c (again,
+always lowercase) to indicate that <font color="#000000" class="Helvetica32">the
+value of the current <i>day </i>will be added to the number.<i> </i>In other
+words, c is equal to the current day (e.g., c=4 if it's month 1, week 1, day 4,
+c=8 if it's month 1, week 2, day 1, and c=30 if it's month 2, week 1, day 2).</font> <strong><font color="blue" size="3" class="Helvetica32" face="Arial"><br>
+</font>
+</strong>
+<b>
+<font color="#0000FF" class="Helvetica32">Example:</font>
+<font color="#008000" class="Helvetica32"><u><br>
+</u></font></b>
+<font color="#FF0000" class="Helvetica32">If an event is set to occur on the
+5th, we can change it so that the event occurs on a new day by using the global
+receiver (GE,&nbsp; option F$). If we have numbered the event as 100 (first text
+in the global event message), we could use <b>!!GE100:Fc6;</b> to make the event
+occur 6 days after the day the receiver takes effect (it could be set to be
+triggered by a local event trigger). Or, if we wish to simply increase the
+existing day by 6 days, we can combine relative syntax d with current date
+syntax c. If the current day is the 14th, then <b> Fc6</b>  evaluates to
+14+6=20, Fcd6 or Fdc6 evaluates to 14+5+6=25. Thus, we have the following
+combinations: d#, c#, cd#, and dc#.</font>
+<br>
+<br>
+
+<u>Empty Parameters</u><br>
+If a command has four parameters, you <i>must</i> fill in all four, each
+separated by a slash. You cannot omit any parameters or the command won't work,
+and you'll probably get an error too. However, in some cases you can omit the
+actual numbers and just put in the slashes. When you omit a number in this
+fashion it is treated as if you entered zero, and as long as zero is a valid
+number for that parameter, the command will work.<br>
+<b><font color="#0000FF">Example of empty parameters:</font><br>
+<font color="#FF0000">!!IF:D1/5//4////////////;</font></b><br>
+<br>
+The command in the above example is used to set up an extended dialog box. It
+has more parameters than any other command in ERM, but you won't always need to
+use them all. We've only used three out of the possible 16 here. For this
+particular command, leaving an empty parameter or entering 0 means &quot;do not
+change&quot; but for many other commands it simply means &quot;assume the value
+0&quot; which won't always be appropriate.<br>
+<br>
+<u>Multiple Commands</u><br>
+In most cases, you can place multiple commands after a single receiver header
+(the part before the colon). Commands do not have to be separated by spaces, but
+for readability this is often a good idea. In some instances, such as setting
+and manipulating variables with the VR receiver, multiple commands don't always
+work correctly. So if you do use multiple commands, make sure you check that
+they're all executing properly and giving you the correct or desired result. If
+one of your commands is to display or set message text using the carets (^) to delineate
+the text, you must place this command last. If you put any other commands after
+it (as part of the same receiver), you'll get an error.<br>
+<b><font color="#0000FF">Example of multiple commands:</font></b><br>
+<font color="#FF0000"><b>!!LE10/12/0:E1000 M^You learned a lot walking through
+the ancient forest of lore.^;</b></font><br>
+<br>
+<u>Adding Comments to Your Code</u><br>
+Anything appearing in a script that comes after a semicolon and before the next
+receiver or trigger is considered a comment and is ignored by the ERM processor.
+Some people like to put their comments inside square or angle brackets to make
+it easier for another person reading the script to tell the difference between
+comments and ERM code, but this isn't strictly necessary.<br>
+<b><font color="#0000FF">Example of code with comments (after the semicolon):</font></b><br>
+<font color="#FF0000"><b>ZVSE<br>
+!?LE10/23/1;</b>&nbsp; Event at x=10, y=23, level=underground<br>
+<b>!!HE-1:B0/?z5;</b> Store hero's name in variable z5.<br>
+<b>!!IF:M^A disembodied voice calls out &quot;%Z5...%Z5...you are our last
+hope...&quot;^;</b><br>
+[The above message displays using the hero's name to make it more personal.]</font><br>
+<br>
+<u>Using Variables in Receivers<br>
+</u>Variables may be used in receivers to replace any # or $ with the exception
+of the # used for the CE and GE receivers prior to the colon. All other
+occurrences of # or $ in a receiver, both before and after the colon may be
+replaced by a variable of an appropriate type. Most of the receivers that
+reference a map location may also be used with an indirect variable reference.
+In this form, the index number of the v variable holding the x location is
+entered. The y location and level location must be stored in the following two v
+variables. For example, if you store the location of x in v10, y must be in v11
+and level in v12. See the <a href="variable.htm">Flags and Variables</a> page
+for more details on variables.<br>
+<font color="#0000FF"><b>Example of OB receiver using indirect reference</b>:</font><br>
+<b>!</b><font color="#FF0000"><b>!VRv10:S24;</b> [Store x location]<br>
+<b>!!VRv11:S14;</b> [Store y location]<br>
+<b>!!VRv12:S0;</b>&nbsp;&nbsp; [Store map level]<br>
+<b>!!OB10:S;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Disable object at v10/v11/v12]</font>
+<u><font color="#FF0000"><br>
+</font>
+<br>
+Instructions<br>
+</u>Instructions are identical to receivers except that they begin with an
+exclamation mark/pound sign combination (!#) and activate only <i>once</i>, when
+the map is first loaded. Most receivers work fine when used as instructions, but
+some (especially certain object receivers), will not work at all and will cause
+an error or map crash. Instructions are executed one at a time, at map load, in
+the order that they appear in timed events, regardless of whether or not there
+are triggers, receivers or comments before or after them. You can use an
+instruction to call a function trigger and all the regular (non-instruction)
+receivers that are part of that function will then execute normally, however,
+you <i>must</i> include the function in the timed event <i>before</i> the
+instruction that calls it, or it won't work; you won't get an error, it just
+won't execute the function.<u>
+<br>
+</u>
+<b><font color="#0000FF">Example of instruction:</font></b><u>
+<br>
+</u><font color="#FF0000"><b>!#VRv10:S25;&nbsp; </b>[store 25 in the variable
+v10]</font></font>
+
+<p><strong><font class="Helvetica32" size="2" face="Arial"><a name="RECEIVERS LIST:">RECEIVERS
+LIST:</a></font></strong>
+
+
+  <table border="2" height="2166" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td  height="16">
+
+  <p align="center"><b><font class="Helvetica32" face="Arial" size="2"><strong>Syntax</strong></font>
+
+</b>
+
+  </p>
+
+        </td>
+        <td  height="16">
+          <p align="center"><strong>
+
+<font class="Helvetica32" face="Arial" size="2"><strong>
+  Receivers</strong></font>
+
+          </strong></p>
+        </td>
+      <tr>
+    <td width="17%"><b> <font size="2" face="Arial" color="#FF0000">!!AI:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%"><font size="2" face="Arial"><b>Set destination points for AI
+      heroes to move to.</b><br>
+    </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ai.htm">A<span lang="de">I</span> Receiver</a> page.</i></font> </td>
+      </tr>
+      <tr>
+        <td  height="58"><b><font face="Arial" size="2"><font color="#FF0000">
+!!AR</font><font color="#8B008B">#1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font color="#8B008B">#2</font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#3</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;
+</font></font></b></td>
+        <td  height="58">
+
+<font face="Arial" size="2"><font class="Helvetica32">
+  <b>
+  Artifact or resource at the specified position on the map.</b></font>
+
+<br>
+&nbsp;
+
+<font class="Helvetica32">
+  #1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground)<br>
+ </font> </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ar.htm">AR Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32" nowrap> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!BA</font><font color="#FF0000" size="2" class="Helvetica32" face="Arial">:</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td  height="32">
+
+<p><font face="Arial" size="2"><b>Used to set up the characteristics of a battle.</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ba.htm">BA Receiver</a> page.</i></font></p>
+
+        </td>
+      </tr>
+      <tr>
+    <td width="71"><b><font face="Arial" size="2" color="#FF0000">!!BF:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td><font face="Arial" size="2"><b>Sets up a battlefield with
+      custom placement of obstacles.</b><br>
+    </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_bf.htm">B<span lang="de">F</span> Receiver</a> page.</i></font></td>
+      </tr>
+      <tr>
+        <td width="137" ><font face="Arial" size="2" color="#FF0000"><b>!!BG:</b></font><strong><nobr><b><font color="darkmagenta" face="Arial" size="2">XXXX</font></b></nobr></strong><font face="Arial" size="2" color="#FF0000"><b>;</b></font></td>
+        <td width="521" ><font face="Arial" size="2"><b>During combat, you may
+          check/set/get parameters on taken action that's being taken.</b><br>
+          <i>For more details, see the <a href="../receivers/receiver_bg.htm">BG Receiver</a>
+          page.</i></font></td>
+      </tr>
+      <tr>
+    <td width="17%" ><b> <font size="2" face="Arial" color="#FF0000"> !!BH</font><font size="2" face="Arial" color="#8B008B">#</font><font size="2" face="Arial" color="#FF0000">:</font></b><strong><nobr><b><font color="darkmagenta" face="Arial" size="2">XXXX</font></b></nobr></strong><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%" ><font size="2" face="Arial"><b>During combat, you may check/set/get some parameters of a hero at # side      (0=left, 1=right).</b><br>
+      <i>For more details, see the <a href="../receivers/receiver_bh.htm">BH Receiver</a>
+      page.</i></font></td>
+      </tr>
+      <tr>
+        <td width="137" height="19" valign="top">
+          <h3><font face="Arial" size="2"><b><font color="#FF0000" size="2" face="Arial">!!BM</font><font color="#800080" size="2" face="Arial">#</font><font color="#FF0000" size="2" face="Arial">:</font><font color="#800080" size="2" face="Arial">XXXX</font><font color="#FF0000" size="2" face="Arial">;</font></b></font></h3>
+        </td>
+        <td width="521" height="19" valign="top"><font face="Arial" size="2"><b>Check/Set/Get some parameters of a stack of monsters&nbsp;</b><br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font> - number of a stack (0...41).&nbsp;<br>
+ Usually it is used like 0...20      for a first (0) player and 21...41 for a second (1) player.<br>
+      <i>For more details, see the <a href="../receivers/receiver_bm.htm">B<span lang="de">M</span> Receiver</a>
+      page.</i></font></td>
+      </tr>
+      <tr>
+    <td width="17%" ><b> <font size="2" face="Arial" color="#FF0000">!!BU:</font></b><strong><nobr><b><font color="darkmagenta" face="Arial" size="2">XXXX</font></b></nobr></strong><b><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%" ><font size="2" face="Arial"><b>During combat, you can
+      check/set/get some universal parameters of the battle</b><br>
+      <i>For more details, see the <a href="../receivers/receiver_bu.htm">BU Receiver</a>
+      page.</i></font></td>
+      </tr>
+      <tr>
+        <td  height="64"><b><font face="Arial" size="2"><font color="#FF0000">!!CA</font><font color="#800080">#1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font color="#800080" face="Arial" size="2">#2</font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#800080">#3</font><font color="#FF0000">:</font><font color="#800080">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td  height="64">
+
+<font face="Arial" size="2"> <b> Town setting for town at the specified position on
+the map.</b><br>
+
+<font class="Helvetica32">
+  &nbsp;#1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground) </font> <br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ca.htm">CA Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><b><font face="Arial" size="2"><font color="#FF0000">!!CA</font><font color="#800080">#</font><font color="#FF0000">:</font><font color="#800080">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ca.htm">CA Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="1" nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!CA-1</font><font color="#800080">:XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" height="1" valign="top">
+
+<font size="2" face="Arial">The current town.<br>
+  Be careful for you can use it only in Town screen.</font>
+
+        </td>
+      </tr>
+      
+		<tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!CD:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Used to set up the parameters for town demolitions initiated by a player.</b></font> <br>
+		
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_cd.htm">CD Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+		<tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!CI:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		 <a name=ci></a>
+		<font face="Arial" size="2"><b>Used to modify income and monster growth of Castle.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_ci.htm">CI Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td  height="64"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!CE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td  height="64">
+
+<font class="Helvetica32" face="Arial" size="2"><b>Event in a town (# = number of event).</b> This is the number, which
+          should be first in the text of the appropriate event. It won't appear
+          in the text of the message.<br>
+<i>For more details, see the <a href="../receivers/receiver_ce.htm">CE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="16" nowrap><b><font color="red" size="2" class="Helvetica32" face="Arial">!!CM:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" height="16">
+
+<font class="Helvetica32" face="Arial" size="2"><b>Get/check/set info about mouse click.</b></font>
+<br>
+
+<font class="Helvetica32" face="Arial" size="2">
+<i>For more details, see the <a href="../receivers/receiver_cm.htm">C<span lang="de">M</span> Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+    <td width="27%" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!CO</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;<br>
+      !#CO</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="73%" valign="top"><font face="Arial" size="2"><b><span lang="de">
+    Commander attributes</span></b><br>
+    &nbsp;
+    <font color="#800080"><b>#=-2</b></font>
+      - Apply to all Commanders<br>
+      &nbsp;&nbsp; <font color="#800080"><b>#=-1 </b></font>- Apply to current Commander (for current hero)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>#</b></font><b><font color="#800080">&gt;=0</font></b> - Apply to specific Commander<br>
+    </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+<i>For more details, see the <a href="../receivers/receiver_co.htm">C<span lang="de">O</span> Receiver</a> page.</i></font> </td>
+      </tr>
+      
+      <tr>
+        <td>  <a name=dg></a> <b><font face="Arial" size="2"><font color="#FF0000">!!DG:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Commands regarding digging for Grail.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_dg.htm">DG Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+		
+		<tr>
+        <td><a name=dl></a>
+		<b><font face="Arial" size="2"><font color="#FF0000">!!DL:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Custom dialog support.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_dl.htm">DL Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td  height="96"> <b> <font face="Arial" size="2"><font color="#FF0000">!!DO</font><font color="#8B008B">#1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#2</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#3</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#4</font><font color="#FF0000">:</font><font color="#8B008B">P</font><font color="#FF0000">;</font></font></b></td>
+        <td  height="96">
+
+<font face="Arial" size="2"><b>Call a function trigger multiple times:&nbsp;</b><br>
+&nbsp;&nbsp; #1 number of a function<br>
+&nbsp;&nbsp; #2 start value<br>
+&nbsp;&nbsp; #3 stop value<br>
+&nbsp;&nbsp; #4 increment<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_do.htm">DO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><a name=ea><b> <font face="Arial" size="2"><font color="#FF0000">!!EA</font><font color="#8B008B">$</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;<img src=../images/new.gif width="28" height="11"></font></font></b></td>
+        <td>
+<font face="Arial" size="2"><b>Receiver for adding stack experience support to ERM</b><br>
+$ is a type of monster
+</font><br>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ea.htm">EA Receiver</a> page.</i></font>
+        </td>
+      <tr>
+        <td><a name=ex> <b> <font face="Arial" size="2"><b> <font face="Arial" size="2"><font color="#FF0000">!!EX</font><font color="#8B008B">$1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">$2</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font><img src=../images/new.gif></b></td>
+        <td>
+<font face="Arial" size="2"><b>Receiver for creature stack experience</b><br>
+$1 is Hero's ID(-1, 0..MaxIndex), $2is slot index (0..6)
+</font><br>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ex.htm">EX Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      </tr>
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!FC:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+         <a name=fc></a>
+		<td>
+		<font face="Arial" size="2"><b>Flag color receiver.</b></font> <br>
+		<font size=2>Now any object can have a flag.</font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_fc.htm">FC Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td><b><font face="Arial" size="2"><font color="#FF0000">!!FU</font><font color="#8B008B">#</font><font face="Arial" size="3" color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+
+<font face="Arial" size="2"><b>Function receiver - transfers control to ERM code following
+function trigger.</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_fu.htm">FU Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!GE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td  height="32">
+
+<font class="Helvetica32" face="Arial" size="2">
+  <b>
+  Receiver is a global (timed) event</b> (# - number of event).<br>
+  <i>For more details, see the <a href="../receivers/receiver_ge.htm">GE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!HE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td  height="32">
+
+<font class="Helvetica32" face="Arial" size="2">
+  <b>
+  Receiver is a hero with hero number of # </b> (see
+<a target="annexe" href="../format/format_h.htm">Format
+          H</a>).<br>
+  <i>For more details, see the <a href="../receivers/receiver_he.htm">HE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!HD:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b>
+		 <a name=hd></a>
+		</td>
+        <td>
+		<font face="Arial" size="2"><b>Hint Display receiver.</b></font> <br>
+		<font size=2>More convenient than checking rightclick every time.</font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_hd.htm">HD Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td  height="60"><b><font face="Arial" size="2"><font color="#FF0000">!!HE</font><font color="#8B008B">#1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#2</font></font><font color="#FF0000" face="Arial" size="3">/</font><font face="Arial" size="2"><font color="#8B008B">#3</font><font size="3" color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;
+</font></font></b></td>
+        <td  height="60">
+
+<font face="Arial" size="2"><b>The hero at the specified position on the map.</b><br>
+
+<font class="Helvetica32">
+  &nbsp;#1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground) </font> <font class="Helvetica32" size="3"><br>
+&nbsp;
+</font>
+
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_he.htm">HE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="80"><b><font face="Arial" size="2"><font color="#FF0000">!!HE-1:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td  height="80">
+
+<font face="Arial" size="2"><b>The hero who activated the trigger.</b><br>
+<b><u>Comments:</u></b><br>
+Using this format makes ERM coding a lot simpler because you won't need to keep changing the
+coordinates for every !!HE command if you move the trigger event or
+object.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_he.htm">HE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="64" nowrap> <b><font face="Arial" size="2"><font color="#FF0000">!!HL:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;
+</font></font></b> </td>
+        <td  height="64">
+
+<font size="2" face="Arial"><b>Set primary and secondary skills that a hero can
+choose from when gaining a level.</b> This receiver can only be used after an !?HL;
+trigger.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_hl.htm">HL Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="64"><b><font face="Arial" size="2"><font color="#FF0000">!!HO</font><font color="#8B008B">#</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td  height="64">
+
+<font size="2" face="Arial"><b># means a number of hero.
+This is not the same as the HE receiver.</b> It is used for enabling/disabling
+interaction with a given hero and for setting adventure map hint text for a
+hero.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ho.htm">HO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="64"><b><font size="2" face="Arial" color="#FF0000"> !!HT</font><font size="2" face="Arial" color="#800080">#1</font><font face="Arial" color="#FF0000" size="3">/</font><font size="2" face="Arial" color="#800080">#2</font><font size="2" face="Arial" color="#FF0000">:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td  height="64">
+
+<font size="2" face="Arial"><b>Lets you set the hint (right-click) text</b> of all
+adventure map objects of a specific type (#1) and subtype (#2). To set a hint
+for all subtypes, use a value of -1 for #2.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ht.htm">HT Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!if:;<br>
+        !!el:;<br>
+        !!en:</font><font color="#8B008B"></font><font color="#FF0000">;</font></font></b>
+		 <a name=ifelse></a></td>
+        <td>
+		<font face="Arial" size="2"><b>If-else-endif statement.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_ie.htm">I\E Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td   valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!IF:<font color="darkmagenta">XXXX</font>; </font></b></td>
+        <td>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <b>
+  Management of conditional flags, player questions (GRM), plus message and
+  picture display.</b><br>
+  <i>For more details, see the <a href="../receivers/receiver_if.htm">IF Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32"><b>
+        <font face="Arial" size="2" color="#FF0000">!!IP:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">; 
+<a name=ip>        <img src=../images/new.gif width="28" height="11"></font></b></td>
+        <td  height="32">
+
+<b><font size="2" face="Arial">Network game support&nbsp; </font></b>
+<br>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ip.htm">IP Receiver</a> page.</i></font> </td>
+      </tr>
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!la<font color=purple>#</font>:; <br>
+        !!go<font color=purple>#</font>:</font><font color="#8B008B"></font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Go-to statement.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="goto.htm">GoTo statement</a> page.</i>
+		</font>
+		</td>
+		</tr>
+		
+		<tr>
+        <td> <a name=ld></a><b><font face="Arial" size="2"><font color="#FF0000">!!LD:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Manage custom LOD files.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_ld.htm">LD Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td  height="32"><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!LE<font color="darkmagenta">#1</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#2</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td  height="32">
+
+<font class="Helvetica32" face="Arial" size="2"><b>Event at the specified position on the map.</b><br>
+<i>For more details, see the <a href="../receivers/receiver_le.htm">LE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32"><b><font size="2" face="Arial"><font color="#FF0000">!!LE</font><font color="#8B008B">#</font><nobr><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></nobr></font></b></td>
+        <td  height="32">
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_le.htm">LE Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><b><font face="Arial" size="2"><font color="#FF0000">!!MA:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+
+<font class="Helvetica32" face="Arial" size="2"><b>Globally changes the
+characteristics of a monster type for all monsters on the map of that type.</b><br>
+<i>For more details, see the <a href="../receivers/receiver_ma.htm">MA Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="135"  nowrap><b><font face="Arial" size="2"><font color="#FF0000">!!MC</font><font color="#800080">@</font><font color="#FF0000">:</font><font color="#800080">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="523" >
+
+<font class="Helvetica32" face="Arial" size="2"><b>Set up macros.</b> Use to assign a
+text name to a variable.<br>
+Applicable to variables f..t, v# or w#.<br>
+<i>For more details, see the <a href="../receivers/receiver_mc.htm">MC Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+<tr>
+        <td> <b> <font face="Arial" size="2"><b> <font face="Arial" size="2"><font color="#FF0000">!!MF</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;<img src=../images/new.gif width="28" height="11"></font></font></b></td>
+        <td>
+<a name=mf><font face="Arial" size="2"><b>Receiver for creature stack taking physical damage</b><br>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mf.htm">MF Receiver</a> page.</i></font>
+        </td>
+      </tr>
+<tr>
+        <td> <b> <font face="Arial" size="2"><b> <font face="Arial" size="2"><font color="#FF0000">!!MM</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;<img src=../images/new.gif width="28" height="11"></font></font></b></td>
+        <td>
+<a name=mm><font face="Arial" size="2"><b>Battle log receiver</b>
+</font><br>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mm.htm">MM Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  nowrap><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!MO<font color="darkmagenta">#1</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#2</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td >
+<font class="Helvetica32" face=arial size=2>
+  <b>
+  The monsters at the specified position on the map.</b><br>
+  &nbsp;#1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground)<br>
+ </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mo.htm">MO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32" nowrap><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!MO<font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td  height="32">
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b></font>
+
+        <font color="#000000" size="2" face="Arial"><br>
+        </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mo.htm">MO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top">
+          <span lang="de"><b><font face="Arial" size="2" color="#FF0000">!!MP</font></b></span><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">:</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta"><span lang="de">XXXX</span></font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;<img border="0" src="../images/new.gif" width="28" height="11"></font></b></td>
+        <td valign="top">
+<a name=mp>
+<b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  Used <span lang="de">to change in-game predefined music<br>
+</span></font></b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mp.htm">M<span lang="de">P</span>
+Receiver</a> page.</i></font></td>
+      </tr>
+<tr>
+        <td> <b> <font face="Arial" size="2"><b> <font face="Arial" size="2"><font color="#FF0000">!!MR</font><font color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;<img src=../images/new.gif width="28" height="11"></font></font></b></td>
+        <td>
+<a name=mr><font face="Arial" size="2"><b>Receiver for creature stack magic resistance</b><br>
+</font>
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mr.htm">MR Receiver</a> page.</i></font>
+        </td>
+      </tr>
+      <tr>
+        <td width="129" height="32" nowrap valign="top">
+          <h3><font face="Arial" size="2"><b><font color="#FF0000">!!MW#</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font></font><font class="Helvetica32" color="#FF0000">;</font></b></font></h3>
+        </td>
+        <td width="531" height="32" valign="top">
+
+<font face="Arial" size="2"><b><span lang="de">Wandering Monsters</span><br>
+</b># is a number of Wandering Monster&nbsp;</font> <br>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_mw.htm">M<span lang="de">W</span> Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!OB</font><font class="Helvetica32" size="2" face="Arial" color="#8B008B">#1</font></font><font class="Helvetica32" face="Arial" size="3" color="#FF0000">/</font><font face="Arial" size="2"><font class="Helvetica32" size="2" face="Arial" color="#8B008B">#2</font></font><font class="Helvetica32" face="Arial" color="#FF0000" size="3">/</font><font face="Arial" size="2"><font class="Helvetica32" size="2" face="Arial" color="#8B008B">#3</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td>
+
+<font size="2" face="Arial"><b>Object at the specified position on the map.</b><br>
+
+<font class="Helvetica32">
+  &nbsp;#1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground) </font> <br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receivers_ob.htm">OB Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32" nowrap><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!OB<font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td  height="32">
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b></font>
+
+        <font color="#000000" size="2" face="Arial"><br>
+        </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receivers_ob.htm">OB Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><b><font class="Helvetica32" size="2" face="Arial" color="#8B008B">Other
+          Object Receivers</font></b></td>
+        <td>
+
+<font face="Arial" size="2">
+
+<b>
+
+Many map objects also have specific receivers for changing their settings.</b><i><br>
+For more details, see the <a href="receivers_objects.htm"><span lang="de">Other
+Ob</span>ject<span lang="de">s</span></a>
+page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32"><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!OW</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td  height="32">
+
+<p><font face="Arial" size="2"> <b> These are commands that apply to a specific
+player.</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_ow.htm">OW Receiver</a> page.</i></font></p>
+
+        </td>
+      </tr>
+      <tr>
+        <td   nowrap> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!PO<font color="darkmagenta">#1</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#2</font></font><font color="red" class="Helvetica32" face="Arial" size="3">/</font><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td>
+
+<font face="Arial" size="2"><b>Used to set up or check information on any square of
+the map.</b>&nbsp;<font class="Helvetica32"> #1 = x,&nbsp; #2 = y,&nbsp; #3 = level
+(0-surface, 1-underground) </font> <br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_po.htm">PO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="32" nowrap> <nobr><b><font size="2" face="Arial"><font color="red" class="Helvetica32">!!PO</font><font color="darkmagenta" class="Helvetica32">#</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></nobr></td>
+        <td  height="32">
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_po.htm">PO Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td   nowrap> <b><font size="2" face="Arial" color="#FF0000"> !!QW:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td>
+
+<b>
+
+<font face="Arial" size="2">Lets you add, rem</font></b><font face="Arial" size="2"><b>ove or change an entry in the new
+Papyrus quest log.</b><br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_qw.htm">QW Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top">
+          <b>
+          <span lang="de"><font face="Arial" size="2" color="#FF0000">!!</font></span><font face="Arial" size="2" color="#FF0000"><span lang="en-us">SN</span></font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">:</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial"><font color="darkmagenta"><span lang="de">XXXX</span></font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;<img border="0" src="../images/new.gif" width="28" height="11"></font></b></td>
+        <td valign="top">
+
+<b>
+<a name=sn>
+<font class="Helvetica32" face="Arial" size="2">
+  Used <span lang="de">to change in-game
+</span><span lang="en-us">sound effects</span><span lang="de"><br>
+</span></font></b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_sn.htm">
+<span lang="en-us">SN</span> Receiver</a> page.</i></font></td>
+      </tr>
+      
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!SS:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td><a name=ss></a>
+		<font face="Arial" size="2"><b>Spell support.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_ss.htm">SS Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      
+      <tr>
+        <td   nowrap><font face="Arial" size="2"><b><font color="#FF0000">!!TM</font><font color="#8B008B">#</font></b></font><font face="Arial" size="2"><b>:<font color="darkmagenta">XXXX</font>;</b></font></td>
+        <td>
+
+<font face="Arial" size="2"><b>This is for setting up the ERM&nbsp; timer.</b><br>
+# = timer number (1-100).<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_tm.htm">TM Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td  height="64"><b><font face="Arial" size="2"><font color="#FF0000">!!TR</font><font color="#800080">#1</font></font><font color="#FF0000" face="Arial" size="3">/</font><font color="#800080" face="Arial" size="2">#2</font><font color="#FF0000" face="Arial" size="3">/</font><font color="#800080" face="Arial" size="2">#3</font><font color="red" class="Helvetica32">:</font><font color="darkmagenta" class="Helvetica32" size="2" face="Arial">XXXX</font><font color="red" class="Helvetica32">;</font></b></td>
+        <td  height="64">
+
+ <font face="Arial" size="2"><b>Set terrain type or change passability of a
+ square at the specified position on the map.</b><br>
+
+<font class="Helvetica32">
+  &nbsp;#1 = x,&nbsp; #2 = y,&nbsp; #3 = level (0-surface, 1-underground) </font> <br>
+ </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_tr.htm">TR Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      
+      <tr>
+        <td> <b><font face="Arial" size="2"><font color="#FF0000">!!TL:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td><a name=tl></a>
+		<font face="Arial" size="2"><b>Turn time limit receiver.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_tl.htm">TL Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+      
+      <tr>
+        <td  height="32"><b><font face="Arial" size="2"><font color="#FF0000">!!TR</font><font color="#800080">#</font></font><font color="red" class="Helvetica32">:</font><font color="darkmagenta" class="Helvetica32" size="2" face="Arial">XXXX</font><font color="red" class="Helvetica32">;</font></b></td>
+        <td  height="32">
+
+<font face="Arial" size="2"><b>As above but coordinates are in variables
+v[#],v[#+1],v[#+2]</b><br>
+ </font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_tr.htm">TR Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!UN</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td>
+
+<font size="2" face="Arial"><b>Universal commands.</b> These commands relate to changes on the heroes map.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="receiver_un.htm">UN Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+      
+      <tr>
+        <td> <a name=ux></a>
+		<b><font face="Arial" size="2"><font color="#FF0000">!!UX:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td>
+		<font face="Arial" size="2"><b>Universal extended.</b></font> <br>
+		<font class="Helvetica32" face="Arial" size="2">
+		<i>For more details, see the <a href="../receivers/receiver_ux.htm">UX Receiver</a> page.</i>
+		</font>
+		</td>
+		</tr>
+
+	   <tr>
+
+    <td><b><font size="2" face="Arial"><font color="red" class="Helvetica32">!#VC</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+    <td> <font face="Arial" size="2"> <b> Control of ERM
+      Variable usage:</b> used to log flags, variables, timers, functions and loops<br>
+      </font> <font class="Helvetica32" face="Arial" size="2"> <i>For more details,
+      see the <a href="../receivers/receiver_vc_right.htm">VC Receiver</a> page.</i></font>
+    </td>
+      </tr>
+
+      <tr>
+        <td><b><font size="2" face="Arial"><font color="red" class="Helvetica32">!!VR</font><font color="#8B008B" size="2" class="Helvetica32" face="Arial">@</font><font color="red" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td>
+
+<font face="Arial" size="2"> <b> Management of variables:</b> setting, comparing and doing math
+  with them. @ is a variable name: f...t, v1-v1000, etc.<br>
+</font>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <i>For more details, see the <a href="../receivers/receiver_vr_right.htm">VR Receiver</a> page.</i></font>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </body>
+
+</html>

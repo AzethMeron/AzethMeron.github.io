@@ -1,0 +1,402 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>TR RECEIVER</title>
+<base target="_self">
+</head>
+
+<body bgproperties="fixed" background="../images/intile.jpg">
+
+<center>
+<p><b><font size="6" face="Times New Roman CE">T</font><font size="5" face="Times New Roman CE">ERRAIN</font><font size="6" face="Times New Roman CE"> (TR)</font><font size="-1" face="Arial"><br>
+<font color="#333333">RECEIVER</font></font></b></p>
+</center>
+<p><b><font size="-1" face="Arial" color="#333333">Used to set terrain types or change
+passability of a square.</b><br><br>
+Supports indirect syntax (TR112 = TRv112/v113/v114)<br>
+</font><p>&nbsp;
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td noWrap valign="top"><b><font size="-1" face="Arial"><font color="#ff0000">!!TR</font><font color="#800080">x</font><font color="#ff0000">/</font><font color="#800080">y</font><font color="#ff0000">/</font><font color="#800080">l</font><font color="#ff0000">:</font><font color="#800080">XXXX</font><font color="#ff0000">;</font></font></b></td>
+      <td valign="top"><font size="-1" face="Arial">Set a Terrain type or change passability
+        of a square at the specified x,y,l location.</font></td>
+    </tr>
+  </tbody>
+</table>
+<center>
+<p><b><font size="-1" face="Arial">OPTIONS</font></b></center>
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font size="-1" face="Arial"><font color="#ff0000"><a name="E">E</a></font><font color="#800080">$</font><font color="#ff0000">;</font></font></b></td>
+      <td width="86%" valign="top"><font size="-1" face="Arial"><b>Mark the square as an
+        object entrance (yellow trigger square)</b></font><font face="Arial" size="2"><br>
+        </font>
+        <font size="-1" face="Arial">&nbsp;&nbsp; <b><font color="#800080">$</font></b> = 0 means yellow trigger.&nbsp;&nbsp;<br>
+        &nbsp;&nbsp; <b><font color="#800080">$</font></b> =1 means&nbsp; no yellow trigger (1).</font></td>
+    </tr>
+    
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font size="-1" face="Arial"><font color="#ff0000"><a name="unused">E</a></font><font color="#800080">?$1</font><font color="#ff0000">/<font color=purple>?$2</font>/<font color=purple>?$3</font>;</font></font></b></td>
+      <td width="86%" valign="top"><font size="-1" face="Arial"><b>Get/check object entrance position</b></font><font face="Arial" size="2"><br>
+        </font>
+        <font size=2>This command lets you get position of entrance of an object (x/y/level) <br>
+        If there is no object at the position, the coordinates passed to TR reciever are returned. If you pass coordinates of a red square of an object to it, it would return croordinates of its entrance.<br>
+        </font>
+        </font></td>
+    </tr>
+    
+    <tr>
+      <td noWrap width="14%" valign="top"><a name="G"><b>
+      <font face="Arial" size="-1" color="#FF0000">G</font></b></a><b><font size="-1" face="Arial"><font color="#800080">$</font><font color="#ff0000">;</font></font></b><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+      <td width="86%" valign="top"><font face="Arial" size="-1"><b>
+      Return the topmost terrain overlay</b>. <br>You may only use GET or CHECK 
+      syntax.<br>
+      (See <a target="annexe" href="../format/format_to.htm">Format TO</a>)</font></td>
+    </tr>
+    
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font size="-1" face="Arial"><font color="#ff0000"><a name="unused">G</a></font><font color="#800080">$1</font><font color="#ff0000">/<font color=purple>$2</font>;</font></font></b></td>
+      <td width="86%" valign="top"><font size="-1" face="Arial"><b>Get type & subtype of topmost terrain overlay</b></font><font face="Arial" size="2"><br>
+        </font>
+        <font size=2>
+		&nbsp;&nbsp;<font color=purple>$1</font> - type<br>
+		&nbsp;&nbsp;<font color=purple>$2</font> - subtype<br>
+		Type 40 subtypes starting with 10000 are recognized as new WoG terrain overlays. You can give them any effect with a script.
+		</font>
+        </font></td>
+    </tr>
+    
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font size="-1" face="Arial"><font color="#ff0000"><a name="P">P</a></font><font color="#800080">$</font><font color="#ff0000">;</font></font></b></td>
+      <td width="86%" valign="top"><font face="Arial"><font size="-1"><b>Set/check/get a
+        passability of the square (red square)</b></font><font size="2"><br>
+        </font></font>
+        <font size="-1" face="Arial">&nbsp;&nbsp; <font color="#800080"><b>$</b></font> = 1 means passable.&nbsp;&nbsp;&nbsp;<br>
+        &nbsp;&nbsp; <font color="#800080"><b>$</b></font> = 0 means not passable.</font></td>
+    </tr>
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font face="Arial" size="2"><font color="#ff0000"><a name="T">T</a></font><font color="#800080">$1</font><font color="#ff0000">/</font><font color="#800080">$2</font><font color="#ff0000">/</font><font color="#800080">$3</font><font color="#ff0000">/</font><font color="#800080">$4</font><font color="#ff0000">/</font><font color="#800080">$5</font><font color="#ff0000">/</font><font color="#800080">$6</font><font color="#ff0000">/</font><font color="#800080">$7</font><font color="#ff0000">/</font><font color="#800080">$8</font></font><font color="#ff0000">;</font></b></td>
+      <td width="86%" valign="top"><font size="2"><font face="Arial"><b>Set/check/get a
+        terrain type</b></font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#1. Terrain type:">$1</a> -
+        type of land</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#2. Terrain Subtype:">$2</a> -
+        subtype of land</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#3. River Type:">$3</a> - type
+        of river</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#4. River Configuration:">$4</a>
+        - subtype of river</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#5. Road Type">$5</a> - type of
+        road</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#6. Road Configuration:">$6</a>
+        - subtype of road</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#7. Mirror Type:">$7</a> - type
+        of mirror</font><br>
+        <font face="Arial">&nbsp;&nbsp; <a href="#acessability">$8</a> - Bit mask of accessability</font><br>
+        <font face="Arial">Comments: <a href="#1. Terrain type:">above</a>.</font></font></td>
+    </tr>
+    <tr>
+      <td noWrap width="14%" valign="top"><b><font size="-1" face="Arial"><font color="#ff0000"><a name="V">V</a></font><font color="#800080">$</font><font color="#ff0000">;</font></font></b></td>
+      <td width="86%" valign="top"><font face="Arial"><font size="-1"><b>Set/check/get a
+        visibility of a square (one bit - one color)</b></font></font><br>
+        <font size="-1" face="Arial"><b><u>Comments:</u></b><br>
+        This is similar to the UN:S and UN:H but for individual squares and you
+        can check or get the value. Also, monsters have sight (1 hex)and this
+        can be enabled or disabled -- they have a bit value number of 256.</font></td>
+    </tr>
+  </tbody>
+</table>
+<center>
+<p><b><font face="Arial" size="2">Explanation of T</font></b></center>
+<p><a name="1. Terrain type:"></a><b><u><font size="-1" face="Arial">1. Terrain
+type:</font></u></b><br>
+&nbsp;
+<table height="241" borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">00</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tdtb000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Dirt</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="19" valign="top"><font size="-1" face="Arial">01</font></td>
+      <td align="middle" width="34" height="19" valign="top">
+      <img src="../images/receiver%20TR/tsub000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="19" valign="top"><font size="-1" face="Arial">&nbsp;Sand</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">02</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tgrb000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Grass</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">03</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tsnb000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Snow</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">04</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tswb000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Swamp</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">05</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/trob000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Rough</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">06</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tsub000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">
+      &nbsp;Underground</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">07</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/tvlb000.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Lava</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">08</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/watrtl31.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Water</font></td>
+    </tr>
+    <tr>
+      <td width="57" height="18" valign="top"><font size="-1" face="Arial">09</font></td>
+      <td align="middle" width="34" height="18" valign="top">
+      <img src="../images/receiver%20TR/rocktl01.GIF" border="0" width="32" height="32"></td>
+      <td width="644" height="18" valign="top"><font size="-1" face="Arial">&nbsp;Rock</font></td>
+    </tr>
+  </tbody>
+</table>
+<p><b><u><font size="-1" face="Arial"><a name="2. Terrain Subtype:"></a>2. Terrain Subtype:</font></u></b></p>
+<p><font size="-1" face="Arial"><a name="dirt"></a>Dirt</font></p>
+<p>
+<img border="0" src="../images/receiver%20TR/dirt.jpg" width="522" height="207"></p>
+<font size="-1" face="Arial">&nbsp;<a name="sand"></a>Sand</font>
+<p><b><u><font face="Arial" size="2">
+<img border="0" src="../images/receiver%20TR/sand.jpg" width="522" height="131"></font></u></b></p>
+<font size="-1" face="Arial">&nbsp;<a name="grass"></a>Grass</font>
+<p>
+<img border="0" src="../images/receiver%20TR/grass.jpg" width="522" height="314"></p>
+<font size="-1" face="Arial">&nbsp;<a name="snow"></a>Snow</font>
+<p>
+<img border="0" src="../images/receiver%20TR/snow.jpg" width="523" height="316"></p>
+<font size="-1" face="Arial">&nbsp;<a name="swamp"></a>Swamp</font>
+<p>
+<img border="0" src="../images/receiver%20TR/swamp.jpg" width="522" height="316"></p>
+<font size="-1" face="Arial">&nbsp;<a name="rough"></a>Rough</font>
+<p>
+<img border="0" src="../images/receiver%20TR/rough.jpg" width="522" height="316"></p>
+<font size="-1" face="Arial">&nbsp;<a name="underground"></a>Underground</font>
+<p>
+<img border="0" src="../images/receiver%20TR/subterranean.jpg" width="522" height="331"></p>
+<font size="-1" face="Arial">&nbsp;<a name="lava"></a>Lava</font>
+<p>
+<img border="0" src="../images/receiver%20TR/lava.jpg" width="523" height="316"></p>
+<font size="-1" face="Arial">&nbsp;<a name="sea"></a>Water</font>
+<p>
+<img border="0" src="../images/receiver%20TR/water.jpg" width="522" height="163"></p>
+<p><font size="-1" face="Arial">&nbsp;<a name="rock"></a>Rock</font></p>
+<p>
+<img border="0" src="../images/receiver%20TR/rock.jpg" width="522" height="203"></p>
+<p>&nbsp;</p>
+<p><b><u><font size="-1" face="Arial"><a name="3. River type:"></a>3. River Type:</font></u></b><br>
+&nbsp;
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td width="99"><font size="-1" face="Arial">01</font></td>
+      <td width="644"><font size="-1" face="Arial">&nbsp;Clear</font></td>
+    </tr>
+    <tr>
+      <td width="99"><font size="-1" face="Arial">02</font></td>
+      <td width="644"><font size="-1" face="Arial">&nbsp;Icy</font></td>
+    </tr>
+    <tr>
+      <td width="99"><font size="-1" face="Arial">03</font></td>
+      <td width="644"><font size="-1" face="Arial">&nbsp;Muddy</font></td>
+    </tr>
+    <tr>
+      <td width="99"><font size="-1" face="Arial">04</font></td>
+      <td width="644"><font size="-1" face="Arial">&nbsp;Lava</font></td>
+    </tr>
+  </tbody>
+</table>
+<p><a name="4. River Configuration:"></a><b><u><font size="-1" face="Arial">4.
+River Configuration:</font></u></b>
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">00, 01, 02, 03 - 4 styles of
+        segment</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ +-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">04 - segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦-+-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">05, 06 - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">07, 08 - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ ¦-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">09, 0A - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">0B, 0C - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+  </tbody>
+</table>
+<a name="5. Road Type"></a><b><u><font size="-1" face="Arial">5. Road Type</font></u></b><br>
+&nbsp;
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td width="111"><font size="-1" face="Arial">01</font></td>
+      <td width="632"><font size="-1" face="Arial">&nbsp;Dirt</font></td>
+    </tr>
+    <tr>
+      <td width="111"><font size="-1" face="Arial">02</font></td>
+      <td width="632"><font size="-1" face="Arial">&nbsp;Gravel</font></td>
+    </tr>
+    <tr>
+      <td width="111"><font size="-1" face="Arial">03</font></td>
+      <td width="632"><font size="-1" face="Arial">&nbsp;Cobblestone</font></td>
+    </tr>
+  </tbody>
+</table>
+<p><a name="6. Road Configuration:"></a><b><u><font size="-1" face="Arial">6.
+Road Configuration:</font></u></b><br>
+&nbsp;
+<table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
+  <tbody>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">00,01,02,03,04,05 - 6 styles
+        of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ +-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">06, 07 - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ ¦-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">08, 09 - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">0A, 0B - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">0C, 0D - 2 styles of segment:</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">0E - segment</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">0F - segment</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦ --¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><font size="-1" face="Arial">10 - segment</font></td>
+      <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
+        <font size="-1" face="Courier">¦-+-¦</font><br>
+        <font size="-1" face="Courier">+---+</font></td>
+    </tr>
+  </tbody>
+</table>
+<p><a name="7. Mirror Type:"></a><b><u><font size="-1" face="Arial">7. Mirror
+Type:</font></u></b>
+<p><font size="-1" face="Arial">Bits: 76543210</font><br>
+<font size="-1" face="Arial">--CcBbAa ('-' means no matter)</font><br>
+<font size="-1" face="Arial">a - vertical mirror for land type (not for all land
+types)</font><br>
+<font size="-1" face="Arial">A - horizontal mirror for land type (not for all
+land types)</font><br>
+<font size="-1" face="Arial">b - vertical mirror for river type</font><br>
+<font size="-1" face="Arial">B - horizontal mirror for river type</font><br>
+<font size="-1" face="Arial">c - vertical mirror for road type</font><br>
+<font size="-1" face="Arial">C - horizontal mirror for road type</font>
+<p align="left"><font face="Arial" size="2">More Explanations about mirror type<br>
+Say, this is:<br>
+<img src="../images/receiver%20TR/ex0.gif" border="0" width="32" height="32"><br>
+This will be shown if you use mirror=0<br>
+<br>
+Then set first bit (mirror=1). This will mirror the square vertical to:<br>
+<img src="../images/receiver%20TR/ex2.gif" border="0" width="32" height="32"></font>
+<p align="left"><font face="Arial" size="2">Or set second bit (mirror=2). This
+will mirror the square horizontal to:<br>
+<img src="../images/receiver%20TR/ex1.gif" border="0" width="32" height="32"></font>
+<p align="left"><font face="Arial" size="2">Or set both bit (mirror=3[2+1]).
+This will mirror the square h and v to:<br>
+<img src="../images/receiver%20TR/ex3.gif" border="0" width="32" height="32"></font>
+<p align="left"><font face="Arial" size="2">The same about mirroring the river
+and road.<br>
+River h mirror=4<br>
+River v mirror=8<br>
+River both mirror=12[8+4]<br>
+Road h mirror=16<br>
+Road v mirror=32<br>
+Road both mirror=48[32+16]<br>
+You can combine all mirroring.<br>
+Say square mirror h, river mirror v and road mirror h and v mirror=
+57[1+8+16+32]</font><a name=acessability>
+<p align="left"><b><font face="Arial" size="2">8. bit mask of accessability</font></b><font size="-1"><b><u><br>
+</u></b></font><font face="Arial" size="2">mt: bit mask of accessability<br>
+Bits: 76543210<br>
+???E???P ('?' means no info)<br>
+P - passability<br>
+E - enrtance<br>
+These bits may be set individually by TR:P and TR:E commands.</font></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>PO RECEIVER</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+P</font><font face="Times New Roman CE" size="5">OSITION</font><font face="Times New Roman CE" size="6"> 
+I</font><font face="Times New Roman CE" size="5">NFO</font><font face="Times New Roman CE" size="6"> 
+(</font></span><font face="Times New Roman CE" size="6">PO</font><span lang="de"><font face="Times New Roman CE" size="6">) 
+- </font><font face="Times New Roman CE" size="5">MAP SQUARE</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b></p>
+<p> <font face="Arial" size="2"> <b><font color="#333333">Used to set up information for any square on 
+the map.
+</font></b></font> </p>
+
+<p> <font face="Arial" size="2"> <b>This receiver may be very useful if you want to control a number of 
+heroes or players who visited any object last (for bonuses and such). Except for <i>
+calculate, </i>ALL of the categories (options) are for convenience only; they 
+can ALL be used for any numbers and are simply a way to store information about 
+a map location for later use.</b></font> </p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="143" height="32" nowrap valign="top"> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">
+        !!PO<font color="darkmagenta">#1</font>/<font color="darkmagenta">#2</font>/<font color="darkmagenta">#3</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td width="100%" height="32" valign="top">
+
+<font face="Arial" size="2">Used to set up or check information on any square of 
+the map. Sets/checks the square at x,y,l coordinates.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="143" height="32" nowrap valign="top"> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">
+        !!PO</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$</font><font color="red" size="2" class="Helvetica32" face="Arial">:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+        <td width="100%" height="32" valign="top">
+
+<p><font face="Arial" size="2">Alternative method to above. Uses indirect 
+reference:<br>
+       x=v[$], y=v[$+1], l=v[$+2]</font></p>
+
+        </td>
+      </tr>
+  </table>
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolor="#000000">
+  <tr>
+    <td width="21%" valign="top"><span lang="de"><font size="2" color="#FF0000">
+    <span style="font-family: Arial; font-weight: 700">B</span></font></span><tt style="font-family: Arial"><span style="font-size: 10.0pt; font-weight: 700"><font color="#800080"><a name="B"></a>#</font><font color="#FF0000">/</font><font color="#800080">$</font><font color="#FF0000">;</font></span></tt><img src="../images/new.gif" border="0" width="28" height="11"></td>
+    <td width="79%" valign="top"><span lang="de"><font size="2">
+    <span style="font-family: Arial; font-weight: 700">S</span></font></span><tt style="font-family: Arial"><span style="font-size: 10.0pt; font-weight: 700">et/check/get 
+    a big integer value </span></tt><font face="Arial">
+    <span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;(-2147483648...2147483647).</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;&nbsp; You can use up to 2 values.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial">&nbsp;&nbsp; # - index of the value to 
+    set (0...1)</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial">&nbsp;&nbsp; $ - value to set/check/get</tt></span></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="C"> 
+    C</a></font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$4</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$5</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Calculate all 
+    objects</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Type (-1=no matter)<span lang="de">
+    </span>(see <a href="../format/format_ob.htm">Format <span lang="de">OB</span></a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Subtype (-1=no 
+    matter)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> - Hero (-1=no matter)<span lang="de">
+    </span>(see <a href="../format/format_h.htm">Format <span lang="de">H</span></a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$4</b></font> - Owner (-1=no matter)<span lang="de">
+    </span>(see <a href="../format/format_e1.htm">Format E1</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$5</b></font> - User defined number 
+    (-1=no matter)<br>
+     Result will be stored in v1</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="H"> 
+    H</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Set/check/get 
+    hero number</b> (0...255)</font> <font face="Arial" size="2">
+    (see <a href="../format/format_h.htm">Format <span lang="de">H</span></a>)</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="N"> 
+    N</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Set/check/get 
+    custom defined number</b> (0...15)</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="O"> 
+    O</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Set/check/get 
+    owner</b> (-8...8)<span lang="de">
+    </span>(see <a href="../format/format_e1.htm">Format E1</a>)</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="S"> 
+    S</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Set/check/get 
+    subtype of object</b> (or any number) (0...255)</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><b> <font face="Arial" size="2" color="#FF0000"> <a name="T"> 
+    T</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="79%" valign="top"><font face="Arial" size="2"><b>Set/check/get 
+    type of object</b> (or any number) (0...255)<span lang="de"><br>
+    &nbsp;</span>(see <a href="../format/format_ob.htm">Format <span lang="de">OB</span></a>)</font></td>
+  </tr>
+  <tr>
+    <td width="21%" valign="top"><tt style="font-family: Arial">
+    <span style="font-size: 10.0pt; font-weight: 700"><font color="#FF0000">V<a name="V"></a></font><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">$</font><font color="#FF0000">;</font></span></tt><img src="../images/new.gif" border="0" width="28" height="11"></td>
+    <td width="79%" valign="top"><span lang="de"><font size="2"><b>
+    <span style="font-family: Arial">S</span></b></font></span><tt style="font-family: Arial"><span style="font-size: 10.0pt"><b>et/check/get 
+    an integer value </b>(-32768...32767).</span></tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;&nbsp; You can use up to 4 values.</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;&nbsp; # - index of the value to set (0...3)</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial">&nbsp;&nbsp; $ - value to set/check/get</tt></span><p>
+    <tt style="font-family: Arial">
+    <span style="font-size: 10.0pt; font-weight: 700">Comments.</span></tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">All integer values in 
+    the ERM <span lang="de">are</span> big so if you store <span lang="de">one</span> with<span lang="de"> </span>a<span lang="de">
+    </span>command like this !!</tt></span><tt style="font-family: Arial"><span style="font-size: 10.0pt">PO...:V1/y4; 
+    the value of y4 will be truncated in</span></tt><span style="font-size: 10.0pt; font-family: Courier New"><tt style="font-family: Arial">&nbsp;the 
+    internal </tt></span><tt style="font-family: Arial">
+    <span style="font-size: 10.0pt">PO storage (y4 itself <span lang="de">
+    remains</span> unchanged)<span lang="de">, so</span> you should
+    <span lang="de">make</span></span></tt><span style="font-size: 10.0pt; font-family: Courier New"><tt style="font-family: Arial">&nbsp;sure 
+    you have a correct value before set<span lang="de">ting this</span>.</tt></span></td>
+  </tr>
+</table>
+<p> <b>
+ <font color="#0000FF" face="Arial" size="2">
+    Example:
+</font> 
+</b> <font color="#008000" face="Arial" size="2"><br>
+</font> 
+<b>
+ <font color="#FF0000" face="Arial" size="2">
+    !?OB63/3; </font> </b> <font color="#FF0000" face="Arial" size="2"> for 
+every *broken tower* on the map x=v998, y=v999, l=v1000<br>
+<b>
+    !!FU100:P;</b> call function 100<br>
+<br>
+<b>
+    !?FU100;</b> function 100<br>
+<b>
+    !!HE-1:O?y1N?y2;</b> y1=owner,y2=number<br>
+<b>
+    !!OB998:T?y3U?y4;</b> y3=type of object,y4=subtype<br>
+<b>
+    !!PO998:Hy2Oy1Ty3Sy4;</b> set owner, last visited hero, type and subtype of 
+object<br>
+    This way you may calculate all objects of particular type.<br>
+<b>
+    !!PO0/0/0:C63/3/0/-1/-1;</b><br>
+    Now v1 has a number of objects type 63 and subtype 3 that was last visited 
+by Orin (0) no matter what is&nbsp;his owner.</font> </p>
+
+<p> <font face="Arial" size="2">A Little Explanation - Extract from mail<br>
+By <i>Timothy</i> and Slava
+ <br>
+ <br>
+<span lang="de"><b>Question:</b><i> </i></span>
+<i>Okay, first: you're referring to things in a way that's new to me. At least 
+that's what it looks like.&nbsp;<br>
+!?OB63/3; for every *broken tower* on the map<br>
+x=v998, y=v999, l=v1000<br>
+In this example you use 63/3 as parameters. Before I left, the only way was with 
+an x,y,l reference. So how do these new parameters work and what&nbsp;exactly do they 
+mean? Is that object # and subtype? How does that work exactly?</i><b><u><br>
+</u><span lang="de">Answer: </span>
+</b>Here is full description.<br>
+  Trigger OB may have 3 styles:<br>
+&nbsp;&nbsp; 1. !?OB$1/$2/$3<br>
+&nbsp;&nbsp; 2. !?OB$1/$2<br>
+&nbsp;&nbsp; 3. !?OB$<br>
+  Style 1: $1=X, $2=Y and $3=Level<br>
+  Style 2: $1=Type of object and $2=Subtype (-1=all subtypes)<br>
+  Style 3: $ =Type of object (subtype=-1)<br>
+  If style 2 and style 1 or 3 fit the case, first will be executed all triggers 
+of style 2 then style 1 or 3. Style 1 and style 3 will be executed as soon as 
+found in script. Then when trigger of style 2 works out it will store the real 
+position of the object in v[998]=X, v[999]=Y, v[1000]=Level. By the way these 
+coordinates are stored for any triggers and receivers.<br>
+  IMPORTANT: For all receivers (not only for OB) that must have a position of an 
+object you can use a indexed position variables.<br>
+  Example:<br>
+  !!OB5/3/1:...<br>
+  We can use also:<br>
+  !!OB10:... 10 is an index of v vars that keep a position v10=X, v11=Y,<span lang="de">
+</span>v12=Level<br>
+  or<br>
+  !!OBv11:... v11 keeps an index, so v[v11]=X, v[v11+1]=Y, v[v11+2]=Level<br>
+ <br>
+  So here is a style of this type of receiver:<br>
+  !!XX$:...<br>
+  Style : XX - name of receiver<br>
+          $= number of v var that keeps X, then Y and L values<br>
+          v[$]=X, v[$+1]=Y, v[$+2]=Level<br>
+ <br>
+<span lang="de"><b>Q:</b><i> </i></span>
+<i>And why and what is x=v998 etc? Are these the variable locations that&nbsp;store 
+the x,y<br>
+&nbsp;coordinates when using this reference in this manner? That's&nbsp;what it looks like 
+(I think)</i>.<br>
+  Yes.<br>
+ <br>
+<i>Please pay attention to the next receiver !!PO:<br>
+You can use it to set up information for any square on the map.<br>
+Commands:<br>
+&nbsp;H$ - set/check/get hero number (0...255)</i><br>
+<i>What value is supposed to be returned if there's no hero there? 0? Or -1?</i><br>
+  <span lang="de"><b>A:</b> </span>Well, this is not an actual hero number, this 
+is just a place where<span lang="de"> </span>you CAN store and then 
+check/get/change a hero number. But you can use<span lang="de"> </span>this in 
+any way you want (this may be not a Hero at all).<br>
+ <br>
+<span lang="de"><b>Q:</b><i> </i></span>
+<i>O$ - set/check/get owner (-8...8)<br>
+Same question as above, what value if no owner and what are the negative numbers 
+for?</i><br>
+  <span lang="de"><b>A:</b> </span>Same answer :-) This is just a place to store 
+something for this<span lang="de"> </span>square. I propose it to use for a 
+colour (maybe + for bonus and - for<span lang="de"> </span>penalty). But you can 
+story there whatever you want.<br>
+ <br>
+<span lang="de"><b>Q:</b><i>
+</i>
+  </span>
+<i>N$ - set/check/get custom defined number (0...15)<br>
+What do these represent exactly?<br>
+</i>
+  <span lang="de"><b>A:</b><i>
+</i>
+  </span>Absolutely any number.<br>
+ <br>
+<span lang="de"><b>Q:</b><i>
+</i>
+  </span>
+<i>T$ - set/check/get type of object (or any number) (0...255)<br>
+What's returned if no object?<br>
+</i>
+  <span lang="de"><b>A:</b><i>
+</i>
+  </span>This is not a real object type. Again you can set it to any number<span lang="de">
+</span>and then use it.<br>
+ <br>
+<span lang="de"><b>Q:</b><i>
+</i>
+  </span>
+<i>S$ - set/check/get subtype of object (or any number) (0...255)<br>
+What if there are no subtypes (or no object)?<br>
+</i>
+  <span lang="de"><b>A:</b><i>
+</i>
+  </span>The same.<br>
+<br>
+<span lang="de"><b>Q:</b><i>
+</i>
+  </span>
+<i>C$1/$2/$3/$4/$5 - calculate all objects<br>
+What do you mean &quot;calculate all objects&quot;? Are you determining the number of them 
+on the map somehow or what?<br>
+</i>
+  <span lang="de"><b>A:</b><i>
+</i>
+  </span>It goes over all map and find *fit* numbers that was set by you before. 
+To delete a parameter from check (it may be any), use -1. So C1/2/0/-1/-1 means 
+to calculate all squares where you set object type to 1, subtype to 2, hero 
+number to 3 and all other values do not matter.<br>
+ <br>
+$1=type (-1=no matter)<br>
+$2=subtype (-1=no matter)<br>
+$3=hero (-1=no matter)<br>
+$4=owner (-1=no matter)<br>
+$5=user defined number (-1=no matter)<br>
+Result will be stored in v1<br>
+Syntax:<br>
+!!POx/y/l:... - direct reference<br>
+!!PO$:... - indirect reference<br>
+x=v[$], y=v[$+1], l=v[$+2]<i><br>
+<br>
+</i><u>Comments:</u>
+<i><br>
+This receiver may be very useful if you want to control a number of hero or 
+player who visited any object last (for bonuses and such).<br>
+<br>
+Example:<br>
+!?OB63/3; for every *broken tower* on the map<br>
+x=v998, y=v999, l=v1000<br>
+!!FU100:P; call function 100<br>
+<br>
+</i><span lang="de"><b>Q:</b><i> </i></span>
+<i>When does this happen? At the start when the map is first loaded? I'm not 
+quite sure I understand.</i>&nbsp;<br>
+  <span lang="de"><b>A:</b> </span>It happens ONLY when you use a receiver for 
+set values and get<span lang="de"> </span>values. At map start for all squares 
+Hero number set to 25<span lang="de">5, </span>owner set<span lang="de"> </span>to -1 and other 
+parameters set to 0.<br>
+<br>
+<span lang="de"><b>Q:</b><i>
+</i>
+  </span>
+<i>!?FU100; function 100<br>
+!!HE-1:O?y1N?y2; y1=owner,y2=number<br>
+Okay...so, let's see... This gets the current hero's owner and hero # and stores 
+them in y1 and y2.<br>
+!!OB998:T?y3U?y4; y3=type of object,y4=subtype<br>
+Here you're referencing something with 998? What is that #?<br>
+It'<span lang="de">s not</span> an x,y,l 
+coordinate and it's not a standard object # and subtype is it?<br>
+So&nbsp;what is it?<br>
+</i>
+  <span lang="de"><b>A:</b><i>
+</i>
+  </span>Right, because !?OB... set v998, v999 and v1000 to actual position<br>
+ of object.<br>
+ <br>
+<span lang="de"><b>Q:</b><i> </i></span><i>Hmm... and then you're storing the 
+object type and subtype in&nbsp;variables...that part makes sense at least.<br>
+!!PO998:Hy2Oy1Ty3Sy4; set owner, last visited hero, type and subtype of object. 
+Still not sure what 998 refers to. So...you're setting all these? For what 
+purpose? (See, I told you I'm confused by this!)</i><br>
+<span lang="de"><b>A:</b> </span>This way you may calculate all objects of 
+particular type.<br>
+!!PO0/0/0:C63/3/0/-1/-1;<br>
+Now v1 has a number of objects type 63 and subtype 3 that was last visited by 
+Orin (0) no matter what is his owner.<br>
+</font> </p>
+
+</body>
+
+</html>

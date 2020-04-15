@@ -1,0 +1,126 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CE Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">C</font><font face="Times New Roman CE" size="5">ASTLE</font><font face="Times New Roman CE" size="6">
+  E</font><font face="Times New Roman CE" size="5">VENT</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">CE</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong>
+  <p><font class="Helvetica32"><b>
+  <font face="Arial" size="2" class="Helvetica32" color="#333333">Used to modify the attributes of a timed Town
+  Event.</font></b>
+  </font>
+
+  &nbsp;
+  <p>&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000" height="32">
+      <tr>
+        <td width="143" height="26" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!CE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" height="26" valign="top">
+
+<font class="Helvetica32" face="Arial" size="2">The Event in a town(# - number of event). This is the number, which
+          should be first in the text of the appropriate event. It won't appear
+          in the text of the message.</font>
+
+        </td>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"> OPTIONS</font></strong>
+  <table border="2" height="421" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="B">B</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Set/Check/Get the amount of resource #1</b>
+          (<a href="../format/format_r.htm">Format R</a>) to $2 (may be negative).</font></td>
+      </tr>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="C">C</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Set/Check/Get a &quot;gift&quot; monster of type $2
+          </b>
+          (<a href="../format/format_c.htm">Format C</a>) in position #1 (from 0 to
+          6).</font></td>
+      </tr>
+      <tr>
+        <td height="12" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="D">D</a><font color="darkmagenta">#</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="12" valign="top"><font face="Arial" size="2"><b>Do NOT build structure index # &nbsp;<br>
+          </b> (see <a href="../format/format_u.htm">Format
+          U)</a>.</font></td>
+      </tr>
+      <tr>
+        <td height="58" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="E">E</a><font color="darkmagenta">$</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="58" valign="top"><font face="Arial" size="2"><b>Set players allowed to activate the event.
+          </b> (see <a href="../format/format_e.htm">Format
+          E</a>)&nbsp;<br>
+ If $ begins with d that means bit wise OR, i.e. you can allow a
+          player to activate the event without changing the other permissions.<br>
+          <font color="#0000FF">
+          <strong>Example</strong><b>:</b><br>
+          </font><font color="#FF0000">E3 allows red and green and bans all other.
+          Ed3 allows red and green but does not change permission for the other
+          players.</font></font></td>
+      </tr>
+      <tr>
+        <td height="17" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="F">F</a><font color="darkmagenta">$</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="17" valign="top"><font face="Arial" size="2"><b>Set/Check/Get day of first occurrence
+          to $.</b></font></td>
+      </tr>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="H">H</a><font color="darkmagenta">#</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Apply or check event to human players if # = 1.</b></font></td>
+      </tr>
+      <tr>
+        <td height="36" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="M">M</a>^<font color="darkmagenta">TEXT</font>^</b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="36" valign="top"><font face="Arial" size="2"><b>Set message text to TEXT.</b> The text's length must not exceed the
+          original one. It may contain any symbols except ^.</font></td>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b>M<font color="darkmagenta">#</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Set message text to that of the timed event number #.</b></font></td>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b>M-1</b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Do not show the message on the screen.</b></font></td>
+      <tr>
+        <td height="76" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="N">N</a><font color="darkmagenta">$</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="76" valign="top"><font face="Arial" size="2"><b>Set players NOT allowed to activate the event.
+          </b> (see <a href="../format/format_e.htm">Format
+          E</a>)<br>
+          If $ begins with d that means bitwise AND with inversion, i.e.
+          you can forbid a player to activate the event without changing the
+          other permissions.<br>
+          <strong><font color="#0000FF">Example:</font>
+          <font color="#008000">
+          <br>
+          </font></strong> <font color="#FF0000">N3 forbids red and green and allows all
+          other. Nd3 forbids red and green but does not change permission for
+          the other players.</font></font></td>
+      </tr>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="Q">Q</a><font color="darkmagenta">#</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Apply or check event to computer players if # = 1.</b></font></td>
+      </tr>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="R">R</a><font color="darkmagenta">$</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Set/Check/Get the interval between successive
+          occurrences to $.</b></font></td>
+      <tr>
+        <td height="18" valign="top"><nobr><font color="red" size="2" face="Arial"><b><a name="U">U</a><font color="darkmagenta">#</font></b></font></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td height="18" valign="top"><font face="Arial" size="2"><b>Build structure index # </b> (see
+        <a href="../format/format_u.htm">Format
+          U</a>).</font></td>
+    </tbody>
+  </table>
+
+<p>&nbsp;
+</p>
+
+</body>
+
+</html>

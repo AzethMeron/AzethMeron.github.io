@@ -1,0 +1,646 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Cm Receiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">M</font><font face="Times New Roman CE" size="5">OUSE</font><font face="Times New Roman CE" size="6">
+  C</font><font face="Times New Roman CE" size="5">LICK</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">CM</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong>
+  <p><font class="Helvetica32"><b><font face="Arial" size="2">
+  <font color="#333333">Get/check/set info about mouse click.
+  This receiver must follow after any !?CM trigger. (<a href=../other/trigger_right.htm#cm target=principal>CM0/CM1/CM2/CM3/CM4</a>)</font>
+  </font></b>
+  </font>
+
+  <p>&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000" height="16" width="100%">
+      <tr>
+        <td width="143" height="10" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!CM:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" height="10" valign="top">
+
+<font class="Helvetica32" face="Arial" size="2">Get/check/set info about mouse click
+</font>
+
+        </td>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2"> OPTIONS</font></strong>
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" height="512">
+    <tbody>
+      <tr>
+        <td height="48" valign="top" width="61"><nobr><b><font color="red" size="2" face="Arial"><a name="A">A</a><font color="darkmagenta">$</font></font><font color="darkmagenta" size="2" face="Arial">1</font><font color="red" size="2" face="Arial">/<font color="darkmagenta">$</font></font><font color="darkmagenta" size="2" face="Arial">2</font><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="48"><b><font face="Arial" size="2">A</font></b><font face="Arial" size="2"><b>bsolute position of a cursor in pixels</b><br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - x<br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - y&nbsp;</font></td>
+      </tr>
+      <tr>
+        <td height="112" valign="top" width="61"><nobr><b><font color="red" size="2" face="Arial"><a name="D">D</a><font color="darkmagenta">$</font></font><font size="2" face="Arial" color="#FF0000">;
+          </font></b></nobr></td>
+        <td valign="top" height="112"><font face="Arial" size="2"><b>Set/Check/Get
+          a battlefield position</b><br>
+          &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">$</font></b> is a number of position.<br>
+          The hex grid follows the numbers we already have for it (0-186) in the docs for setting up the battlefields.<br>
+          The background and outside the grid is number -1.<br>
+          The left hero's number is 252. The right hero's number is 253.<br>
+          There's also some 254 areas along the extreme right edge of the screen below the right side hero but it only goes down about half way and the rest is -1.</font></td>
+      </tr>
+      <tr>
+        <td height="48" valign="top" width="61"><nobr><font color="red" size="2" face="Arial"><b><a name="F">F</a><font color="darkmagenta">$</font></b></font><b><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="48"><font face="Arial" size="2"><b>Flags&nbsp;</b><br>
+&nbsp;&nbsp;&nbsp;0=Left mouse click<br>
+&nbsp;&nbsp;&nbsp;1=Shift+Left mouse click<br>
+&nbsp;&nbsp;&nbsp;4=Ctrl+Left mouse click<br>
+&nbsp;&nbsp;&nbsp;32=Alt+Left mouse click<br>
+&nbsp;&nbsp;&nbsp;512=Right mouse click<br>
+<br>
+&nbsp;&nbsp;Numbers may be combined to check for combinations of Shift, Ctrl and Alt with the Left mouse click. For example, to check if a player holds down Shift+Ctrl and makes a Left mouse click, the number would be 5 (1+4=5). A Right mouse click cannot be combined with any of these keys.
+</font></td>
+      </tr>
+      <tr>
+        <td height="96" valign="top" width="61"><b><font size="2" face="Arial" color="#FF0000"><a name="H">H</a></font><font size="2" face="Arial" color="#8B008B">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$2</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+        <td valign="top" height="96"><font size="2" face="Arial">Give the number of heroes with new command:<br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Number of the left hero<br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Number of the right hero<br>
+  You can only check or get them.<br>
+  You can also use this command for !?CM2; section to get the left hero as an active. The second one is a phantom (there is no second
+          one).</font>
+        </td>
+      </tr>
+      <tr>
+        <td height="12" valign="top" width="61"><nobr><b><font color="red" size="2" face="Arial"><a name="I">I</a><font color="darkmagenta">$</font></font><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="12">
+          <p><font face="Arial" size="2"><b>Number with CM:I$</b></font></p>
+          <p><font face="Arial" size="2"><a href="#Adventure" target="_self">Adventure
+          Screen</a><br>
+          <a href="#Town" target="_self">Town Screen</a></font><br>
+          <font face="Arial" size="2"><a href="#Hero" target="_self">Hero Screen</a></font><br>
+          <font face="Arial" size="2"><a href="#Heroes visiting" target="_self">Heroes visiting Screens</a></font><br>
+          <font face="Arial" size="2"><a href="#Combat Screen" target="_self">Combat
+          Screen</a></font><br>
+
+&nbsp;&nbsp;Now the CM:I command should always return a correct value in the town screen for town buildings, even if one structure overlaps another. Also it is set now to -1 if no structure is found under the cursor.
+</p>
+        </td>
+      </tr>
+      <tr>
+        <td height="14" valign="top" width="61"><b><a name="M"></a><span lang="de">
+        <font color="#FF0000">Mz</font><font color="#8B008B">#;</font><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+        <td valign="top" height="14"><font face="Arial" size="2"><b>Set the hint text in
+        the town screen, replacing the default hint with your own</b><br> You can
+        use global (z1..z1000) or local (z-1..z-10) z variables.<br>
+        <br>
+        <b><u>Comments</u></b><br>
+        To get additional information on where the mouse is situated, you can
+        use other !!CM commands: T, S, I, F, A.<br>
+        <span lang="de">(See
+        <a target="_self" href="../other/trigger_right.htm#mm">MM1 Trigger</a>)</span><br>
+        <br>
+        <b><font color="#0000FF">Example:</font><font color="#FF0000"><br>
+        !#VRz10:S^Hi, fellow!^;<br>
+        !?MM1;<br>
+        !!CM:Mz10;</font></b></font></td>
+      </tr>
+      <tr>
+        <td height="96" valign="top" width="61"><nobr><b><font color="red" size="2" face="Arial"><a name="P">P</a></font><font color="darkmagenta" size="2">$</font><font color="darkmagenta" size="2" face="Arial">1</font><font color="red" size="2" face="Arial">/<font color="darkmagenta">$</font></font><font color="darkmagenta" size="2" face="Arial">2</font><font color="red" size="2" face="Arial">/<font color="darkmagenta">$</font></font><font color="darkmagenta" size="2" face="Arial">3</font><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="96"><b><font face="Arial" size="2">M</font></b><font face="Arial" size="2"><b>ap position</b><br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - x<br>
+          &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - y&nbsp;<br>
+          &nbsp;&nbsp; <b><font color="#8B008B">$3</font></b> - Level&nbsp;<br>
+          <u><b>Comments:</b></u><br>
+      P command work only for items 1 (small map) and 37 (big map).&nbsp;</font></td>
+      </tr>
+      <tr>
+        <td height="96" valign="top" width="61"><nobr><font color="red" size="2" face="Arial"><b><a name="R">R</a><font color="darkmagenta">$</font></b></font><b><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="96"><b><font face="Arial" size="2">E</font></b><font face="Arial" size="2"><b>nable/Disable
+          standard reaction</b><br>
+          &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">0 </font></b> - Disable<br>
+          &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">1</font></b> - Enable<br>
+          <u><b>Comments:</b></u><br>
+          If you wanted a right-click on the adventure map to do something,
+          you'd use a CM trigger to intercept it, then use CM:R to disable the
+          standard do-you-want-to-leave-troops-here thing.</font></td>
+      </tr>
+      <tr>
+        <td height="16" valign="top" width="61"><nobr><font color="red" size="2" face="Arial"><b><a name="S">S</a><font color="darkmagenta">$</font></b></font><b><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="16"><b><font face="Arial" size="2">S</font></b><font face="Arial" size="2"><b>ubtype of the action</b><br>
+Left mouse push (subtype=12), left mouse release (subtype=13) and right mouse push (subtype=14)
+
+
+</font></td>
+      </tr>
+      <tr>
+        <td height="16" valign="top" width="61"><nobr><font color="red" size="2" face="Arial"><b><a name="T">T</a><font color="darkmagenta">$</font></b></font><b><font size="2" face="Arial" color="#FF0000">;</font></b></nobr></td>
+        <td valign="top" height="16"><font face="Arial" size="2"><b>Type of an action</b> (usually 512)</font></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><font face="Arial" size="2"><u><b>Comments:<br>
+  </b></u>If you want to display a message box that doesn't remain on the screen
+  (like the normal one when a player right-clicks the mouse), use IF:Q with the
+  4 option. This will create a message box with no buttons (no Okay or cancel
+  button) that will only display while the mouse is held down. If you don't want
+  a picture, use a value of -1 for type and subtype. See the
+  <a target="_self" href="receiver_if_right.htm">!!IF receiver</a> for more information on IF:Q.<br>
+  </font></p>
+
+  <table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+    <tr>
+      <td width="100%" valign="top"><font face="Arial" size="2"><b>Number with
+        CM:I<br>
+        <br>
+        </b>
+        <a href="#Adventure" target="_self">Adventure Screen</a><br>
+        <a href="#Town"></a><a href="#Town" target="_self">Town Screen</a></font><br>
+        <font face="Arial" size="2"><a href="#Hero" target="_self">Hero Screen</a></font><br>
+        <font face="Arial" size="2"><a href="#Heroes visiting" target="_self">Heroes visiting Screens</a></font><br>
+        <font face="Arial" size="2"><a href="#Combat Screen" target="_self">Combat
+        Screen</a></font></td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top"><font face="Arial" size="2"><b><a name="Adventure">Adventure</a>
+        Screen</b></font>
+        <p><font face="Arial" size="2">&nbsp;&nbsp; 0 - area with no item number<br>
+        Note: some areas won't even register when right-clicked and others have
+        the<br>
+        no item number (value 0).<br>
+        &nbsp;&nbsp; 1 - world map (mini map)<br>
+        &nbsp;&nbsp; 2 - border of hero information square<br>
+        &nbsp;&nbsp; 3 - kingdom overview button<br>
+        &nbsp;&nbsp; 4 - surface/underworld button<br>
+        &nbsp;&nbsp; 5 - quest log button<br>
+        &nbsp;&nbsp; 6 - sleep/wake hero button<br>
+        &nbsp;&nbsp; 7 - move hero button<br>
+        &nbsp;&nbsp; 8 - cast spell button<br>
+        &nbsp;&nbsp; 9 - adventure options button<br>
+        &nbsp;&nbsp; 10 - system options button<br>
+        &nbsp;&nbsp; 11 - next hero button<br>
+        &nbsp;&nbsp; 12 - end turn button<br>
+        &nbsp;&nbsp; 13 - hero list: scroll up arrow<br>
+        &nbsp;&nbsp; 14 - hero list: scroll down arrow<br>
+        &nbsp;&nbsp; 20 - hero list: move bar for hero #1<br>
+        &nbsp;&nbsp; 21 - hero list: move bar for hero #2<br>
+        &nbsp;&nbsp; 22 - hero list: move bar for hero #3<br>
+        &nbsp;&nbsp; 23 - hero list: move bar for hero #4<br>
+        &nbsp;&nbsp; 24 - hero list: move bar for hero #5<br>
+        &nbsp;&nbsp; 25 - hero list: mana bar for hero #1<br>
+        &nbsp;&nbsp; 26 - hero list: mana bar for hero #2<br>
+        &nbsp;&nbsp; 27 - hero list: mana bar for hero #3<br>
+        &nbsp;&nbsp; 28 - hero list: mana bar for hero #4<br>
+        &nbsp;&nbsp; 29 - hero list: mana bar for hero #5<br>
+        &nbsp;&nbsp; 30 - town list: scroll up arrow<br>
+        &nbsp;&nbsp; 31 - town list: scroll down arrow<br>
+        &nbsp;&nbsp; 32 - town list: town #1<br>
+        &nbsp;&nbsp; 33 - town list: town #2<br>
+        &nbsp;&nbsp; 34 - town list: town #3<br>
+        &nbsp;&nbsp; 35 - town list: town #4<br>
+        &nbsp;&nbsp; 36 - town list: town #5<br>
+        &nbsp;&nbsp; 37 - adventure map<br>
+        &nbsp;&nbsp; 38 - rollover bar (messages/chat etc.)<br>
+        &nbsp;&nbsp; 39 - hero list: hero #1<br>
+        &nbsp;&nbsp; 40 - hero list: hero #2<br>
+        &nbsp;&nbsp; 41 - hero list: hero #3<br>
+        &nbsp;&nbsp; 42 - hero list: hero #4<br>
+        &nbsp;&nbsp; 43 - hero list: hero #5<br>
+        &nbsp;&nbsp; 1000 - resource/date bar (edges)<br>
+        &nbsp;&nbsp; 1001 - wood value<br>
+        &nbsp;&nbsp; 1002 - mercury value<br>
+        &nbsp;&nbsp; 1003 - ore value<br>
+        &nbsp;&nbsp; 1004 - sulphur value<br>
+        &nbsp;&nbsp; 1005 - crystal value<br>
+        &nbsp;&nbsp; 1006 - gems value<br>
+        &nbsp;&nbsp; 1007 - gold value<br>
+        &nbsp;&nbsp; 1008 - date (month/day/week)<br>
+        &nbsp;&nbsp; 1009 - wood icon<br>
+        &nbsp;&nbsp; 1010 - mercury icon<br>
+        &nbsp;&nbsp; 1011 - ore icon<br>
+        &nbsp;&nbsp; 1012 - sulphur icon<br>
+        &nbsp;&nbsp; 1013 - crystal icon<br>
+        &nbsp;&nbsp; 1014 - gems icon<br>
+        &nbsp;&nbsp; 1015 - gold icon<br>
+        &nbsp;&nbsp; 2000 - hero information square<br>
+        &nbsp;&nbsp; 2001 - hero info square: portrait<br>
+        &nbsp;&nbsp; 2002 - hero info square: name<br>
+        &nbsp;&nbsp; 2003 - hero info square: attack value<br>
+        &nbsp;&nbsp; 2004 - hero info square: defence value<br>
+        &nbsp;&nbsp; 2005 - hero info square: power value<br>
+        &nbsp;&nbsp; 2006 - hero info square: knowledge value</font></p>
+        <p>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top">
+          <p><font face="Arial" size="2"><b>Item (area) of the <a name="Town"> Town</a> Screen</b><br>
+          numbers returned by !!CM:I when clicking on various spots on a town screen. This will eventually find its way into the ERM docs but for anyone who needs the information now, here it is. (Much of it is the same as the information listed under the CA Receiver as the numbers generally match up.) Some notes follow the item list.</font></p>
+          <p><font face="Arial" size="2">
+          &nbsp;&nbsp; 0: Level 1 Mage Guild<br>
+          &nbsp;&nbsp; 1: Level 2 Mage Guild<br>
+          &nbsp;&nbsp; 2: Level 3 Mage Guild<br>
+          &nbsp;&nbsp; 3: Level 4 Mage Guild<br>
+          &nbsp;&nbsp; 4: Level 5 Mage Guild<br>
+          &nbsp;&nbsp; 5: Tavern<br>
+          &nbsp;&nbsp; 6: Shipyard (Castle, Fortress, Necropolis)<br>
+          &nbsp;&nbsp; 7: Fort<br>
+          &nbsp;&nbsp; 8: Citadel<br>
+          &nbsp;&nbsp; 9: Castle<br>
+          &nbsp;&nbsp; 10: Village Hall<br>
+          &nbsp;&nbsp; 11: Town Hall<br>
+          &nbsp;&nbsp; 12: City Hall<br>
+          &nbsp;&nbsp; 13: Capitol<br>
+          &nbsp;&nbsp; 14: Marketplace<br>
+          &nbsp;&nbsp; 15: Resource Silo<br>
+          &nbsp;&nbsp; 16: Blacksmith<br>
+          &nbsp;&nbsp; 17: Special Building: Mystic Pond (Rampart), Cover of Darkness
+          &nbsp;&nbsp; (Necropolis), Artifact Merchant (Tower, Dungeon and Conflux), Escape Tunnel (Stronghold), Cage of Warlords (Fortress), Lighthouse (Castle)<br>
+          &nbsp;&nbsp; 18: Horde Building: Miner's Guild (Rampart), Griffin Bastion (Castle), Mushroom Rings (Dungeon), Unearthed Graves (Necropolis), Birthing Pools (Inferno), Garden of Life (Conflux), Sculptor's Wings (Tower), Mess Hall (Stronghold), Captain's Quarters (Fortress)<br>
+          &nbsp;&nbsp; 19: Upgraded Dwelling with Horde Building (see 18 for particulars).<br>
+          &nbsp;&nbsp; 21: Special Building: Glyths of Fear (Fortress), Necromancy Amplifier (Necropolis), Lookout Tower (Tower), Mana Vortex (Dungeon), Stables (Castle), Brimstone Stormclouds (Inferno), Fountain of Fortune (Rampart), Freelancer's Guild (Stronghold), Magic University (Conflux)<br>
+          &nbsp;&nbsp; 22: Special Buildings: Ballista Yard (Stronghold), Portal of Summoning (Dungeon), Blood Obelisk (Fortress), Library (Tower), Skeleton Transformer (Necropolis), Treasury (Rampart), Brotherhood of the Sword (Castle), Castle Gate (Inferno), NFA: Waterfall (Conflux)<br>
+          &nbsp;&nbsp; 23: Special Building: Battle Scholar Academy (Dungeon), Order of Fire (Inferno), Wall of Knowledge (Tower), Hall of Valhalla (Stronghold), NFA: Waterfall (Castle), NFA: Little Huts (Rampart), NFA: Swamp (Fortress), NFA: Graveyard (Necropolis), NFA: Much of the foreground area that isn't built on (Conflux)<br>
+          &nbsp;&nbsp; 24: Horde Building 2: Dendroid Saplings (Rampart), Cages (Inferno)<br>
+          &nbsp;&nbsp; 25: Upgraded Dwelling with Horde Building 2 (see 24 for particulars)<br>
+          &nbsp;&nbsp; 26: Grail Building<br>
+          &nbsp;&nbsp; 27: NFA: Waterfall (Stronghold)<br>
+          &nbsp;&nbsp; 28: NFA: Area just in front of the Resource Silo and Marketplace in Necropolis.<br>
+          &nbsp;&nbsp; 29: NFA: Much of the in-between foreground area of Conflux once buildings have been built.<br>
+          &nbsp;&nbsp; 30: Level 1 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 31: Level 2 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 32: Level 3 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 33: Level 4 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 34: Level 5 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 35: Level 6 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 36: Level 7 Dwelling (Basic)<br>
+          &nbsp;&nbsp; 37: Level 1 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 38: Level 2 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 39: Level 3 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 40: Level 4 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 41: Level 5 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 42: Level 6 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 43: Level 7 Dwelling (Upgraded)<br>
+          &nbsp;&nbsp; 115: Garrison Creature Slot 1<br>
+          &nbsp;&nbsp; 116: Garrison Creature Slot 2<br>
+          &nbsp;&nbsp; 117: Garrison Creature Slot 3<br>
+          &nbsp;&nbsp; 118: Garrison Creature Slot 4<br>
+          &nbsp;&nbsp; 119: Garrison Creature Slot 5<br>
+          &nbsp;&nbsp; 120: Garrison Creature Slot 6<br>
+          &nbsp;&nbsp; 121: Garrison Creature Slot 7<br>
+          &nbsp;&nbsp; 123: Garrison Hero Slot<br>
+          &nbsp;&nbsp; 125: Visiting Hero Slot<br>
+          &nbsp;&nbsp; 140: Visiting Hero Creature Slot 1<br>
+          &nbsp;&nbsp; 141: Visiting Hero Creature Slot 2<br>
+          &nbsp;&nbsp; 142: Visiting Hero Creature Slot 3<br>
+          &nbsp;&nbsp; 143: Visiting Hero Creature Slot 4<br>
+          &nbsp;&nbsp; 144: Visiting Hero Creature Slot 5<br>
+          &nbsp;&nbsp; 145: Visiting Hero Creature Slot 6<br>
+          &nbsp;&nbsp; 146: Visiting Hero Creature Slot 7<br>
+          &nbsp;&nbsp; 147: Town Screen Background (no specific object)<br>
+          &nbsp;&nbsp; 148: Below Town Screen Background (between slots and icons)<br>
+          &nbsp;&nbsp; 149: Town Name<br>
+          &nbsp;&nbsp; 150: Town Icon Picture<br>
+          &nbsp;&nbsp; 151: Rollover Bar (hint messages)<br>
+          &nbsp;&nbsp; 152: Town List Scroll Up Arrow<br>
+          &nbsp;&nbsp; 153: Town List Scroll Down Arrow<br>
+          &nbsp;&nbsp; 154: Split Creature Stack Button<br>
+          &nbsp;&nbsp; 155: 1st (top) Town in Town List<br>
+          &nbsp;&nbsp; 156: 2nd (middle) Town in Town List<br>
+          &nbsp;&nbsp; 157: 3rd (bottom) Town in Town List<br>
+          &nbsp;&nbsp; 158: Hall Icon<br>
+          &nbsp;&nbsp; 159: Castle Icon<br>
+          &nbsp;&nbsp; 160: Daily Income (produced by town)<br>
+          &nbsp;&nbsp; 164: Level 1 Troop Icon<br>
+          &nbsp;&nbsp; 165: Level 2 Troop Icon<br>
+          &nbsp;&nbsp; 166: Level 3 Troop Icon<br>
+          &nbsp;&nbsp; 167: Level 4 Troop Icon<br>
+          &nbsp;&nbsp; 168: Level 5 Troop Icon<br>
+          &nbsp;&nbsp; 169: Level 6 Troop Icon<br>
+          &nbsp;&nbsp; 170: Level 7 Troop Icon<br>
+          &nbsp;&nbsp; 171: Extra Troop Icon (Portal of Summoning)<br>
+          &nbsp;&nbsp; 172: Level 1 Troop Daily Growth<br>
+          &nbsp;&nbsp; 173: Level 2 Troop Daily Growth<br>
+          &nbsp;&nbsp; 174: Level 3 Troop Daily Growth<br>
+          &nbsp;&nbsp; 175: Level 4 Troop Daily Growth<br>
+          &nbsp;&nbsp; 176: Level 5 Troop Daily Growth<br>
+          &nbsp;&nbsp; 177: Level 6 Troop Daily Growth<br>
+          &nbsp;&nbsp; 177: Level 7 Troop Daily Growth<br>
+          &nbsp;&nbsp; 179: Extra Troop Daily Growth (Portal of Summoning)<br>
+          &nbsp;&nbsp; 1001: Player's Total Wood<br>
+          &nbsp;&nbsp; 1002: Player's Total Mercury<br>
+          &nbsp;&nbsp; 1003: Player's Total Ore<br>
+          &nbsp;&nbsp; 1004: Player's Total Sulphur<br>
+          &nbsp;&nbsp; 1005: Player's Total Crystal<br>
+          &nbsp;&nbsp; 1006: Player's Total Gems<br>
+          &nbsp;&nbsp; 1007: Player's Total Gold<br>
+          &nbsp;&nbsp; 1008: Date (Month/Week/Day)<br>
+          &nbsp;&nbsp; 1009: Wood Icon<br>
+          &nbsp;&nbsp; 1010: Mercury Icon<br>
+          &nbsp;&nbsp; 1011: Ore Icon<br>
+          &nbsp;&nbsp; 1012: Sulphur Icon<br>
+          &nbsp;&nbsp; 1013: Crystal Icon<br>
+          &nbsp;&nbsp; 1014: Gems Icon<br>
+          &nbsp;&nbsp; 1015: Gold Icon<br>
+          &nbsp;&nbsp; 30720: OK Button (Checkmark)</font></p>
+          <p><font face="Arial" size="2"><b><u>Notes:</u></b><br>
+          1. NFA stands for Non Functional Area. These are areas of the Town Screen that produce a distinct number when clicked, but have no actual game function. NFAs vary between different town types and not every town has them. They sometimes occur in a town that doesn't have a special building using that number.<br>
+          2. Many buildings numbers overlap each other. For example, the lower part of the Mage Guild in the Rampart has the Hall on the right (#10, 11 or 12) and the NFA huts on the left (#23) and clicking will often produce these numbers instead of the Mage Guild number. In a few cases, it may even be impossible to produce the actual building number when clicking due to the overlaps.<br>
+          3. The number produced by clicking on a Mage Guild is always for the highest level of guild currently build. Likewise, an upgraded Dwelling number replaces a basic Dwelling number when the upgraded dwelling is built. Furthermore, the number of a horde building (when built) replaces that of the corresponding Dwelling. Other upgrades behave the same, such as the Castle's Tavern (#5) being replaced by the Brotherhood of Sword (#22) when built.</font></p>
+          <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top">
+          <p><font face="Arial" size="2"><b><a name="Hero">Hero</a> Screen</b></font></p>
+          <p><font face="Arial" size="2">0 Empty Areas<br>
+          1 Name<br>
+          2 Head Slot<br>
+          3 Shoulder Slot<br>
+          4 Neck Slot<br>
+          5 Right Hand Slot<br>
+          6 Left Hand Slot<br>
+          7 Torso Slot<br>
+          8 Right Ring Slot<br>
+          9 Left Ring Slot<br>
+          10 Feet Slot<br>
+          11 Misc. Slot 1<br>
+          12 Misc. Slot 2<br>
+          13 Misc. Slot 3<br>
+          14 Misc. Slot 4<br>
+          15 Ballista Slot<br>
+          16 Ammo Cart Slot<br>
+          17 First Aid Tent Slot<br>
+          18 Catapult Slot<br>
+          19 Spell Book Slot<br>
+          20 Misc. Slot 5<br>
+          40 Backpack Slot 1<br>
+          41 Backpack Slot 2<br>
+          42 Backpack Slot 3<br>
+          43 Backpack Slot 4<br>
+          44 Backpack Slot 5<br>
+          45 Hero Portrait<br>
+          46 Attack (value)<br>
+          47 Defence (value)<br>
+          48 Power (value)<br>
+          49 Knowledge (value)<br>
+          50 Attack Icon<br>
+          51 Defence Icon<br>
+          52 Power Icon<br>
+          53 Knowledge Icon<br>
+          68 Troop Slot 1<br>
+          69 Troop Slot 2<br>
+          70 Troop Slot 3<br>
+          71 Troop Slot 4<br>
+          72 Troop Slot 5<br>
+          73 Troop Slot 6<br>
+          74 Troop Slot 7<br>
+          77 Backpack Scroll Left Arrow<br>
+          78 Backpack Scroll Right Arrow<br>
+          79 1st Skill Icon<br>
+          80 2nd Skill Icon<br>
+          81 3rd Skill Icon<br>
+          82 4th Skill Icon<br>
+          83 5th Skill Icon<br>
+          84 6th Skill Icon<br>
+          85 7th Skill Icon<br>
+          86 8th Skill Icon<br>
+          87 1st Skill Name<br>
+          88 2nd Skill Name<br>
+          89 3rd Skill Name<br>
+          90 4th Skill Name<br>
+          91 5th Skill Name<br>
+          92 6th Skill Name<br>
+          93 7th Skill Name<br>
+          94 8th Skill Name<br>
+          95 1st Skill Level<br>
+          96 2nd Skill Level<br>
+          97 3rd Skill Level<br>
+          98 4th Skill Level<br>
+          99 5th Skill Level<br>
+          100 6th Skill Level<br>
+          101 7th Skill Level<br>
+          102 8th Skill Level<br>
+          103 Attack (text)<br>
+          104 Defence (text)<br>
+          105 Power (text)<br>
+          106 Knowledge (text)<br>
+          107 Speciality (caption)<br>
+          108 Experience (text)<br>
+          109 Spell Points (text)<br>
+          110 Quest Log (text)<br>
+          111 Dismiss Hero (text)<br>
+          112 Experience<br>
+          113 Spell Points<br>
+          115 Rollover Bar (hint text)<br>
+          116 Morale Icon<br>
+          117 Luck Icon<br>
+          118 Specialty Icon<br>
+          119 Experience Icon<br>
+          120 Spell Points Icon<br>
+          122 Loose Combat Formation Button<br>
+          124 Tight Combat Formation Button<br>
+          126 Disable/Enable Tactics Button<br>
+          127 Split Creature Stack Button<br>
+          128 Quest Log Button<br>
+          129 Dismiss Hero Button<br>
+          130 1st Hero in Hero List<br>
+          131 2nd Hero in Hero List<br>
+          132 3rd Hero in Hero List<br>
+          133 4th Hero in Hero List<br>
+          134 5th Hero in Hero List<br>
+          135 6th Hero in Hero List<br>
+          136 7th Hero in Hero List<br>
+          137 8th Hero in Hero List<br>
+          138 Current Hero in Hero List (regardless of position)<br>
+          139 Speciality<br>
+          140 Level and Class<br>
+          141 Flag above Hero List<br>
+		  150 Commander button<br>
+		  151 God Bonus button<br>
+		  152 Blessings and Curses button<br>
+          30720 OK Button (Checkmark)</font></p>
+          <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top">
+          <p><font face="Arial" size="2"><b><a name="Heroes visiting">Heroes visiting</a> Screens</b></font></p>
+          <p><font face="Arial" size="2"><b>Common</b><br>
+          0 Empty Areas<br>
+          115 Attack Icon<br>
+          116 Defence Icon<br>
+          117 Power Icon<br>
+          118 Knowledge Icon<br>
+          300 Rollover Bar (hint text)<br>
+          301 Central Area with Double Arrows<br>
+          30720 OK Button (Checkmark)</font></p>
+          <p><font face="Arial" size="2"><b>Left Hero</b><br>
+          1 Hero Portrait<br>
+          3 Attack<br>
+          4 Defence<br>
+          5 Power<br>
+          6 Knowledge<br>
+          13 1st Troop Slot<br>
+          14 2nd Troop Slot<br>
+          15 3rd Troop Slot<br>
+          16 4th Troop Slot<br>
+          17 5th Troop Slot<br>
+          18 6th Troop Slot<br>
+          19 7th Troop Slot<br>
+          27 Head Slot<br>
+          28 Shoulder Slot<br>
+          29 Neck Slot<br>
+          30 Right Hand Slot<br>
+          31 Left Hand Slot<br>
+          32 Torso Slot<br>
+          33 Right Ring Slot<br>
+          34 Left Ring Slot<br>
+          35 Feet Slot<br>
+          36 Misc. Slot 1<br>
+          37 Misc. Slot 2<br>
+          38 Misc. Slot 3<br>
+          39 Misc. Slot 4<br>
+          40 Ballista Slot<br>
+          41 Ammo Cart Slot<br>
+          42 First Aid Tent Slot<br>
+          43 Catapult Slot<br>
+          44 Spell Book Slot<br>
+          45 Misc. Slot 5<br>
+          65 Number of Troops in Slot 1<br>
+          66 Number of Troops in Slot 2<br>
+          67 Number of Troops in Slot 3<br>
+          68 Number of Troops in Slot 4<br>
+          69 Number of Troops in Slot 5<br>
+          70 Number of Troops in Slot 6<br>
+          71 Number of Troops in Slot 7<br>
+          81 Experience<br>
+          83 Spell Points<br>
+          85 Quest Log Button<br>
+          87 Name, Level and Class<br>
+          89 Backpack Slot 1<br>
+          90 Backpack Slot 2<br>
+          91 Backpack Slot 3<br>
+          92 Backpack Slot 4<br>
+          93 Backpack Slot 5<br>
+          99 Backpack Scroll Left Arrow<br>
+          101 Backpack Scroll Right Arrow<br>
+          103 Split Creature Stack Button<br>
+          105 Specialty Icon<br>
+          107 Morale Icon<br>
+          109 Luck Icon<br>
+          111 Experience Icon<br>
+          113 Spell Points Icon<br>
+          200 1st Skill Icon<br>
+          201 2nd Skill Icon<br>
+          202 3rd Skill Icon<br>
+          203 4th Skill Icon<br>
+          204 5th Skill Icon<br>
+          205 6th Skill Icon<br>
+          206 7th Skill Icon<br>
+          207 8th Skill Icon</font></p>
+          <p><font face="Arial" size="2"><b>Right Hero</b><br>
+          2 Hero Portrait<br>
+          8 Attack<br>
+          9 Defence<br>
+          10 Power<br>
+          11 Knowledge<br>
+          20 1st Troop Slot<br>
+          21 2nd Troop Slot<br>
+          22 3rd Troop Slot<br>
+          23 4th Troop Slot<br>
+          24 5th Troop Slot<br>
+          25 6th Troop Slot<br>
+          26 7th Troop Slot<br>
+          46 Head Slot<br>
+          47 Shoulder Slot<br>
+          48 Neck Slot<br>
+          49 Right Hand Slot<br>
+          50 Left Hand Slot<br>
+          51 Torso Slot<br>
+          52 Right Ring Slot<br>
+          53 Left Ring Slot<br>
+          54 Feet Slot<br>
+          55 Misc. Slot 1<br>
+          56 Misc. Slot 2<br>
+          57 Misc. Slot 3<br>
+          58 Misc. Slot 4<br>
+          59 Ballista Slot<br>
+          60 Ammo Cart Slot<br>
+          61 First Aid Tent Slot<br>
+          62 Catapult Slot<br>
+          63 Spell Book Slot<br>
+          64 Misc. Slot 5<br>
+          72 Number of Troops in Slot 1<br>
+          73 Number of Troops in Slot 2<br>
+          74 Number of Troops in Slot 3<br>
+          75 Number of Troops in Slot 4<br>
+          76 Number of Troops in Slot 5<br>
+          77 Number of Troops in Slot 6<br>
+          78 Number of Troops in Slot 7<br>
+          82 Experience<br>
+          84 Spell Points<br>
+          86 Quest Log Button<br>
+          88 Name, Level and Class<br>
+          94 Backpack Slot 1<br>
+          95 Backpack Slot 2<br>
+          96 Backpack Slot 3<br>
+          97 Backpack Slot 4<br>
+          98 Backpack Slot 5<br>
+          100 Backpack Scroll Left Arrow<br>
+          102 Backpack Scroll Right Arrow<br>
+          104 Split Creature Stack Button<br>
+          106 Specialty Icon<br>
+          108 Morale Icon<br>
+          110 Luck Icon<br>
+          112 Experience Icon<br>
+          113 Spell Points Icon<br>
+          208 1st Skill Icon<br>
+          209 2nd Skill Icon<br>
+          210 3rd Skill Icon<br>
+          211 4th Skill Icon<br>
+          212 5th Skill Icon<br>
+          213 6th Skill Icon<br>
+          214 7th Skill Icon<br>
+          215 8th Skill Icon</font></p>
+          <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top">
+          <p><font face="Arial" size="2"><b><a name="Combat Screen">Combat
+          Screen</a> Mouse click</b><br>
+          0 Background and spaces outside the Hex Grid plus some spaces near the edge of the Hex Grid<br>
+          1 Hex Grid spaces (except some have a value of 0)<br>
+          2000 Border Area around Buttons<br>
+          2001 Surrender Button<br>
+          2002 Retreat Button<br>
+          2003 Combat Options Button<br>
+          2004 Auto Combat Button<br>
+          2005 Combat Text Window<br>
+          2006 Scroll Up Arrow for Combat Text Window<br>
+          2007 Scroll Down Arrow for Combat Text Window<br>
+          2008 Cast Spell Button<br>
+          2009 Wait Button<br>
+          2010 Defend Button<br>
+          2200 Statistics/Active Spell Box<br>
+          2205 Primary Skills in Statistics/Active Spell Box<br>
+          2207 Primary Skills in Statistics/Active Spell Box<br>
+          2214 Troop Picture in Statistics/Active Spell Box<br>
+          2216 Middle Slot in Statistic/Active Spell Box<br>
+          2217 Lower Slot in Statistics/Active Spell Box<br>
+          2218 Upper Slot in Statistics/Active Spell Box</font></p>
+          <p><font face="Arial" size="2"><b><u>Notes</u></b>:<br>
+          1. The Statistics/Active Spell Box only appears if this option is selected in the Combat Options screen. The box is rather tricky to click on and probably not of much use in this fashion. The information for parts of the box is probably incomplete due to the almost impossible nature of clicking on all parts of it.</font></p>
+          <p>&nbsp;</p>
+      </td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

@@ -1,0 +1,979 @@
+<html>
+<head>
+<title>BF Receiver</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+B</font><font face="Times New Roman CE" size="5">ATTLEFIELD</font><font face="Times New Roman CE" size="6"> (</font></span><font face="Times New Roman CE" size="6">BF</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2" color="#333333">RECEIVER</font></b>
+</p>
+
+<p align="left"><font color="#333333"><b><font face="Arial" size="2">
+This command lets you customize a battlefield and should be used with the 
+<a href=../other/trigger_right.htm#bf target=principal>!?BF trigger</a> to prepare it before the first round of combat begins, although placing
+obstacles is also possible during the combat itself.</font></b>
+</font>
+    </p>
+
+<p align="left">
+    <font face="Arial" size="2"><b><span lang="de">Note: </span></b>Now a usage of !!BG, !!BM, !!BH, !!BU, !!BF in
+    complete AI battle is
+    controlled in the ERM interpreter and you will get the corresponding error
+    message.</font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td><b><font face="Arial" size="2" color="#FF0000">!!BF:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td><font face="Arial" size="2">Sets up a battlefield with
+      custom placement of obstacles.</font></td>
+  </tr>
+</table>
+
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%" valign="top"><font size="2" face="Arial" color="#FF0000"><b><a name="C">C</a></b></font><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Clear the battlefield (every square is
+      accessible)</b></font></td>
+  </tr>
+  <tr>
+    <td width="17%" valign="top"><b>     <font face="Arial" size="2" color="#FF0000"><a name="M">M</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">...</font><font face="Arial" size="2" color="#FF0000">/(</font><font face="Arial" size="2" color="#800080">/#12</font><font face="Arial" size="2" color="#FF0000">);</font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Places a rock at specific
+      positions on the battlefield</b><br>
+      &nbsp;&nbsp; #1 - bitimage of position 0...16<br>
+      &nbsp;&nbsp; #2 - bitimage of position 17...33<br>
+      &nbsp;&nbsp; #3 - bitimage of position 34...<br>
+      &nbsp;&nbsp; . ..<br>
+      &nbsp;&nbsp; #12 - type of obstacle to place (0...90)<br>
+      <b><u>
+   Comments:</u></b><br>
+     If a battle field is not filled, it still will have inaccessible squares -
+      e.g., drawbridge in a town siege screen.<br>
+      The M command automatically includes the C command.<br>
+      If #12 is omitted, the M command places&nbsp; obstacle 84 (rock). </font></td>
+  </tr>
+  <tr>
+    <td width="17%" valign="top"><font face="Arial" size="2"><b>     <font color="#FF0000"><a name="O">O</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font></b></font><b><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Place a particular object</b><br>
+      &nbsp;&nbsp; #1 - type of obstacle to place (0...90). For the moment no Water object<br>
+      &nbsp;&nbsp; #2 - position (0...184)&nbsp;</font></td>
+  </tr>
+</table>
+
+<pre><font color="#000000" face="Arial" size="2"><u><b>Comments:
+</b></u></font></pre>
+
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+  <tr>
+    <td width="100%"><font color="#000000" face="Arial" size="2">Also we've noticed that VR:R doesn't work inside a BF trigger; or rather, it always produces the same series of numbers, every battle. The
+    <br>
+    first<span lang="de"> </span>number generated in battle is always the same as the first number generated in any other battle. VR:T is fine, but of course can only
+    <br>
+    be<span lang="de"> </span>used once per BF trigger.<br>
+    Answer of Slava : I think this is made on purpose so you could use the same pattern of a battle whenever you load this map.<br>
+&nbsp;And this is reasonable, I think.<br>
+    As I stated before, the way you use VR:T and VR:R is good.<br>
+    1. Generate the number with VR:T -&gt;n<br>
+    2. Now generate n random numbers with VR:R and skip them.<br>
+    3. Now all is ready to use VR:R for your script.<br>
+&nbsp; I think this is quite simple, random and may be organized like one function :-)</font></td>
+  </tr>
+</table>
+
+<pre><b><u><font color="#008000" face="Arial" size="2">
+
+</font><font color="#FF0000" face="Arial" size="2">The <a name="grid"></a>Grid</font><font color="#008000" face="Arial" size="2">
+<img border="0" src="../images/obstacle/grid01.gif" width="382" height="241">
+</font></u></b><font face="Arial" size="2"><b><u><font color="#0000FF">
+Example: A Battlefield with BF:M</font></u></b>
+<img border="0" src="../images/obstacle/example1.gif" width="400" height="300"></font></pre>
+
+<pre><b><font color="#FF0000" size="2" face="Arial">ZVSE
+!?BF;
+!!BF:M131071/65537/65537/65537/65537/65537/65537/65537/65537/65537/131071;
+Every number is a line from top down and is a bits combination for every position:
+First and last lines bits: 11111111111111111 = 131071 (1+2+4+8+...+65536)
+Other lines bits: 10000000000000001 = 65537 (65536 + 1)</font></b></pre>
+
+<pre><font size="2" face="Arial"><b><u>List of Heroes III Combat Obstacles
+</u></b>The number is the number to pass to BF:O.
+&quot;R&quot; means an obstacle hex, &quot;-&quot; or nothing means an empty hex.
+There is a space between adjacent hexes to show up/down hex relationships.
+
+The leftmost symbol on the same line as the title is the position number hex.
+As you will see, not all obstacles block their starting position.
+All objects proceed to the right and up from the starting position, never left or down.
+
+Cliffs are not numbered obstacles (except for one medium-sized cliff).</font></pre>
+
+<table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" cellspacing="1">
+  <tr>
+    <td><font size="2" face="Arial">#         </td>
+    <td><font size="2" face="Arial">Name      </td>
+    <td><font size="2" face="Arial">Relief    </td>
+    <td><font size="2" face="Arial">Appearance</td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">0</font> </td>
+    <td><font size="2" face="Arial"> Skull-junk&nbsp;</font> </td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDino1.gif" width="88" height="43"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">1</font> </td>
+    <td><font size="2" face="Arial"> Ribs</font> </td>
+    <td align="left"><pre>
+ R R
+R R  </font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDino3.gif" width="156" height="90">2</font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">2</font> </td>
+    <td><font size="2" face="Arial">Ribs</font> </td>
+    <td align="left"><pre>
+
+R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDino2.gif" width="136" height="85"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">3</font> </td>
+    <td><font size="2" face="Arial">Skeleton</font> </td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSkel2.gif" width="92" height="48"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">4</font> </td>
+    <td><font size="2" face="Arial"> Skeleton</font> </td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSkel1.gif" width="92" height="50"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">5</font> </td>
+    <td><font size="2" face="Arial">Tree/Rock
+      </font> </td>
+    <td align="left"><pre>
+
+ R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/obbdt01.gif" width="176" height="86"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">6</font> </td>
+    <td><font size="2" face="Arial">Rock</font> </td>
+    <td align="left"><pre>R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDRk01.gif" width="88" height="61"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">7</font> </td>
+    <td><font size="2" face="Arial">Rock</font> </td>
+    <td align="left"><pre>
+R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDRk02.gif" width="88" height="89"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">8</font> </td>
+    <td><font size="2" face="Arial">Rock</font> </td>
+    <td align="left"><pre>R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDRk03.gif" width="88" height="56"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">9</font></td>
+    <td><font size="2" face="Arial"> Rock&nbsp;&nbsp;</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDRk04.gif" width="88" height="88"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">10</font></td>
+    <td><font size="2" face="Arial"> Bush</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDSh01.gif" width="88" height="86"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">11</font></td>
+    <td><font size="2" face="Arial"> Branch/Rock</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDTF03.gif" width="92" height="47"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">12</font></td>
+    <td><font size="2" face="Arial"> Tree/Rocks&nbsp;</font></td>
+    <td align="left"><pre>R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDtS03.gif" width="164" height="128"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">13</font></td>
+    <td><font size="2" face="Arial"> Branch/Rock</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDtS04.gif" width="140" height="93"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">14</font></td>
+    <td><font size="2" face="Arial"> Brush/Rocks</font></td>
+    <td align="left"><pre>
+R R 
+   R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDtS14.gif" width="148" height="90"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">15</font></td>
+    <td><font size="2" face="Arial">Brush</font></td>
+    <td align="left"><pre>
+  R
+ R  
+  R</font></td>
+    <td><font size="2" face="Arial"><img 
+border="0" src="../images/obstacle/ObDtS15.gif"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">16</font></td>
+    <td><font size="2" face="Arial">
+ Lake</font></td>
+    <td align="left"><pre> 
+  R R R
+ R R R
+R R R
+</td>
+    <td><img 
+src="../images/obstacle/Obsws11b.gif"
+border="0"></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">17</font></td>
+    <td><font size="2" face="Arial">
+      Brush</font></td>
+    <td align="left"><pre>
+R R
+ R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDSM02.gif" width="116" height="89"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">18</font></td>
+    <td><font size="2" face="Arial">
+ Rock/<br>Brush/<br>Skull</font></td>
+    <td align="left"><pre>
+R R 
+ R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObDSS17.gif" width="176" height="102"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">19</font></td>
+    <td><font size="2" face="Arial">
+ Log</font></td>
+    <td align="left"><pre>R R&nbsp;</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObGLg01.gif" width="84" height="48"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">20</font></td>
+    <td><font size="2" face="Arial">
+ Gray Rocks</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObGrS02.gif" width="136" height="51"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">21</font></td>
+    <td><font size="2" face="Arial">
+ Stump</font></td>
+    <td align="left"><pre>R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObGSt01.gif" width="44" height="47"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">22</font></td>
+    <td><font size="2" face="Arial">
+ Pond</font></td>
+    <td align="left"><pre>
+- R R R R
+- R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obgrs01.gif" width="226" height="95"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">23</font></td>
+    <td><font size="2" face="Arial">Rocks</font></td>
+    <td align="left"><pre> R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObGRk02.gif" width="92" height="49"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">24</font></td>
+    <td><font size="2" face="Arial"> Ice Pond</font></td>
+    <td align="left"><pre> R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obsns01.gif" width="130" height="45"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">25</font></td>
+    <td><font size="2" face="Arial">Snow Rocks</font></td>
+    <td align="left"><pre> - R R R R</font></td>
+    <td><font size="2" face="Arial">
+      <img border="0" src="../images/obstacle/ObSnS02.gif" width="220" height="50"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">26</font></td>
+    <td><font size="2" face="Arial">Snow Log</font></td>
+    <td align="left"><pre>
+  R
+ R
+R </font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS03.gif" width="100" height="128"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">27</font></td>
+    <td><font size="2" face="Arial">Snow Log</font></td>
+    <td align="left">R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS04.gif" width="124" height="49"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">28</font></td>
+    <td><font size="2" face="Arial">Snow Stump</font></td>
+    <td align="left"><pre>R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS05.gif" width="96" height="49"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">29</font></td>
+    <td><font size="2" face="Arial">Snow Stump</font></td>
+    <td align="left"><pre>
+ - - -
+- R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS06.gif" width="128" height="93"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">30</font></td>
+    <td><font size="2" face="Arial">Snow Rock</font></td>
+    <td align="left"><pre>R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS07.gif" width="76" height="50"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">31</font></td>
+    <td><font size="2" face="Arial">Snow Rock&nbsp;&nbsp;</font></td>
+    <td align="left"><pre>
+- - -
+ R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSnS08.gif" width="124" height="94"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">32</font></td>
+    <td><font size="2" face="Arial">
+      Ice Lake&nbsp;</font></td>
+    <td align="left"><pre>
+R R R R  
+   R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obsns09.gif" width="283" height="92"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">33</font></td>
+    <td><font size="2" face="Arial">Snow Logs</font></td>
+    <td align="left"><pre>
+R R  
+ R -  
+R R R
+ R R </font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obsns10.gif"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">34</font></td>
+    <td><font size="2" face="Arial">Tree</font></td>
+    <td align="left"><font size="2" face="Courier">-<br>
+      R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSwS01.gif" width="64" height="92"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">35</font></td>
+    <td><font size="2" face="Arial">
+ Cliff</font></td>
+    <td align="left"><nobr><font size="2" face="Courier">
+      R R R R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSwS02.gif" width="356" height="110"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">36</font></td>
+    <td><font size="2" face="Arial">Rock</font></td>
+    <td align="left"><font size="2" face="Courier">R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSwS03.gif" width="80" height="42"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">37</font></td>
+    <td><font size="2" face="Arial">Rock</font></td>
+    <td align="left"><font size="2" face="Courier">R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSwS04.gif" width="136" height="45"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">38</font></td>
+    <td><font size="2" face="Arial">Swamp Pond</font></td>
+    <td align="left"><pre>
+  R R R R
+ R R R R
+</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obsws11b.gif" width="211" height="142"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">39</font></td>
+    <td><font size="2" face="Arial">
+ Log</font></td>
+    <td align="left"><pre>
+ R R R R
+R R </font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSwS13a.gif" width="164" height="86"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">40</font></td>
+    <td><font size="2" face="Arial">Rock/Barrel</font>
+    </td>
+    <td align="left"><pre>
+  R R
+ R R
+R R R
+</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRgS02.gif" width="144" height="104"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">41</font></td>
+    <td><font size="2" face="Arial">Rock/Debris</font>
+    </td>
+    <td align="left"><pre>
+ R
+R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRGS01.gif" width="92" height="90"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">42</font></td>
+    <td><font size="2" face="Arial">Rocks</font>
+    </td>
+    <td align="left"><pre>
+ R R
+  R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRgS03.gif" width="128" height="79"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">43</font></td>
+    <td><font size="2" face="Arial">Rocks</font>
+    </td>
+    <td align="left"><font size="2" face="Courier">T R R<br>
+      R T T</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRgS04.gif" width="132" height="102"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">44</font></td>
+    <td><font size="2" face="Arial">Rocks</font>
+    </td>
+    <td align="left"><pre>
+    R
+ R R
+ </font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRgS05.gif" width="136" height="106"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">45</font></td>
+    <td><font size="2" face="Arial">
+      Stalagmites/<br>
+Mushrooms</font>
+    </td>
+    <td align="left">
+      <pre>
+ R 
+R R R</font></p>
+    </td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSuS01.gif" width="132" height="128"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">46</font></td>
+    <td><font size="2" face="Arial">Mushroom/<br>
+    Rock</font>
+    </td>
+    <td align="left"><pre>R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSuS02.gif" width="120" height="85"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">47</font></td>
+    <td><font size="2" face="Arial">
+ Stalagmites/<span lang="de"> <br>
+    </span>Mushrooms</font>
+    </td>
+    <td align="left"><pre>
+ R R R
+R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObSuS11b.gif" width="176" height="137"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">48</font></td>
+    <td><font size="2" face="Arial"> Lava Cracks
+      </font></td>
+    <td align="left"><pre>
+R R R
+   R R 
+     R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLvS01.gif" width="176" height="116"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">49</font></td>
+    <td><font size="2" face="Arial">
+ Crater</font></td>
+    <td align="left"><font size="2" face="Courier">R R R R<br>
+      R R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Oblvs02.gif" width="156" height="91"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">50</b></font></td>
+    <td><font size="2" face="Arial">
+      Lava</font></td>
+    <td align="left"><pre>      
+R R R R
+ R R R
+</td>
+    <td>
+    <img border="0" src="../images/obstacle/Oblvs03.gif" width="209" height="104"></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">51</font></td>
+    <td><font size="2" face="Arial">
+      Crater&nbsp; </font></td>
+    <td align="left"><font size="2" face="COURIER">
+      R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Oblvs04.gif" width="136" height="85"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">52</font></td>
+    <td width="30%"><font size="2" face="Arial">
+      Cracks</font></td>
+    <td align="left"><pre>
+ R R
+   R R
+    R R</td>
+    <td>
+    <img border="0" src="../images/obstacle/Oblvs09.gif" width="150" height="154"></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">53</font></td>
+    <td><font size="2" face="Arial">
+      Cracks</font></td>
+    <td align="left">      <pre>
+     R
+R R R R<br>
+</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLvS17.gif" width="216" height="98"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">54</font></td>
+    <td><font size="2" face="Arial">
+      Lava</td>
+    <td align="left"><pre>
+ R R R
+R R R R
+      </td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Oblvs22.gif" width="200" height="102"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">55</font></td>
+    <td><font size="2" face="Arial">Rope</font></td>
+    <td align="left"><pre>
+ R
+R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObBtS04.gif" width="112" height="92"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">56</font></td>
+    <td><font size="2" face="Arial">
+      
+      Jaw</font></td>
+    <td align="left"><pre>
+R R
+ R 
+</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObBhS02.gif" width="132" height="84"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">57</font></td>
+    <td><font size="2" face="Arial">
+      Bones 
+      </font></td>
+    <td align="left"><pre>R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObBhS03.gif" width="132" height="89"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">58</font>
+    </td>
+    <td><font size="2" face="Arial">
+      Waterhole
+    </td>
+    <td align="left">
+<pre>
+ R R R
+  R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/Obbhs11a.gif" width="187" height="95"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">59</font></td>
+    <td><font size="2" face="Arial">
+      
+     Waterhole
+</td>
+    <td align="left">
+<pre>
+- R R
+ R R -</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObBhS12b.gif" width="160" height="94"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">60</font></td>
+    <td><font size="2" face="Arial">
+      Rocks</td>
+    <td align="left">
+<pre>
+- R -
+ R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObBhS14b.gif" width="88" height="90"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">61</font></td>
+    <td><font size="2" face="Arial">Tombstone</td>
+    <td align="left">R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObHGs00.gif" width="40" height="47"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">62</font>
+    </td>
+    <td><font size="2" face="Arial">
+      Grave marker
+      </font>
+    </td>
+    <td align="left">R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObHGs01.gif" width="88" height="40"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">63</font></td>
+    <td><font size="2" face="Arial">
+       Cross Grave
+      </font></td>
+    <td align="left">R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObHGs02.gif" width="104" height="122"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">64</font></td>
+    <td><font size="2" face="Arial">
+      Crypt
+      </font></td>
+    <td align="left">R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObHGs03.gif" width="128" height="86"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">65</font></td>
+    <td><font size="2" face="Arial">
+      Big Crypt</font></td>
+    <td align="left">R R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObHGs04.gif" width="164" height="125"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">66</font></td>
+    <td><font size="2" face="Arial">Evil Weeds
+      </font>
+    </td>
+    <td align="left">R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObEFs00.gif" width="40" height="43"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">67</font></td>
+    <td><font size="2" face="Arial">
+      Evil Weeds</font>
+    </td>
+    <td align="left">R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObEFs01.gif" width="88" height="48"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">68</font></td>
+    <td><font size="2" face="Arial">
+Evil Weeds</font>
+    </td>
+    <td align="left"><PRE>
+   R
+R R R
+</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObEFs02.gif" width="132" height="91"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">69</font></td>
+    <td><font size="2" face="Arial">
+      Evil Weeds
+      </font>
+    </td>
+    <td align="left"><pre>
+R R R
+ R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObEFs03.gif" width="152" height="89"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">70</font></td>
+    <td><font size="2" face="Arial">
+Evil Weeds</font>
+    </td>
+    <td align="left"><pre>
+R R R R R 
+ R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObEFs04.gif" width="236" height="87"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">71</font></td>
+    <td><font size="2" face="Arial">Clover</font></td>
+    <td align="left"><PRE>R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObCFs00.gif" width="44" height="46"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">72</font></td>
+    <td><font size="2" face="Arial">Clover</td>
+    <td align="left"><PRE>
+R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObCFs01.gif" width="128" height="52"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">73</font></td>
+    <td><font size="2" face="Arial">Clover</font> </td>
+    <td align="left"><PRE>
+R R
+ R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObCFs02.gif" width="132" height="91"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">74</font> </td>
+    <td><font size="2" face="Arial">Clover</font> </td>
+    <td align="left"><pre>
+- R R
+ R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObCFs03.gif" width="148" height="92"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">75</font> </td>
+    <td><font size="2" face="Arial">Lucid Rock</font></td>
+    <td align="left"><PRE>R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLPs00.gif" width="44" height="51"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">76</font> </td>
+    <td><font size="2" face="Arial">
+      Lucid Rock</td>
+    <td align="left"><PRE>R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLPs01.gif" width="88" height="53"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">77</font> </td>
+    <td><font size="2" face="Arial">
+Lucid Rock</td>
+    <td align="left"><PRE>
+- R R
+ R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLPs02.gif" width="112" height="93"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">78</font> </td>
+    <td><font size="2" face="Arial">Lucid Rock</font></td>
+    <td align="left"><PRE>
+ R R R R
+  R R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObLPs03.gif" width="196" height="92"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">79</font> </td>
+    <td><font size="2" face="Arial">Hot Rock</font></td>
+    <td align="left"><PRE>R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObFFs00.gif" width="44" height="47"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">80</font> </td>
+    <td><font size="2" face="Arial">
+      Hot Rock</td>
+    <td align="left"><PRE>R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObFFs01.gif" width="84" height="49"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">81</font></td>
+    <td><font size="2" face="Arial">
+Hot Rock</td>
+    <td align="left"><PRE>
+   R
+R R R
+</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObFFs02.gif" width="132" height="93"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">82</font></td>
+    <td>
+ Hot Rock</font></td>
+    <td align="left"><PRE>
+R R
+ R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObFFs03.gif" width="172" height="93"></font></td>
+  </tr>
+  <tr>
+    <td><font size="2" face="Arial">83</font></td>
+    <td><font size="2" face="Arial"> Hot Rock</font></td>
+    <td align="left"><PRE>
+ R R R
+R R R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObFFs04.gif" width="172" height="135"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">84</font></td>
+    <td><font size="2" face="Arial">Earth Rock</font></td>
+    <td align="left"><font size="2" face="Courier">R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRLs00.gif" width="44" height="46"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">85</font></td>
+    <td><font size="2" face="Arial">Earth Rock</font></td>
+    <td align="left"><font size="2" face="Courier">R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRLs01.gif" width="88" height="49"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">86</font></td>
+    <td><font size="2" face="Arial">Earth Rock</font></td>
+    <td align="left"><font size="2" face="Courier">R R R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRLs02.gif" width="132" height="51"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">87</font></td>
+    <td><font size="2" face="Arial">Earth Rock</font></td>
+    <td align="left"><PRE>
+R
+ R R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObRLs03.gif" width="176" height="91"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">88</font></td>
+    <td><font size="2" face="Arial">Cloud Hole</font></td>
+    <td align="left"><font size="2" face="Courier">R</font></td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObMCs00.gif" width="44" height="51"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">89</font></td>
+    <td><font size="2" face="Arial">Cloud Hole</font></td>
+    <td align="left"><PRE>
+R
+ R</td>
+    <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObMCs01.gif" width="86" height="87"></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial" size="2">90</font></td>
+    <td><font size="2" face="Arial">Cloud Hole</font></td>
+    <td align="left"><PRE>
+   R R</td>
+R R   <td><font size="2" face="Arial">
+    <img border="0" src="../images/obstacle/ObMCs02.gif" width="156" height="91"></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Arial"><b><font color="#0000FF">Example by Donald</font></b><br>
+Every time your hero moves, you get attacked by 1 Pikemen. It displays what the
+number of the first obstacle is, and then you get a battlefield with 4 obstacles
+(3 for the last 3). That obstacle number is displayed in the upper left, then it
+goes upper right, lower left, lower right. So the first screen shows obstacles
+0-3, with 2 in the lower left.<br>
+</font>
+<br>
+<b><font color="#FF0000">ZVSE</font></b></font></p>
+
+<p><font size="2" face="Arial">* pikemen at every step!<b><br>
+<FONT COLOR=RED>!?HM-1;<br>
+!!HE-1:T0/0/0/0/1;</b></font></p>
+
+<p><font size="2" face="Arial">* place 4 obstacles<b><br>
+<FONT COLOR=RED>!#VRv1:S0; </b></FONT> [obstacle number]<b><br>
+<br>
+<FONT COLOR=RED>!?BA0;<br>
+!!IF:M^Obstacles starting from #%V1^;</b></font></p>
+
+<p><font size="2" face="Arial" color="#FF0000"><b>!?BF;<br>
+!!BF:C; </b> [start with empty except for phantom cliff]<b><br>
+!!BF:Ov1/69;<br>
+!!VRv1:+1;<br>
+!!BF:Ov1/77;<br>
+!!VRv1:+1;<br>
+!!BF:Ov1/171;<br>
+!!VRv1:+1;<br>
+!!BF&amp;v1&lt;>91:Ov1/179;<br>
+!!VRv1:+1;<br>
+!!VRv1&amp;v1=92:S0;</b></font></p>
+<BR><P align=right><font size=1>Last update - 23.02 04.00 10.19.04
+</body>
+
+</html>

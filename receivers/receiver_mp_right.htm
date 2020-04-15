@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><span lang="de">
+<font face="Times New Roman CE" size="6">MP3 C</font><font face="Times New Roman CE" size="5">ONTROLLER</font><font face="Times New Roman CE" size="6"> 
+(MP)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <font color="#333333">Used <span lang="de">to change in-game predefined music. Filepath starts in /mp3/, so you must always use paths relative to this directory. </span></font></font></b></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="143" height="16" nowrap><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!<span lang="de">MP</span></font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td width="100%" height="16">
+
+<p><b>MP3 control receiver</b></p>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="13%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="C"></a>C</font></b></span><b><font face="Arial" size="2"><font color="#8B008B">$</font>;
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Set/get/check index of incoming music. </b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - index of upcoming music (See <a href="../format/format_mp.htm">Format MP</a>)<br>
+    If the MP3 is NOT in the list, 0 is returned. <br>
+    Use only within <a target=principal href="../other/trigger_right.htm#mp">!?MP</a> trigger
+    </tr>
+		
+		<tr>
+    <td width="13%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="N"></a>N</font></b></span><b><font face="Arial" size="2"><font color="#8B008B">#</font>;
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Play MP3 file </b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - filename in z-variable or ^^ constant<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - (alternative) index of MP3 (See <a href="../format/format_mp.htm">Format MP</a>)<br>
+    </tr>
+  
+  <tr>
+    <td width="13%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="P"></a>P</font></b></span><b><font face="Arial" size="2"><font color="#8B008B">$</font>;
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Set/get/check incoming music. </b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - filename of incoming music in z-var or ^^ constant. <br>
+    Use only within <a target=principal href="../other/trigger_right.htm#mp">!?MP</a> trigger
+    </tr>
+  
+  <tr>
+     <td width="13%" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="S"></a>S</font></b></span><b><font face="Arial" size="2"><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#800080">$</font><font color="red" size="2" class="Helvetica32">;<br>
+    </font></font></b><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000">S</font></b></span><b><font face="Arial" size="2"><font color="#8B008B">#1</font><font color="#FF0000">/</font><span lang="de"><font color="#800080">^filename^</font></span><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Sets a 
+    custom MP3 file to play instead of predefined or user defined game music.</b><br>
+      <span lang="de">&nbsp;</span></font><font face="Arial" size="2"><span lang="de"><font color="#800080">#</font> 
+    is from 1..199. (see <a href="../format/format_mp.htm">Format MP</a>)</span></font><font class="Helvetica32" face="Arial" size="2"><span lang="de"><br>
+    </span>
+      </font><font face="Arial" size="2"><font color="#800080"><span lang="de">&nbsp;</span>$</font> 
+    is the index of a z variable<span lang="de">&nbsp; <br>
+    <br>
+    <b>Comments: </b><br>
+    Do not include the extension &quot;.mp3&quot;. This is added automatically.</span></font><p>
+    <span lang="de"><font face="Arial" size="2"><b><font color="#0000FF">Example</font></b> 
+    of setting a custom music file named &quot;Sample.mp3&quot;:<br>
+    <br>
+    <b><font color="#FF0000">ZVSE</font></b><br>
+    <font color="#FF0000"><b>!?OB6/6/0;</b> // visit something at 6/6/0<br>
+    // Set Castle music to Sample.mp3 in DATA folder<br>
+    <b>!!MP:S1/^..\data\Sample^;</b></font><br>
+    <br>
+    If you put an mp3 file in the mp3 folder, you do <i>not</i> need to mention 
+    a <i>folder</i> itself:<br>
+    <font color="#FF0000">!<b>!MP:S1/^Sample^;</b></font><br>
+    <br>
+    Or if you have a file in the maps folder:<br>
+    <b><font color="#FF0000">!!MP:S1/^..\maps\Sample^;</font></b></font></span></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

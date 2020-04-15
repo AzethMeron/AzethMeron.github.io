@@ -1,0 +1,61 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<p align=center><b><font face='Times New Roman CE' size='6'>I<font size=5>f-</font>E<font size=5>lse-</font>E<font size=5>ndif construction</font></font></p></b>	
+If-else-endif construction used to act by conditions without using new functions or spamming triggers.<br><br>
+To start IF section use the next receiver/instruction:<br>
+<b>!!if&amp;condition:;</b><br>
+  Note that 'if' is in lower case.<br>
+  Condition is a standard AND and OR condition that you use now in any
+receiver. If during a script execution the condition evaluation is
+TRUE, the followed section is executed. If it is FALSE, the followed
+section is skipped until ELSE section begins or ENDIF found.<br><br>
+  To start ELSE section use the next receiver/instruction:<br>
+<b>!!el:;</b><br>
+  'el' is in lower case.<br>
+  No condition is evaluated even if present so this is unconditionally executed.<br>
+  ELSE section always expects IF part and linked to the latest found in the script IF.<br><br>
+  To end IF or IF-ELSE section use the next receiver/instruction:<br>
+<b>!!en:;</b><br>
+  'en' is in lower case.<br>
+  No condition is evaluated even if present so this is unconditionally executed.<br>
+  ENDIF section always expects IF part or IF_ELSE part and linked to the latest found in the script IF or IF-ELSE.<br><br>
+  You may use included IF-ELSE-ENDIF sections but not deeper than 10 levels.<br>
+  <font color=purple>Although, according to ChangeLog2.txt, number of levels is now unlimited. Should be checked. </font><br><br>
+  Every trigger (and thus function) has its own set of IF-ELSE-ENDIF and so may have up to 10 levels of included IF-ELSE-ENDIF.<br>
+  When you call a function the caller IF-ELSE-ENDIF state stays 
+active, so when you are back the local IF-ELSE-ENDIF set is used again (a similar way as local function variables).
+<br><br>
+<font class=example>Example</font>:<br>
+<pre><font class=ermtext>ZVSE
+
+!?HM-1;
+!!VRv10:S5;
+<font class=param>!!if&v10=5:;</font>
+    !!IF:M^First IF^;
+    !!VRv10:S10;
+    <font class=param>!!if&v10<>10:;</font>
+        !!IF:M^Second IF^;
+    <font class=param>!!el:;</font>
+        !!IF:M^Second ELSE^;
+    <font class=param>!!en:;</font>
+    !!IF:M^Second IF finished^;
+<font class=param>!!el:;</font>
+    !!IF:M^First ELSE^;
+    !!VRv10:S99;
+    <font class=param>!!if&v10=99:;</font>
+        !!IF:M^Third IF^;
+    <font class=param>!!el:;</font>
+        !!IF:M^Third ELSE^;
+    <font class=param>!!en:;</font>
+    !!IF:M^Third IF finished^;
+<font class=param>!!en:;</font>
+!!IF:M^First IF finished^;</font></pre>
+<br>
+  You should see the next messages:<br>
+&nbsp;&nbsp;First IF<br>
+&nbsp;&nbsp;Second ELSE<br>
+&nbsp;&nbsp;Second IF finished<br>
+&nbsp;&nbsp;First IF finished<br>
+
+</body></html>

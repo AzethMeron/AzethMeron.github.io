@@ -1,0 +1,1308 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>LE Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+                  <P><a name="advanced"></a>
+
+                  <P><span lang="de"><b><font face="Times New Roman">
+                  <font size="5">Advanced</font> <font color="#333333">Scripting 
+                  Level. Scripts explained<br>
+                  <br>
+                  </font>Scripts<font color="#333333">:<br>
+                  </font></font></b><font face="Arial"><font size="2">1.
+                  <a target="_self" href="#script1">Creating a *Creature Bank*</a><br>
+                  2. <a target="_self" href="#script2">Creating a magical 
+                  singing rock</a><br>
+                  3. <a target="_self" href="#script3">Level 8 Dwelling Placer</a><br>
+                  4. <a target="_self" href="#script4">Display when mithril is 
+                  picked up</a><br>
+                  5. <a target="_self" href="#script5">Mithril Display</a></font><br>
+                  </font></span><b><font face="Arial" size="2"><br>
+                  </font><font face="Arial"><font color="#000080">
+                  <a name="script1"></a></font><span lang="de">&nbsp;</span></font></b><table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><b><font face="Arial"><font color="#000080">
+                  <span lang="de">1. </span>S</font><span lang="de"><font color="#000080">cript</font>:</span></font></b></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;<font color="#CDBE85">CREATING A 
+      *CREATURE BANK*</font></font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><span lang="de"><b>
+      <font face="Arial" size="2">by AsPiN</font></b></span></td>
+    </tr>
+  </table>
+
+                  <P><font face="Arial" size="2">Making your own object - it is easy with ERM. Create a 
+                  Creature Bank of your own. <br>
+                  In this tutorial you will learn how to program empty objects 
+                  to become Creature Banks. <br>
+                  In this script we will use:<br>
+                  <br>
+                  <br>
+                  flag 1 Here is stored information if Hero's artifact slot is 
+                  occupied or not.<br>
+                  flag 11 Here is stored information about visitation of object. 
+                  If Hero wins the battle the value will become positive.<br>
+                  z123 string Here is stored hint of the object.<br>
+                  v10 variable Here is stored number of Ogres to fight.<br>
+                  flag 10 The value becomes positive if Hero enters the shelter 
+                  and fights wint Ogres.<br>
+                  v5 variable, v100 variable These two variables store Hero 
+                  owner's color (Used to check if Hero wins the battle).<br>
+                  <br>
+                  <u><b>Initialization: </b></u><br>
+                  !#IF:V11/0; Set flag 11 to 0.<br>
+                  !#VRz123:S^Ogre Magi shelter (Not Visited)^; Store text in ^ ^ 
+                  to z123 string.<br>
+                  !#OB52/5/0:Hz123; Set object's hint to z123 string (Note: 
+                  52/5/0 is coordinates of my object. You must use coordinates 
+                  of yellow square of your object).<br>
+                  !#VRv10:S0T3; Here random value will be stored in v10 
+                  variable. The value can be: 0, 1, 2 or 3.<br>
+                  !#VRv10:+4; Here we add 4 to v10 variable.<br>
+                  <br>
+                  !#VRv10:*3; Here v10 variable is multiplied by 3.<br>
+                  <br>
+                  This is used to generate random number of Ogres. We can get 
+                  12, 15, 18 or 21 Ogres. The number is stored in v10 variable.<br>
+                  <br>
+                  <b><u>Main part: </u></b><br>
+                  !?OB52/5/0&amp;11;<br>
+                  !!IF&amp;11:M^Ogre Magi shelter^; If Hero has won the battle 
+                  visitor will get message: &quot;Ogre Magi shelter&quot;.<br>
+                  !?OB52/5/0&amp;-11; If Hero enters the shelter and he haven't 
+                  beaten Ogres this trigger is activated. <br>
+                  !!IF:Q10^This is Ogre Magi shelter. Do you want to enter?^; 
+                  Hero must answer if he wants to fight or not. Answer is 
+                  stored in flag 10. <br>
+                  <br>
+                  !!HE-1&amp;10:O?v5; Store owner's color's number in v5 variable.<br>
+                  !!HE-1&amp;10:T52/5/0/91/v10; Provoke a battle with random number 
+                  of Ogres, store in v10 variable. (Note: 52/5/0 is coordinates 
+                  of my object. You must use coordinates of yellow square of 
+                  your object for terrain bonuses).<br>
+                  !!HE-1&amp;10:O?v100; Store owner's color's number in v100 
+                  variable.<br>
+                  !!HE-1&amp;10/v5=v100:A1/10/3; Give Ogre's Club of Havoc to Hero.<br>
+                  !!HE-1&amp;10/v5=v100/-1:A10; If slot is occupied store Ogre's 
+                  Club of Havoc in Hero's backpack.<br>
+                  <br>
+                  !!HE-1&amp;10/v5=v100:A1/16/4; Give Targ of the Rampaging Ogre to 
+                  Hero.<br>
+                  !!HE-1&amp;10/v5=v100/-1:A16; If slot is occupied store Give Targ 
+                  of the Rampaging Ogre in Hero's backpack.<br>
+                  !!IF&amp;10/v5=v100:V11/1; If Hero survived set flag 11 to 
+                  positive.<br>
+                  !!IF&amp;11:Q1/8/10/8/16/1^You have won the battle with %V10 Ogre 
+                  Magi and received:^; If Hero survived he will receive a 
+                  message with pictures of artifacts he received.<br>
+                  !!VRz123&amp;11:S^Ogre Magi shelter (Visited)^; If Hero survived 
+                  store text in ^ ^ to z123 string.<br>
+                  <br>
+                  !!OB52/5/0&amp;11:Hz123; If Hero survived set object's hint to 
+                  z123 string (Note: 52/5/0 is coordinates of my object. You 
+                  must use coordinates of yellow square of your object).<br>
+                  <br>
+                  <u><b>Other notes: </b></u><br>
+                  At this time we cannot provoke a battle like in Creature 
+                  Banks. The battle will be like with standalone monsters. <br>
+                  <br>
+                  WoG *empty* objects have no properties and mapmaker can 
+                  program it with ERM. The most part of them can be found in the 
+                  WoG Heroes map editor in the <span lang="de">Map Editor</span> section<span lang="de"> 
+                  of this html help</span>. <br>
+                  {AsPiN}</font><br>
+                  <br>
+                  <br>
+&nbsp;<hr noshade color="#000000" size="1">
+
+                  <P><font face="Arial"><b><font color="#000080">
+                  <a name="script2"></a></font>
+                  </b></font>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">2</font></b></span><b><font face="Arial"><font color="#000080"><span lang="de">. </span>S</font><span lang="de"><font color="#000080">cript</font>:</span></font></b></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;<font color="#CDBE85">CREATING A </font></font>
+      <font face="Times New Roman" color="#CDBE85">MAGICAL SINGING ROCK</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><span lang="de"><b>
+      <font face="Arial" size="2">Stay Enchanted {Fnord the Wizard}</font></b></span></td>
+    </tr>
+  </table>
+
+                  <P><font face="Arial" size="2">In this example, we'll make a magical singing rock that can
+                  be visited by a hero. The rock will sing to the hero, give the
+                  hero spell points equal to (knowledge x 40) and will reduce
+                  his movement to zero for the remainder of the turn.</font>
+                  <P><font face="Arial" size="2"><b><font color="#0000FF">1.</font></b>
+                  Use the editor to
+                  place a nice looking rock on the map where you want it. For
+                  our example, let's use x=10, y=12, level=0 (surface).</font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>2.</b></font>
+                  Create a timed event
+                  where you can put the ERM code. Change the event day to 500
+                  (so it won't pop up like a normal event) and name it "Singing
+                  Rock". Start it off with a ZVSE instruction at the top.</font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>3.</b></font>
+                  Use an immediate
+                  instruction to make the rock square passable:<BR><FONT
+                  class=erm color="#FF0000"><b><FONT class=erm3>!#</FONT>TR10/12/0<FONT
+                  class=erm2>:</FONT>P1<FONT class=erm2>;</FONT></b></FONT>
+                  </font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>4.</b></font>
+                  Use an immediate
+                  instruction to make the rock square a yellow trigger
+                  square:<BR><FONT class=erm color="#FF0000"><b><FONT
+                  class=erm3>!#</FONT>TR10/12/0<FONT class=erm2>:</FONT>E0<FONT
+                  class=erm2>;</FONT></b></FONT>
+                  </font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>5.</b></font>
+                  Use an immediate
+                  instruction to turn the rock into another object (this is
+                  important!), say, a magic well:<BR><FONT class=erm color="#FF0000"><b><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>T49<FONT
+                  class=erm2>;</FONT></b></FONT>
+                  </font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>6.</b></font>
+                  Use an immediate
+                  instruction to *disable* the normal function of the (magic
+                  well) object: <b><FONT class=erm color="#FF0000"><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>S<FONT
+                  class=erm2>;</FONT></FONT>
+                  </b></font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>7.</b></font>
+                  Use an immediate
+                  instruction to change the right-click hint text of the new
+                  object:<BR><font color="#FF0000"><b><FONT class=erm><FONT class=erm3>!#</FONT>VRz1<FONT
+                  class=erm2>:</FONT><FONT class=erm4>S^Singing
+                  Rock^</FONT><FONT class=erm2>;</FONT></FONT>  </b> [assign text to
+                  string variable z1]<BR><FONT class=erm><b><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>H1<FONT
+                  class=erm2>;</FONT>  </b> </FONT>[set right-click text to variable
+                  z1]</font></font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>8.</b></font>
+                  Use an object trigger,
+                  set for the location of the new object:<br>
+                  <b><FONT
+                  class=erm color="#FF0000"><FONT class=erm3>!?</FONT>OB10/12/0<FONT
+                  class=erm2>;</FONT></FONT>
+                  </b></font>
+                  <P><font face="Arial" size="2"><font color="#0000FF"><b>9.</b></font>
+                  Display a
+                  message:<BR><FONT class=erm color="#FF0000"><b><FONT class=erm3>!!</FONT>IF<FONT
+                  class=erm2>:</FONT>M<FONT class=erm4>^The rock entrances you
+                  for the rest of the day with a sweet and magical
+                  melody.^</FONT><FONT class=erm2>;</FONT></b></FONT>
+                  </font>
+                  <P><font face="Arial" size="2"><b><font color="#0000FF">10. </font></b>Set hero's spell
+                  points:<BR><b><font color="#FF0000"><FONT class=erm><FONT class=erm3>!!</FONT>HE-1<FONT
+                  class=erm2>:</FONT>Fd0/d0/d0/?v1<FONT
+                  class=erm2>;</FONT></FONT> [assigns knowledge skill to v1
+                  variable]<BR><FONT class=erm><FONT
+                  class=erm3>!!</FONT>VRv1<FONT class=erm2>:</FONT>*40<FONT
+                  class=erm2>;</FONT></FONT> [multiply v1 by 40]<BR><FONT
+                  class=erm><FONT class=erm3>!!</FONT>HE-1<FONT
+                  class=erm2>:</FONT>Iv1<FONT class=erm2>;</FONT></FONT> [set
+                  spell points to v1]<BR><FONT class=erm><FONT
+                  class=erm3>!!</FONT>IF<FONT class=erm2>:</FONT>Q1/35/v1/1<FONT
+                  class=erm4>^^</FONT><FONT class=erm2>;</FONT></FONT> [Display
+                  picture of spell point bonus]</font></b><BR>
+                  </font>
+                  <P><font face="Arial" size="2"><b><font color="#0000FF">11.</font></b>
+                  Reduce hero's
+                  movement to zero:<BR><FONT class=erm color="#FF0000"><b><FONT
+                  class=erm3>!!</FONT>HE-1<FONT class=erm2>:</FONT>W0<FONT
+                  class=erm2>;</FONT></b></FONT>
+                  </font>
+                  <P><font face="Arial" size="2">And there you have it! :-) <BR>
+                  <br>
+                  If you <i>don't</i> include steps <font color="#0000FF">5</font> and
+                  <font color="#0000FF">6</font>, you'll find that when you move the
+                  mouse to that square, it will change into the rearing horse
+                  (like a normal yellow trigger square) but when you move your
+                  hero to the square nothing will happen..*unless* you press the
+                  SPACEBAR to revisit the square. This is great if you want to
+                  make players work harder for something, but for a new object
+                  to work like a NORMAL object does, activating immediately upon
+                  entering the trigger square, you'll have to include steps <font color="#0000FF">5</font> and
+                  <font color="#0000FF">6</font>. <BR>
+                  <font color="#0000FF"><b><u><br>
+                  </u>Here's a summary of the code:</b></font><BR><FONT class=erm><font color="#FF0000"><b>ZVSE<BR><FONT
+                  class=erm3>!#</FONT>TR10/12/0<FONT class=erm2>:</FONT>P1<FONT
+                  class=erm2>;</FONT><BR><FONT
+                  class=erm3>!#</FONT>TR10/12/0<FONT class=erm2>:</FONT>E0<FONT
+                  class=erm2>;</FONT><BR><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>T49<FONT
+                  class=erm2>;</FONT><BR><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>S<FONT
+                  class=erm2>;</FONT><BR><FONT class=erm3>!#</FONT>VRz1<FONT
+                  class=erm2>:</FONT>S<FONT class=erm4>^Singing
+                  Rock^</FONT><FONT class=erm2>;</FONT><BR><FONT
+                  class=erm3>!#</FONT>OB10/12/0<FONT class=erm2>:</FONT>H1<FONT
+                  class=erm2>;</FONT><BR><FONT
+                  class=erm3>!?</FONT>OB10/12/0<FONT
+                  class=erm2>;</FONT><BR><FONT class=erm3>!!</FONT>IF<FONT
+                  class=erm2>:</FONT>M<FONT class=erm4>^The singing rock
+                  entrances you for the rest of the day with a sweet and magical
+                  melody.^</FONT><FONT class=erm2>;</FONT><BR><FONT
+                  class=erm3>!!</FONT>HE-1<FONT
+                  class=erm2>:</FONT>Fd0/d0/d0/?v1<FONT
+                  class=erm2>;</FONT><BR><FONT class=erm3>!!</FONT>VRv1<FONT
+                  class=erm2>:</FONT>*40<FONT class=erm2>;</FONT><BR><FONT
+                  class=erm3>!!</FONT>HE-1<FONT class=erm2>:</FONT>Iv1<FONT
+                  class=erm2>;</FONT><BR><FONT class=erm3>!!</FONT>IF<FONT
+                  class=erm2>:</FONT>Q1/35/v1/1<FONT class=erm4>^^</FONT><FONT
+                  class=erm2>;</FONT><BR><FONT class=erm3>!!</FONT>HE-1<FONT
+                  class=erm2>:</FONT>W0<FONT class=erm2>;</FONT></b></font><BR></FONT>
+
+                  </font>
+
+                  <P><font face="Arial" size="2"><FONT class=erm><br>
+&nbsp;</FONT></font><hr noshade color="#000000" size="1">
+                  <P><font face="Arial"><b><font color="#000080">
+                  <a name="script3"></a></font> </b></font>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">3</font></b></span><b><font face="Arial"><font color="#000080"><span lang="de">. </span>S</font><span lang="de"><font color="#000080">cript</font>:</span></font></b></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;</font><font face="Times New Roman" color="#CDBE85">LEVEL 
+      8 DWELLING PLACER</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><span lang="de"><b>
+      <font face="Arial" size="2">by Anders</font></b></span></td>
+    </tr>
+  </table>
+
+                  <P><span style="font-size: 10.0pt; font-family: Courier New">
+<tt style="font-family: Arial">&nbsp;This example will place a level 8 dwelling at a 
+chosen spot, as if &nbsp;there were a red blob there. The dwelling will be linked to 
+a chosen town.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;First, start with opening up the 
+editor, and place a town<span lang="de"> </span>(preferably &nbsp;random), at x=2, 
+Y=4, z=0(surface).</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then, open up map properties and 
+create the usual timed event, set the &nbsp;date to a large number, name it &quot;Level 8 
+Dwelling&quot;, or whatever you &nbsp;like, and start with the normal ZVSE line.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;NOTE: This script will only use 
+immediate instructions so that the dwelling will be present even before the 
+player can see anything of the &nbsp;map. Keep that in mind, since it wont be stated 
+anymore.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, start with check what subtype 
+the town we want to connect the dwelling to is (all towns are the same type of 
+object, but have different subtypes depending on their alignment. For example, 
+Castle has the subtype 0, and Inferno 4) and store it into the v1 variable:<br>
+&nbsp;!#OB2/4/0:U?v1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then add 80 to that number to get 
+the correct subtype of the dwelling:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;&nbsp;!#VRv1:+80;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;(You could make a list to store 
+the correct number depending on the town type, like this:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv1&amp;v1=0:S80;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv1&amp;v1=1:S81;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;...</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv1&amp;v1=8:S88;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;but that's rather long and doesn't 
+make any real difference in the end) </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, define where you want the 
+dwelling to appear. Store the spot in variables, because different dwellings are 
+of different size- you can see&nbsp;this if you open up the editor, place them next 
+to each other and click on each once so the &quot;frames&quot; appears around them. In this 
+example store the x location(27) in v2, the y location(3) in v3 and the level(0, 
+or surface) in v4:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv2:S27;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv3:S3;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv4:S0;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now you must compensate for the 
+different sizes of dwellings. If it's NOT a Lord of Thunder(tower) or 
+Antichrist(Inferno) dwelling, it should be placed one step further to the<span lang="de">
+</span>right in order for it to appear at the correct spot:<br>
+&nbsp;!#VRv2&amp;v1&lt;&gt;82/v1&lt;&gt;83:+1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then, all that remains is to 
+actually place the dwelling:&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#UN:Iv2/v3/v4/17/v1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;The full script would thus be:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;ZVSE</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#OB13/20/0:U?v1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv1:+80;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv2:S27;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv3:S3;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv4:S0;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#VRv2&amp;v1&lt;&gt;82/v1&lt;&gt;83:+1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#UN:Iv2/v3/v4/17/v1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;It can of course be repeated again 
+and again if you want to link more dwellings to the map. If you want to link 
+more than one dwelling to the same town, you only need to copy the last<span lang="de">
+                  </span>five 
+lines and place them right after the rest, and then change the coordinates where 
+it will appear. If you want to link a dwelling to another town, copy everything 
+except the ZVSE part, and make sure to change the coordinates of both the town 
+and dwelling.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+&nbsp;</span></font></span><P><span style="font-size: 10.0pt; font-family: Courier New">
+  <tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+&nbsp;</span></font></span><hr noshade color="#000000" size="1">
+                  <P><font face="Arial"><b><font color="#000080">
+                  <a name="script4"></a></font></b></font>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><b><font face="Arial"><font color="#000080">
+                  <span lang="de">4. </span>S</font><span lang="de"><font color="#000080">cript</font>:</span></font></b></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;</font><font face="Times New Roman" color="#CDBE85">DISPLAY 
+      WHEN MITHRIL IS PICKED UP</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><span lang="de"><b>
+      <font face="Arial" size="2">by Anders</font></b></span></td>
+    </tr>
+  </table>
+
+                  <P><span style="font-size: 10.0pt; font-family: Courier New"><tt style="font-family: Arial">&nbsp;This script will make a dialogue 
+box pop up whenever a human picks up a pile of Mithril on the map, showing how 
+much Mithril it was in the pile and how much mithril that player has now.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;&nbsp;Start with placing some mithril 
+bars on the map, then make the standard day 500 timed event with ZVSE in the 
+beginning.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then you need to make sure that 
+the Mithril piles act as Mithril and not gold. This should be done with an 
+immediate instruction:&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#UN:B0/1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then, a trigger for all piles of 
+Mithril, but not any other&nbsp;resource:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!?OB79/7;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then check which hero it was that 
+picked up the Mithril, and store the name in z1:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!HE-1:B0/?z1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, check how much Mithril there 
+is in the pile(the script triggers before it is actually picked up and added to 
+the total amount). Store it in y1:&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!ARv998/v999/v1000:V?y1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now check how much Mithril the 
+current colour has before it will pick up the pile, and add the amount there 
+were in the pile to that: </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:R-1/7/?y2; [Store current 
+player's previous total Mithril in v2] </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRy2&amp;-10:+y1; [Add new Mithril 
+to previous Mithril - store in v2] </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, a few lines to have a correct 
+grammar in the message- if the pile contained 1 bar, store &quot; bar&quot; in z2. 
+Otherwise, store &quot;bars&quot;. The same goes for total Mithril, but in z3. Then, if 
+there were only 1 bar in </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;the pile, z4 will store &quot;a&quot;, 
+otherwise, it'll store the total number:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz2&amp;y2=1:S^bar ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz2&amp;y2&gt;1:S^bars ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz3&amp;y1=1:S^bar ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz3&amp;y1&gt;1:S^bars ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz4:S^%Y1^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz4&amp;y1=1:S^a^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, all there is left to do is to 
+display the full message, if the current player isn't AI controlled.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!IF1000:Q1/7/y1/1^{Mithril} </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;%Z1 picks up %Z4 shimmering %Z3of 
+magical Mithril. </tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;{You now have %Y2 %Z2of Mithril 
+altogether.}^; </tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;And here's the full script:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;ZVSE</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!#UN:B0/1; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!?OB79/7;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!HE-1:B0/?z1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!ARv998/v999/v1000:V?y1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:R-1/7/?y2; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRy2&amp;-10:+y1; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz2&amp;y2=1:S^bar ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz2&amp;y2&gt;1:S^bars ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz3&amp;y1=1:S^bar ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz3&amp;y1&gt;1:S^bars ^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz4:S^%Y1^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz4&amp;y1=1:S^a^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!IF1000:Q1/7/y1/1^{Mithril} </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;%Z1 picks up %Z4 shimmering %Z3of 
+magical Mithril. </tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;{You now have %Y2 %Z2of Mithril 
+altogether.}^; </tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt></span><P><span style="font-size: 10.0pt; font-family: Courier New"><font face="Arial"><span style="font-size: 10.0pt"><br>
+&nbsp;</span></font></span><hr noshade color="#000000" size="1">
+                  <P><font face="Arial"><b><font color="#000080">
+                  <a name="script5"></a></font></b></font>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><b><font face="Arial"><font color="#000080">
+                  <span lang="de">5. </span>S</font><span lang="de"><font color="#000080">cript</font>:</span></font></b></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;<font color="#CDBE85">MITHRIL DISPLAY</font></font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><span lang="de"><b>
+      <font face="Arial" size="2">by Anders</font></b></span></td>
+    </tr>
+  </table>
+
+                  <P><span style="font-size: 10.0pt; font-family: Courier New">
+                  <tt style="font-family: Arial">&nbsp;This script will display the 
+current player's total amount of Mithril when he right-clicks on the Kingdom 
+Overview button.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Start with the normal timed event 
+with ZVSE.&nbsp;Then, a right-click trigger:&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!?CM; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, check where exactly the 
+right-click was, and store it into y1:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!CM:I?y1; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then, we check who the current 
+player is and how much Mithril he has:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:C?y3; [Store number of 
+current player in y3] </tt><font face="Arial"><span style="font-size: 10.0pt">
+<br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:Ry3/7/?y2; [Store current 
+player's Mithril in y2] </tt><font face="Arial"><span style="font-size: 10.0pt">
+<br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then the temporary z-1 variable 
+should hold &quot;bar.&quot; or &quot;bars.&quot;, depending on how much Mithril the player had.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz-1:S^bars.^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz-1&amp;y2=1:S^bar.^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now we check if the current player 
+is the same that right-clicked (this is only for multiplayer).</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:Gy3/?y4; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Now, if everything is correct, we 
+display the message:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!IF&amp;y1=3/y3=y4:Q1/7/y2/4^{Mithril}
+</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;%Y2 shimmering %Z-1^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;Then all that remains is to 
+disabled the normal right-click message for the Kingdom overview button:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!CM&amp;y1=3/y3=y4:R0;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;The full script is thus:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;ZVSE</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!?CM;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!CM:I?y1;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:C?y3; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:Ry3/7/?y2; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz-1:S^bars.^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!VRz-1&amp;y2=1:S^bar.^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!OW:Gy3/?y4; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!IF&amp;y1=3/y3=y4:Q1/7/y2/4^{Mithril}
+</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; </tt><font face="Arial">
+<span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;%Y2 shimmering %Z-1^; </tt>
+<font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp;!!CM&amp;y1=3/y3=y4:R0<span lang="de">;</span></tt></span><P>&nbsp;<P>&nbsp;<hr>
+
+                  <P><a name="expert"></a>
+
+                  <P><span lang="de"><font face="Times New Roman"><b>
+                  <font size="5">Expert</font> <font color="#333333">Scripting 
+                  Level. Key information<br>
+                  <br>
+                  </font></b></font><font face="Arial" size="2">1.<a target="_self" href="#MP2"> 
+                  Multiplayer (MP) and Synchronization</a><br>
+                  2.
+                  <a target="_self" href="#MP">Instructions for multiplayer (MP) 
+                  script supporting</a></font><font face="Times New Roman"><br>
+                  </font><font face="Arial" size="2">3.
+                  <a target="_self" href="#ert">Script Localization Suport</a></font></span><br>
+                  <span lang="de"><font face="Arial" size="2">4</font></span><font face="Arial" size="2"><span lang="de">.
+                  <a target="_self" href="#exp3">Secondary skills parameter table</a></span><a href="#exp3">.</a></font><font face="Times New Roman"><span lang="de"><br>
+&nbsp;</span></font><p><a name="MP2"></a></p>
+
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">1. Multiplayer</font></b></span></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;</font><font face="Times New Roman" color="#CDBE85">MULTIPLAYER 
+      (MP) AND SYNCHRONISATION</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><b><span lang="de">
+      <font face="Arial" size="2">(Slava)</font></span></b></td>
+    </tr>
+  </table>
+
+                  <p><font size="2" face="Arial">Now if we have a MP battle at 
+                  the defending side we have not !?BA0<br>
+                  and !?BA1 triggers but !?BA50 and !?BA51 instead.<br>
+                  &nbsp; This brings almost no changes for:<br>
+                  - non MP battle goes as before !?BA0...!?BA1.<br>
+                  - H vs H battle goes this way:<br>
+                  &nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D<br>
+                  &nbsp; !?BA0<br>
+                  &nbsp;&nbsp;&nbsp; ---data---&gt;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !?BA50<br>
+                  &nbsp; .....battle.....<br>
+                  &nbsp;&nbsp;&nbsp; &lt;---data---&nbsp; (if defender wins)<br>
+                  &nbsp; !?BA1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !?BA51<br>
+                  <br>
+                  &nbsp; !?BA51 is not needed actually except some cases for the 
+                  control is<br>
+                  passed to the Attacker PC.<br>
+                  - AI vs H battle goes this way:<br>
+                  &nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D<br>
+                  &nbsp; !?BA0<br>
+                  &nbsp;&nbsp;&nbsp; ---data---&gt;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !?BA50<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; battle<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; !?BA51<br>
+                  &nbsp;&nbsp;&nbsp; &lt;---data---<br>
+                  &nbsp; !?BA1<br>
+                  <br>
+                  &nbsp; You see that now we can synchronize many things on a 
+                  battlefield.<br>
+                  <br>
+                  &nbsp; Then at attacker's side you can use !!HE# without any 
+                  problem but as<br>
+                  I wrote at the defender's side we have copies of hero's and 
+                  you cannot<br>
+                  control them with ordinary !!HE#. So I have added a specific 
+                  syntax<br>
+                  for defender's side only(!)<br>
+                  &nbsp; !!HE-10:... apply changes to the copy of attacker hero info<br>
+                  &nbsp; !!HE-20:... apply changes to the copy of attacker hero info<br>
+                  &nbsp; You can get hero's number but make all changes with this 
+                  syntax.<br>
+                  &nbsp; Once again. This works ONLY during a battle and only at 
+                  defending<br>
+                  (non-active) side.<br>
+                  <br>
+                  &nbsp; Example. Let us set the attacking hero's attack skill to 3 
+                  and<br>
+                  increase an attack skill every battle turn by the current day 
+                  value.<br>
+                  So if the battle takes place at day 2, he will have 5 at the 
+                  first<br>
+                  round (3+2), 7 at the second (3+2+2), 9 at the third (3+2+2+2) 
+                  and<br>
+                  so on.<br>
+                  <br>
+                  &nbsp; Our script:<br>
+                  <br>
+                  !?BA0; [battle begins at attacker side]<br>
+                  !!HE-1:F3/d/d/d; [set attacker attack to 3]<br>
+                  &nbsp; [NOTE that this need to be set only at attacker's side]<br>
+                  &nbsp; [then Hero's statistics will be transferred to defender's 
+                  side]<br>
+                  !!VRv9001:Sc; [set v9001 to a current day (just an example)]<br>
+                  &nbsp; [v10 is a flag for us; if it is 1, this is the attacker's 
+                  side]<br>
+                  &nbsp; [if it is 0, this is the defender's side]<br>
+                  !!VRv10:S1;&nbsp;&nbsp; [set v10 to 1 - attacker's side]<br>
+                  <br>
+                  !?BA50; [battle begins at defender's side]<br>
+                  &nbsp; [NOTE both heroes info is transferred here already]<br>
+                  &nbsp; [also v9001...v10000 transferred here also]<br>
+                  !!VRv10:S0; [set v10 to 0 - defender's side]<br>
+                  <br>
+                  &nbsp; [now increase attacker hero's attack by v9001 every turn]<br>
+                  !?BR&amp;v10=1; [this runs at attacker's side]<br>
+                  !!HE-1:Fdv9001/d/d/d; [set attack for hero -1 (attacker)]<br>
+                  <br>
+                  !?BR&amp;v10=0; [this run at defender's side]<br>
+                  !!HE-10:Fdv9001/d/d/d; [set attack for hero -10 (attacker)]<br>
+                  <br>
+                  &nbsp; Note that if you delete one of !?BR section, there will be a 
+                  problem<br>
+                  for changes takes place at only one side.<br>
+                  &nbsp; And then in this example you change just a Hero's statistics 
+                  that<br>
+                  can be checked by right mouse click on him on the battlefield 
+                  but the<br>
+                  changes are not applied to the army (this is just a simple 
+                  example :-)</font></p>
+
+                  <p><font face="Arial"><b><span lang="de"><a name="MP"></a></span>
+  </b></font></p>
+
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">1. Multiplayer</font></b></span></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;</font><font face="Times New Roman" color="#CDBE85">INSTRUCTIONS 
+      FOR MULTIPLAYER (MP) SCRIPT SUPPORTING</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><b><span lang="de">
+      <font face="Arial" size="2">(Slava)</font></span></b></td>
+    </tr>
+  </table>
+
+                  <p><font size="2" face="Arial">1. There are two different ways when script may cause problems in a battle:<br>
+  - Human attacks Human battle (through a network);<br>
+  - AI attacks Human on another PC (a battle runs at that PC).<br>
+  These two cases are different.<br>
+  Let us see it.<br>
+  <br>
+  2. Human (PCA) attacks a Human on other PC (PCD).<br>
+  <br>
+  The sequence is the next:<br>
+  <br>
+  1. PCA: a hero runs up to an enemy hero/town and attack.<br>
+  2. PCA: !?BA0; trigger section runs.<br>
+  3. PCA: !?IP0; trigger section runs.<br>
+  4. PCA: data transferred to PCD side including:<br>
+  - Attacking Defending Heros info (SoD);<br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  5. PCA: goes to a battle screen.<br>
+  6. PCD: Meantime the sent info arrived:<br>
+  - Attacking Defending Hero info (SoD);<br>
+  <br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  7. PCD: !?IP1; trigger section runs.<br>
+  8. PCD: !?BA50; trigger section runs.<br>
+  9. PCD: goes to a battle screen.<br>
+  10. ***** Now the battle runs *****<br>
+  If Attacker wins:<br>
+  11. PCA: !?BA1; trigger section runs.<br>
+  12. PCD: !?BA51; trigger section runs.<br>
+  If Defender wins:<br>
+  11. PCD: !?IP2; trigger section runs.<br>
+  12. PCD: data transferred to PCA side including:<br>
+  <br>
+  - Defending Hero only info (SoD);<br>
+  - Defending Hero's Commander info (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  13. PCD: !?BA51; trigger section runs.<br>
+  14. PCA: Meantime the sent info arrived:<br>
+  - Defending Hero only info (SoD);<br>
+  - Defending Hero's Commander info (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  15. PCA: !?IP3; trigger section runs.<br>
+  16. PCA: !?BA1; trigger section runs.<br>
+  <br>
+  This may look very complex, though, here is the sketch:<br>
+  <br>
+  --------------------------------------<br>
+  Attacker Defender<br>
+  Human Human<br>
+  --------------------------------------<br>
+  !?BA0;<br>
+  !?IP0;<br>
+  ---HA,CA,HD,CD,v9001-v10000--&gt;<br>
+  !?IP1;<br>
+  !?BA50;<br>
+  ********** Battle *************<br>
+  Win Lost<br>
+  !?BA1; !?BA51;<br>
+  --------------------------------------<br>
+  or:<br>
+  --------------------------------------<br>
+  Attacker Defender<br>
+  <br>
+  Human Human<br>
+  --------------------------------------<br>
+  !?BA0;<br>
+  !?IP0;<br>
+  ---HA,CA,HD,CD,v9001-v10000--&gt;<br>
+  !?IP1;<br>
+  !?BA50;<br>
+  ********** Battle *************<br>
+  Lost Win<br>
+  !?IP2;<br>
+  &lt;---HD,CD,v9001-v10000--------<br>
+  !?IP3; !?BA51;<br>
+  !?BA1;<br>
+  --------------------------------------<br>
+  <br>
+  2. AI (PCA) attacks a Human on other PC (PCD).<br>
+  <br>
+  The sequence is the next:<br>
+  1. PCA: an AI hero runs up to an enemy hero/town and attack.<br>
+  2. PCA: !?BA0; trigger section runs.<br>
+  3. PCA: !?IP0; trigger section runs.<br>
+  4. PCA: data transferred to PCD side including:<br>
+  - Attacking Defending Heros info (SoD);<br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  5. PCA: goes to &quot;wait until battle ends&quot; screen.<br>
+  6. PCD: Meantime the sent info arrived:<br>
+  <br>
+  - Attacking Defending Hero info (SoD);<br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  7. PCD: !?IP1; trigger section runs.<br>
+  8. PCD: !?BA50; trigger section runs.<br>
+  9. PCD: goes to a battle screen.<br>
+  10. ***** Now the battle runs at PCD side only *****<br>
+  No mater who wins:<br>
+  11. PCD: !?BA51; trigger section runs.<br>
+  12. PCD: !?IP0; trigger section runs.<br>
+  13. PCD: data transferred to PCA side including:<br>
+  <br>
+  - Attacking Defending Heros info (SoD);<br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  14. PCA: Meantime the sent info arrived:<br>
+  - Attacking Defending Heros info (SoD);<br>
+  - Both Heroes' Commanders info (WoG);<br>
+  - Changed Monsters statistics (WoG);<br>
+  - v9001...v10000 vars values (WoG).<br>
+  15. PCA: !?IP3; trigger section runs.<br>
+  16. PCA: !?BA1; trigger section runs.<br>
+  <br>
+  The sketch:<br>
+  --------------------------------------<br>
+  Attacker Defender<br>
+  AI Human<br>
+  --------------------------------------<br>
+  !?BA0;<br>
+  !?IP0;<br>
+  ---HA,CA,HD,CD,v9001-v10000--&gt;<br>
+  !?IP1;<br>
+  !?BA50;<br>
+  ********** Battle *************<br>
+  Win/Lost Win/Lost<br>
+  !?BA51;<br>
+  !?IP0;<br>
+  &lt;---HA,CA,HD,CD,v9001-v10000---<br>
+  <br>
+  !?IP3;<br>
+  !?BA1;<br>
+  &nbsp;</font></p>
+
+  <hr noshade color="#000000" size="1">
+  <p><font face="Arial"><b><a name="ert"></a>
+  </b></font></p>
+
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">2. ERT-ifying</font></b></span></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;</font><font face="Times New Roman" color="#CDBE85">SCRIPT 
+      LOCALIZATION SUPPORT</font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><b><span lang="de">(Slava)</span></b></td>
+    </tr>
+  </table>
+
+  <p><font face="Arial" size="2">I was asked to simplify a way to localize scripts.<br>
+  The point is that if an author change something in his script, it takes <br>
+  much time to check all script and change all massages to other language.<br>
+  I was proposed to make a separate file for every script (optional) that <br>
+  will keep all texts from the script.<br>
+  Now you can make a file Script##.ert that has a specific format:<br>
+  Index(integer) [tab delimiter] Text [tab delimiter] Any Comments ...<br>
+  Two columns are obligatory, others - optional (Comments are not loaded <br>
+  and saved to the game).<br>
+  One line - one Item.<br>
+  Index means an index that will be used in the script to access the text.<br>
+  Index may be from 0 to 1000000.<br>
+  If Index is 0 (or empty), the line is ignored and will not be loaded.<br>
+  If Index is between 1 and 1000, the text will be automatically copied to <br>
+  corresponding z variables at script loading (before executing any <br>
+  instruction in the script).<br>
+  So if you have the next line:<br>
+  123[tab]This is a Text[tab]Any Comments<br>
+  and in your script there is the next instruction:<br>
+  !#IF:M1/z123;<br>
+  you will see the message at load time &quot;This is a Text&quot;<br>
+  This is the way to move your z vars initialisations out of the<br>
+  script to the file.<br>
+  It was:<br>
+  !#VRz321:S^Hello, stranger!^;<br>
+  ...<br>
+  Now you delete this line of the script and add a line to the ert file:<br>
+  321[tab]Hello, stranger![tab]Start up message when a Hero enter to...<br>
+  To get access to the text you should use the same way as for z vars but <br>
+  the number is higher than 1000.<br>
+  If you have in your script a z var that is used for storing a constant <br>
+  name or text, you can free this z var and does not use it at all if you add
+  <br>
+  a line to the ert file with higher than 1000 number and change your code.<br>
+  Then, if you have something like this:<br>
+  !#IF:M^You are not ready yet.^;<br>
+  you should change your script to something like this:<br>
+  !#IF:M1/z123456;<br>
+  and add a line to the ert file:<br>
+  123456[tab]You are not ready yet.[tab]Any Comments<br>
+  You cannot use this constant extra z vars for changing any default text <br>
+  in the game (artifact name and so). This is the same limitation that is <br>
+  used for local z vars (z-1...z-10). With one exception. You can use the <br>
+  static extra z vars as a hint text in HT:T,P,Z,V, OB:H, HO:H. The only <br>
+  restriction is that the index should be not higher than 32000 in this case.<br>
+  You may compare constant extra z vars in &amp; and | sections.<br>
+  You can use a formatted string also:<br>
+  3333[tab]Hello, %Z55555![tab]...<br>
+  55555[tab]Orin[tab]...<br>
+  You can include static extra z vars as %Z format item.<br>
+  As for loading. ert file is loaded only if there is a corresponding erm <br>
+  file and only if it is loaded correctly.<br>
+  All extra static z vars are common for every ert file. So if you use <br>
+  the same number in one or different ert files, you will have the <br>
+  corresponding message and the map will not be loaded.<br>
+  I recommend to divide the space of extra z vars the next vay:<br>
+  Index 1000...10000 reserved yet<br>
+  Index 10000...20000 (100 vars per script for hint purposes).<br>
+  Script00 10000...10099,<br>
+  Script01 10100...10199...<br>
+  (index is 1##00 ... 1##99, where ## is a script number)<br>
+  Index 20000...100000 reserved yet.<br>
+  Index 100000...200000 (1000 vars per script for non-hint purposes).<br>
+  Script00 100000...100999,<br>
+  Script01 101000...101999,<br>
+  (index is 1##000 ... 1##999, where ## is a script number)<br>
+&nbsp;</font></p>
+
+  <hr noshade color="#000000" size="1">
+  <p><font face="Arial"><b><span lang="de"><a name="exp3"></a></span></b></font></p>
+  <table border="0" cellspacing="1" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="1">
+    <tr>
+      <td width="23%" height="1"><span lang="de"><b>
+      <font face="Arial" color="#000080">3. Script Hazard</font></b></span></td>
+      <td width="177%" background="../images/fond.gif" height="1"><span lang="de"><b>
+      <font face="Times New Roman">&nbsp;<font color="#CDBE85">SECONDARY SKILLS 
+      PARAMETER TABLE</font></font></b></span></td>
+    </tr>
+    <tr>
+      <td width="23%" height="1"></td>
+      <td width="177%" height="1"><font face="Arial"><b>
+  <span lang="de">(<font color="#FF0000">Warning</font>: <font color="#006400">
+  Scripting Hazard: </font><font size="1">don't do&nbsp; this at home</font>)</span></b></font></td>
+    </tr>
+  </table>
+
+  <p><font face="Arial, Helvetica" size="2"><span lang="de">T</span>he skill 
+  parameters are listed in a table and that by setting the skill to a value 
+  other than 0-3, the game will read the parameters of neighbouring skills.</font></p>
+  <p><font face="Arial, Helvetica" size="2">Here is the table of skill level 
+  parameters used in the game (for skills that use a % value).<br>
+  There are four values for each skill: 0-none, 1-basic 2-advanced, 3-expert<br>
+  If you set a skill to a higher (or lower value) the game will look at what is 
+  next on the list.<br>
+  <br>
+  i.e.&nbsp; If Archery is set to skill level 7, the game will read the value in 
+  Offence level 3 and grant a 30% bonus.<br>
+  <br>
+  <b>The only problem is that this will cause the skill to display wrong in the 
+  hero screen or 
+  </font>
+
+  <font color="#FF0000" face="Arial, Helvetica">crash</font><font face="Arial, Helvetica" size="2">. <br>
+  <br>
+  One can use another skill's values with battle skills by applying an offset 
+  with a !?BA0 (pre-battle) trigger and removing it with a !?BG1 (post-action) 
+  trigger after checking for the end of the battle (with !!BU:C).<br>
+  This avoids the display error and allows for normal skill advancement if you 
+  level up after a battle.</font></b><font face="Arial, Helvetica" size="2"><br>
+  <br>
+  <br>
+  NOTE: * denotes the associated skill was guessed at by looking at the values 
+  and not actually tested.<br>
+  &nbsp;</font></p>
+  <table border="0" cellspacing="1" width="100%" id="AutoNumber1" height="340">
+    <tr>
+      <td width="33%" height="53"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>1. </b><br>
+      </span>0 Necromancy<br>
+  10 <br>
+  20 <br>
+  30
+  </font>
+
+      </td>
+      <td width="33%" height="53"><span lang="de"><b>
+      <font face="Arial, Helvetica" size="2">2</font></b></span><font face="Arial, Helvetica" size="2"><span lang="de"><b>.
+      <br>
+      </b></span>0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="34%" height="53"><span lang="de"><b>
+      <font face="Arial, Helvetica" size="2">3.<br>
+      </font></b></span><font face="Arial, Helvetica" size="2"><span lang="de">
+      <b>&nbsp;</b></span>0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="35"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>4. </b></span><br>
+  0 Archery<br>
+  10 <br>
+  25 <br>
+  50
+  </font>
+
+      </td>
+      <td width="33%" height="35"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>5.</b><br>
+      </span>0 Offence<br>
+  10 <br>
+  20 <br>
+  30
+  </font>
+
+      </td>
+      <td width="34%" height="35"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>6.</b><br>
+      </span>0 Armorer<br>
+  5 <br>
+  10 <br>
+  15
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>7.</b><br>
+      </span>0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>8.</b><br>
+      </span>0 Eagle Eye*<br>
+  40 <br>
+  50 <br>
+  60
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>9.</b><br>
+      </span>0 Diplomacy*<br>
+  20 <br>
+  40 <br>
+  60
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>10.</b><br>
+      </span>0 Resistance<br>
+  5 <br>
+  10 <br>
+  20
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>11.</b><br>
+      </span>0 Learning<br>
+  5 <br>
+  10 <br>
+  15
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2">
+      <span lang="de"><b>12.</b><br>
+      </span>0 Logistics*<br>
+  10 <br>
+  20 <br>
+  30
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">13.</span></b><br>
+  0 Sorcery<br>
+  5 <br>
+  10 <br>
+  15
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">14.</span></b><br>
+  0 Intelligence*<br>
+  25 <br>
+  50 <br>
+  100
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">15.</span></b><br>
+  0 First Aid*<br>
+  100 <br>
+  200 <br>
+  300
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19">&nbsp;</td>
+      <td width="33%" height="19">&nbsp;</td>
+      <td width="34%" height="19">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="100%" height="19" colspan="3"><font face="Arial, Helvetica" size="2">The rest doesn't seem to be part of the table but does contain a few usable 
+  values</font></td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">16.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">17.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">18.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">19.</span></b><br>
+  0 ?<br>
+  0 <br>
+  105 <br>
+  5
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">20.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">21.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">22.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">23.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  30
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">24.</span></b><br>
+  15 ?<br>
+  90 <br>
+  150 <br>
+  0
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">25.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">26.</span></b><br>
+  0 ?<br>
+  0 <br>
+  25 <br>
+  50
+  </font>
+
+      </td>
+      <td width="34%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">27.</span></b><br>
+  75 ?<br>
+  100 <br>
+  100 <br>
+  100
+  </font>
+
+      </td>
+    </tr>
+    <tr>
+      <td width="33%" height="19"><font face="Arial, Helvetica" size="2"><b>
+      <span lang="de">28.</span></b><br>
+  0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="33%" height="19"><b><span lang="de">29.</span></b><br>
+      <font face="Arial, Helvetica" size="2">0 ?<br>
+  0 <br>
+  0 <br>
+  0
+  </font>
+
+      </td>
+      <td width="34%" height="19">&nbsp;</td>
+    </tr>
+  </table>
+  <p><font face="Arial, Helvetica" size="2">This is as far as <span lang="de">it has been</span> tested, there may be more 
+  usable values. </p>
+  </font>
+
+</body>
+
+</html>

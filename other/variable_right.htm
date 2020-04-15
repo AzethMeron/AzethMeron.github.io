@@ -1,0 +1,862 @@
+<html>
+
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<META http-equiv="Content-Language" content="en-gb">
+<META name="GENERATOR" content="Microsoft FrontPage 5.0">
+<META name="ProgId" content="FrontPage.Editor.Document">
+
+<title>Variable</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">F</font><font face="Times New Roman CE" size="5">LAGS</font><font face="Times New Roman CE" size="6"> </font>
+  <font face="Times New Roman CE" size="5"><span lang="de">AND</span></font><font face="Times New Roman CE" size="6">
+  V</font><font face="Times New Roman CE" size="5">ARIABLES</font></strong><p align="left"><strong>
+  <font color="#333333" face="Arial" size="2">This section e</font></strong><font color="#333333"><strong><font face="Arial" size="2">xplains the use of conditional flags and variables in ERM
+  scripts.</font></strong></font><!--<p align="center"><font face="Arial" size="2"><a target=sommaire href="#FLAGS">Flags</a><br>
+  <a target=sommaire href="#VARIABLES">
+  Variables</a></font><p align="left"><font face="Arial" size="2"><strong><b>
+  <br>--> <p align="left"><B>I</b></strong></font></B><font face="Arial" size="2"><strong><b>ntroduction<br>
+  </b></strong>Flags and variables are at the very heart of the ability of ERM to
+  transform Heroes into a highly dynamic game that responds to the actions and
+  choices made by the players. While ERM scripts can be written without using
+  flags or variables, learning to use them will greatly enhance your options,
+  and in fact, a number of the commands require their use.<b><strong><br>
+  <br><A name="fintro">Conditional
+  Flags</A> <br>
+  </strong></b>
+  Conditional Flags are also referred to as <i>flags</i> or <i>CFs.</i>
+  A flag is a conditional switch that is either true (1) or false (0). Like a
+  binary number, it has only two states and no other. Initially, all flags are
+  set to false (0). A value of 1 (true) is sometimes referred to as the flag
+  being &quot;set&quot; while a value of 0 (false) is sometimes referred as a
+  flag being &quot;not set&quot;.</a></font><a name="FLAGS"><p align="left"><font face="Arial" size="2">
+  <B><u><a name=fset>Setting</a> Flags </u></B><br>
+  In ERM, there are 1000 conditional flags and these are each represented by a
+  number from 1 to 1000. Flags are set with the </font> </a> <font face="Arial" size="2">
+  <a target=sommaire href="../receivers/receiver_if.htm">IF
+  receiver</a> using the V# command. To set a flag to true, use the value 1 and
+  to set it to false, use 0.<br>
+  <b><font color="#0000FF">Example: to set flag number 4 to true, use:</font><font color="#008000"> </font>
+  <font color="#800000">!!IF:V4/1;&nbsp;</font></b></font><p align="left"><font face="Arial" size="2">In
+  addition to the V command, there are also several IF commands for setting the
+  first 10 flags all at once. Refer to the
+  <a target=sommaire href="../receivers/receiver_if.htm">IF receiver
+  page</a> for the specific syntax of these commands.</font><p align="left"><font face="Arial" size="2">
+  <B><u>Using
+  Conditional Fla<A name="fcheck">g</A>s</u></B><br>
+  The most common use of a flag is to control whether or not a piece of ERM code
+  (such as a trigger or receiver) executes under certain conditions in the game.
+  For example, if you want a map object to display a message the first time any
+  hero visits it but never after, you could use a flag for this purpose; it
+  would display the message if the flag was false (not set) and a following
+  command would then set the flag to true (1) so that next time the object was
+  visited, no message would be displayed.<br>
+  <br>
+  The symbol for indicating a flag (or variable) test is the ampersand (&amp;)
+  which is placed immediately prior to the colon of a receiver statement, or
+  prior to the semicolon of a trigger statement. The ampersand is immediately
+  followed by the flag number used for the test. If a test for a true flag (a
+  flag that has been set to 1) is made, the number alone is used. If the test is
+  for a false flag (not set, or set to 0), a negative sign is placed in front of
+  the number. So to test if flag number 5 is true, you would use &amp;5, and to
+  test if flag number 5 is false, you would use &amp;-5.<br>
+  <b><font color="#0000FF">Example of code:</font><font color="#FFFF00"><br>
+  </font><font color="#800000">ZVSE<br>
+  !?OB10/14/0;</font></b><font color="#800000">&nbsp; [object at
+  x=10,y=15,level=surface is visited by a hero]<b><br>
+  !!IF&amp;-5:M^Come in. I have been expecting you.^;&nbsp; </b>[display if flag
+  5 is false]<b><br>
+  !!IF:V5/1;&nbsp; </b>[set flag 5 to 1 (true)]</font></font><font color="#800000">
+  </font>
+  <p align="left"><font face="Arial" size="2"><B><u>Checking Multiple Flags</u></B><br>
+  At times, you may want to check for more than one conditional flag (or
+  variable). To do this, separate each subsequent number with a slash (/). When
+  there are multiple flags or variables to test for, ALL conditions must be met
+  before the statement executes. For example, if you were testing for flag
+  number 7 being true, flag 8 being false and flag 10 being true, then if even
+  one of those flags had a different value, the statement would not be carried
+  out.<br>
+  <b><font color="#0000FF">Example of code:</font><font color="#FFFF00"><br>
+  </font><font color="#800000">ZVSE<br>
+  !?OB10/14/0;&nbsp; </font></b><font color="#800000">[object at
+  x=10,y=15,level=surface is visited by a hero]<b><br>
+  !!IF&amp;7/-8/10:M^Come in. I have been expecting you.^;<br>
+  </b></font></font><font face="Arial" size="2" color="#800000">[The above
+  message is displayed only if flags 7 and 10 are true and 8 is false]</font><b><font color="#008000" face="Arial" size="2"><br>
+  <br>
+  </font></b><font face="Arial" size="2"><B><u>Initializing Flags</u></B><br>
+  While all flags initially begin as &quot;not set&quot; (i.e., value of 0 or
+  false), flags 501 to 1000 will retain their last value when you begin a new
+  map (or the same map over) without first quitting and restarting the Heroes
+  game. This is so they can be used for making campaigns in which you want
+  certain flag values to carry over to the next map in the campaign. If you wish
+  to avoid potentially having flags that aren't set to 0 at the start of a game,
+  either stick to using flags 500 and below or initialize to 0 at the start of
+  your map or script (with IF:V statements) all flags that you wish to use.<br>
+  <br>
+  <B>
+  <u><A name="fspec">Special</A> Flags</u></B><br>
+There are several flags that have special significance in the game.<br>
+<br>
+<b>Flag 1</b> is used by certain commands to return a result and will also return the result of a conditional check of values (see below). Therefore, it's a good idea to never use flag 1 for any long term storage. Or to be safe, don't use it at all and stick to higher numbered flags. <br>
+<br>
+<b>Flag 996</b> is automatically cleared (set to False) when any !!LE command executes and is set to 1 (True) if there is no Placed Event at the location specified by the LE command (you know that a Placed Event is removed after usage sometimes).<br>
+<br>
+<b>Flag 997</b> and <b>998</b> are set as follows:<br>
+<br>
+ <b>Flag 997</b> returns the MP state of a battle.<br>
+ =0 (False) if we have a local battle<br>
+ =1 (True)  if we have a network battle<br>
+<br>
+  Then if <b>Flag 997</b>=1, then Flag <b>998</b>=0 if an AI attacks a Human player at a distant PC.  Note that the battle here runs at only ONE PC, but this PC is a distant one for the current active PC. <br>
+<b>Flag 998</b>=1 if we have a Human vs Human battle. Here we have a real MP battle.<br>
+<br>
+  You may use both flags in BA0 or BA50 trigger like this:<br>
+!?BA0&997/998;<br>
+...<br>
+  Here we go if this is a Human vs Human MP battle<br>
+<br>
+<b>Flag 999</b>, which is set to 1 if the current player (when trigger executes) is a player "here" and 0 if he or she is at another PC. The AI has it always set to 0. If flag 999 is set, you can be sure that this is human and he is here. It's working for all triggers. <br>
+<br>
+<b>Flag 1000</b> has two meanings, depending on whether its used in a battle trigger or not. For a non-battle trigger, this flag will be set to true when a hero owned by a human player visits a map object or is the subject of a trigger such as a timer or level gain check. If a computer (AI) hero visits an object, flag 1000 will be set to false. Again, you can set this flag yourself but it's probably safest not to, since you may wish to check its value in a script to
+determine if the subject is a human or AI player.<br>
+Therefore, if checking the flag's condition -1000 means AI and 1000 means Human.<br>
+<br>
+For battle triggers (e.g., !?BA0, !?BG, !?BF, !?BR, etc.) Flag 1000 is a check for a real vs. theoretical AI battle. <br>If Flag 1000=1 (True), it means there's a real battle (at least one human opponent). <br>If Flag 1000=0 (False), it means that it's a theoretical AI-only battle.
+<br>
+  <br>
+  <br>
+  <B>
+  <u><A name="fshow">Display</A>ing the Value of Flags in Messages</u></B><br>
+  To display the value of a flag (0 or 1) in a message, use %F followed by the
+  flag number you wish to display (1 to 1000). So to display flag number 4
+  within a message, you would use %F4. Displaying the value of flags may be useful
+  primarily as a tool to help in debugging scripts.<br>
+  <b><font color="#0000FF">Example:</font><br>
+  <font color="#800000">!!IF:M^The value of flag number 4 is %F4.^;</font></b><br>
+  <br>
+
+  <B>
+
+<u><A name="fequal">Comparing</A> Values</u></B><br>
+
+To compare the game parameter to a particular value you can use the following way: ...[compare
+operator] value... The result of comparing is stored in flag 1. You can use its value for further ERM
+statements.&nbsp;</font></p>
+
+<p><b><u><font face="Arial" size="2" color="#000000">Examples of Value
+Comparison using the GE Receiver:</font></u></b></p>
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Set first day to 5 for Time event (standard syntax)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F=5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is 5 and set Cond.Flag1 (CF1)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&lt;&gt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is NOT 5 and set Cond.Flag1 (CF1)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&gt;&lt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">The same as above</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&gt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is greater than 5 and set CF1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&gt;=5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is greater or equal to 5 and set CF1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F=&gt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">The same as above</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&lt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is below than 5 and set CF1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F&lt;=5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">Check if first day is below or equal to 5 and set CF1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="83">
+<p><font face="Arial" size="2">!!GE100:<b>F=&lt;5</b></font></p>
+    </td>
+    <td width="585">
+<p><font face="Arial" size="2">The same as above</font></p>
+    </td>
+  </tr>
+</table>
+<a name="VARIABLES">
+  <p align="left"><font face="Arial" size="2"><b><strong><br>
+  Variables</strong></b></font><p align="left">
+
+<tt>
+  <font size="2" face="Arial"><span lang="de">Aditional usefull information can
+  be found in <a target="_self" target=sommaire href="tutor_right.htm#howto4">the VR receiver
+  easily explained</a> (ERM for dummies, by Qurqirish Dragon)</span></font></tt></a><font face="Arial" size="2"><b><strong><br>
+<a name="VARIABLES">
+  <br>
+  </a>
+  </strong></b>
+<A name="vintro">Variables are similar to flags in that they can be set and
+  checked, but unlike flags they can hold many more values than true and false.
+  In most cases, a variable can be used in place of a number. Also, the contents
+  of a variable (the value it stores) can be changed at any time simply by
+  storing a new value in it, hence the name <i>variable</i>. There are also
+  several different types of variables that may be used for different purposes
+  or in different places in your code.<br>
+  <br>
+  If a command parameter is shown as $ it means that its value can be stored in
+  a variable. If it's shown as # it means that it can only be set, but not read.
+  And if it's shown as ?$ it means it can be read but not set.<br>
+  </A>
+  <br>
+  </font><A name="vtypes"><B><u><font face="Arial" size="2">Types of Variables and their Allowed
+  Value Ranges</font></u></B><font face="Arial" size="2"><br>
+  <i>All numeric variables are integer variables and have a range of
+  -2147483647...+2147483647</i></font></A><font face="Arial" size="2"><i><br>
+  </i></font><span lang="de">
+<font face="Arial" size="2">a not yet used&nbsp;&nbsp; </font></span>
+
+  <font face="Arial" size="2"><br>
+  <span lang="de">b not yet used</span><br>
+  <span lang="de"><b>c </b>stores today value (game active day
+number)&nbsp; </span><br>
+  <span lang="de"><b>d </b>adds or subtracts values from variables</span><br>
+  <span lang="de"><b>e1..e100 </b>Function floating point variables<br>
+</span><b>e-1...e-100</b>
+  </font>
+      <span lang="de"><b><font face="Arial" size="2" color="#333333">
+    <img border="0" src="../images/new.gif" width="28" height="11"></font></b></span><font face="Arial" size="2"><span lang="de">Trigger-based
+local variables. F</span>loating point vars<a name="VARIABLES"><br>
+  <b>'f' through 't'<span lang="de">:</span></b>
+  <span lang="de">Standard</span> variables<span lang="de"> (former known as
+  quick variables)</span><br>
+  <b>v1 through v10000 :</b>  Standard variables<br>
+ <b>w1 through w100 :</b>  Hero variables (unique for each hero)</a><br>
+<a name="VARIABLES">
+ <b>w1<span lang="de">01</span> through w<span lang="de">200</span> :</b>  Hero variables (unique for each hero)</a>These
+work everywhere <span lang="de">t</span>he first 100 w variables work except for: !!HT:W There you can use only first 100 w vars.<a name="VARIABLES"><br>
+ <b>x1 through x16 :</b>  Function parameters (values passed to a function)<br>
+ <b>y1 through y100:</b>  Function local variables (unique for each function)</a><br>
+<b>y-1...y-100</b></font><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span><font face="Arial" size="2"><span lang="de">Trigger-based
+local variables.<font color="#333333"><b> </b></font>I</span>nteger vars<a name="VARIABLES"><br>
+ <b>z1 through z1000 :</b> String variables&nbsp;(store strings of characters)</a><br>
+<a name="VARIABLES">
+ <b>z-1 through z-10 :</b>  Function string variables&nbsp;(unique to each
+  function)</a><br>
+  <a name="VARIABLES">
+ <b>z-11 through z-20 :</b>  Function string variables&nbsp;(unique to each
+  function), similar to previous BUT always initialised with empty strings.</a>
+  </font><p align="left"><B><font face="Arial" size="2"><u>
+  <A name="vset">Storing</A>
+  Variables</u></font></B><br>
+  <font face="Arial" size="2">There are several ways of storing a value in a
+  variable. The <a target=sommaire href="../receivers/receiver_vr_right.htm">VR receiver</a> can be used to set the
+  value of any variable and can also be used to do arithmetic operations with
+  variables such as adding, subtracting, multiplying or dividing. The exception
+  is the z variables which is used to store strings of characters rather than
+  numerical values.<br>
+  <b><font color="#0000FF">Example of storing the value 18 in the v5 variable: </font>
+  <font color="#800000">!!VRv5:S17;</font></b><br>
+  <br>
+  <A name="vget">The second way of storing</A> a value in a variable is to read the value from an
+  object or setting in the game, such as number of a hero, the value of a pile
+  of gold, the number of gems that player number 4 currently possesses, or the
+  type or subtype of any object. To store a value in this way, immediately after
+  a command, use the question mark symbol (?) followed by the variable name in
+  place of a value parameter.<br>
+  <b><font color="#0000FF">Example of storing the type of an object located at
+  x=10, y=15, level=1 (underground) in the variable j:</font><font color="#008000"> </font>
+  <font color="#800000">!!OB10/15/1:T?j;</font></b><br>
+  <br>
+  <b><font color="#0000FF">Example of storing the number of crystals (resource
+  type 4) that the green player (player number 3) currently possesses, in the
+  variable v12:</font><font color="#008000"><br>
+  </font><font color="#800000">!!OW:R3/4/?v12;</font></b><br>
+  <br>
+  The third method of storing a variable is by an indirect reference. A few ERM
+  commands require a number that is the <i>index number</i> of a v or z
+  variable. In this case, instead of using the question mark, you simply enter a
+  number for that parameter and the value retrieved by the command will be
+  stored in the corresponding variable (e.g., if the command asks for a index
+  number for a v variable, putting in 17 would store a value in v17).<br>
+  <br>
+  <B>
+  <u>Using Variables Instead of Numbers</u></B><br>
+  Once you have a value stored in a variable, you can use that variable in place
+  of a number in your code. Almost anywhere that you could normally enter a
+  number, you can instead use any of the variables, provided the value they hold
+  is within an acceptable range for the command or parameter you're using it
+  with. Again, the exception is the z variables which are used when you wish to
+  set or display a string of characters, such as a hero's name, the name of an
+  artifact, or a word or phrase. In most cases it will be fairly obvious when a
+  z variable should be used with a command rather than a numeric variable (any
+  of the other variable types).<br>
+  <b><font color="#0000FF">Example of using a v variable to set a hero's spell
+  points</font></b><br>
+  <font color="#800000"><b>!!VRv200:R50;</b>&nbsp; [Store random number between
+  0 and 50 in v200 variable]<br>
+  <b>!!HE155:Iv200;</b>&nbsp; [Set hero number 155's spell points to value
+  stored in v200]</font><br>
+  <br>
+  <b><font color="#0000FF">Example of using a z variable to add &quot;Sir&quot;
+  to the start of a hero's name</font></b><br>
+  <font color="#800000"><b>!!VRz50:S^Sir ^;</b> [Store the word &quot;Sir &quot;
+  in the variable z50]<br>
+  <b>!!HE-1:B0/?z51;&nbsp;&nbsp;</b> [Store current hero's name in z51]
+  <br>
+  <b>!!VRz52:S50 +<span lang="de">z</span>51;</b> [Add contents of variable z5<span lang="de">1</span> to z5<span lang="de">0
+  </span>and store in z52]<br>
+  <b>!!HE-1:B0/z52;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Set current hero's name
+  to text stored in variable z52]</font><br>
+  <br>
+  <i><b><font color="#0000FF">Note: both the above examples of code would need
+  to be preceded by a trigger event of some sort in order to function.</font></b></i><br>
+  <br>
+  <font color="#000000"><B><u><A name="vcheck">Conditional Statements with Variables</A></u></B><br>
+  Like flags, you can use the value of one or more variables to determine if a
+  statement (trigger or receiver) executes. And in fact, the syntax is similar.
+  However, instead of putting the flag number (with or without a minus sign in
+  front of it), you would put the name of the variable followed by a comparison
+  symbol (=, &gt;, &lt;, &lt;&gt;, &gt;=, or &lt;=) and the number (or variable)
+  you wish to compare it with.<br>
+  </font><b><font color="#0000FF">Example of conditional statement, comparing v1
+  to see if it's greater than or equal to the number 7, and if it is, a message
+  is displayed:</font><font color="#000000"><br>
+  </font><font color="#800000">!!IF&amp;v1&gt;=7:M^You were wise to make that
+  choice, hero!^;</font></b><font color="#000000"><br>
+  <br>
+  </font><b><font color="#0000FF">Example of conditional statement, comparing
+  the text stored in the z1 string variable to the text stored in the z2 string
+  variable, and if it's the same displaying a message:</font></b><font color="#000000"><br>
+  </font><b><font color="#800000">!!IF&amp;z1=z2:M^So, you're the one!^;</font></b><font color="#000000"><br>
+  <br>
+  <B>
+  <u>Checking Multiple Variables</u></B><br>
+  This is accomplished in much the same way as checking multiple flags, by
+  separating subsequent variable tests with the slash symbol (/). In fact, you
+  can freely mix and match checks for flags and variables in the same statement,
+  as in the following example that gives the current hero the Armour of Wonder
+  artifact, but only if certain conditions are fulfilled (flags set and
+  variables with specific values): </font><font color="#800000"><b>!!HE-1&amp;7/v2&gt;6/-1/y4=v8:A31;</b></font><font color="#000000"><br>
+  <br>
+  In the above example, the following conditions must be true before the
+  statement executes and gives the hero an artifact:<br>
+  1. Flag 7 must be true (set to 1);<br>
+  2. The v2 variable must currently store a value&nbsp; of 6 or higher;<br>
+  3. Flag 1 must be false (set to 0 or not set);<br>
+  </font>4. The y4 variable must currently store the same value as the v8
+  variable.<br>
+  <br>
+  <i>Only if ALL four of these conditions are true will the hero be given the
+  artifact.</i><br>
+  <br>
+  </font><font face="Arial" size="2"><u>Checking syntax - OR conditions.:</u><b>
+  |</b><u><br>
+  </u>!(!|?|#)XX&amp;c1/c2/c3<b>|</b>c4/c5/c6:...;<br>
+  Full condition is: (c1 AND c2 AND c3) OR c4 OR c5 OR c6<br>
+  Comments.<br>
+  - OR section may be alone or only after AND section<br>
+  - if there is only OR section, full condition will be true if at least one OR
+  condition is TRUE<br>
+  - there may be up to 16 AND conditions and up to 16 OR conditions<u><br>
+  <br>
+  <B>The Different Types of Variables</B></u><br>
+  As mentioned earlier, there are several different types of variables, each
+  used in a slightly different way or place in your code.<br>
+  <br>
+  <i><span lang="de">Standard</span> variables
+  (f-t) and (v1-v100<span lang="de">00</span>)</i> are for the most part
+  interchangeable<span lang="de">, but </span>certain
+  commands require an <i>index number</i> of a v variable to store the results.
+  Both types are used for storing numerical integer (whole) numbers. <br>
+  <br>
+  <i><a name="hero"></a>Hero variables (w1-w100)</i> store the same type of information as v
+  variables, but are unique for each hero. This means that two different heroes
+  could have different values stored in their w1 variable (or w2, w10 or
+  anything up to and including w100).<br>
+  In order to set or check one or more w variables you must first set the hero
+  number that they apply to by using the IF:W command. For example, if you wish
+  to set or check w5 for hero number 27 (Gem), you would first put
+  <font color="#800000"><b>!!IF:W27;</b></font>
+  prior to the statement that referenced her w5 variable. To specify the current
+  hero, use -1 instead of a number. So <font color="#800000"><b>!!IF:W-1;</b></font>
+  means that subsequent references to w variables will refer to the current hero
+  (until another IF:W statement is issued).<br>
+<i><a name="hero2"></a>Hero variables (w1-w200).</i> Added in 3.58 version and
+these work everywhere that the first 100 w variables work except for one exception: !!HT:W   There you can use only the first 100 w variables.
+<br>
+
+  <span lang="de">See also <a target=sommaire href="../receivers/receiver_if_right.htm#W">IF:W</a> section
+  and <a target=sommaire href="../receivers/receiver_vr_right.htm#heroVR">VR</a> section)</span><br>
+  <br>
+  <i>Function parameter variables (x1-x16)</i> also store the same types of
+  values (numeric) as v and w variables. However, these variables only exist
+  within functions (code following a function trigger) and are initially set to
+  values passed to the function in the function receiver statement after the P
+  command (P stands for parameter). See the
+  <a target=sommaire href="../receivers/receiver_fu.htm">FU
+  Receiver</a> page for more details on functions. If you call a function from
+  within another function, any x variables that aren't set (as new parameters)
+  maintain their same values in the new function. When used with the DO
+  receiver, the x16 parameter stores the loop count of the function (i.e., the
+  number of times the function has been executed so far since the
+  <a target=sommaire href="../receivers/receiver_do.htm">DO
+  Receiver</a> activated).<br>
+  <br>
+  <i>Function local variables (y1-y100) </i>are similar to x variables in that
+  they are normally only be used within a function. However, they are unique to each
+  function, so if you have four different functions, each will have its own set
+  of y variables. Like most of the other variables, they store numeric values
+  only. There is also one set of global y variables that may be used outside of
+  functions and could be used if you run low on v variables, but be aware that
+  if another trigger (e.g., HL or BA) occurs in the middle of your script, the
+  values of these y variables could be wiped out.</font><p align="left">
+  <span lang="de"><font face="Arial" size="2"> <i>Function local floating point variables (e1..e100) </i>
+  </font></span><font SIZE="2"><font face="Arial">They
+  are used the same way as y vars:<br>
+  - not stored in the saved game;<br>
+  - are local in every function;<br>
+  - filled with 0 at every function/cycle start;<br>
+  - restored when return from other function call.<br>
+  You may use them to set parameters but the main feature is to use<span lang="de">
+  </span>it to calculate floating point expression and then store it to integer<span lang="de">
+  </span>variable. <br>
+  You can use +,-,* and : commands of VR receiver for e vars in<span lang="de">
+  </span>floating point calculations though all numbers should be integer in<span lang="de">
+  </span>the expression. <br>
+  You can also put e vars in the message with %E# command. In this<span lang="de">
+  </span>case only 3 digits after dot is shown. </font>
+  <p><font face="Arial">Here is the example:</font><font face="Arial" color="#000080"><br>
+  </font><font face="Arial" color="#800000"><b>!#VRe5:S32; !#IF:M^e5 is &quot;%E5&quot;^;
+  </b></font><font face="Arial">[ e5=32.0 ]</font><font face="Arial" color="#800000"><b><br>
+  !#VRe5:*5; !#IF:M^e5 is &quot;%E5&quot;^; </b></font><font face="Arial">
+  [ e5=160.0 ]</font><b><font face="Arial" color="#800000"><br>
+  !#VRe5::200; !#IF:M^e5 is &quot;%E5&quot;^; </font></b>
+  <font face="Arial">[ e5=0.8 ]</font><b><font face="Arial" color="#800000"><br>
+  !#VRe5:+e5*10+5:10; !#IF:M^e5 is &quot;%E5&quot;^; </font></b>
+  <font face="Arial">[ e5=2.1 ]</font><b><font face="Arial" color="#800000"><br>
+  !#VRv100:Se5; !#IF:M^v100 is &quot;%V100&quot;^;</font><font face="Arial"> </font>
+  </b>
+  <font face="Arial">[ v100=2 ]</font></p>
+  <p>
+  </font><font face="Arial" size="2">
+  <br>
+  <i>String variables (z1-z1000) </i>store strings of characters (one or more)
+  and cannot be used to store numeric values; they could store a number as text
+  but that number couldn't be compared or manipulated numerically in any
+  fashion. z variables can be concatenated (joined together) but have a maximum
+  size of 512 characters each. They can also be
+  compared to another z variable to see if they match each other exactly. When
+  comparing two z variables for a match, the comparison is NOT case-sensitive.
+  So if z1 stores &quot;This&quot; it will match z2 storing &quot;thIS&quot; or
+  any other combination of upper and lower case. Leading blank spaces or lines
+  are also ignored in z variable comparisons. The 500 new z variables added in
+  the ERM 2.60 update (WoG 3.57) are identical to the original 500, but note
+  that z501-z1000 will <i>not</i> keep their values between different maps.
+  Continue to use z301-z500 for this purpose.</font></p>
+  <p align="left"><strong>
+  <span lang="de"><font face="Arial" size="2"><i><font color="#0000FF">Note: Since
+  string variables handle text messages, be aware that a string
+  cannot contain the</font> <font color="#FF0000">; </font>
+  <font color="#0000FF">,</font><font color="#FF0000">
+  ^</font> </i> <font color="#0000FF"><i>characters. Example:</i></font><font color="#000080"><br>
+  </font> <font color="#800000">!!VRz567:S^wrong text ; it contains ^special
+  elements^. ^;<br>
+  !!VRz567:S^this is a correct&nbsp; text. It contains no &quot;special elements&quot;.&nbsp;
+  ^;<br>
+  !!IF:M^this is a correct&nbsp; text. It contains no &quot;special elements&quot;.&nbsp;
+  ^;</font></font></span></strong><font face="Arial" size="2"><br>
+  <br>
+  <i>Function local string variables (z-1-z-10) </i>are similar to their y
+  variable counterparts but store string values like z variables. If you set one
+  and then call a function or function loop that sets another value, when you
+  return to the original function you will have the variable value you set
+  before the function call. However they differ from y variables in that they
+  will keep their value when you initially call the function, so they may be
+  used to pass strings to functions, but cannot be used to return values. Like
+  regular z variables, they have a maximum size of 512 characters.<br>
+  <br>
+<i><a name=newlocalvar></a>
+  Trigger based variables</i><img src=../images/new.gif width="28" height="11"><br>
+  <font face="Arial" size="2">y-1...y-100 are integer vars<br>
+  e-1...e-100 are floating point vars<br>
+  <br>
+  You may use them in the same places that you use y and e vars now.<br>
+  <br>
+  Specific features:<br>
+1. They are NOT saved in the saved game. Actually every trigger section will run completely and you cannot save and load a game being inside a trigger section.<br>
+2. These variables are local for every trigger and if even one trigger works out inside another trigger section, they will have a different set of variables. As you can see you cannot pass values from trigger to trigger using these variables.<br>
+3. All variables are set to 0 at any trigger start, so you can use this as a default value.<br>
+4. All functions called from a particular trigger can access and share that trigger's set of variables, since they're trigger-based and not function-based.<br>
+
+<br><br>
+  <B>
+  <u><A name="vspec">Special Variables</A></u></B><br>
+  There are several variables in ERM that have special significance. Like the
+  flags 1 and 1000, special variables can still be set by to anything you like
+  at any time, but it is advisable to do with some degree of caution, since
+  other commands may make use of them.<br>
+  <br>
+  The v1 variable is occasionally used to store the results of a few commands.
+  This isn't a common occurrence so it can still be used in your scripts, but
+  it's advisable to not use it for long-term storage of a value; in other words,
+  don't store a value in v1 if you need to guarantee that it remains unchanged
+  at some later point in the game.<br>
+  <br>
+  The z1 variable is used to store the text entered by a player in an extended
+  dialog box. If you don't use extended dialog boxes, you won't need to worry
+  about this, but it's still a good idea not to use z1 for long-term storage.<br>
+  <br>
+  The v variables v998, v999, and v1000 always store the position of the object
+  or event that a hero is currently visiting when a corresponding trigger is
+  used, or in some cases the location of the hero him or herself (for example,
+  the !?HM trigger). It's best to leave these variables alone except to compare
+  their values or copy their values to other variables.<br>
+  <br>
+  v997 stores number of current turn during combat.<br>
+  <br>
+  The x16 variable (used in functions called with the
+  <a target=sommaire href="../receivers/receiver_do.htm">DO
+  Receiver</a>), stores the current cycle number of the function. For example,
+  if the function is being repeated 12 times (from 1 to 12), the first time
+  through, x16 will equal 1, the second time 2 and so on. If you change the x16
+  variable, you can actually &quot;speed up&quot; or &quot;slow down&quot; a
+  function loop, or even exit from it completely by setting x16 equal to the end
+  value (or higher) that was specified in the DO receiver.<br>
+  <br>
+  <u>Initializing Variables</u><br>
+  Like flags, all variables begin the game with an initial value of 0. However,
+  also like flags, certain variable ranges will NOT be reset between maps
+  without restarting the Heroes game. Again, this is to allow those variables to
+  &quot;carry over&quot; their values to another map as part of a multi-map
+  campaign.<br>
+  </font><br>
+  <font face="Arial" size="2">
+When you start a new map, the
+following variables
+will be reset to zero (0) or a void string &quot;&quot; for z variables: f...t,
+  v1...v500, v1001-v1000<font color="#000080"><span lang="de">0</span></font>, z1...z300, z501-z1000, w1-w50.<br>
+  <br>
+  The following variables will retain their current values between games (unless
+  you quit and restart Heroes): v501-v1000, z301-z500, w51-w100.<br>
+  <br>
+  <u><A name="vshow">Displaying Variables in Messages</A></u><br>
+  </font><font face="Arial" size="2">Like flags, the values of variables may be
+  displayed in messages by using special codes for the type of variable followed
+  by the variable number as shown below:<br>
+  <br>
+  %V#&nbsp; Shows a quick or v variable of the specified number. # = f to t or 1
+  to 100<span lang="de">00</span>.
+  </font>
+
+  <font face="Arial" size="2"><br>
+  %W# Shows a hero variable of the specified number. # = 1 to 100.<br>
+  %X#&nbsp; Shows a parameter variable of the specified number. # = 1 to 16.<br>
+  %Y#&nbsp; Shows a local function variable of the specified number. # = 1 to
+  100.<br>
+  %Z#&nbsp; Shows a string variable of the specified number. # = 1 to 500.<br>
+  %$macro$ Shows a variable associated with the macro name &quot;macro&quot;.<br>
+  <br>
+  It's important to note that the code for displaying a variable is always an
+  uppercase letter after the %letter is always uppercase while a regular
+  variable reference is always a lowercase letter.<br>
+  <br>
+  <b><font color="#0000FF">Example showing the display of quick variable j,
+  standard variable v21 and z variable z100 within a message string:</font></b><br>
+  <font color="#800000"><b>!!IF:M^Sorry, %Z100, but you only have %Vj gold left
+  and you need at least %V21 gold to buy this artifact.^;</b></font><br>
+  <br>
+  <b><font color="#0000FF">Assuming that z100 had previously been used to store
+  the hero's name (let's say it's Clancy) and j to store the current player's
+  gold (let's say it's 750) and v21 to store the cost of some artifact in gold
+  (let's say it's 2000), the message would appear as:</font></b><br>
+  <font color="#800000">Sorry, Clancy, but you only have 750 gold left and you
+  need at least 2000 gold to buy this artifact.</font><br>
+  <br>
+  <B>
+  <u>Including Variables as Part of a String Variable</u></B><br>
+  By using the same commands you use for displaying a variable in a message (see
+  above), you can include a variable as part of a string variable. This is handy
+  way of concatenating strings made up of several z variables and possibly some
+  other variable values all at once.<br>
+  Inside ERM messages (M and Q commands of IF receiver) you can use special syntax:<br>
+  &quot;%%&quot; -&gt; &quot;%&quot;<br>
+  &quot;%F#&quot; -&gt; current value of # flag.<br>
+  &quot;%Vf&quot;...&quot;%Vt&quot; -&gt; current value of corresponding
+  variable.<br>
+  &quot;%W1&quot;...&quot;%W200&quot; -&gt; current value of corresponding hero
+  variable.<br>
+  &quot;%X1&quot;...&quot;%X16&quot; -&gt; current value of corresponding
+  function parameter.<br>
+  &quot;%Y1&quot;...&quot;%Y100&quot; -&gt; current value of corresponding local
+  variable.<br>
+  &quot;%Z1&quot;...&quot;%Z1000&quot; -&gt; current value of corresponding
+  string variable.<br>
+  &quot;%$macro$&quot; -&gt; macro name of corresponding variable<br>
+  &quot;%Dd&quot; -&gt; current day of week<br>
+  &quot;%Dw&quot; -&gt; current week<br>
+  &quot;%Dm&quot; -&gt; current month<br>
+  &quot;%Da&quot; -&gt; current day from beginning of the game<br>
+  &quot;%Gc&quot; -&gt; the color of current gamer in text<br>
+  <b><font color="#0000FF">Example of combining several z variables and v
+  variables together in one z variable:</font></b><br>
+  <font color="#800000"><b>!!VRz10:S^Clancy^;</b>&nbsp; [set z10 to
+  &quot;Clancy&quot;]<b><br>
+  !!VRz11:S^green^;&nbsp;&nbsp; </b> [set z11 to &quot;green&quot;]<b><br>
+  !!VRz12:S^red^;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>&nbsp; [set z12 to
+  &quot;red&quot;]<b><br>
+  !!VRv25:S1 R1000;&nbsp;&nbsp;&nbsp; </b> [store a random number between 1 and
+  1000 in v25]<b><br>
+  !!VRz100:S^%Z10 always wished he had a %Z11 horse but instead he had a bright
+  %Z12 one. He was %V25 years old now and %Z10 had never owned a %Z11 horse in
+  his life!^;&nbsp; </b>[store text in z100]<b><br>
+  !!IF:M^%Z100.^; </b>[display text stored in z100]<br>
+  </font>
+  <br>
+  <b><font color="#0000FF">Assuming the random number generated and stored in
+  the v25 variable is 247, the following message would display to the player:</font></b><br>
+  <font color="#800000">Clancy always wished he had a green horse but instead he
+  had a bright red one. He was 247 years old now and Clancy had never owned a
+  green horse in his life!</font><br>
+  <br>
+  <u>Indirect Reference of Variables</u><br>
+  Several receivers requiring map locations (x, y and level values) can be used
+  with an indirect variable reference. This is a single number that is the
+  starting index number of consecutive v variables storing the x, y and level
+  values to be used. Thus, if you have stored an x value in v100, y value in
+  v101 and level value in v102, you could use the number 100 in the receiver in
+  place of these values.<br>
+  <b><font color="#0000FF">Example of using a local event receiver with an
+  indirect reference:</font></b><br>
+  <font color="#800000"><b>!!VRv100:S10;</b>&nbsp; [number to be used for x
+  value]<br>
+  <b>!!VRv101:S15;</b>&nbsp; [number to be used for y value]<br>
+  <b>!!VRv102:S0; </b>&nbsp;&nbsp; [number to be used for level value]<br>
+  <b>!!LE100:M^Strangely, there is no sound of life here.^;<br>
+  </b>[set message of event at location stored in v100, v101, v102 variables]</font><br>
+  <br>
+  <u>Indexed Variables</u><br>
+  Sometimes it's useful to be able to refer to a variable index (e.g., the
+  number between 1 and 1000 for a v variable) with another variable. In this
+  fashion you could use a repeated function loop such as the
+  <a target=sommaire href="../receivers/receiver_do.htm">DO
+  Receiver</a> to store information in a series of variables. Instead of putting
+  a number after the v, you would put another variable and the value it <i>stores</i>
+  would be the number of the v variable.<br>
+  <b><font color="#0000FF">Example of a referencing a v variable with a y
+  variable:</font></b><br>
+  <font color="#800000"><b>!!VRy10:S7;<br>
+  !!VRvy10:S5;<br>
+  !!IF:M^The value of v7 is %V7.^;</b></font><br>
+  <br>
+  <b><font color="#0000FF">This would display the following:</font></b><br>
+  <font color="#800000">The value of v7 is 5.</font><br>
+  <br>
+  This is because y10 has the value 7. And vy10 then means v at the index number
+  stored in y10, which in this case is 7. Thus v7 stores the value 5.<br>
+  <br>
+  <u>Macros</u><br>
+  If you want to be able to refer to a variable by a more meaningful name, you
+  can set up a macro with the MC receiver. The macro can then be used almost any
+  place the variable can be used and is interchangeable with the variable. A
+  macro is referenced with the name enclosed by dollar signs, e.g., $treasure$.
+  For more information on macros, see <a target=sommaire href="../format/format_mc.htm">
+  <span lang="de">Format MC</span></a>
+  page.<br>
+  <br>
+  <u>A Guide to Suggested Variable Use<br>
+  </u>You can use any combination of variable numbers you like in your scripts
+  but to make scripts easier to keep track of, change or transfer to other maps,
+  it's a good idea to use a series of contiguous index numbers such as v100
+  through v120 or however many you need. It's also a good idea to use Quick
+  Variables to only store temporary numbers and to keep the low numbered v and z
+  variables also for this purpose, using only higher numbered v variables and z
+  variables for long-term storage of values. Furthermore, where possible, it's
+  good to make use of local y variables within functions, thus keeping more
+  non-local variables available for general use elsewhere in your map scripts.
+  The hero variables (w variables) will generally only be useful for specific
+  purposes, but do make use of them when the situation arises, since every
+  single hero has their own set.<br>
+  <br>
+  <u>Using y Variables Outside Functions</u><br>
+  There is one global set of y vars [1...100]. Every time you
+  use it. But every function trigger storied all current y vals in a
+  stack, sets them all to 0 and after executing of the latest receiver
+  them all are restored back.<br>
+  But of course you can use this global set anywhere.<br>
+  <b><font color="#0000FF">
+  Example:</font></b><br>
+  <font color="#800000"><b>
+  ZVSE<br>
+  !#VRy15:S3;<br>
+  ....<br>
+  !?...;<br>
+  !!IF:M^%Y15^; it shows 3<br>
+  ...<br>
+  !!FU234:P;<br>
+  !!IF:M^%Y15^; it shows 3<br>
+  ...<br>
+  !?FU234;<br>
+  !!IF:M^%Y15^; it shows 0<br>
+  !!VRy15:S5;<br>
+  !!IF:M^%Y15^; it shows 5<br>
+  !?FU234;<br>
+  !!IF:M^%Y15^; it shows 0<br>
+  !!VRy15:S7;<br>
+  !!IF:M^%Y15^; it shows 7<br>
+  </b></font>
+  </font>
+</p>
+
+  <p align="left">
+  <font face="Arial" size="2">
+  <b><u><span style="text-transform: uppercase"><a name="heroVR"></a>How to use a Hero's w variables:</span></u></b>
+  <br>
+  <span lang="de">also see <a target=sommaire href="variable.htm#hero">Flags&amp;Variables</a>
+  section and <a target=sommaire href="receiver_if_right.htm#W">IF:W</a> section</span><br>
+  To use the w variables, you first have to use an !!IF command to specify <i>which</i> hero they will apply to (use -1 for current hero).
+  Once you've
+  done this command, you don't have to use it again until you switch to another
+  hero (or if you don't know in advance which hero it will apply to). Use this
+  command before <i>setting</i>, <i>testing</i>, or <i>checking</i> a w variable.
+  So if you wanted to use w variables with hero #147 (Dracon), the command would
+  be: <b><font color="#FF0000">
+  !!IF:W147;</font></b><br>
+  Then you could set the w1 variable in exactly the same way that you would set
+  any other variable (see example below).<br>
+  <br>
+  You have
+  1 object and 1 event. If the hero has visited the object, the event will&nbsp;<br>
+  recognize it.<br>
+  <br>
+  Okay, let's say the object is a Magic Well located at x=10,y=15,level=0.<br>
+  Let's say the event is located at x=27,y=18,level=0.<br>
+  <br>
+  <b><font face="Arial" size="2" color="#FF0000">
+  ZVSE<br>
+  !?OB10/15/0;<br>
+  !!IF:W-1;<br>
+  !!VRw1:S1;<br>
+  <br>
+  !?LE27/18/0;<br>
+  !!IF:W-1;<br>
+  !!IF&amp;w1=0:M^Perhaps you should visit the Magic Well to the west for I
+  desire water!^;<br>
+  !!IF&amp;w1=1:M^You have brought me water from the Magic Well! I will reward
+  you!^;</font></b></font></p>
+
+  <p>
+
+<font face="Arial" size="2">
+
+<b><u> How can I get the actual day?</u></b><br>
+It is easy.<br>
+!!VRv123:Sc;<br>
+Modifier 'c' work the same way as 'd' but add &quot;the current day&quot;.<br>
+You can add current day to any other value.<br>
+!!HE-1:Fcd/c/1/2;<br>
+Add to attack of a hero current day, set defence to current day.<br>
+<br>
+<b><u>Tips on generating random numbers<br>
+</u></b>
+</font>
+
+<font face="Arial" size="2">Let's say you want to generate a number from 1-100,
+but not 42, 81, or 99. <br>
+That's 3 missing numbers, so generate a random number from 1 to 97. Then if it's
+42 or greater add 1. Then if it's 81 or greater add 1. Then if it's 99 or
+greater add 1. <br>
+You now have a random number, with equal probability for each result, that's
+1-100, but not 42, 81, or 99.<br>
+You can obviously exclude a range at a time and so on. It takes one line per
+exclusion, which is what your recursive method takes. Only it's faster and not
+recursive.<br>
+</font><font face="Arial" size="2">- So if you want a number from 1-100
+excluding 10-19 and 73, you generate a number from 1-89, then if it's 10 or
+greater add 10, then if it's 73 or greater add 1.<br>
+- Let's use the same method to generate a number from 1-10, but not 6. So<br>
+we generate a number from 1-9, and if it's 6 or greater, add 1.<br>
+Number from 1-9 -<br>
+&nbsp; 1 2 3 4 5 6 7 8 9<br>
+If 6 or greater add 1 -<br>
+&nbsp; 1 2 3 4 5 7 8 9 10<br>
+Each number has the same odds.</font>
+
+  </p>
+  <p align="left"><font face="Arial" size="2"><b>
+Comparison of variables</font></b>
+
+  </p>
+<table border="2" width="100%" height="46" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="14%" height="1" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">
+  &amp;</font><font color="#800080">$</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td width="86%" height="1" valign="top"><font face="Arial" size="2"><b>And [1&amp;1=1, 1&amp;0=0, 0&amp;1=0 0&amp;0=0]</b>
+<br>
+Does a logical AND. Command will execute only if all conditions are executed<br><font color=blue><b>Example<br>********<br></font></b>
+<b><font color=red>!!FU&5/7/-3:E;</font></b> exit a function if flags 5 and 7 are set and flag 3 isn't set (all conditions must be exact)<br>
+<b><font color=blue>********</font></b>
+</font></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="top"><b><font 
+face="Arial" size="2" color="#FF0000">
+  |<font color="#800080">$</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td width="86%" valign="top"><font face="Arial" size="2"><b>Or [1&amp;1=1, 1&amp;0=1, 0&amp;1=1 0&amp;0=0]</b>
+<br>Does a logical OR. Command will execute if at least one condition is executed<br><font color=blue><b>Example<br>********<br></font></b>
+<b><font color=red>!!FU|5/7/-3:E;</font></b> exit a function if flag 5 is set or flag 7 is set or flag 3 isn't set (only one condition must be exact)<br>
+<b><font color=blue>********</font></b>
+<br>
+</td></tr>
+</table>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Do Receiver</title>
+<base target="_self">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">DO<span lang="de"> 
+- L</span></font><span lang="de"><font face="Times New Roman CE" size="5">OOP</font><font face="Times New Roman CE" size="6"> 
+F</font><font face="Times New Roman CE" size="5">UNCTION</font></span><font face="Arial" size="2"><br>
+<font color="#333333">RECEIVER</font></font></b>
+</p>
+<p><font face="Arial" size="2" color="#333333"><b>Calls a function trigger multiple times.</b></font>(
+<a href=../other/trigger_right.htm#fu target=principal><font color=#333333>!?FU trigger</font></a><font color=#333333>)</font></p>
+<p>&nbsp;<img src=../images/new.gif width="28" height="11"> <font size="2"><b>NEW DO RECEIVER SYNTAX. </b>
+<font face="Arial">See <a href="#newsyntax">below</a></font></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="16%" nowrap valign="top"><b><font face="Arial" size="2" color="#FF0000">!!DO</font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#3</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#4</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2">;</font></b></td>
+    <td width="84%" valign="top"><font face="Arial" size="2">Calls a function trigger multiple
+times:<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> is number of function,<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font><font color="#8B008B" size="2" face="Arial"><b>2</b></font> is start value<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> stop value<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font> is increment</font></td>
+  </tr>
+</table>
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="12%" valign="top" nowrap><b><font face="Arial" size="2"><font color="#FF0000"><a name="P">P</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">...&nbsp;<br>
+    up to </font><font face="Arial" size="2" color="#8B008B">15#</font><font face="Arial" size="2" color="#FF0000">s.</font></font></b></td>
+    <td width="88%" valign="top">
+<p><font face="Arial" size="2"><b>Run function many times</b>: P<br>
+To get access to parameters use x# (#=1...15) syntax.<br>
+They may be used anywhere (within the function) that standard variables are
+used.<br>
+When you call another function (see example), all parameters that are not set will be
+inherited.</font></p>
+<p><span lang="de"><font face="Arial" size="2"><b>Note</b>: the 
+:P parameter <i>must</i> be placed in the !!DO calling (even if no values are to 
+be transfered to the loop) for the loop to work correctly.<br>
+<b><font color="#0000FF">Example</font><font color="#000080">:</font></b><br>
+</font></span><tt style="font-family: Arial"><font size="2" color="#FF0000">
+<b>!!DO1/1/15/1:P;</b></font><font size="2" color="#800000">
+</font><font size="2">
+is right</font><font size="2" color="#FF0000"><br>
+</font><b><font size="2" color="#0000FF">but</font></b><font size="2" color="#FF0000">
+</font><b><font size="2" color="#FF0000">!!DO1/1/15/1;</font><font size="2">
+</font> </b>
+<font size="2">is wrong command</font><font size="2" color="#FF0000"><br>
+</font><span lang="de"><font size="2">All ERM commands 
+(receivers, instructions) have to use at least one parameter in order to work 
+correctly.</font></span></tt></p>
+    </td>
+  </tr>
+</table>
+<p><font face="Arial" size="2"><u><b>Comments:</b></u></font></p>
+
+<p><font face="Arial" size="2">The x16 variable (used in functions called with 
+the DO Receiver), 
+stores the current cycle number of the function. For example, if the function is 
+being repeated 12 times (from 1 to 12), the first time through, x16 will equal 
+1, the second time 2 and so on. If you change the x16 variable, you can actually 
+&quot;speed up&quot; or &quot;slow down&quot; a function loop, or even exit from it completely by 
+setting x16 equal to the end value (or higher) that was specified in the DO 
+receiver.<br>
+Now if you change x16 in the function you can speed up, slow down,
+repeat or end the cycle. Moreover, all parameters are only set when you first enter the function. Within
+the function, you may change them.<br>
+</font><font face="Arial" size="2">
+<br>
+<b><font color="#0000FF">Example<span lang="de">1</span>:</font></b>
+<font color="#FF0000"><br>
+<b>
+!!DO1/2/10/2:P5;</b><br>
+<b>
+...<br>
+!?FU1;<br>
+!!IF:M^Var x1=%X1 and x16=%X16^;<br>
+!!VRx1:+1; !!VRx16:+1;</b><br>
+<br>
+</font>
+It must show:<br>
+Var x1=5 and x16=2<br>
+Var x1=6 and x16=5<br>
+Var x1=7 and x16=8 </font></p>
+
+<p>&nbsp;</p>
+
+<p><b><font color="#0000FF" face="Arial" size="2"><span lang="de">Example2:
+</span></font></b><span lang="de"><font face="Arial" size="2">
+Loop backwards, jumping 4 elements / loop (speeding up) , starting with 47</font></span></p>
+
+<p><b><font size="2" face="Arial"><span lang="de">
+!!DO2/1/66/1:P47/11; [send&nbsp; value 47 to the function's variable x1]</span></font></b></p>
+
+<p><b><font size="2" face="Arial">!?FU<span lang="de">2</span>;
+<br>
+!!VRv5:Sx<span lang="de">1</span>+1-x16; [do the loop backwards] <br>
+<span lang="de">!!IF:M^the present value of x16 is %X16 and v5 is %V5^;</span><br>
+!!VRx16:<span lang="de">+7</span>; <span lang="de">[set jump value to 8]</span></font></b></p>
+
+<p><span lang="de"><font face="Arial" size="2">Instead of 66 
+loops you get only 9 loops, with these values:</font></span><font size="2" face="Arial"><br>
+<span lang="de">x16:&nbsp; 1&nbsp; 9 17 25 33 41 49 57 65</span><br>
+<span lang="de">v5:&nbsp; 47 39 31 23 15&nbsp; 7&nbsp; -1 -9 -17</span></font></p>
+
+<p><span lang="de"><font face="Arial" size="2">Other sugestions: 
+The same can be done forwards. Also, the </font></span>
+<font size="2" face="Arial">
+!!VRx16:<b><span lang="de">+7</span></b>;<span lang="de"> can be replaced (i.e.) with<b> 
+R7: </b>&quot;</span>!!VRx16:<span lang="de">R7&quot;</span><b>;</b><span lang="de">,&nbsp; calculating a next random jump value up to 7, every jump, or 
+(i.e.) with
+<b>Rx2: </b>&quot;</span>!!VRx16:<span lang="de">Rx2&quot;, calculating&nbsp; a random number up to x2, in this case x2 being <b>
+11</b> (!!DO2/1/66/1:P47/<b>11</b>;).</span></font></p>
+
+<p><span lang="de"><font face="Arial" size="2">However, you have 
+got to take care when asigning x16 a value, directly or through another 
+variable. If this value is not within the loop extremes (in this case 1 and 66:
+</font></span><font size="2" face="Arial"><span lang="de">
+!!DO2/<b>1/66</b>/1:P47/11;) the cycle breakes, meaning you end the loop 
+prematurely.</span></font></p>
+
+<p><span lang="de"><b><font face="Arial" size="2" color="#0000FF">Questions and 
+answers:</font></b><font face="Arial" size="2" color="#000080"><br>
+</font></span><font size="2"><font face="Arial"><b>Q</b><span lang="de"><b>:</b>
+</span><i>How is x16 effected by nested DOs?</i><br>
+<span lang="de"><b>A:</b> E</span>ach DO loop keeps its own x16 value.</font></p>
+
+<p><font face="Arial"><span lang="de"><b>Q: </b><i>L</i></span><i>et's 
+say I have the following code: (this would reflect, say, checking a 10x11 array 
+for something)<span lang="de"> <br>
+</span><b><font color="#FF0000">!!DO1/1/10/1:P;<br>
+<br>
+!?FU1;<br>
+!!DO2/20/30/1:P;<br>
+point A</font></b></i></font></p>
+<p><i><b><font color="#FF0000" face="Arial">!?FU2;<br>
+point B</font></b><font face="Arial" color="#000080"><span lang="de"><br>
+</span></font><font face="Arial">My question is, at point B, will x16 have a value between 1 and 10, or 
+between 20 and 30?</font></i><font face="Arial"><span lang="de"><br>
+<b>A:</b> </span>20 and 30</font></p>
+<p><font face="Arial"><span lang="de"><b>Q:</b> </span><i>Also, at 
+point A, will x16 have the value from DO1, or DO2?</i><span lang="de"><br>
+<b>A:</b> </span>DO</font><span lang="de"><font face="Arial">1, 
+because the line is inside FU1 function</font></span></p>
+<p><font face="Arial"><span lang="de"><b>A: (note)</b> </span>If 
+you change the value of x16, that will change the loop. For example, if you set 
+x16 to 999 (or even 50<span lang="de"> in this case</span>), that would end this 
+loop as soon as it checks the x16 value (after it finishes one looping).</font></p>
+<p><font face="Arial"><span lang="de"><b>Q:</b> </span><i>I have a 
+main loop covering all heroes (DO1/0/155/1), but for each hero I need to check 
+through all creature slots (DO2/0/6/1).</i><span lang="de"><i> Would it work?</i><br>
+<b>A:</b> </span>That should work fine with a standard nested DO loop structure 
+as far as I can tell.</font></p>
+</font>
+
+<p align=center><b><a name="newsyntax"></a>NEW DO RECEIVER SYNTAX</b></p><font face=arial class=helvetica32 size=2>
+FU and DO Receivers have extended syntax to provide return values.<br>
+<br>
+&nbsp;  Now you may use "?var" syntax to return values from the call.<br>
+&nbsp;  You can use a v, y- or y variable to store the return value.<br>
+&nbsp;  Say:<br>
+<b><font color=red>!!FU...:Pv1/v2/v3/?v4;<br></font></b>
+&nbsp;  Now if you change x4 value inside of the function, say:<br>
+<b><font color=red>!!VRx4:Sx1;<br></font></b>
+&nbsp;  it will be copied to v4 after function return.<br>
+<br>
+<i>Comments:</i><br>
+&nbsp;  The value of the variable itself (v4) is not transferred to x4 at a function call. Instead the index of the var is transferred (so x4 will keep value 4).<br>
+&nbsp;  In DO loop the index value (4) will be passed at every iteration.<br>
+&nbsp;So if you set it inside of the function body, it will be copied to the variable-receiver after the end of the iteration and restored to index value at the beginning of the next iteration.<br>
+&nbsp;  Also you may use "=var" syntax to set (parse) the value at every DO loop iteration (make no difference with standard "var" syntax for FU call).<br>
+&nbsp;  Say:<br><b>
+<font color=red>!!VRv35:S10;<br>
+!!DO...:P=v35;<br></font></b>
+&nbsp;  Now if you change the v35 inside of the loop body it will be passed to the next iteration taking account changes made for v35:
+<b><font color=red>!!VRv35:Sx1+1;<br></font></b>
+&nbsp;  So now it gives you x1 equal 10,11,12,13... at every iteration.<br>
+&nbsp;  If you use the standard syntax:<br>
+<b><font color=red>!!VRv35:S10;<br>
+!!DO...:Pv35;<br></font></b>
+&nbsp;  you will have x1 = 10,10,10,... at every iteration.<br>
+<br>
+<i>Comments:</i><br>
+&nbsp;  You may use any number of such variables in the call.<br>
+&nbsp;  You may use the same var (see example below) with ? and = syntax.<br>
+&nbsp;  Example 1:<br><b>
+<font color=red>!?FU2;<br>
+!!VRx2:Sx2+17;<br>
+!!VRx3:Sx1+17;<br>
+<br>
+!?FU1;<br>
+!!FU2:P13/?y-1/?y-2;<br>
+<br>
+!#IF:M^%Y-1,%Y-2^;<br>
+!#FU1:P;<br>
+!#IF:M^%Y-1,%Y-2^;<br></font></b>
+<br>
+&nbsp;  You will see "0,0" and then "16,30".<br>
+<br>
+&nbsp;  Example 2:<br><b>
+<font color=red>!?FU2;<br>
+!!VRx2:Sx1+17;<br>
+!!IF:M^x=%X1^;<br>
+<br>
+!?FU1;<br>
+!!VRy-1:S33;<br>
+!!DO2/1/20/1:P=y-1/?y-1;<br>
+<br>
+!#FU1:P;</font><br><br></b>
+
+  You will see 33,50,67...
+
+</body>
+
+</html>

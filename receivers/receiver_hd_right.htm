@@ -1,0 +1,65 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>H<font size=5>INT </font>D<font size=5>ISPLAY</font> (HD)</font><br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Used for commands changing hint of any object, displayed after right-click OR mouseover in status bar. <br>
+Use only within <a href="../other/trigger_right.htm#hd" target=principal>!?HD</a> trigger.<br>
+<br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+	
+	<tr>
+	<td nowrap valign=top><font class=ermtext>!!HD:<font class=param>XXXX</font>;</font>
+	<td width=100% valign=top>Hint Display</td>
+	<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+	
+	<tr>
+	<a name="C"></a>
+    <td valign=top><font class=ermtext>C<font class=param>?$</font>; <br>
+    <td><b>Check if hint of the object was customized with HT reciever or with HO:H command.</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> = 0 not customized<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> = 1 customized<br>
+	In many cases you shouldn't process modified hints. <br>
+	
+	<tr>
+	<a name="M"></a>
+    <td valign=top><font class=ermtext>M<font class=param>$</font>; <br>
+    <td><b>Get/check/set hint text</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - probably z-var<br>
+	<font color=purple>We must check which strings are valid here.</font>
+   
+	<tr>
+	<a name="P"></a>
+    <td valign=top><font class=ermtext>P<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>/
+    <font class=param>#4</font>/<font class=param>#5</font>/<font class=param>#6</font>;
+    <td><b>Set pictures for the message</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - picture 1 <a href="receiver_if_right.htm#Type" target=annexe>type</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - picture 1 <a href="receiver_if_right.htm#Type" target=annexe>subtype</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - picture 2 <a href="receiver_if_right.htm#Type" target=annexe>type</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#4</font> - picture 2 <a href="receiver_if_right.htm#Type" target=annexe>subtype</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#5</font> - picture 3 <a href="receiver_if_right.htm#Type" target=annexe>type</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#6</font> - picture 3 <a href="receiver_if_right.htm#Type" target=annexe>subtype</a><br>
+	You can use less than 6 parameters if you don't need all 3 pictures. If you use it in mouse over hint, it will be just ignored.
+	
+	<tr>
+	<a name="T"></a>
+    <td valign=top><font class=ermtext>T<font class=param>?$</font>;
+    <td><b>Check if it's a right-click hint</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> = 0 means mouseover hint, to be displayed in status bar<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> = 1 means right-click hint<br>
+	
+	</table><br><br>
+	
+<font color=black> </b>
+<b>Example:</b>
+<pre><font color=red>!?HD;</font>
+<font color=purple>!!OB</font>998:T?v1 U?v2; [get type and subtype of object to which the square belongs]
+<font color=purple>!!HD</font>&v1=5:P8/v2;
+<font color=purple>!!HD</font>&v1=93:P8/1;
+[Displays artifact picture in right-click message]</pre>
+
+</font>
+</body>
+
+</html>

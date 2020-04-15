@@ -1,0 +1,110 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<a name=introduction></a><font face="Times New Roman CE"><b><font size=6>T</font><font size=5>OOLS</b></font></p>
+<font size=2>There are some very useful documents, regarding universal tools provided by WoG 3.59 engine. Some for simple high-level scripters, some for low-level modders.<br>
+<br><br>
+<font size=4><b><a name=strings></a>NEW STRINGS MANAGEMENT SYNTAX</b></font><br>
+For <b>UN:A#/9-11/$, UN:G0, UN:G1, UN:G2, SS:W,N,D, HT:, OB:H, HO:H, UN:K2, MP:S, QW:A</b> <br>
+If you pass a string constant (^hi!^) or a z-string (global or local), the value is copied into internal buffer (you don't need to use up a z variable for each object which hint you change).
+If you use get syntax for a string (?z1), it's set to the current value (even if the value wasn't customized). <br>
+<br>
+Usual syntax works the same:<br>
+If you pass 0, the original value is restored.<br>
+If you pass number, corresponding z-var is used and all changes made to z-var are reflected to the value. ERT strings are also supported.<br>
+If you use get/check syntax with a number (?v1), z variable index is returned. 0 is returned if the value wasn't customized. Negative values are returned if the custom string is stored in internal buffer.<br>
+<br>
+Exceptions:<br>
+1) UN:K2 doesn't retrieve a standard new week message.<br>
+2) for QW:A you can pass -1 to restore original value, as before<br>
+<br><br>
+<font size=4><b><a name=multiplayer></a>MULTIPLAYER SUPPORT</b></font><br>
+Well... looks like 3.59 doesn't support multiplayer at all. Checked with unspported HD Mod, so should be checked without it.<br>
+Lua manual by not-sure-who (probably GrayFace, may he live forever) mentions that some variables (except local and _G) are kept in savefile, aswell as scripts (again, except some like if new then... end). Thus it should be possible to keep synchronisation and support multiplayer.<br>
+Even if online multiplayer is not supported now, this definitely can be fixed, though we need more people working on it. <br>
+<br>
+For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save file" error.<br>
+<br><br>
+<font size=4><b><a name=mods></a>MOD SUPPORT</b></font><br>
+Scripts organisation:<br>
+Mods/ModName/Global - Lua scripts loaded and parsed at the start of the GAME, not the map. <br>
+Mods/ModName/Map - Lua scripts loaded and executed when map is started, AND every time you load saved game.<br>
+Mods/ModName/Wogify - Lua scripts that run ONLY when wogification is enabled<br>
+Mods/ModName/ERM - ERM scripts executed when map is started, only if wogification is enabled<br>
+Mods/ModName/Scripts - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
+If you want to use ERM triggers in Lua, you CAN'T put them in 'Global' scripts. 'Map' works fine. Wogify untested<br>
+<br>
+Sequence Lua+ERM:<br>
+1. Lua function: global.events.EnterMap() ... end<br>
+2. Scrpts from 'Map' folder<br>
+3. ERM !# from timed events<br>
+4. Lua from 'Wogify' folder<br>
+4. ERM !# from 'ERM' folder<br>
+and so on. Files .erm, .ert and .lua are (probably) loaded in alphabetical order<br>
+<br>
+All scripts are loaded ALWAYS with order given earlier.<br>
+Variable 'ModName' stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
+"WoG Options" menu can be created by placing .txt file in Mods/ModName/Options folder.<br>
+Name of .txt file matters, cause it will be name of variable in Lua. You will understand it in a while<br>
+<br>
+Let's call it 'Opt.txt'. Of course, we need to follow strict template inside this file.<br>
+To seperate informations, <b>use tabs</b>.<br>
+<br>
+Header (copy-paste to 1st line): 
+<pre>Name$	Text$	ERM	Value	On	NoMP	Cosmetic	Hint$	LongHint$	(comment)-</pre>
+Literally, just copy-paste. It has to be there. <br>
+All entrances follows this template. Special cases are managed with different "Name" options.<br> 
+Special "names": <br>
+category:<br>
+group:<br>
+Enabled<br>
+<br>
+ERM section means WOG options: UN:P (i think, untested)<br>
+Value means "value written to variable if given option is chosen". Can be anything, string, int, boolean.<br>
+No idea for NoMP, Cosmetic,<br>
+<br>
+Following that, you have to attach Mod's display name and hint:
+<pre>Enabled	Mod Display Name						Hint	LongHint?</pre>
+Well now, you can place categories, groups and entrances.
+<pre>category:	Name of category
+group:	Name of group</pre>
+All now we have to do is add actual options, following template in Header. <br>
+<br>
+Here is example:
+<pre>group:	Pick your poison. Trees i mean
+Trees	Standard SoD trees		false			true	TODO: Proper text, hint and description
+Trees	WoG trees		"wog"			true	Not included yet
+Trees	Animated brighter trees and lakes		"move"			true	true	TODO: Proper text, hint and description</pre>
+This creates group of 3 options. You can pick only one of them at one time.<br>
+<b>You need to make scripts to have chosen options in mind</b>. Corelated example:<br>
+<pre>function global.events.EnterMap()
+    if Opt.Trees == "move" then
+        LD:T(?v, 11, ModName.."/Lods/TreeMove.lod")
+    elseif Opt.Trees == "wog" then
+        LD:T(?v, 11, ModName.."/Lods/TreeWog.lod")
+    end
+end</pre>
+<br>
+where Opt is name of .txt in Options folder without extension. ('Opt.txt') <br>
+<br>
+About <b>LODs</b>: currently there are 2 in /Data/ folder, h3wog.lod and h3std.lod. Those are loaded automatically at the very start of the game. 
+Standard TXT files (like crtraits.txt and so) in game are parsed at game setup, so it can't be changed with <a href="../receivers/receiver_ld.htm" target=sommaire>LD receiver</a>.
+Thus, if you want to overrite them, you must use h3wog or h3std. Currently there are no custom LODs in /Mods/ directory to be automatically loaded.<br>
+<br><br>
+<font size=4><b><a name=memory></a>GET MEMORY ADDRESS</b></font><br>
+New experimental parameters syntax to get memory address Now you can use <b>d?</b> to get address of an integer value. This is useful when working with UN:C command. If a command doesn't support this, the value returned is 0. In Lua use <b>?ptr</b> for this.
+Not sure what functionality it provides, my bet is you can use it with Lua 'mem' module or to some low-level modding.
+<br>
+Example:<br>
+!#MA:P13/d?v1; [get Archangels hit points address in v1]<br>
+!#IF:M^%V1^;<br>
+</font></font>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">I</font><font face="Times New Roman CE" size="5">NTERNET </font>
+<font face="Times New Roman CE" size="6">P</font><font face="Times New Roman CE" size="5">ROTOCOL
+</font>
+<font face="Times New Roman CE" size="6"><span lang="de">
+&nbsp;(</span>IP<span lang="de">)</span></font><span lang="de"><span lang="de"><font face="Arial" size="2"><br>
+</font></span></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b><font face="Arial" size="2" color="#333333">Supports Multiplayer Game. If 
+You play not hot-seat you may have some problems. <br>
+</font></b><font face="Arial" size="2">See
+<a target="_self" href="../other/trigger_right.htm#IP"><span lang="de">IP</span>
+<span lang="de">Trigger</span></a></font></p>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" height="46">
+  <tr>
+    <td width="13%" valign="top" height="18"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="d"></a>D</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="87%" height="18"><font face="Arial" size="2"><b>Command to set a 
+    player-receiver of your !!IP transfers<br>&nbsp; $ </b>= player index (-1 = 
+    all)<br><i>Comments:</i><br>&nbsp;&nbsp;&nbsp; Now you may transfer vars and 
+    call distant functions not only during a battle but also on the map. So to 
+    point who you send the vars/call functions to you should set the destination 
+    player with this command. This works the same way as for hero's w vars. So 
+    if you set !!IP:D, it will be the same until you (or someone else) changes 
+    it. <br>
+&nbsp;&nbsp;&nbsp; Note that if you save and then load the game, the state of 
+    the destination player is undefined so set it in every trigger that sends 
+    data. <br>
+&nbsp;&nbsp;&nbsp; Note also that if you send to all players (-1), all sent vars 
+    and distantly called functions will run at every PC in the game even in the 
+    current one. So first it runs through all players one by one and the last 
+    player sends it to sending initiator. This is a good way to inform all sides 
+    about specific changes.</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="18"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="f"></a>F</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="87%" height="18"><font face="Arial" size="2"><b>Send flags<br></b> $1 
+    - first flag index to transfer <br>$2 - last flag index 
+    to transfer<br>(included 
+    both)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="18"><span lang="de"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="v"></a>V</font></b></span><b><font face="Arial" size="2"><font color="#800080">$1</font><font color="red" size="2" class="Helvetica32">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%" height="18"><font face="Arial" size="2"><b>Send V vars<BR></B>
+$1 - first V variable index to transfer <br>$2 - last V variable index 
+    to transfer<br>(included 
+    both)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="18"><b>
+    <font face="Arial" size="2" color="#FF0000"><a name="w"></a>W</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="87%" height="18"><b><font face="Arial" size="2">Send hero based W 
+    variables </font></b><font face="Arial" size="2"><br>$1 
+    - first W var index to transfer <br>$2 - last W var index 
+    to transfer<br>(included 
+    both)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" height="19"><a name="r"></a><b>
+    <font color="#FF0000">R;</font></b></td>
+    <td width="87%" height="19"><b><font face="Arial" size="2">Reset random 
+    generator at both sides to the same sequence (do not use this yet).</font></b></td>
+  </tr>
+  </table>
+
+<p><font face="Arial"><font size="2">Some descriptions.<br>
+Now during a battle you may pass the values of v vars to the other side and call 
+functions at<br>
+the other side. Say, you run a user dependent script (like stack splitting). The 
+script runs at one side<br>
+because it runs as a reaction to a human action (mouse click). So all that you 
+change at this<br>
+side will not be changed on the other side. </font></font></p>
+<p><font face="Arial"><font size="2">Now you can pass all changed values to the 
+other side not running a script there.<br>
+<b>Example.</b><br>
+On the one side you run a mouse event driven script:<br>
+...<br>
+<font color="#FF0000"><b>!!VRv1234:S999;</b></font><br>
+On the other side v1234 will still keep the old value.<br>
+To fix it use:<br>
+...<br>
+<font color="#FF0000"><b>!!VRv1234:S999;<br>
+!!IP:V1234/1234;</b></font><br>
+The last command will immediately send the value of v1234 to the other side.<br>
+Now to the second part of the problem. Say you use some specific command that 
+has some<br>
+effects on the battlefield (say you cast a spell with ERM).<br>
+Again, if it is done only at one side, there will be a problem because it is not 
+done on the<br>
+other side. Now you may use a distant call for those cases. This means that you 
+call a function<br>
+but it runs not at this local PC but at a distant one (the opponent's PC).<br>
+Up to 16 x parameters are transferred.<br>
+Example.<br>
+On one side you have:<br>
+...<br>
+<font color="#FF0000"><b>!!BMv10:Mi/y5/5;</b></font><br>
+To make it run correctly you should make some changes:<br>
+...<br>
+<b><font color="#FF0000">!!BMv10:Mi/y5/5;<br>
+!!FU12345:Dv10/i/y5/5;<br>
+<br>
+!?FU12345;<br>
+!!BMx1:Mx2/x3/x4;</font></b><br>
+That is all. How it works. FU:D immediately transfer all x parameters to the 
+other side and<br>
+makes a call of FU1234 there. So BMv10:M... command runs at one PC and BMx1:M... 
+at the other<br>
+PC. If you pass all in the right order, you will see the same effect at both 
+sides.<br>
+Note that you can pass some vars with IP:V command and then call FU:D to pass 
+more than 16 x<br>
+parameters to the other side. You can see <a href="receiver_fu_right.htm#d">FU:D</a> 
+command for more information.<br>
+<br>
+Now, an example that you can check (tested):<br>
+***********<br>
+<b><font color="#FF0000">ZVSE<br>
+<br>
+!?BG0;<br>
+!!IF:M^Hi!^;<br>
+!!VRv99:S99; !!VRv100:S100; !!VRv101:S101;<br>
+!!IP:V99/100;<br>
+!!FU123:D1/2/3/4/5;<br>
+<br>
+!?FU123;<br>
+!!IF:M^V99=%V99, V100=%V100, V101=%V101, X1=%X1, X2=%X2, X3=%X3, X4=%X4, 
+X5=%X5^;</font></b><br>
+***********<br>
+You will see &quot;Hi!&quot; message at any action of a stack, then you will see a message 
+&quot;<font color="#800080"><i>V99=99,
+V100=100, V101=0, X1=1, X2=2, X3=3, X4=4, X5=5</i></font>&quot; at the other PC. Then 
+you get &quot;Hi!&quot; at the other<br>
+PC.<br>
+If you continue, you may notice that the next time the message will be: &quot;<font color="#800080"><i>V99=99, 
+V100=100,<br>
+V101=101, X1=1, X2=2, X3=3, X4=4, X5=5</i></font>&quot;. So v101 is changed. This is 
+because first you send v99<br>
+and v100 through the network and call a function that shows a message (and this 
+is why<br>
+v101 is 0). But then the BG0 trigger will work out at the defender's side and 
+v101 will be set<br>
+to 101.<br>
+This example is only an example because in the script:<br>
+<b><font color="#FF0000">!?BG0;<br>
+!!IF:M^Hi!^;<br>
+!!VRv99:S99; !!VRv100:S100; !!VRv101:S101;</font></b><br>
+will work fine (identical) at both sides.<br>
+But if you run a script as a reaction to a human related event (mouse click 
+generally), you<br>
+need to think how to transfer changes to the other side.</font></font></p>
+
+</body>
+
+</html>

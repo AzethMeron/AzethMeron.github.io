@@ -1,0 +1,154 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>1</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+B</font><font face="Times New Roman CE" size="5">ATTLEGROUND  </font><font face="Times New Roman CE" size="6">
+A</font><font face="Times New Roman CE" size="5">CTIONS</font><font face="Times New Roman CE" size="6"> 
+(</font></span><font face="Times New Roman CE" size="6">BG</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p>
+
+<b><font size="2" face="Arial"><font color="#333333">During combat, you may check/set/get parameters on
+actions taken by a monster stack.
+These receivers may be used/called only in the !?BG trigger section.</font></font></b></p>
+<p>
+
+    <font face="Arial" size="2"><b><span lang="de">Note: </span></b>Now a usage of !!BG, !!BM, !!BH, !!BU, !!BF in 
+    complete AI battle is
+    controlled in the ERM interpreter and you will get the corresponding error
+    message.</font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%"><b> <font size="2" face="Arial" color="#FF0000">!!BG:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%"><font size="2" face="Arial">During combat, you may check/set/get parameters on taken action</font></td>
+  </tr>
+</table>
+
+<p align="center"><b><font face="Arial" size="2">OPTIONS</font></b></p>
+<table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000" height="394">
+  <tr>
+    <td height="128" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="A">      A</a></font><font color="#800080" size="2" face="Arial">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="128"><font face="Arial" size="2"><b>Type of an action:</b><br>
+      &nbsp;&nbsp; 0 = Cancel Action (the stack can do a different action now
+      but it may still be impossible to force it to do most actions through
+      ERM).<br>
+      &nbsp;&nbsp; 1 = Hero cast a spell<br>
+      &nbsp;&nbsp; 2 = Walk<br>
+      &nbsp;&nbsp; 3 = Defend<br>
+      &nbsp;&nbsp; 4 = Retreat from the battle<br>
+      &nbsp;&nbsp; 5 = Surrender<br>
+      &nbsp;&nbsp; 6 = Walk and Attack<br>
+      &nbsp;&nbsp; 7 = Shoot&nbsp;<br>
+      &nbsp;&nbsp; 8 = Wait<br>
+    <span lang="de">&nbsp;&nbsp; 9 = Catapult</span><br>
+      &nbsp;10 = Monster casts a spell (<span lang="de">i.e. F</span>a<span lang="de">e</span>r<span lang="de">ie</span>
+    <span lang="de">D</span>ragons)<span lang="de"> <br>
+	&nbsp;11 = Healing by healing tent<br>
+    <br>
+    i.e <b><font color="#FF0000">!!BG:A10;</font></b> will make current stack 
+    cast a spell set with !!BG:S$;</span></font></td>
+  </tr>
+  
+   <tr>
+    <td height="64" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="C">      C</a></font><font color="#800080" size="2" face="Arial">#1</font><font size="2" face="Arial" color="#FF0000">;</font>
+    <td height="64"><font size="2" face="Arial"><b>Reset battle temporary variables</b> <br>
+    &nbsp;&nbsp; #1 - stack to clean up, use -1 for whole array. <br>
+    See <a target=principal href = "receiver_bg_right.htm#V">BG:V</a> for more info.
+      </font></td>
+  </tr>
+  
+  <tr>
+    <td height="16" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial"><a name="D">D</a></font><font color="#800080" size="2" face="Arial">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="16"><font face="Arial" size="2"><b>Destination position</b> (magic to monster, walk or attack to)</font></td>
+  </tr>
+  <tr>
+    <td height="32" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial"><a name="E">E</a></font><font size="2" face="Arial" color="#800080">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="32"><font face="Arial" size="2"><b>Get a destination monster stack</b> (destination position           is used).&nbsp;<br>
+ -1 if no monster stack at that position</font></td>
+  </tr>
+  <tr>
+    <td height="16" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial"><a name="H">H</a></font><font size="2" face="Arial" color="#800080">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="16"><font face="Arial" size="2"><b>Number of a hero owner</b> (-1=no hero)</font></td>
+  </tr>
+  <tr>
+    <td valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="N">      N</a></font><font color="#800080" size="2" face="Arial">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td><font face="Arial" size="2"><b>Set/check/get number of a current stack </b> (0...41)<br>
+    The one that moves.
+    </font></td>
+  </tr>
+  
+  <tr>
+    <td height="32" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial"><a name="P">P</a></font><font color="#800080" size="2" face="Arial">?$</font><font size="2" face="Arial" color="#FF0000">;</font><font color="#800080" size="2" face="Arial">&nbsp;</font></b></td>
+    <td height="32"><font face="Arial" size="2"><b>Enemy to attack</b><br>
+      <font color=purple>"Keeps enemy to attack", not sure what exactly. Stack number? Position?<br>
+      Most likely check only.</font>
+      </font></td>
+  </tr>
+  
+  <tr>
+    <td height="32" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial"><a name="Q">Q</a></font><font color="#800080" size="2" face="Arial">?$</font><font size="2" face="Arial" color="#FF0000">;</font><font color="#800080" size="2" face="Arial">&nbsp;</font></b></td>
+    <td height="32"><font face="Arial" size="2"><b>Current attacking side</b> (0=left or 1=right)<br>
+      Check only!</font></td>
+  </tr>
+  <tr>
+    <td height="64" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="S">      S</a></font><font color="#800080" size="2" face="Arial">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="64"><font size="2" face="Arial"><b>Get control number of action</b> <br>
+    Depends on action (BG:A): <br>
+    BG:A1  Hero cast spell - $ stores spell number (See <a href="../format/format_sp.htm">Format SP</a>) <br>
+    BG:A10 Monster cast spell - $ stores spell number (See <a href="../format/format_sp.htm">Format SP</a>) <br>
+    BG:A6  Walk and attack - $ stores position to which the monster will move <br>
+    BG:A5  Surrender - $ stores cost of surrender <br>
+    For other actions it's -1 or the value from the last action, so consider it undefined.<br>
+    <font color=purple>Not sure if this is get/check, or get/check/syntax</font>
+      </font></td>
+  </tr>
+  
+  <tr>
+    <td height="64" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="V">      V</a></font><font color="#800080" size="2" face="Arial">#1</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#800080" size="2" face="Arial">#2</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#800080" size="2" face="Arial">$3</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="64"><font size="2" face="Arial"><b>Battle temporary variables</b> <br>
+    Array of 100 variables assigned to stacks. Syntax: <br>
+    &nbsp;&nbsp; #1 - stack index (0..99) <br>
+    &nbsp;&nbsp; #2 - index in array (0..99) <br>
+    &nbsp;&nbsp; $3 - get/set temporary value <br>
+    Those values are NOT stored in save file. You may keep there any integer value. It does not matter either a
+real stack is present in the battle or not.
+      </font></td>
+  </tr>
+  
+  <tr>
+    <td height="64" valign="top" nowrap><b><font color="#FF0000" size="2" face="Arial">      <a name="X">      X</a></font><font color="#800080" size="2" face="Arial">$</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td height="64"><font size="2" face="Arial"><b>Set/check/get second target of spell</b><br>
+     BG:X gets/sets/checks additional parameter of a spell being cast. <br>It's the second target of Teleport and Sacrifice spells. For teleport, BG:D is the position of monster to be teleported and BG:X is the place where it will move. For sacrifice, BG:D is position of the corpse and BG:X is the victim position.
+     </font></td>
+  </tr>
+  
+</table>
+<font size="2">
+<br><br>
+Here is an example. You'll need a hero with a Pikeman in the first slot and Angels in the others (for example).<br>
+ZVSE<br>
+!#VRv100:S0;<br>
+!?CM4&v100<3;<br>
+!!CM:R0;<br>
+!!BG&v100=0:N3 A6 S2 D1;<br>
+!!BG&v100=1:A1 S40 D1 X2;<br>
+!!BG&v100=2:A1 S63 D1 X93;<br>
+!!VRv100:+1;<br>
+<br>
+</font>
+</body>
+
+</html>

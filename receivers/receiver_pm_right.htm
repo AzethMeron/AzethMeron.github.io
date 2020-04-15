@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>receiver pm</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+P</font><font face="Times New Roman CE" size="5">YRAMID</font><font face="Times New Roman CE" size="6"> (</font></span><font face="Times New Roman CE" size="6">PM</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><font face="Arial" size="2"><b><font color="#333333">The PM Receiver has a dual purpose. It's used
+to set or check the spell reward for defeating the guardians of a pyramid but is
+also a command that can be used to help attract the AI to new objects, or
+conversely to keep the AI from visiting them.</font></b></font></p>
+
+<p><font face="Arial" size="2">&nbsp;These are the objects listed in
+the <span lang="de"><a href="../other/castle%20object.htm">WoG Objects</a></span> section of this help file.</font></p>
+
+<p><font face="Arial" size="2">The AI will try to visit an object (Pyramid) if:<br>
+&nbsp;1. It has enough power to beat guards.<br>
+&nbsp;2. It has enough wisdom to learn a spell there.<br>
+&nbsp;3. If this object is NOT visited by any player.<br>
+&nbsp;4. If this object is NOT visited by this player.<br>
+We cannot control 2 first conditions but we can set 2 others.</font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%" valign="top"> <nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">!!PM<font color=purple>x<font color=red>/</font>y<font color=red>/</font>z</font>:<font color="darkmagenta">XXXX</font>;</font></b></nobr></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"> Pyramid or any New Object.<br>
+    You can use V command to "attract" AI to a New Objects (and Sphinx also).<br>
+    You can set this bit and wait until the AI comes.</font></td>
+  </tr>
+</table>
+
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%" align="left" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="P">P</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="83%" align="left" valign="top"><font face="Arial" size="2"><b>Set/check/get a "visited by player" flag.&nbsp;</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">#1</font></b> - Colour of the visitor <font color="#000000">(</font>See
+    <a href="../format/format_e1.htm">Format E1</a>).<br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> - State of visit<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <font color="#8B008B"><b>0</b></font>
+      - Not visited&nbsp;&nbsp;&nbsp;<br>
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>1</b></font>
+      - Visited,&nbsp;</font></td>
+  </tr>
+  <tr>
+    <td width="17%" align="left" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="S">S</a></font><font face="Arial" size="2" color="#800080">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="83%" align="left" valign="top"><font face="Arial" size="2"><b>Set/check/get a bonus spell (AI will get it if
+      it wins the         "Pyramid" battle).</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$</font></b> - Spell number (<a href="../format/format_sp.htm">Format SP</a>).</font></td>
+  </tr>
+  <tr>
+    <td width="17%" align="left" valign="top"><b><font face="Arial" size="2" color="#FF0000">    <a name="V">    V</a></font><font face="Arial" size="2" color="#8B008B">$</font></b><nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></nobr></td>
+    <td width="83%" align="left" valign="top"><font face="Arial" size="2"><b>Set/check/get a "not visited" flag.&nbsp;</b><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">0</font></b> - Visited<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>1</b></font> - Not visited,</font></td>
+  </tr>
+</table>
+
+<p><font face="Arial" size="2">   <u><b>   Comments:</b></u><br>
+    You can use the V command to "attract" the AI to New Objects (and Sphinx also).<br>
+    You can set this bit and wait until the AI comes. If you catch it by !!OB receiver, disable the object, reset V bit&nbsp;and set P bit, you can make AI not have a battle and get
+a spell. So to attract the AI set the V flag. To free the AI, reset V and set P flag.</font></p>
+
+</body>
+
+</html>

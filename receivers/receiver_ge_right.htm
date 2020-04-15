@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>GE Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">G</font><font face="Times New Roman CE" size="5">LOBAL</font><font face="Times New Roman CE" size="6">
+  E</font><font face="Times New Roman CE" size="5">VENT</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">GE</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></strong>
+
+  <p align="left">
+
+  <b>
+  <font class="Helvetica32">
+  <font color="#333333">
+  <font face="Arial" size="2" class="Helvetica32">
+  Used to modify the attributes of a global (timed) event.<br>
+<a href=../other/trigger_right.htm#ge target=principal>!?GE trigger</a></font 
+  </font>
+
+</b>
+
+  <p align="left">
+
+  &nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+      <tr>
+        <td width="143" height="0" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!GE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" height="0" valign="top">
+
+<font class="Helvetica32" face="Arial" size="2">
+  Receiver is global event on the map (# = number of event which must be placed
+  as the first thing in the event text).</font>
+
+        </td>
+  </table>
+  <p align="left">
+  <img border="0" src="../images/dialogue/te3.gif" width="416" height="435">
+  <p align="left"><b><font face="Arial" size="2" color="#0000FF">Example:
+  </font>
+  <font face="Arial" size="2" color="#008000"><br>
+  </font>
+  <font face="Arial" size="2" color="#FF0000">
+  !?GE1; First changes that cannot be done with instructions<br>
+  !!OW:R0/0/0; </font>
+ </b><font face="Arial" size="2" color="#FF0000">*Remove all resource of red player<b><br>
+  !!OW:R0/1/0;<br>
+  !!OW:R0/2/0;<br>
+  !!OW:R0/3/0;<br>
+  !!OW:R0/4/0;<br>
+  !!OW:R0/5/0;<br>
+  !!OW:R0/6/0;</b></font>
+  <p align="center"><strong><font face="Arial" size="2"> OPTIONS</font></strong>
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="B">B</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set/check/get the amount of resource #1 (from 0 to 6) to $2 (may be negative).</b>
+          See <a href="../format/format_r.htm">Format R</a>. </font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="D">D</a></font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Disable (#2=1) or enable (#2=0) event for gamer #1</b>
+          (see <a href="../format/format_e1.htm">Format E1</a>)</font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="E">E</a><font color="darkmagenta">$</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set players allowed to activate the event.</b> (see
+        <a target="annexe" href="../format/format_e.htm">Format
+          E</a>) If $ begins with d that means bit wise OR, i.e. you can allow a
+          player to activate the event without changing the other permissions.<br>
+          <font color="#0000FF">
+          <strong>Example:</strong>&nbsp;</font>
+          <font color="#008000"><br>
+          </font><font color="#FF0000">
+ E3 allows red and green and bans all other.&nbsp;<br>
+          Ed3 allows red and green but does not change permission for the other
+          players.</font></font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="F">F</a><font color="darkmagenta">$</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set/check/get day of first occurrence to $.</b></font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="H">H</a><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Apply or check event to human players if # = 1.</b></font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="M">M</a>^<font color="darkmagenta">TEXT</font>^</font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set message text to TEXT.<br>
+          </b>The text's length must not exceed the
+          original one or it will be truncated. It may contain any symbols except
+          ^ or the semicolon.</font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial">M<font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set message text to that of the timed event number #.</b></font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial">M-1</font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Do not show the message on the screen.</b></font></td>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="N">N</a><font color="darkmagenta">$</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set players NOT allowed to activate the event.</b><br>
+          (See <a target="annexe" href="../format/format_e.htm">Format
+          E</a>) If $ begins with d that means bit wise AND with inversion, i.e.
+          you can forbid a player to activate the event without changing the
+          other permissions.<br>
+          <strong><font color="#0000FF">Example:</font></strong><u>
+          <font color="#008000"><br>
+          </font>
+          </u><font color="#FF0000">
+ N3 forbids red and green and allows all
+          other.&nbsp;<br>
+ Nd3 forbids red and green but does not change permission for
+          the other players.</font></font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="Q">Q</a><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Apply or check event to computer players if # = 1.</b></font></td>
+      </tr>
+      <tr>
+        <td width="62" valign="top"><nobr><b><font color="red" size="2" face="Arial"><a name="R">R</a><font color="darkmagenta">$</font></font></b></nobr><b><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+        <td width="441" valign="top"><font face="Arial" size="2"><b>Set/check/get the interval between successive
+          occurrences to $.</b></font></td>
+    </tbody>
+  </table>
+
+<p>&nbsp;
+</p>
+
+</body>
+
+</html>

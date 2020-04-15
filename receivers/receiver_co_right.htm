@@ -1,0 +1,303 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Nouvelle page 1</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">C</font><font face="Times New Roman CE" size="5">OMMANDER</font><font face="Times New Roman CE" size="6">
+(CO)</font><font face="Arial" size="2"><br>
+<font color="#333333">RECEIVER</font></font></b></p>
+
+<p><font face="Arial" size="2" color="#333333"><b> Commanders ERM support</b><br>
+(<a href=../other/trigger_right.htm#co target=principal><font face="Arial" size="2" color="#333333"><b>!?CO# trigger occurs when open|close commander dialog, buy or revive commander.</a>)</p></font>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000" cellspacing="1">
+  <tr>
+    <td width="27%" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!CO</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;<br>
+      !#CO</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#800080">XXXX</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="73%" valign="top"><font face="Arial" size="2">&nbsp;&nbsp;
+    <font color="#800080"><b>#=-4</b></font>
+      - Apply to all Commanders at defending side<br>&nbsp;&nbsp;
+    <font color="#800080"><b>#=-3</b></font>
+      - Apply to all Commanders at attacking side<br>&nbsp;&nbsp;
+    <font color="#800080"><b>#=-2</b></font>
+      - Apply to all Commanders<br>
+      &nbsp;&nbsp; <font color="#800080"><b>#=-1 </b></font>- Apply to current Commander (for current hero)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>#</b></font><b><font color="#800080">&gt;=0</font></b> - Apply to specific Commander</font></td>
+  </tr>
+</table>
+
+<p><font face="Arial" size="2"><b>
+  Every Commander has the same number as its hero-owner</b></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="25%" valign="top" height="16"><font face="Arial" size="2" color="#FF0000"><b>
+  <a name=a>A1/<font color=darkmagenta>#1</font>/<font color=darkmagenta>#2</font></a>;</b></font><img src="../images/new.gif" width="28" height="11"></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Add a Commander artifact by type <br></b>
+&nbsp;&nbsp;<b>#1</b> - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>)<br>
+&nbsp;&nbsp;<b>#2</b> - number of won battles<br>
+<i>  Results:</i><br>
+&nbsp;&nbsp; v1=0 - artifact added<br>
+     &nbsp;&nbsp;   v1=1 - not a Commander artifact<br>
+     &nbsp;&nbsp;   v1=3 - Commander has this artifact already<br>
+     &nbsp;&nbsp;   v1=4 - no free slot<br>
+</font></td>
+  </tr>  <tr>
+    <td width="25%" valign="top" height="16"><font face="Arial" size="2" color="#FF0000"><b>
+  A2/<font color=darkmagenta>#1</font>; </b></font>
+    <img src="../images/new.gif" width="28" height="11"></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Remove a Commander artifact by type<br></b>
+&nbsp; <b>#1</b> - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>)<br>
+<i>  Results:</i><br>
+&nbsp;&nbsp;   v1=0 - artifact is removed<br>
+&nbsp;&nbsp;   v1=1 - Commander does not have this artifact<br>
+
+</font></td>
+  </tr>  <tr>
+    <td width="25%" valign="top" height="16"><font face="Arial" size="2" color="#FF0000"><b>
+  A3/<font color=darkmagenta>#1</font>/<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font></a>; </b></font>
+    <img src="../images/new.gif" width="28" height="11"></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Control a Commander artifact in a slot
+<br>
+      </b>
+&nbsp;   #1 - artifact slot (0...5)<br>
+&nbsp;   $1 - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>)<br>
+&nbsp;   $2 - number of won battles<br>
+<i>  Results:</I><br>
+   You may get/check or set artifact and/or number of won battles. <br> 
+   No additional checks is made for artifact type so be careful to avoid incorrect types or duplication.<br>
+</font></td>
+  </tr>  <tr>
+    <td width="25%" valign="top" height="16"><font face="Arial" size="2" color="#FF0000"><b>
+  A4</a>; </b></font>
+    <img src="../images/new.gif" width="28" height="11"></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b><font color=red>
+A4/<font color=darkmagenta>$1</font>/<font color=darkmagenta>$2</font>/<font color=darkmagenta>$3</font>/<font color=darkmagenta>$4</font>/<font color=darkmagenta>$5</font>/<font color=darkmagenta>$6</font>/<font color=darkmagenta>$7</font>/<font color=darkmagenta>$8</font>/<font color=darkmagenta>$9</font>/<font color=darkmagenta>$10</font>/<font color=darkmagenta>$11</font>/<font color=darkmagenta>$12</font>;</font>
+<br> - Control Commander artifacts in all slots<br></b>
+&nbsp;   $1  - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 0<br>
+&nbsp;&nbsp;&nbsp;   $2  - number of won battles for art in slot 0<br>
+&nbsp;   $3  - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 1<br>
+&nbsp;&nbsp;&nbsp;   $4  - number of won battles for art in slot 1<br>
+&nbsp;   $5  - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 2<br>
+&nbsp;&nbsp;&nbsp;   $6  - number of won battles for art in slot 2<br>
+&nbsp;   $7  - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 3<br>
+&nbsp;&nbsp;&nbsp;   $8  - number of won battles for art in slot 3<br>
+&nbsp;   $9  - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 4<br>
+&nbsp;&nbsp;&nbsp;   $10 - number of won battles for art in slot 4<br>
+&nbsp;   $11 - artifact type (<a href=../format/format_a1.htm#commander target=annexe>from 146...155</a>) in slot 5<br>
+&nbsp;&nbsp;&nbsp;   $12 - number of won battles for art in slot 5<br>
+<i>Results:</I><br>
+   You may get/check or set artifacts and/or number of won battles.<br>
+   No additional checks are made for artifact type so be careful to avoid incorrect types or duplication.<br>
+<b><i>Comments:</i></b><br>
+May not be applied to all Commanders (-2).
+
+
+</font></td>
+  </tr>
+  
+  <tr>
+    <td width="25%" valign="top" height="96"><b><font face="Arial" size="2" color="#FF0000"><a name="B">B</a></font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="96"><font face="Arial" size="2"><b>Special Bonus</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">#</font></b> - Type of set<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">0</font></b>
+      - All spec bonuses at once<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">1</font></b>
+      - One specific special bonus<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">2</font></b>
+      - All spec bonuses disabling at once<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">3</font></b>
+      - One specific spec bonus disabling<br><br>You can see which extra abilities the Commander will receive <a target=_self href=#extra>below</a></font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="288"><b><font face="Arial" size="2" color="#FF0000">B0/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="288"><font face="Arial" size="2"><b>Special Bonus :
+      all spec bonuses at once</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">$</font></b> - mask as a sum of (bit dependent):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - AT+DF bonus bit value is 1<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - AT+HP bonus bit value is 2<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - AT+DM bonus bit value is 4<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 - AT+MP bonus bit value is 8<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 - AT+SP bonus bit value is 16<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 - DF+HP bonus bit value is 32<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 - DF+DM bonus bit value is 64<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 - DF+MP bonus bit value is 128<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 - DF+SP bonus bit value is 256<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9 - HP+DM bonus bit value is 512<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 - HP+MP bonus bit value is 1024<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11 - HP+SP bonus bit value is 2048<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12 - DM+MP bonus bit value is 4096<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13 - DM+SP bonus bit value is 8192<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14 - MP+SP bonus bit value is 16384<br>
+      &nbsp;&nbsp; bit=1 if has and 0 if not<br><br>You can see which extra abilities the Commander will receive <a href=#extra target=_self>below</a></font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="48"><b><font face="Arial" size="2" color="#FF0000">B1/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="48"><font face="Arial" size="2"><b>Special Bonus : One specific special bonus</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>$1</b></font> - number of bonus (0...14)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$2</b></font> - has(1) or not(0)<br><br>You can see which extra abilities the Commander will receive <a target=_self href=#extra>below</a></font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="48"><b><font face="Arial" size="2" color="#FF0000">B2/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="48"><font face="Arial" size="2"><b>Special Bonus : All specific bonuses disabling at once</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">$</font></b> - mask as a sum of (bit dependent):<br>
+      bit=1 if may have and 0 if not</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="112"><b><font face="Arial" size="2" color="#FF0000">B3/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="112"><font face="Arial" size="2"><b>Special Bonus :
+      One specific spec bonus disabling</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">$1</font></b> - number of bonus (0...14)<br>
+      &nbsp;&nbsp; <b><font color="#800080">$2</font></b> - may have(1) or not(0)<br>
+      <b><u>
+  Comments.</u></b><br>
+  You may apply any command to all Commanders but only to set values.<br>
+For every specific Commander you can set/check/get as usual.</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000"><a name="D">D</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Dead/Alive
+      Commanders</b><br>
+      &nbsp;&nbsp; <b><font color="#800080">1</font></b> - Dead<br>
+      &nbsp;&nbsp; <b><font color="#800080">0</font></b> - Alive</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000"><a name="E">E</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Enable/disable Commander(s)</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>-1</b></font> - Disabled<br>
+      &nbsp;&nbsp; <font color="#800080"><b> 0</b></font> - Can be hired<br>
+      &nbsp;&nbsp; <font color="#800080"><b> 1</b></font> - Exists<br>
+      </font><
+      /td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000"><a name="H">H</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b>Owner Hero's type</b><br>
+      see <a href="../format/format_hc.htm">Format HC</a></font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="97"><b><font face="Arial" size="2" color="#FF0000"><a name="N">N</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="97"><font face="Arial" size="2"><b>Set/get the name
+      of Commander</b><br>
+  You can set or get the name of Commander.<br>
+      &nbsp;&nbsp; <b><font color="#800080">$</font></b> - Number of z vars (1...1000,-1...-10)<br>
+  You can change z vars after the usage (the name is copied inside
+Commander structure).<br>
+  You cannot use this command for all Commanders.</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="160"><b><font face="Arial" size="2" color="#FF0000"><a name="P">P</a></font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="160"><font face="Arial" size="2"><b>Commander statistics</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>#</b></font> - type of statistics<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">0</font></b>
+      - Attack<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>1</b></font>
+      - Defense<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>2</b></font>
+      - Hit Points<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>3</b></font>
+      - Damage<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>4</b></font>
+      - Magic Power<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>5
+      </b></font>- Speed<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>6</b></font>
+      - Magic Resistance<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$</b></font> - value</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="144"><b><font face="Arial" size="2" color="#FF0000">P</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="144">
+
+<p><font face="Arial" size="2"><b>Set/check/get the "Custom Primary Skill Control".</b><br>
+&nbsp;&nbsp; <font color="#800080"><b>$ = 0</b></font> - Disabled<br>
+&nbsp;&nbsp; <font color="#800080"><b>$ = 1 </b></font>- Custom control enabled<br>
+  If you set it to 1 (yes), the primary skill will not change with
+Commander improvement, they will stay as you set them. It applied only
+to the basic values, so if you have one of the basic skill improved,
+it will add the value to the primary skill you set.&nbsp;<br>
+  If it is 0, the HP and DM primary value will grow automatically with
+Commander levels.</font></p>
+
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="192"><b><font face="Arial" size="2" color="#FF0000"><a name="S">S</a></font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="192"><font face="Arial" size="2"><b>Commander basic
+      skills level</b><br>
+      &nbsp;&nbsp; <b><font color="#800080"># </font></b>- Type of the basic
+      skill<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>0</b></font>
+      - Attack<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#800080"><b>1</b></font>
+      - Defense<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">2</font></b>
+      - Hit Points<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">3</font></b>
+      - Damage<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">4</font></b>
+      - Magic Power<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">5</font></b>
+      - Speed<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">6</font></b>
+      - Magic Resistance<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$</b></font> - Value<br>
+      (Magic Resistance normally advances simultaneously when a Commander gains Magic Power skill through experience, but you must set Resistance
+separately if you advance the skill through ERM.)</font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="16"><b><font face="Arial" size="2" color="#FF0000"><a name="T">T</a></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="16"><font face="Arial" size="2"><b> Commander type</b> (0...8)
+      see <a href="../format/format_cc.htm">Format CC</a></font></td>
+  </tr>
+  <tr>
+    <td width="25%" valign="top" height="80"><b><font face="Arial" size="2" color="#FF0000"><a name="X">X</a></font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">;</font></b></td>
+    <td width="75%" height="80"><font face="Arial" size="2"><b> Commander experience</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>#</b></font> - type of experience<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">0</font></b>
+      - Hero's Exp taken as a basic for the next level<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">1</font></b>
+      - Current Commander exp<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#800080">2</font></b>
+      - Current Commander Level<br>
+&nbsp; <font color="#800080">&nbsp;<b>$</b></font> - Value (see
+    <a href="../format/format_hl.htm">Format HL</a>)</font></td>
+  </tr>
+</table>
+<br>
+<br>
+<p align=center> <font face=arial size=2><b>USING COMMANDERS WITH ERM</b></p>
+&nbsp;&nbsp;All Commanders that will be placed on a map with ERM will have the same primary and secondary skills and the same statistic (but ability depends on a type of them). Actually it is one Commander that may have many looks.<br>
+&nbsp;&nbsp;  If you do not set any parameters for such Commanders, they will have default game start up parameters. So if you want it more powerful, use the CO receiver. To apply all changes to only these additional Commanders use index -3 (all Commanders at attacking side) and -4 (all commanders at defending side).<br>
+&nbsp;&nbsp;  In order to make it into a "real" Commander you must set it to "alive" with the CO receiver and you should also set its type. You can give any Commander special abilities or set any Commander stats as you would for a normal Commander.<br>
+&nbsp;&nbsp; If you DON'T set a Commander to alive with the CO receiver, it will instead be a "monster Commander" and will always have Fly and Shooting abilities. Stats and other abilities for these "monster" Commanders must then be set with other ERM commands and not the CO receiver.<br>
+&nbsp;&nbsp;  Note, that you can set all in the BA0/BA50 trigger section or later in the battle. All settings will be lost after a battle and will not be saved in the saved game.<br>
+&nbsp;&nbsp;  Also, to be sure that all goes fine, please place a corresponding set of Commanders at attacker's side (<a href=../format/format_c.htm#comat target=annexe>174...182</a>) and defender's side (<a href=../format/format_c.htm#comde target=annexe>183...191</a>). 
+<br><br><br><a name=extra>
+<font color=#333333size=3><b>Table of commander extra abilities<br><br>
+0 - Attack + Defense: Reduce Enemy Defense by 50%<br>
+1 - Attack + Hit Points: Fearsome<br>
+2 - Attack + Damage: Maximum Damage<br>
+3 - Attack + Magic Power: No Enemy Retaliation<br>
+4 - Attack + Speed: Shooting Ability<br>
+5 - Defense + Hit Points: Unlimited Retaliation<br>
+6 - Defense + Damage: Strike All Enemies Around<br>
+7 - Defense + Magic Power: Permanent Fire Shield<br>
+8 - Defense + Speed: Block Physical Damage<br>
+9 - Hit Points + Damage: Strike Twice<br>
+10 - Hit Points + Magic Power: Attack may Paralyze<br>
+11 - Hit Points + Speed	Regenerate: 50 HP each round<br>
+12 - Damage + Magic Power: Deathstare<br>
+13 - Damage + Speed: Champion Distance Bonus<br>
+14 - Magic Power + Speed: Ignore Obstacles (Fly)<br>
+
+</body>
+
+</html>

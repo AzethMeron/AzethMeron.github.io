@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>TM Receiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+T</font><font face="Times New Roman CE" size="5">IME</font><font face="Times New Roman CE" size="6"> 
+E</font><font face="Times New Roman CE" size="5">VENTS</font><font face="Times New Roman CE" size="6"> (</font></span><font face="Times New Roman CE" size="6">TM</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+<p><b> <font face="Arial" size="2"> <font color="#333333">This is the ERM
+equivalent for time events. It may be used to repeat any ERM code at regular
+intervals (or only once) and to start and stop at a specified time.</font>
+</font>
+</b>
+</p>
+
+<p><b> <font face="Arial" size="2"> 
+The TM receiver is used
+in conjunction with the <a href=../other/trigger_right.htm#tm target=principal>!?TM trigger</a> ( !?TM$;), where $ from 1 to 100 is the number of
+the timer.
+</font>
+</b>
+</p>
+
+<p>
+<font face="Arial"><span lang="de"><font size="2"><b>Note:</b> T</font></span></font><tt><font size="2" face="Arial">his 
+command is almost always used as an instruction to set up the timer, rather than 
+a receiver (although it could be used as a receiver)</font></tt></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" cellspacing="1">
+      <tr>
+        <td width="137" height="16" nowrap><b><font face="Arial" size="2"><font color="#FF0000">!!TM</font><font color="#8B008B">#</font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td width="332" height="16">
+
+<font face="Arial" size="2">This is for setting up timed ERM events.<br>
+# = timer number (1-100).</font>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><b><font face="Arial" size="2"> OPTIONS</font></b>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="16%"><b><font face="Arial" size="2"><font color="#FF0000"><a name="D">D</a></font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="84%"><font face="Arial" size="2"><b>Disable player colour $ to receive this timer.</b>
+      See <a href="../format/format_e1.htm">Format E1</a>.</font></td>
+  </tr>
+  <tr>
+    <td width="16%"><b><font face="Arial" size="2"><font color="#FF0000"><a name="E">E</a></font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="84%"><font face="Arial" size="2"><b>Enable player colour $ to receive this timer.</b> See
+    <a href="../format/format_e1.htm">Format E1</a>.</font></td>
+  </tr>
+  <tr>
+    <td width="16%"><b><font face="Arial" size="2"><font color="#FF0000"><a name="S">S</a></font><font color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$3</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$4</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="84%"><font face="Arial" size="2"><b>Set/check/get timer set.</b><br>
+      &nbsp;&nbsp; $1 - The first day (activating)<br>
+      &nbsp;&nbsp; $2 - The last day<br>
+      &nbsp;&nbsp; $3 - The interval (in days) of happening<span lang="de">.
+    <font color="#0000FF">I.e. </font></span></font><font color="#0000FF"><tt>
+    <font face="Arial" size="2">1 would mean it activates every day, 7 would 
+    mean every 7 days, etc.</font></tt></font><font face="Arial" size="2"><br>
+      &nbsp;&nbsp; $4 - Colours to whom it will be applied (one bit is one colour, see
+    <a href="../format/format_e.htm">Format
+      E</a>).<br>
+      <b><font color="#0000FF">
+      Example:</font></b><br>
+      <font color="#FF0000"> 13=8+4+1 will set for Red, Brown and Green (0 will
+disable all colours).</font><font color="#008000">&nbsp;</font></font></td>
+  </tr>
+</table>
+<p><u>
+<font face="Arial" size="2">
+<b>
+Comments:<br>
+</b></font></u><font face="Arial" size="2">Be careful if you enable one timer for several colours. If one
+of the timer receivers shows a message, you can get it twice or
+more times..</font> </p>
+
+<p><font face="Arial" size="2">The TM timer will not activate properly on the
+very first day when a map is played, so if you want ERM code (receivers) to do
+something on the very first day, it is better to link them to something else
+such as a local event or a day 1 general (timed) event.</font></p>
+
+<p><font face="Arial"><b><font size="2" color="#0000FF">Example
+</font><u><font color="#008000"><br>
+</font></u></b><font face="Arial" size="2"><u><font color="#000000">We want to create a new object with ERM code.
+This object can only be visited once each week. How do we proceed?</font></u><br>
+</font>
+</font>
+<font face="Arial" size="2"><br>
+In the object's code you can set a flag so that
+once it has been visited, it can't be visited again.</font>
+</p>
+
+<p>
+<b>
+<font color="#FF0000" size="2" face="Arial">
+!#TM1:S1/999/7/player;
+</font>
+</b> 
+<font color="#FF0000" size="2" face="Arial">
+ timer will be called on every Day 1.<br>
+<b>
+!?TM1;</b><br>
+!!... Here you can reset the flag for the object so that it can be visited once
+  again.
+</font>
+</p>
+
+</body>
+
+</html>

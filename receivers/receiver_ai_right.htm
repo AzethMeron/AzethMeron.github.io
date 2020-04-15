@@ -1,0 +1,196 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>AI RECEIVER</title>
+<base target="annexe">
+</head>
+
+<body bgproperties="fixed" background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6">AI</font><font face="Arial" size="2">
+<font color="#333333"><br>
+RECEIVER</font></font></b></p>
+<p>
+<font face="Arial" size="2"><font color="#333333"><b>The AI receiver gives you a measure of control
+over AI movement. You can use it to influence or even force AI heroes to move to
+certain map locations</b></font>.</font></p>
+<p>
+<font face="Arial" size="2">Depending on the value you set, the AI may deviate along the way to pick up
+treasures, attack weaker monsters or heroes, claim mines or even take over a
+castle. Even using a maximum importance value, the AI can't ALWAYS be controlled
+if circumstances weigh heavily against it moving in a certain direction (e.g.,
+it has 500 phoenixes, has lost its last town and there is an undefended castle
+nearby), but usually it can be counted on.</font></p>
+<p>
+<font face="Arial" size="2">One possible use of this receiver is to set up a sequence of way points so that
+an AI hero will patrol in a fixed pattern. Another more devious use is to reset
+the destination points each turn or each time a hero movement trigger is called,
+linking them to the position of a player's hero. This will cause an AI hero to
+pursue the player's hero relentlessly.</font></p>
+
+
+
+
+
+
+
+
+
+
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="17%"><b> <font size="2" face="Arial" color="#FF0000">!!AI:</font><font size="2" face="Arial" color="#800080">XXXX</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td width="83%"><font size="2" face="Arial">Set destination points for AI
+      heroes to move to.</font></td>
+  </tr>
+</table>
+
+<p align="center"><font face="Arial" size="2"><b>OPTIONS</b></font></p>
+<table border="2" width="100%" bordercolor="#000000" bordercolorlight="#000000" bordercolordark="#000000">
+	
+	<tr>
+    <td width="137" valign="top"><b><font color="#FF0000" face="Arial" size="2"><a name="D">D</a></font><font face="Arial" size="2" color="#8B008B">#1</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">#3</font></b><font color="#FF0000" face="Arial" size="2">;<br>
+      &nbsp;</font></td>
+    <td valign="top" width="514"><font face="Arial" size="2"><b>
+      Delete a destination point</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Number of the hero.
+      (<a href="../format/format_h.htm">Format H</a>) (-1=any)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = Owner of the hero (<a href="../format/format_e1.htm">Format
+      E1</a>) (-1=any)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = Number of a sequence of destination points<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #=-1, delete all
+      points in sequence for this
+        hero and owner</font></td>
+  </tr>
+  
+	<tr>
+    <td width="137" valign="top"><b><font color="#FF0000" face="Arial" size="2"><a name="M">M</a></font><font face="Arial" size="2" color="#8B008B">$1</font><font color=red>;</font><br>
+    <b><font color="#FF0000" face="Arial" size="2"><a name="M">M</a></font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color=red>1</font><font color=red>;</font>
+      &nbsp;</font></td>
+    <td valign="top" width="514"><font face="Arial" size="2"><b>
+      Manage weight (AI value) of square</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current weight (AI value)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base weight (AI value) unchanged by ERM commands.  <br> 
+      Don't change M$2/1 value via ERM commands. <br>
+      Use only within <a href="../other/trigger_right.htm#ai" target=principal>!?AI</a> trigger.
+      <br><br>
+      <b>Example:</b><br>
+!?AI&v998=42/v999=2/v1000=0; [object at 42/2/0]<br>
+!!AI:M?v1; [get distance to object in movement points]<br>
+!!AI&v1>500:W1000000; [this is the ultimate goal of every AI hero that stands further than 5 squares from it]<br>
+[however, note that the object will be ignored if it's beyond AI thinking radius]<br>
+      <br><br>
+      
+      <b>Here are examples of standard weights:</b><br>
+Stables:<br>
+&nbsp;&nbsp;   If it gives more movement points than the hero spends to get to it, the weight is 10000. Otherwise, the weight is 50 + (importance of cavaliers upgrade).<br>
+<br>
+Keymaster's Tent:<br>
+&nbsp;&nbsp;   5000, if it's needed.<br>
+<br>
+Objects that give moral or luck:<br>
+&nbsp;&nbsp;   Weight is 0 if the hero can't reach the square at this turn. Weight is usually proportional to army strength (total AI value of army). For morale - if all stacks are undead, the weight is 0.<br>
+<br>
+Objects that give a resource:<br>
+&nbsp;&nbsp;   (resource count)*(resource importance for the owner)<br>
+<br>
+Fountain of Youth (it gives +200 movement and +1 morale):<br>
+&nbsp;&nbsp;   If it's closer than 200 movement points, the weight is 10000. Otherwise, the weight is the usual weight of moral enhancement, AI:M$ is decreased by 200 (so, it doesn't match AI:M$/1 even without any triggers).<br>
+<br>
+Shipyard:<br>
+&nbsp;&nbsp;   1000, if it's needed.<br>
+<br>
+Weight of guarded objects depends on bonus and comparsion of hero's army and defending army.<br>
+<br>
+Mine:<br>
+&nbsp;&nbsp;   (2 or 3)*(resource count per day)*(resource importance for the owner) - (guards penalty to weight)<br>
+&nbsp;&nbsp;   "2 or 3" is 2 if it's a neutral mine and 3 if the mine belongs to other player (even an ally! This is probably a bug).<br>
+        </font></td>
+  </tr>
+  
+  <tr>
+    <td width="137" valign="top"><b><font color="#FF0000" face="Arial" size="2"><a name="S">S</a></font><font face="Arial" size="2" color="#8B008B">#1</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">$1</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color="#8B008B">$3</font><font color="#FF0000" face="Arial" size="2">/</font></b><font face="Arial" size="2"><b><font color="#8B008B">$4</font><font color="#FF0000">/</font><font color="#8B008B">$5</font></b><font color="#FF0000"><b>;<br>
+      &nbsp;</b></font></font></td>
+    <td valign="top" width="514"><font face="Arial" size="2"><b>
+      Set up new destination point</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Number of the hero
+      (See <a href="../format/format_h.htm">Format H</a>).
+      (-1=any)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = Owner of the hero (<a href="../format/format_e1.htm">Format
+      E1</a>) (-1=any)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = Sequence Number (in
+      the sequence of destination
+      points)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = x position<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = y position<br>
+    </font>&nbsp;<font face="Arial" size="2">&nbsp; <font color="#8B008B"><b>$3</b></font> =
+      map level<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$4</b></font> = Value  is an
+      Importance
+      value for the AI:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5000000 - very important<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 500000 - valuable<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$5</b></font> = Flags. Value means:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - no
+      flag set<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - start with this position first<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - do not delete the position after arriving<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 -
+      start with this position and do not delete the position after arriving<br>
+      <b><u>Comments :</u></b>&nbsp;<br>
+      <b>
+      1. </b>The sequence works this way.<br>
+    If you set destination points with seqnums:<br>
+     2,4,5,6,88,99<br>
+    and set flag 1 for seqnum 6,
+    the hero will run the next points:<br>
+     6,88,99,2,4,5&nbsp;<br>
+ and then if some of them have
+     "do not delete" flag (example 88,4,5),<br>
+    the hero will run to:<br>
+     88,4,5,88,4,5,88,4,5...<br>
+      <b>
+      2.</b> You can set any owner (-1) and this mean that the    hero will run the destination point whoever owns the hero.<br>
+      <b>
+   3.</b> You can set any hero (-1) and this means that all    heroes of the owner will run to destination points.<br>
+      <b>4.</b> If the last position is also the first position and is set to
+      not delete after arriving, a phantom clone of the hero may appear on the
+      map. If you need to make a patrol circuit, you can avoid this by setting
+      an extra position one square over from the start position as the end
+      position instead.<br>
+      <b>5.</b> If a specific hero isn't specified and there are multiple
+      destination points, the first AI hero will move towards the first one.
+      After that hero's movement is done, the second hero will continue where it
+      left off, perhaps moving towards the next destination point. For this
+      reason, it's often a good idea to specify a specific hero to avoid too
+      much chaos.</font></td>
+  </tr>
+  
+  <tr>
+    <td width="137" valign="top"><b><font color="#FF0000" face="Arial" size="2"><a name="W">W</a></font><font face="Arial" size="2" color="#8B008B">$1</font><font color=red>;</font><br>
+    <b><font color="#FF0000" face="Arial" size="2"><a name="W">W</a></font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color=red>1</font><font color=red>;</font>
+      &nbsp;</font></td>
+    <td valign="top" width="514"><font face="Arial" size="2"><b>
+      Manage weight (AI value) of square</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current number of movement points needed to reach the square<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base number of movement points needed to reach the square, unchanged by ERM commands. <br>
+      Don't change W$2/1 value via ERM commands. <br>
+      Use only within <a href="../other/trigger_right.htm#ai" target=principal>!?AI</a> trigger.
+      <br><br>
+      <b>Example:</b><br>
+!?AI&v998=42/v999=2/v1000=0; [object at 42/2/0]<br>
+!!AI:M?v1; [get distance to object in movement points]<br>
+!!AI&v1>500:W1000000; [this is the ultimate goal of every AI hero that stands further than 5 squares from it]<br>
+[however, note that the object will be ignored if it's beyond AI thinking radius]<br>
+        </font></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

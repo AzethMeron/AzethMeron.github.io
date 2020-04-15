@@ -1,0 +1,743 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=_self></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<base target="sommaire"><p align=center><font face=Times New Roman CE>
+<b><font size=6>T<font size=5>RIGGERS</font></font></font><font size=2 face=Arial><br>
+<font color=#333333>List and Definition of All Triggers</font></b><br><br>
+<nobr><a target=principal href=#list>Jump to Triggers List</a></nobr></p>
+<font class=bnotes>Introduction</font><br>
+ Whenever a player activates a <i> trigger</i>, it causes some actions on one or more 
+ <i>receivers</i>. A trigger can be an <i>event</i>, <i> object</i> or <i> hero</i> that a hero 
+ visits, or it could be an ERM <i> function</i> called by other ERM code or even a <i>timer</i> 
+ set up to trigger at a specific time or interval (e.g., every 14 days). 
+ Receivers can be events, heroes, map objects or other things. Since many things in the game 
+ can be used as a trigger or receiver, it's important to not confuse which is which.<br><br>
+<font class=bnotes>How to Use Triggers</font><br>
+ The properties of the trigger event
+ or object do not matter for purposes of it being a trigger. The action of the
+ trigger must be described in a <i> timed event</i>. In an ERM script, the
+ trigger functions as the header, and following after the trigger on
+ subsequent lines are one or more receivers that are executed one at a time in
+ sequence. If you place more than one trigger in the same timed event, it's
+ important to realize that there is no &quot;end trigger&quot; code; a new
+ trigger signals the end of one triggered script and the start of the next.<br><br>
+<font class=bnotes>Trigger Syntax</font><br>
+ Every trigger begins with an exclamation mark/question mark combination (!?) and
+ ends with a semicolon (;). Immediately following the !? is a two-letter
+ trigger name which must be entered in capital letters, e.g., BA, OB or HE.
+ Following the trigger name are one or more parameters shown as # in the list
+ below. Each parameter notation (#) must be replaced by an integer number in your
+ code, e.g., <font class=ermtext>!?HE47;</font>. The meaning and allowable range of these numbers is
+ different for each type of trigger. For the HE trigger, the number is the hero
+ number (the number used by the&nbsp; game to reference a particular hero), while
+ for the LE trigger, the numbers specifies the x, y and level coordinates of a
+ local event on the adventure map.<br><br>
+<font class=bnotes>Using Variables in Triggers</font><br>
+ Trigger-based local variables:<br><br>
+ y-1...y-100 are integer vars<br>
+ e-1...e-100 are floating point vars<br><br>
+ You may use them in the same places that you use y and e vars now.<br><br>
+ Specific features:<br>
+ 1. They are NOT saved in the saved game. Actually every trigger section will run
+ completely and you cannot save and load a game being inside a trigger section.<br>
+ 2. These vars are local for every trigger and if even one trigger works out
+ inside another trigger section, they will have a different set of vars. As you
+ can see you cannot pass values from trigger to trigger using these vars.<br>
+ 3. All vars are set to 0 at any trigger start, so you can use this as a default value.<br><br>
+<font class=bnotes>Duplicate Triggers</font><br>
+ If the exact same trigger is used more than once in a map, ALL receivers
+ following all occurrences of that trigger are executed, starting with the first
+ trigger (earliest timed event and first trigger reference within that event) and
+ ending with the last trigger.<br>
+ Note that <font class=ermtext>!?BA0;</font> is a different trigger from <font class=ermtext>!?BA1;</font> 
+ and likewise <font class=ermtext>!?HE47;</font> is a different trigger from <font class=ermtext>!?HE48;</font>.<br><br>
+<font class=bnotes>Conditional Triggers</font><br>
+ A condition can be added to a trigger so that the receivers following it only
+ execute if the condition is true. To do this, place an ampersand sign (&amp;)
+ immediately after the last parameter and before the semicolon. After the &amp;,
+ put your conditional statement. This statement must consist of either a flag or
+ a variable followed by a comparison symbol (=, &gt;, &lt;, &gt;=, &lt;=, or
+ &lt;&gt;) and either a second variable or an integer value.<br>
+<font class=example>Example:</font><br>
+ <font class=ermtext>!?BA0&amp;v10=51;</font><br>
+ This means that the receivers following the BA0 trigger will only execute if v10
+ has a value of 51. You can include multiple tests as well by separating each
+ subsequent condition check by a slash (/) e.g., !?BA0&amp;v10=51/v2&gt;=5; The
+ BA0 trigger receivers will now only execute if v10 is equal to 51 and if v2 is
+ equal to 5 or higher. See the <nobr><a href=../other/variable.htm target=sommaire>Flags and Variables section</a></nobr>
+ for more details about flags, variables and conditional checks. Adding a second
+ trigger of the same type but with a conditional check part way through a script
+ is one easy way of only executing the rest of the script if certain conditions are true.<br><br>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<nobr><a name=list></a></nobr><b>TRIGGERS LIST:</b>
+<table border=2 bordercolorlight=black bordercolordark=black width=100% cellspacing=1 cellpadding=2>
+<tr>
+ <td align=middle valign=top><b>Syntax</b></td>
+ <td align=middle valign=top><b>Triggers</b></td>
+</tr> 
+
+<tr>
+ <td valign=top><nobr><a name=ai></a></nobr><font class=ermtext>!?AI<font class=param></font>;</font></td>
+ <td valign=top><b>AI calculate square value.</b><br>
+ Triggered when AI gets weight of a map square. <br><br>
+ Coordinates of given square are kept in v998/v999/v1000. <br>
+ HE-1 is the hero for which the value is calculated. <br>
+ There is a corresponding <nobr><a target=sommaire href=../receivers/receiver_ai.htm>receiver: !!AI.</a></nobr><br>
+ </td>
+ </tr>
+
+<tr>
+ <td valign=top><nobr><a name=ae></a></nobr><font class=ermtext>!?AE<font class=param>#</font>;</font></td>
+ <td valign=top><b>Equip/Unequip artifact trigger.</b><br>
+ <font class=ermtext>!?AE0;</font> Take off an artifact<br>
+ <font class=ermtext>!?AE1;</font> Put on an artifact<br><br>
+ The current Hero (!!HE-1) is a Hero-owner<br>
+ &nbsp;&nbsp; v998 keeps an artifact number<br>
+ &nbsp;&nbsp; v999 keeps a position (slot) number<br><br>
+ <font class=notes>Comments.</font><br>
+ It does not work for backpack.<br>
+ If you change one artifact to another, it produces some extra triggers call. Here the sequence is:<br>
+ &nbsp;&nbsp; 1. AE0 (prev)<br>
+ &nbsp;&nbsp; 2. AE1 (prev)<br>
+ &nbsp;&nbsp; 3. AE0 (prev)<br>
+ &nbsp;&nbsp; 4. AE1 (new)<br>
+ &nbsp;&nbsp; 5. AE0 (new)<br>
+ &nbsp;&nbsp; 6. AE1 (new)<br>
+ If you take an artifact from a backpack and a slot that this
+ artifact may be placed is busy, you will get the next sequence for
+ every slot this artifact may be placed:<br>
+ &nbsp;&nbsp; 1. AE0 (prev)<br>
+ &nbsp;&nbsp; 2. AE1 (prev)<br>
+ So be careful and do not count that if a specific artifact is
+ not taken off, you will not have AE0 trigger switched for this art.</td>
+ </tr>
+<tr>
+ <td valign=top><nobr><a name=ba></a></nobr><font class=ermtext>!?BA<font class=param>#</font>;</font></td>
+ <td valign=top><b>This will be called when any battle occurs.</b><br>
+ &nbsp;&nbsp;<font class=param>#</font> = 0 Turn on at start of every battle.<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 1 Turn on at end of every battle.<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 50 !?BA50; is the equivalent of !?BA0; but
+ runs only on the defending side in a multiplayer network battle, and
+ runs *instead of !?BA0; on that side (on the defending computer).<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 51 Likewise, !?BA51; runs instead of !?BA1; on the defending
+ computer in a network battle.<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 52 - called at a battle start at both sides<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 53 - called at a battle end at both sides<br><br>
+ <font class=bnotes>Sequence at a battle start</font>:<br>
+ &nbsp;&nbsp;1. If it is an attacker's PC (or non MP game) BA0 is called<br>
+ &nbsp;&nbsp;2. If it is a defender's PC BA50 is called<br>
+ &nbsp;&nbsp;3. BA52 is called.<br>
+ <font class=bnotes>At battle end</font>:<br>
+ &nbsp;&nbsp;1. If it is an attacker's PC (or non MP game) BA1 is called<br>
+ &nbsp;&nbsp;2. If it is a defender's PC BA51 is called<br>
+ &nbsp;&nbsp;3. BA53 is called.<br><br>
+ This means that if you want to have an identical code for BA0 and BA50, you just 
+ need to make one section with BA52 header.<br><br>
+ <font class=notes>Note</font>:<br>
+ If you want to test scripts in MP mode you cannot do it at the first game turn (day 1).<br>
+ You need to pass one day so all players will have an identical environment.<br>
+ <font class=bnotes>Network service: </font><br>
+ &nbsp;&nbsp;!?BG and !?BF work at both sides and if the variables are the same, they 
+ will give you the identical effect at both sides. Only user related actions are not 
+ synchronous for both sides and BA0/BA50 and BA1/BA51 triggers make a difference.<br>
+ <i>To set up a battle, use the <nobr><a href=../receivers/receiver_ba.htm target=sommaire>BA Receiver</a></nobr>.</i></td>
+ </tr>
+<tr>
+ <td valign=top><nobr><a name=bf></a></nobr><font class=ermtext>!?BF;</font></td>
+ <td valign=top><b>Trigger will be called when a battlefield is prepared for a battle</b><br> 
+ prior to the combat beginning. It may be used in conjunction with the 
+ <nobr><a href=../receivers/receiver_bf.htm target=sommaire><nobr>BF Receiver</nobr></a></nobr> to set up a custom battlefield.<br>
+ <font class=bnotes>Suggestion</font>:<br>
+ Do not use !!BU:R command in !?BF trigger and before it.</td>
+ </tr>
+<tr>
+ <td valign=top><nobr><a name=bg></a></nobr><font class=ermtext>!?BG;</font></td>
+ <td valign=top><b>Trigger occurs at every action taken by any stack or by the hero</b><br>
+ (for spell casting, retreating and surrendering).<br>
+ &nbsp;&nbsp;!?BG0 is called <i>before</i> the action occurs.<br>
+ &nbsp;&nbsp;!?BG1 is called <i>after</i> the action occurs.<br><br>
+ Variable v997 keeps the number of the current turn:<br>
+ &nbsp;&nbsp;0 - start turn (after Tactics phase)<br>
+ &nbsp;&nbsp;1 - second turn<br>
+ &nbsp;&nbsp;2 - third turn<br>
+ &nbsp;&nbsp;...<br>
+ <font class=notes>Comments</font>:<br>
+ You can use this with the <nobr><a href=../receivers/receiver_bg.htm target=sommaire>BG Receiver</a></nobr> 
+ to find a monster stack number (BG:N) and use this number to get access
+ to this monster's set up (!!BR...).</td>
+ </tr>
+<tr>
+ <td valign=top><a name=br></a><font class=ermtext>!?BR;</font></td>
+ <td valign=top><b>Trigger occurs every turn of a battle</b><br>
+ (for the first turn it occurs twice). 
+ Variable v997 keeps the number of the current turn:<br>
+ &nbsp;&nbsp;-1 - start turn (before Tactics phase)<br>
+ &nbsp;&nbsp; 0 - start turn (after Tactics phase)<br>
+ &nbsp;&nbsp; 1 - second turn<br>
+ &nbsp;&nbsp; 2 - third turn<br>
+ &nbsp;&nbsp; ...<br>
+ <font class=notes>Comments</font>:<br>
+ 1. The starting turn (-1,0) goes in darkness and you will not be able to show any message, 
+ though you can take actions.<br><br>
+ 2. The turn of a battle (v997) may be not the same if a Tactics phase took
+ place. For the full sequence of triggers, see the detailed <nobr><a href=#tactseq target=_self>listing</a></nobr>
+ following the Triggers List.</td>
+ </tr>
+<tr>
+ <td valign=top><a name=cm></a><font class=ermtext>!?CM<font class=param>#</font>;</font></td>
+ <td valign=top><b>The trigger occurs when you click the mouse button</b>.<br>
+ &nbsp;It sets up an internal ERM structure that can be used 
+ with the <nobr><a href=../receivers/receiver_cm.htm target=sommaire>CM Receiver</a></nobr> to get information
+ about the area clicked as well as disabling the standard right-click function.<br>
+ <font class=>Comments:</font><br>
+ Data in the structure will not be saved. This means that you can use it in a receiver 
+ section of this trigger.<br>
+ </td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?CM0;</font></td>
+ <td valign=top><b>Right-mouse click on the adventure map</b></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?CM1;</font></td>
+ <td valign=top><b>Mouse manager trigger for town screen</b>.<br>
+ The trigger occurs when you click mouse button<br>
+ You can also use !!CM receivers with the commands <font class=ermtext>TSIFAR</font> and cannot use <font class=ermtext>P</font>.<br>
+ The trigger works for left mouse push (subtype=12), left mouse release (subtype=13) 
+ and right mouse push (subtype=14) and also has a corresponding bit in flags.</td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?CM2;</font></td>
+ <td valign=top><b>Mouse manager trigger for Hero information screen.</b><br>
+    The current hero !!HE-1:... is an active one</font></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?CM3;</font></td>
+ <td valign=top><b>Mouse manager trigger for Heroes meeting screen.</b></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?CM4;</font></td>
+ <td valign=top><b>Mouse manager trigger for battle field.</b><br>
+   Get the number of position on the battle field (and heroes image)</td>
+</tr>
+<tr>
+ <td height=5 valign=top><font class=ermtext><a name=cm5></a>!?CM5;</font> </td>
+ <td height=5 valign=top><b>Left-mouse click on the adventure map</b><br>
+    It may be used with all CM receiver commands that you use for right-mouse click: <font class=ermtext>TSIFAPR</font>.</font></td>
+</tr>
+
+<tr>
+ <td valign=top><a name=ci></a><font class=ermtext>!?CI<font class=param></font>;</font></td>
+ <td valign=top><b>Castle income triggers</b><br>
+ &nbsp;&nbsp;!?CI0; is triggered when the game calculates castle income<br>
+ &nbsp;&nbsp;!?CI1; is triggered when the game calculates monster growth in a castle.<br>
+ See also <nobr><a href=../receivers/receiver_ci.htm target=sommaire>CI Receiver</a></nobr>
+</tr>
+
+<tr>
+ <td valign=top><a name=co></a><font class=ermtext>!?CO<font class=param>#</font>;</font></td>
+ <td valign=top><b>Commander triggers</b><br>
+ &nbsp;&nbsp;!?CO0; is called before opening the Commander Dialog<br>
+ &nbsp;&nbsp;!?CO1; is called after closing the Commander Dialog<br>
+ &nbsp;&nbsp;!?CO2; is called after buying a Commander in a Town<br>
+ &nbsp;&nbsp;!?CO3; is called after reviving a Commander in a Town<br>
+ <font class=notes>Notes</font>:<br>
+ &nbsp;&nbsp;Flag 1000 set to 1 only if the owner of the hero is a human player who sits before the screen.<br>
+ &nbsp;&nbsp;Flag 999 as usual shows whether this turn is a human player who sits before the screen.<br>
+ &nbsp;&nbsp;You can use !!HE-1:... to get the current hero info and !!CO-1:...to get current Commander info.<br>
+ &nbsp;&nbsp;Vars v998,v999,v1000 as usual shows the position of the current hero on the map.<br></td>
+</tr>
+
+<tr>
+ <td valign=top><a name=dg></a><font class=ermtext>!?DG<font class=param></font>;</font></td>
+ <td valign=top><b>Digging for Grail</b><br>
+	It is triggered when a hero is digging for Grail and the hole has already been placed <br> <br>
+	v998, v999 and v1000 keep coordinates.<br>
+Flag 1000 shows you that the hero belongs to the player sitting at the monitor. <br>
+HE-1 gives you the digging hero. <br>
+There is a corresponding <nobr><a href=../receivers/receiver_dg.htm target=sommaire>receiver: !!DG.</a></nobr><br>
+</tr>
+
+<tr>
+ <td valign=top><a name=dl></a><font class=ermtext>!?DL<font class=param></font>;</font></td>
+ <td valign=top><b>Custom dialogs trigger</b><br>
+ It is called when a mouse and keyboard (not supported yet) action is taken
+at any dialog item.<br><font class=notes>Notes</font>:<br>
+   &nbsp;When the trigger is called the next vars are set:<br>
+  &nbsp;&nbsp;&nbsp;v998  = Dialog Id<br>
+  &nbsp;&nbsp;&nbsp;v999  = Item Id<br>
+  &nbsp;&nbsp;&nbsp;v1000 = action<br>
+  &nbsp;Action for now:<br>
+    &nbsp;&nbsp;&nbsp;12 - left mouse button push<br>
+    &nbsp;&nbsp;&nbsp;13 - left mouse button release<br>
+    &nbsp;&nbsp;&nbsp;14 - right mouse button push<br>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=fc></a>!?FC<font class=param></font>;</font></td>
+ <td valign=top><b>Get flag's color</b> 
+ <br>
+ It is triggered when the game needs flag color. Now any object can have a flag. (Via tests I failed to flag windmill this way tho) <br>
+ v998, v999 and v1000 keep coordinates of the object entrance. <br> 
+ <br>
+ Note that it is using EVERY time game need to get color of ANY flag, not only when changing one. 
+ For example, this script<br>
+ !?FC;<br>
+!!VRy1:S0;<br>
+!!FC:T?y1;<br>
+!!if&y1=53:;<br>
+!!FC:C?y2;<br>
+!!OW&y2<>-1:Ry2/2/d5;<br>
+!!en:;. <br>
+ will be called repeatedly as long as you see ANY mine flagged with your color, giving you tons of ore.<br>
+ <br>
+ Flag color seems to be only cosmetic feature itself, although maybe you can use it inside scripts.
+ </td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=fu></a>!?FU<font class=param>#</font>;</font></td>
+ <td valign=top><b>Function number <font class=param>#</font></b> (integer value 1-30000)<br>called 
+ within a block of ERM code by an <nobr><a href=../receivers/receiver_fu.htm target=sommaire>FU Receiver</a></nobr> 
+ and followed by code that's part of the function.</td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=fu></a>!?FU-<font class=param>#</font>;</font></td>
+ <td valign=top><b>Local function number <font class=param>#</font></b> (integer value 1-100)<br>called 
+ within a block of ERM code by an <nobr><a href=../receivers/receiver_fu.htm target=sommaire>FU Receiver</a></nobr> 
+ and followed by code that's part of the function. Those functions are local and can be reached ONLY by calls within this script. </td>
+</tr>
+
+<tr>
+ <td valign=top><a name=ge></a><font class=ermtext>!?GE<font class=param>#</font>;</font></td>
+ <td valign=top><b>This is a &quot;global&quot; event with number #.</b><br> 
+ The # must be first in the Event text (the event title doesn't matter).<br>
+ This number WON'T APPEAR later in message text in the game as long as it's used by a trigger.<br>
+ <font class=example>Example</font>:<br>
+ Global event with text &quot;<font class=ermtext>1230There you
+ are!</font>&quot; transforms to &quot;<font class=ermtext>There you are!</font>&quot; with number 1230.
+ <br><i>To change a global event, use the <nobr><a href=../receivers/receiver_ge.htm target=sommaire>GE Receiver</a></nobr>.</i></td>
+</tr>
+<tr>
+ <td valign=top><a name=gm></a><font class=ermtext>!?GM<font class=param>#</font>;</font></td>
+ <td valign=top><b>Saving/Loading trigger.</b><br>
+ &nbsp;&nbsp;<font class=param>#</font> = 0 - is called right after loading a saved game but before showing the map.<br>
+ &nbsp;&nbsp;<font class=param>#</font> = 1 - is called right before saving the game but after choosing the game to save.</td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=hd></a>!?HD<font class=param></font>;</font></td>
+ <td valign=top><b>Hint Display</b><br>
+ Triggered when the game needs to display a hint for an object. <br>
+ v998/v999/v1000 keep coordinates of the square that was clicked by mouse.
+ </td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=he></a>!?HE<font class=param>#</font>;</font></td>
+ <td valign=top><b>This will be called when any hero attacks an enemy hero or visits/trades 
+ with an allied hero having the specified hero <font class=param>#</font>.</b><br>See <nobr><a href=../format/format_h.htm target=annexe>format H</a></nobr>.<br>
+ <i>To change characteristics of a hero, use the <nobr><a href=../receivers/receiver_he.htm target=sommaire>HE Receiver</a></nobr>.</i></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext><a name=hl></a>!?HL</font><font class=param>#</font>;</font></td>
+ <td valign=top><b>Will be triggered whenever a hero gains a level.</b><br>
+ &nbsp;&nbsp;<font class=param>#</font> = number of hero (-1 = all, see <nobr><a href=../format/format_h.htm target=annexe>format H</a></nobr>)<br>
+ If you have !?HL-1 and !?HL5, for example, first will be processed all receivers for all 
+ heroes (HL-1) and then a particular hero (HL5).<br>
+ <i>To change the primary and secondary skills available when a hero gains a
+ level, use the <nobr><a href=../receivers/receiver_hl.htm target=sommaire>HL Receiver</a></nobr>.</i></td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=hl></a>!$HL</font><font class=param>#</font>;</font></td>
+ <td valign=top><b>Post hero level-up trigger.</b><br>
+ Triggered after the dialog is closed and skills are enhanced. <br>
+ &nbsp;&nbsp;<font class=param>#</font> = number of hero (-1 = all, see <nobr><a href=../format/format_h.htm target=annexe>format H</a></nobr>)<br>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext><a name=hm></a>!?HM<font class=param>#</font>;</font></td>
+ <td valign=top><b>Take control over every step a hero <font class=param>#</font> takes.</b> 
+ It is triggered before the hero takes each step (not after). 
+ So if you check v998, v999, v1000, you get a coordinate of the point the Hero will 
+ move TO. This movement cannot be cancelled.<br>
+ &nbsp;&nbsp;<font class=param>#</font> = number of hero (-1 = all, see <nobr><a href=../format/format_h.htm target=annexe>format H</a></nobr>)<br>
+ At triggering moment you can find:<br>
+ &nbsp;&nbsp; HE-1 will refer to a hero who moves.<br>
+ &nbsp;&nbsp; v998,v999,v1000 = x,y and level of the point of destination.<br>
+ &nbsp;&nbsp; Also, flag1000 is set to gamer (1) or AI (0) as usual.<br>
+ If you have <font class=ermtext>!?HM-1;</font> and <font class=ermtext>!?HM5</font> for example, 
+ first will be processed all receivers for all heroes (HM-1) and then a particular hero (HM5).<br>
+ <font class=example>Example:</font><br>
+ <font class=ermtext>
+ !?HM-1;<br>
+ !!IF:M^Moving!^;<br>
+ !?HM0;<br>
+ !!IF:M^Personal Orin's Moving!^;</font></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext><a name=ip></a>!?IP<font class=param>#</font>;</font></td>
+ <td valign=top><b>Multiplayer support.</b><br>
+ If one player's hero attacks another player's hero, there will be the next sequence:<br>
+ &nbsp;1) !?BA0 trigger for attacker switches;<br>
+ &nbsp;2) !?IP0; trigger switches for attacker<br>
+ &nbsp;3) data transferred to defender:<br>
+ &nbsp;&nbsp;&nbsp;- attacker's Hero info;<br>
+ &nbsp;&nbsp;&nbsp;- attacker's Hero Commander info (completely);<br>
+ &nbsp;&nbsp;&nbsp;- v vars set v9001-v10000;<br>
+ &nbsp;&nbsp;&nbsp;- all potentially changed monster statistics;<br>
+ &nbsp;4) all sent data received at defender side;<br>
+ &nbsp;5) !?IP1; trigger switches for defender;<br>
+ &nbsp;6) !?BA0; trigger switches for defender;<br>
+ -- <b>Now the battle takes place</b> --<br>
+ If attacker wins, no WoG data transferred.<br>
+ if defender wins, there will be the next sequence:<br>
+ &nbsp;7) attacker goes to wait until defender gains levels;<br>
+ &nbsp;8) defender's Hero and Commander gain levels;<br>
+ &nbsp;9) !?IP2; trigger switches for defender;<br>
+ 10) data transferred tp attacker:<br>
+ &nbsp;&nbsp;&nbsp;- defender's Hero sec. skills (all 28), level and exp.;<br>
+ &nbsp;&nbsp;&nbsp;- defender's Hero Commander info (completely);<br>
+ &nbsp;&nbsp;&nbsp;- v vars set v9001-v10000;<br>
+ 11) !?BA1; trigger switches for defender;<br>
+ 12) attacker goes from waiting until defender gains levels;<br>
+ 13) all sent data received at attacker side;<br>
+ 14) !?IP3; trigger switches for attacker;<br>
+ 15) !?BA1; trigger switches for attacker;<br>
+ <br>
+ As you can see, monsters, heroes and Commanders statistics should be
+ identical now. As a side effect I can say that 10 sec. skills for Hero
+ is a multiplayer safe rule. All 28 sec. skills transferred in both
+ directions if needed.</td>
+</tr>
+<tr>
+ <td valign=top><nobr><a name=le></a><font class=ermtext>!?LE<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>;</font></nobr></td>
+ <td valign=top><b>An Event on the map can be a Trigger.</b><br>
+ The contents and features of the Event are not significant in any way. 
+ The event won't be changed. It is used as an Event Trigger only.<br>
+ &nbsp;&nbsp; <font class=param>#1</font> - X position of the Event on the map<br>
+ &nbsp;&nbsp; <font class=param>#2</font> - Y position on the map<br>
+ &nbsp;&nbsp; <font class=param>#3</font> - level (0-ground, 1-underground).<br>
+ An Event must exist at that position on the adventure map.<br><br>
+ You can refer to the exact position of the event in receivers following the 
+ trigger: x,y and level will be stored in v998,v999 and v1000 when the trigger activates.<br><br>
+ <font class=example>Example:</font><br>
+ <font class=ermtext>?!LE10/21/0;<br></font>
+ This will identify an event at the location x=10, y=21 on the surface map
+ level (0) as a trigger. If a hero trips this event, then all ERM statements
+ following the trigger code will be executed.<br>
+ <i>To change the properties of an event, use the <nobr><a href=../receivers/receiver_le.htm target=sommaire>LE Receiver</a></nobr>.</i></td>
+</tr>
+<tr>
+ <td valign=top><nobr><font class=ermtext>!$LE<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>;</font></nobr></td>
+ <td valign=top><b>Post visit LE trigger</b></td>
+<tr>
+ <td valign=top><nobr><a name=mf></a><font class=ermtext>!?MF1;</td>
+ <td valign=top><b>Trigger for a stack taking physical damage(before an action)</b><br>
+ <i>used with <nobr><a href=../receivers/receiver_mf.htm target=sommaire>MF Receiver</a></nobr></i></td>
+</tr>
+<tr>
+ <td valign=top><a name=mg></a><font class=ermtext>!?MG0;<br>!?MG1;</td>
+ <td valign=top><b>Spell casting on the adventure map</b><br>
+ !?MG0; - pre trigger<br>
+ !?MG1; - post trigger<br>
+ Sequence:<br>
+ 1) player clicks the &quot;cast spell&quot; icon<br>
+ 2) !?MG0; works out (you can adjust current hero spells)<br>
+ 3) Magic Book appears and a player chooses a spell<br>
+ 4) Spell casting<br>
+ 5) !?MG1; works out (the cast spell number is stored in v997)<br>
+ <font class=example>Example:</font><br>
+ <font class=ermtext>ZVSE<br><br>
+ !?MG0;<br>!!IF:M^Magic is ready to cast^;<br><br>
+ !?MG1;<br>!!VRy-10:Sv997;<br>!!IF:M^Magic was cast. Spell number: %Y-10^;</font><br><br>
+ <font class=notes>Comments:</font><br>
+ This doesn't work for AI heroes, only human players.</td>
+</tr>
+<tr>
+ <td valign=top><a name=mm0></a><font class=ermtext>!?MM0; </td>
+ <td valign=top><b>For control over scroll text during a battle<br></b>
+ This trigger works when WoG is trying to show hint text in the scroll field 
+ (e.g., &quot;fly here&quot;). (See <nobr><a href=../receivers/receiver_mm.htm target=sommaire>MM Receiver</a></nobr>)<br><br>
+ <font class=notes>Comments</font>:<br>
+ The !?MM0 trigger only functions prior to an action being chosen. So,
+ for example, if I cast a spell, the display hints that show up while
+ choosing a target don't occur within the !?MM0 trigger at all. Once the
+ target's been chosen and the spell's been cast, it returns to using the
+ !?MM0 trigger until the next action is taken.</td>
+</tr>
+<tr>
+ <td valign=top><a name=mm1></a><font class=ermtext>!?MM1;</font></td>
+ <td valign=top><b>Trigger when a player moves the mouse pointer inside the town screen</b>.<br>
+ It will work when you go over a section and when you go off a section.<br><br>
+ This trigger works out after standard behavior (usually hint text displaying). 
+ (See <nobr><a href=../receivers/receiver_cm.htm target=sommaire#m target=_self>CM Receiver</a></nobr>)</td>
+</tr>
+<tr>
+ <td valign=top><a name=mp></a><font class=ermtext>!?MP;</font></td>
+ <td valign=top><b>Trigger when music starts to play</b>.<br>
+ (See <nobr><a href=../receivers/receiver_mp.htm target=sommaire#m target=_self>MP Receiver</a></nobr>)</td>
+</tr>
+<tr>
+ <td valign=top><a name=mr><a name=mr0></a><a name=mr1></a></a><font class=ermtext>!?MR0;</font> </td>
+ <td valign=top rowspan=2>
+ <b>Stack Resistance ERM control.<br></b>
+ !?MR0 works out just before calculating a resistance correction for a stack. 
+ And !?MR1 works out after calculating. So here is the sequence:<br>
+ - we have a basic damage from a spell (M,S,D);<br>
+ - !?MR0 is called (M,S,D,F[=D]);<br>
+ - WoG calculates a standard resistance correction (S,M, D-&gt;F);<br>
+ - !?MR1 is called (M,S,D,F);<br>
+ - end of correction (F).<br>
+ Here M means a monster type, S means a spell number, D means the basic
+ damage, F means the corrected damage.<br>
+ Standard WoG correction function calculated F from D and returned it.<br>
+ For creatures that have no resistance F=D.<br>
+ (See <nobr><a href=../receivers/receiver_mr.htm target=sommaire>MR Receiver</a></nobr>)</td></tr>
+<tr>
+ <td valign=top><font class=ermtext>!?MR1;</font> </td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?MR2;</font>
+ <td><b>Dwarf-style Magic Resistance</b><br>
+ !?MR2; will work out when the game calculates dwarf-style magic resistance.<br>
+ You may use !!MR and other triggers.<br>
+ !!MR:N, !!MR:M works as before (described in <a href=#mr0 target=_self>!?MR0 and !?MR1</a> trigger section). 
+ The !!MR:F here is used as a percentage (0..100) of a chance for the spell to work.<br>
+ <font class=example>Example:</font><br>
+ <font class=ermtext>ZVSE<br>
+ !?MR2;<br>
+ !!MR:F0;</font> all creatures are completely immune to all</td>
+</tr>
+<tr>
+ <td valign=top><a name=mw><a name=mw0></a></a><font class=ermtext>!?MW0;</font></td>
+ <td valign=top><b>Trigger for Wandering Monsters</b><br>
+ Called when monster reaches a destination point/hero<br>
+ <font class=notes>Comments</font>:<br>
+ It will be called a next turn after monster really reached a
+ position or just before attacking a Hero. Called if only a
+ corresponding flag is set. v997 keep a number of WM that is a caller.<br>
+ (See <nobr><a href=../receivers/receiver_mw.htm target=sommaire>MW Receiver</a></nobr>)</td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?MW1;</font><a name=mw1></a></td>
+ <td valign=top><b>Trigger for Wandering Monsters, called when a monster is killed.</b><br>
+ <font class=notes>Comments</font>:<br>
+ It will be called the turn after a monster is really killed. It's only
+ called if the corresponding flag is set. v997 keep the number of the WM
+ that is the caller.<br>
+ (See <nobr><a href=../receivers/receiver_mw.htm target=sommaire>MW Receiver</a></nobr>)</td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>
+ <nobr><a name=ob></a>!?OB<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>;</font></nobr></td>
+ <td valign=top><b>This trigger works for any object that has an &quot;entrance&quot;</b> (yellow square in editor).<br>
+ <font class=bnotes>Note</font>:<br> 
+ this includes monsters, artifacts, and resource piles too but does not include other heroes 
+ (use the <a href=#hl target=_self>HL trigger</a> for heroes).<br>
+ &nbsp;&nbsp;<font class=param>#1</font> - X position of entrance on the map<br>
+ &nbsp;&nbsp;<font class=param>#2</font> - Y position on the map<br>
+ &nbsp;&nbsp;<font class=param>#3</font> - level (0-Surface, 1-Underground).<br>
+ <font class=bnotes>Important</font>:<br> 
+ The sequence of finding object triggers:<br>
+ <font class=ermtext>!?OB$;</font> common by type<br>
+ <font class=ermtext>!?OB$/$;</font> common by type and subtype<br>
+ <font class=ermtext>!?OB$/$/$;</font> particular object<br><br>
+ You can refer to the exact position of the object in receivers following the trigger: 
+ x,y and level will be stored in v998,v999 and v1000 when the trigger activates.<br>
+ <font class=example>Example:</font><br>
+ <font class=ermtext>!?OB101;</font> come here for any chest on the map<br>
+ <font class=ermtext>!!CH998:... </font> change whatever you want using indexed variables 
+                                      as a position x,y,l for a particular chest at x,y,l.<br><br>
+ To set up or change the properties of an object,
+ use the appropriate <nobr><a href=../receivers/receivers_objects.htm target=sommaire>Object Receiver</a></nobr> or the
+ general <nobr><a href=../receivers/receivers_ob.htm target=sommaire>OB Receiver</a></nobr>.<br><br>
+ For a more detailed and explained version of OB trigger, read 
+ <nobr><a target=_self href=../other/tutor_right.htm#howto5>the OB trigger &amp; receiver easily explained</a></nobr> 
+ (ERM for dummies, by Qurqirish Dragon)</td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!$OB<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>;</font></td>
+ <td valign=top><b>Post visit OB trigger for object at x=<font class=param>#1</font>, y=<font class=param>#2</font>, level=<font class=param>#3</font></b></td>
+</tr>
+<tr>
+ <td nowrap valign=top><font class=ermtext>!?OB<font class=param>#1</font>;</font></td>
+ <td valign=top><b>Alternate format for OB trigger.</b><br>
+ Turns on for any objects of <font class=param>#1</font> type.<br>
+ <i>See <nobr><a target=annexe href=../format/format_ob.htm>Format OB</a></nobr>.</i></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!?OB<font class=param>#1</font>/<font class=param>#2</font>;</font></td>
+ <td valign=top><b>Alternate format for OB trigger.</b><br>
+ Turns on for any objects of <font class=param>#1</font> type and <font class=param>#2</font> subtype.<br>
+ (<i>See <nobr><a target=annexe href=../format/format_ob.htm>Format OB</a></nobr>.</i>)</font></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext>!$OB<font class=param>#1</font>/<font class=param>#2</font>;</font></td>
+ <td valign=top><b>Alternate format for Post visit trigger<br></b> 
+ Turns on for any objects of #1 type and #2 subtype.<br>
+ (See <nobr><a target=annexe href=../format/format_ob.htm>Format OB</a></nobr>).</td>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext>!?OB<font class=param></font><font class=param></font>;</font></td>
+ <td valign=top><b>Alternate format for Pre visit trigger<br></b> 
+ Turns on for any objects. <br>
+</tr>
+
+<tr>
+ <td valign=top><font class=ermtext>!$OB<font class=param></font><font class=param></font>;</font></td>
+ <td valign=top><b>Alternate format for Post visit trigger<br></b> 
+ Turns on for any objects. <br>
+</tr>
+
+<tr> 
+ <td valign=top><nobr><a name=pi><font class=ermtext>!?PI; </td>
+ <td valign=top><b>Post Instruction.</b><br>
+  &nbsp;&nbsp; This trigger works out a bit later than instruction are executed but
+             after the majority of settings are done for the map.<br>
+  &nbsp;&nbsp; The other specific thing here is that this trigger works out ONLY if you start 
+             a new game but not if you load a saved game (so the same way as instructions do).<br>
+ <font class=example>Example</font>:<br>
+ <font class=ermtext>ZVSE<br>
+                   !#IF:M^Instr^;<br><br>
+                   !?PI;<br>!!IF:M^Post Instr^;<br></font>
+ &nbsp;&nbsp; If you start this map, you will have two messages: "Instr" and then
+ "Post Instr". When the first message appears, almost no settings are
+ done for the map and when the second message appears, the most
+ settings are done already. If you load a saved game, you will have no
+ messages at all.
+ </td>
+</tr>
+<tr>
+ <td valign=top><nobr><a name=sn></a></nobr><font class=ermtext>!?SN;</font> </td>
+ <td height=83 valign=top><b>In-game sound effects trigger</b><br>
+ This triggers for any sound (WAV or M82, but NOT MP3). 
+ It triggers every time any sound is LOADED, which doesn't always happen at the same time it is played.
+ There is a corresponding <nobr><a href=../receivers/receiver_sn.htm target=sommaire>receiver: !!SN.</a></nobr><br>
+ For the sound effects list, please see <nobr><a target=annexe href=../format/format_sn.htm>Format SN</a></nobr>.</td>
+</tr>
+<tr>
+ <td valign=top><nobr><a name=th></a><font class=ermtext>!?TH<font class=param>#</font>;</font></td>
+ <td><b>Triggers for Town Hall access.</b><br>
+   &nbsp;&nbsp; !?TH0; is called when you enter a Town Hall<br>
+   &nbsp;&nbsp; !?TH1; is called when you leave a Town Hall<br><br>
+   <font class=notes>Comments</font>:<br>
+   &nbsp;&nbsp; 1. You could use the TH1 trigger to check for a new building built in a town.<br>
+   &nbsp;&nbsp; 2. You could also use it to reset the build flag with the <nobr><a href="../receivers/receiver_ca.htm" target=sommaire>CA:R</a></nobr> command to allow additional building the same day.<br>
+ </td>
+</tr>
+<tr><td valign=top><a name=tl><font class=ermtext>!?TL<font class=param>#</font>;</font> <img src=../images/new.gif>
+<td><b>Real-Time Timer</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 0 - period of call is  1 second<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 1 - period of call is  2 seconds<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 2 - period of call is  5 seconds<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 3 - period of call is 10 seconds<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 4 - period of call is 60 seconds<br>
+	<font class=example>Example</font>:<br>
+    &nbsp;&nbsp;To see how it works, you can use the next ERM code:<br><font class=ermtext>
+    &nbsp;&nbsp;&nbsp;&nbsp;!?TL<font class=param>0</font>;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!!IF:L^<font class=param>Tick 1 sec</font>^;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!?TL<font class=param>1</font>;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!!IF:L^<font class=param>Tick 2 sec</font>^;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!?TL<font class=param>2</font>;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!!IF:L^<font class=param>Tick 5 sec</font>^;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!?TL<font class=param>3</font>;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!!IF:L^<font class=param>Tick 10 sec</font>^;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!?TL<font class=param>4</font>;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;!!IF:L^<font class=param>Tick 60 sec</font>^;</font>
+
+<tr>
+ <td valign=top><font class=ermtext><nobr><a name=tm></a></nobr>!?TM<font class=param>#</font>;</td>
+ <td valign=top><b>This is the ERM equivalent of timed events.</b><br>
+ &nbsp;&nbsp; <font class=param>#</font> - from 1 to 100 - the number of a timer.<br>
+ <i>To set up a timer, use the <nobr><a href=../receivers/receiver_tm.htm target=sommaire>TM Receiver</a></nobr>.</i></td>
+</tr>
+<tr>
+ <td valign=top><font class=ermtext><nobr><a name=tm></a></nobr>!?TM<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>#3</font>/<font class=param>#4</font>;</td>
+ <td valign=top><b>Automatic constant timers</b><br>
+ &nbsp;&nbsp; <font class=param>#1</font> - The first day (activating)<br>
+ &nbsp;&nbsp; <font class=param>#2</font> - The last day (-1 for infinite)<br>
+ &nbsp;&nbsp; <font class=param>#3</font> - The interval (in days) of happening<br>
+ &nbsp;&nbsp; <font class=param>#4</font> - Colours to whom it will be applied <nobr><a target=annexe href="../format/format_e.htm">Format E</a></nobr> <br>
+ <i>No need to set up those timers.</i></td>
+</tr>
+</table>
+
+<br><nobr><a name=tactseq></a><font class=bnotes>Sequence of Combat Triggers with and without a Tactics phase.</font><br>
+ <b>without tactics</b><br>
+ BA0 (on the map screen)<br>
+ ... (in darkness)<br>
+ BR(-1)<br>
+ BF0<br>
+ ... (show battle field)<br>
+ BR(0)<br>
+ ... (all actions of first round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(1)-BG1 (second round started)<br>
+ ... (all actions of first round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(2)-BG1 (third round started)<br>
+ ... and so on.<br>
+ BA1 (on the map screen)<br>
+ <br>
+ <b>with tactics</b><br>
+ BA0 (on the map screen)<br>
+ ... (in darkness)<br>
+ BR(-1)<br>
+ BF0<br>
+ ... (show battle field)<br>
+ ... (all actions of first tactic round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(-2)-BG1 (second tactic round started)<br>
+ ... (all actions of second tactic round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(-3)-BG1 (third tactic round started)<br>
+ and so on<br>
+ *BR(0)<br>
+ ... (all actions of first round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(1)-BG1 (second round started)<br>
+ ... (all actions of first round)<br>
+ BG0-BG1<br>
+ BG0-BG1<br>
+ ...<br>
+ BG0-BR(2)-BG1 (third round started)<br>
+ and so on.<br>
+ BA1 (on the map screen)<br>
+ <br>
+ <font class=bnotes>Note</font>:<br>
+ &nbsp;&nbsp;1. A new round starts between BG0 and BG1.<br>
+ &nbsp;&nbsp;2. *BR(0) may have two form. If a player has a tactic phase, this will be:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; BG0-BG1<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; BR(0)<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; Though if AI has a tactic phase, this will be:<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; BG0-BR(0)-BG1<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; So if you do not use BG1 trigger it will be the same.<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; I did not test it for both AIs and both players, but think this will be the same cases.
+</body></html>

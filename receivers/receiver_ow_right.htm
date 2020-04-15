@@ -1,0 +1,370 @@
+<html>
+
+<head>
+<title>OW REceiver</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+P</font><font face="Times New Roman CE" size="5">LAYER</font><font face="Times New Roman CE" size="6"> 
+O</font><font face="Times New Roman CE" size="5">RIENTED</font><font face="Times New Roman CE" size="6"> 
+C</font><font face="Times New Roman CE" size="5">OMMANDS</font><font face="Times New Roman CE" size="6"> 
+(</font></span><font face="Times New Roman CE" size="6">OW</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><b>
+
+<font class="Helvetica32" face="Arial" size="2">
+  <font color="#333333">Used for commands that apply to specific players such as resources, teams,
+  number of heroes controlled and time a hero can live without a town. </font>
+</font></b></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        <td width="143" height="16" nowrap><b><font face="Arial" size="2"><font class="Helvetica32" color="#FF0000">!!OW</font><font color="red" size="2" class="Helvetica32">:<font color="darkmagenta">XXXX</font>;</font></font></b></td>
+        <td width="100%" height="16">
+
+<p><font face="Arial" size="2"> These are commands that apply to a specific
+player.</font></p>
+
+        </td>
+      </tr>
+  </table>
+
+<p align="center"><font face="Arial" size="2"><b> OPTIONS</b></font>
+</p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="A">A</a></font><font color="#8B008B">#</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Get/Check/(Set) active hero</b><br>
+      &nbsp;&nbsp; <b><font color="#800080"># </font></b>- Owner (0...7,-1=current)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$ </b></font>- Hero number (0...155,-1=not chosen) (See
+    <a href="../format/format_h.htm">Format
+      H</a>)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="C">C</a></font><font color="#8B008B">?</font><font face="Arial" size="2" color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Get/Check current player</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>$</b></font> - Get or check current player
+      (will return 0..7 - see <a href="../format/format_e1.htm">Format E1</a>).<br>
+      <u><b>Comments:</b></u><br>
+      You can only get or check, but not set the value.<br>
+      e.g., <b><font color="#FF0000">!!OW:C?i;</font></b></font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="D">D</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set
+      the number of days that a player remains in the game after losing his
+      or her last town.</b><br>
+      1.<font color="#800080"><b>#1</b></font> = gamer number (see
+    <a href="../format/format_e1.htm">Format
+E1</a>) or current (-1)<br>
+&nbsp;&nbsp; <font color="#800080"><b>#2</b></font> = days to be gone (0...127) or live forever (128..254).<br>
+If you set 128..254, the gamer will not get a message with a countdown until he
+captures at least one town and then loses his last one. 255 sets the standard
+default of 7 days.</font>
+      <p><font face="Arial" size="2">2.<font color="#800080"><b>#1</b></font> = -2 - sets the default to to be gone
+      (standard default is 7)<br>
+&nbsp;&nbsp; <font color="#800080"><b>#2</b></font> = days (ex: 0...127), (128..255) all players will stay alive forever.<br>
+      If you set 128..254, the gamer will get an initial message saying he must
+      capture a town within a week but no more following that.<br>
+      If you set 255, the gamer will get this message every day.<br>
+      If you capture a town and then lose your last town, the default set by
+      using -2 will remain in effect.</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><font color="#FF0000" face="Arial" size="2"><b><a name="G">G</a></b></font><font color="#800080" face="Arial" size="2"><b>$</b></font><font face="Arial" size="2"><b><font color="#800080">1</font><font color="#FF0000">/</font><font color="#800080">$2</font></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="87%"><p><font face="Arial" size="2"><b>Check if a player IS a player
+that is sitting before the PC screen</b><br>
+      Multiplayer command<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$1</b></font> - Player (color). </font><font face="Arial" size="2">
+      (see <a href="../format/format_e1.htm">Format E1</a>)&nbsp;</font><font face="Arial" size="2"><br>
+&nbsp;&nbsp;&nbsp;<font color="#800080"><b>$2</b></font> - Check the Player<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1=yes, it is me,&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 0=no, this is another
+human player<br>
+      <u><b>Comments:</b></u><br>
+      This is important for multiplayer only. The point
+is
+that there are more than one human player and we have to know whether
+a player is a human here (1) or there (0). Of course, the main syntax
+is check or get the value, but you can also set it (though we did not
+try it :-)<br>
+      For AI this is always 0.<br>
+      <br>
+      Flag 999 set to 1 if current
+player (when trigger worked out) is a player &quot;here&quot; and 0 if he is at
+other PC.<br>
+      AI also has it always at 0. If flag 999 set, you can be
+sure that this is human and he is here. Flag 999 is working for all triggers</font></p>
+
+    </td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="H">H</a></font><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32"><span lang="de">/</span></font><font face="Arial" size="2" color="#800080">#<span lang="de">3</span></font><font color="red" size="2" class="Helvetica32">;<span lang="de">
+    </span></font></font></b>
+    <img src="../images/new.gif" border="0" width="28" height="11"></td>
+    <td width="87%"><font face="Arial" size="2"><b>Calculate and get numbers of
+      heroes.</b><br>
+      &nbsp;&nbsp;<font color="#800080"><b> $1</b></font> - Owner (-1=current). See
+    <a href="../format/format_e1.htm">Format E1</a>.<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$2</b></font> - Start index of v variables to store info.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v[$2] = number of heroes.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v[$2+1] = number of first hero.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v[$2+2] = number of second hero.<br>
+    </font><tt style="font-family: Arial"><span style="font-size: 10.0pt">
+    <span lang="de">&nbsp;&nbsp; </span><b><font color="#8B008B">#3</font></b> 
+    is an index of a hero the owner has.</span></tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 - store number of all heroes the 
+    owner has in v[#2]</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><span style="font-size: 10.0pt; font-family: Courier New">
+    <tt style="font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; 0 - index, store the number of a hero 
+    the owner has to v[#2] if there is no hero with index, the v[#2] is not 
+    changed<span lang="de">.</span>There is NO check or get syntax!</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    <br>
+	<font color=purple> I don't quite understand following entry, so just leaving it here, will be tested later<br>
+	OW:H has 2 kinds of syntax - with 2 parameters and with 3. They are mixed together in help. (description of $2 applies to 2-param syntax) </font><br>
+	<br>
+    </span></font><tt style="font-family: Arial">Example:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial"><font color="#FF0000"><b>
+    !!OW:H1/99/0;</b> </font>store a number of heroes the Blue player has to v99</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial"><font color="#FF0000"><b>
+    !!OW:H1/100/1</b>;</font> store the number of the first hero the Blue player 
+    has to v100</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial"><b><font color="#FF0000">
+    !!OW:H1/100/2;</font></b> store the number of the first hero the Blue player 
+    has to v100</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial"><b><font color="#FF0000">
+    !!OW:H1/100/3;</font></b> store the number of the first hero the Blue player 
+    has to v100</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+    </span></font><tt style="font-family: Arial"><b><font color="#FF0000">
+    !!OW:H1/100/4;</font></b> store the number of the first hero the Blue player 
+    has to v100</tt><br>
+    <![if !supportLineBreakNewLine]><br>
+&nbsp;<![endif]></span></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="I">I</a></font><font color="#800080">#</font><font face="Arial" size="2" color="#800080">1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/check/get AI<br>
+      </b><b>&nbsp;</b><font color="#800080"><b>#1</b></font> - Color (see
+    <a href="../format/format_e1.htm">Format E1</a>)<br>
+      &nbsp;<font color="#800080"><b>$2</b></font> - Controller<br>
+      &nbsp;&nbsp;</font><font class="Helvetica32" face="Arial" size="2">&nbsp;&nbsp;
+      </font><font face="Arial" size="2">&nbsp; <b><font color="#8B008B">1</font></b> : AI&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;</font><font class="Helvetica32" face="Arial" size="2">&nbsp;&nbsp;&nbsp;</font><font face="Arial" size="2">
+      <b><font color="#8B008B">0</font></b> : Human</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">I</font><font color="#8B008B">#</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Additional syntax</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b># </b></font> - Owner (see
+    <a href="../format/format_e1.htm">Format E1</a>)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$1</b></font> - AI/human<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$2</b></font> - Player killed (1) or alive (0)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font class="Helvetica32" face="Arial" size="2" color="#FF0000"><a name="K">K</a></font></b><font face="Arial" size="2"><b><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">$</font></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Set/check/get the
+      state of a keymaster tent&nbsp;</b><br>
+      &nbsp;&nbsp;&nbsp; </font> <b><font color="#800080" face="Arial" size="2">#1</font></b><font class="Helvetica32" face="Arial" size="2">
+      - Owner (-1=current,0...7)&nbsp;(See <a href="../format/format_e1.htm">Format
+      E1</a>)<br>
+      &nbsp;&nbsp;&nbsp; </font> <b><font color="#800080" face="Arial" size="2">#2</font><font class="Helvetica32" face="Arial" size="2">
+      - </font></b><font class="Helvetica32" face="Arial" size="2">Keymaster number (0...7)&nbsp;(See
+    <a href="../format/format_bg.htm">Format
+      BG</a>)<br>
+      &nbsp;&nbsp;&nbsp; </font> <b><font color="#800080" face="Arial" size="2">$
+      - </font></b><font class="Helvetica32" face="Arial" size="2">Visited(1) or not(0)&nbsp;<br>
+      <b><font color="#0000FF">Example:</font><font color="#008000"><br>
+      </font><font color="#FF0000">
+  !!OW:K3/4/1;&nbsp;<br>
+ !!OW:K3/4/?v123;&nbsp;</font></b></font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top" nowrap><nobr><b><font class="Helvetica32" face="Arial" size="2" color="#FF0000">
+<a name="N">N</a></font></b><font face="Arial" size="2"><b><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">$</font></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>Check/get/(set)
+      active town&nbsp;</b><br>
+      &nbsp;&nbsp; </font><font color="#800080" face="Arial" size="2"><b># - </b></font><font class="Helvetica32" face="Arial" size="2">Owner (0...7,-1=current)<span lang="de">
+    </span> </font><font face="Arial" size="2">(see
+    <a href="../format/format_e1.htm">Format E1</a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; </font><b><font color="#800080" face="Arial" size="2">$</font></b><font class="Helvetica32" face="Arial" size="2">
+      - Town number (0...47,-1=not chosen)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><span lang="de"><font size="2" color="#FF0000"><nobr>
+    <b>N<font color="#800080">#1</font>/<font color="#800080">#2</font>/<font size="2" color="#800080">$</font>;<br>
+    <img border="0" src="../images/new.gif" width="28" height="11"><br>
+    <b>N<font color="#800080">#1</font>/<font color="#800080">#2</font>/<font size="2" color="#800080">$</font>/0;<br>    
+    <img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="87%"><font class="Helvetica32" face="Arial" size="2"><b>
+    Check/get/(set) active town</b></font><br>
+    <span lang="de"><font face="Arial" size="2">You 
+    can get a number of a town that is shown in one of 5 slots
+    at the right side of the adventure map in the town list:<br>
+    #1 - is an owner (-1=current)<br>
+    #2 - is an index of the slot (0=top..4)<br>
+    $ - is a town number (-1=no town,0..N=number of towns)<br>
+    <u><b>Comments:</b></u><br>
+    You can use only GET or check syntax.<br>
+    <b><font color="#0000FF">Example:</font></b><br>
+    <b><font color="#FF0000">!!OW:N2/3/?y10;</font></b> get the number of a town 
+    that is located in the forth slot for the Blue player and store it in y10.<br>
+<i>Note:</i> You can use forth dummy (which can be any number) parameter to use extended syntax
+</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font size="2" color="#FF0000"><a name="O">
+    </a>O</font><font size="2" color="#800080">#</font><font size="2" color="#FF0000">1/</font><font size="2" color="#800080">#</font><font size="2" color="#FF0000">2</font><font size="2" color="#8B008B">/</font><font size="2" color="#FF0000">$;<br>
+    </font></span></b>
+      <span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/check<span lang="de"> 
+    active hero number in hero list</span></b><br>
+    <span lang="de">Y</span>ou can get the number of a hero that is shown in one 
+    of 5 slots<br>
+    at the right side of the adventure map in the hero list:<br>
+    #1 - is an owner (-1=current)<br>
+    #2 - is an index of the slot (0=top..4)<br>
+    $ - is a hero number (-1=no hero,0..N=number of heroes)<br>
+    <u><b>Comments:</b></u><br>
+    You can use only GET or check syntax.<br>
+    <b><font color="#0000FF">Example:</font></b><br>
+    <font color="#FF0000"><b>!!OW:O2/3/?y10;</b></font> get the number of a Hero 
+    that is located in the forth slot<span lang="de"> </span>for the Blue player 
+    and store it in y10.</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font size="2" color="#FF0000">O</font><font size="2" color="#800080">#</font><font size="2" color="#FF0000">/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">1/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">2/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">3/
+    </font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">4/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">5/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">6/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">7/
+    </font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">8/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">9/</font><font size="2" color="#800080">$</font><font size="2" color="#FF0000">10<span lang="de">;</span></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/check<span lang="de"> 
+    active hero number in hero list</span></b><br>
+    #=number of owner (-1=current) (see <a href="../format/format_e1.htm">Format E1</a>)<br>
+    $1 - number of heroes the owner has<br>
+    $2..$10 - Hero ID numbers owned by this player (-1=no hero) (See
+    <a href="../format/format_h.htm">Format
+      H</a>)<br>
+    <br>
+    <b><u>Comments:</u></b><br>
+    This command lets you check the hero numbers of all active heroes (maximum 
+    is 8) that a player has as they appear in the hero list (left side of the 
+    main adventure map screen). They can also be set if you wish to change the 
+    order that heroes appear in this list. If the owner has less than 8 heroes, 
+    the numbers at the end will have a value of -1.</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><font face="Arial" size="2"><b><font color="#FF0000"><a name="R">R</a></font><font color="#800080">#1</font><font color="#FF0000">/</font><font color="#800080">#2</font><font color="#FF0000">/</font><font color="#800080">$3</font></b></font><b><font color="red" size="2" class="Helvetica32">;</font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/check/get a resource</b><br>
+      &nbsp;&nbsp; <font color="#800080"><b>#1</b></font> - Owner (See
+    <a href="../format/format_e1.htm">Format E1</a>)<br>
+      &nbsp;&nbsp; <b><font color="#800080">#2</font></b> - Resource type (See
+    <a href="../format/format_r.htm">Format R</a>)<br>
+      &nbsp;&nbsp; <font color="#800080"><b>$3 - </b></font>Resource value<br>
+      You can use a set style Ri/3/1000 or R3/j/d500... or get style Rj/5/?n.&nbsp;<br>
+      In the latter case, the current value of the resource is not
+      changed.<br>
+      Owner may be -1 which means the current player R-1/.../...</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><font face="Arial" size="2"><a name="S"></a><b>
+    <span lang="de"><font color="#FF0000">S</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">;<br>
+    </font></span></font>
+      <span lang="de"><b><font face="Arial" size="2" color="#333333">
+    <img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+    <td width="87%"><span lang="de"><font face="Arial" size="2"><b>Cast spells 
+    on the adventure map</b><br>
+    #1 - is a case (for now 1 or 2)<br>
+    In case 1:<br>
+    #2 - is a spell number to cast (0..9)<br>
+    The spell will be cast by the current hero.<br>
+    In case 2:<br>
+    #2 - is a dummy number (say, 0)<br>
+    This will open the magic book for the current hero. This is actually a<br>
+    way to simulate a player clicking the &quot;cast spell&quot; button.<br>
+    <br>
+    <b><u>Comments:</u></b><br>
+    1. No spell book is needed and the hero doesn't need to know the spell.<br>
+    2. The skill level is based on the hero's elemental magic skill (as usual).<br>
+    3. Spell points are removed from the hero when the spell is cast, but if<br>
+    the hero doesn't have enough it will be cast anyway (and it will never<br>
+    be reduced below 0).<br>
+    4. The hero must still have enough remaining movement points for Dimension 
+    Door<br>
+    or Town Portal to work.</font></span></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><a name="T"><font color="#FF0000">T</font></a><font face="Arial" size="2" color="#800080">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/check/get Alliance Team</b><br>
+      </font><font class="Helvetica32" face="Arial" size="2">&nbsp;&nbsp; </font><font face="Arial" size="2"><font color="#8B008B"><b>$1</b></font><font face="Arial" size="2" color="#000000">
+      - Color (</font>See <a href="../format/format_e1.htm">Format E1</a>).<br>
+      </font><font class="Helvetica32" face="Arial" size="2">&nbsp;&nbsp; </font><font face="Arial" size="2"><font color="#8B008B"><b>$2</b></font><font color="#000000">
+      - Team&nbsp;</font><font color="#000080"><span lang="de">(0..6)</span></font><br>
+      Set/check/get $2 Team for $1 Color (changes alliances).&nbsp;<br>
+    <span lang="de">Please note that if owner is neutral 
+    (value for object owner is -1), there is <i>no need</i> to get alliance 
+    team. <br>
+    &nbsp;If however you do so, the resulted team number is shown as 0 (which in most 
+    cases is the same alliance number for human red player).<br>
+    &nbsp;To check if owner of i.e. a castle is neutral use see<font color="#000080">
+    <a target="principal" href="receiver_ca_right.htm#O">CA section</a></font></span></font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="V">V</a></font><font color="#8B008B">#</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><font face="Arial" size="2"><b>Set/get/check Heroes available to hire in tavern</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>#</b></font>  - Owner <font color="#000000">(</font>See
+    <a href="../format/format_e1.htm">Format E1</a>).<br>
+      &nbsp;&nbsp;<font color="#8B008B"><b> $1</b></font> - Left  hero to hire in a tavern (-1 = none, see <a href=../format/format_h.htm>FormatH</a>)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Right hero to hire in a tavern (-1 = none, see <a href=../format/format_h.htm>FormatH</a>)<br>
+      <u>
+   <b>
+   Comments:</b></u><br>
+      We cannot guarantee that all will work fine if you set one hero for       several players (and as a second copy for one player).<br>
+      The
+     Hero that is set to be hired in a tavern will be temporary set       as disabled.</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="W">W</a></font><font color="#8B008B">#</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$2</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><b><font class="Helvetica32" face="Arial" size="2">Check/get/(set)
+      number of towns owner controls </font></b><font face="Arial" size="2">(shown
+      in town list)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp;
+      </font><font color="#8B008B" face="Arial" size="2"><b>#</b></font><font class="Helvetica32" face="Arial" size="2">
+      - Owner (0...7,-1=current)<span lang="de"> </span> </font><font face="Arial" size="2">
+    (see <a href="../format/format_e1.htm">Format E1</a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; </font><font color="#8B008B" face="Arial" size="2"><b>$ - </b></font><font class="Helvetica32" face="Arial" size="2">Number of Towns (0...47)</font></td>
+  </tr>
+  <tr>
+    <td width="13%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">W</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font face="Arial" size="2" color="#800080">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#800080">$</font><font color="red" size="2" class="Helvetica32">;</font></font></b></td>
+    <td width="87%"><b><font class="Helvetica32" face="Arial" size="2">Check/get/(set)
+      number of number of owner's town in the list</font></b><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp;
+      </font><font color="#8B008B" face="Arial" size="2"><b>#1</b></font><font class="Helvetica32" face="Arial" size="2">
+      - Owner (0...7,-1=current)<span lang="de"> </span> </font><font face="Arial" size="2">
+    (see <a href="../format/format_e1.htm">Format E1</a>)</font><font class="Helvetica32" face="Arial" size="2"><br>
+      &nbsp;&nbsp; </font><font color="#8B008B" face="Arial" size="2"><b>#2</b></font><font class="Helvetica32" face="Arial" size="2">
+      - Town's number in the <span lang="de">player's
+    </span>list (0...47)<br>
+      &nbsp;&nbsp; </font><font color="#8B008B" face="Arial" size="2"><b>$ </b></font><font class="Helvetica32" face="Arial" size="2">-
+      </font><font class="Helvetica32" face="Arial" size="2">Town's number on the map<span lang="de">
+    </span>&nbsp;(0...47)</font></td>
+  </tr>
+</table>
+
+<p><font size="2" face="Arial"><b><font color="#0000FF">If you want to give or take money from a
+player rather than setting it to a completely new number, use a
+relative syntax:</font></b><br>
+<font color="#FF0000"><b>
+  !!OW../6/d100; </b> to give 100<br>
+<b>
+  !!OW../6/d-100;</b> to take 100 (do not get below 0 :-)</font></font>
+</p>
+
+</body>
+
+</html>

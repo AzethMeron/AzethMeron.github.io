@@ -1,0 +1,1496 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>HE Receiver Options</title>
+<base target="annexe">
+</head>
+
+<body background="../images/intile.jpg">
+
+  <p align="center"><strong>
+
+  <font face="Times New Roman CE" size="6">
+  <span lang="de">H</font><font face="Times New Roman CE" size="5">ERO</font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">HE</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span>
+
+  <font face="Arial" size="2">
+  <font color="#333333">RECEIVER</font></font></strong>
+
+  <p><font color="#333333"><b><font face="Arial" size="2">Used to modify characteristics, troops,
+  inventory, skills, location and just about everything imaginable for a specified hero.
+  Also used for setting blessings and curses.<br>
+When any hero steps <a href=../other/trigger_right.htm#hm target=principal>!?HM trigger</a> occurs</font></b> </font>
+
+  </p>
+
+  <p><tt><span lang="de"><font size="2" face="Arial"><b>Note:</b> </font></span>
+  <font size="2" face="Arial">v998/v999/v1000 variables will store the location
+  of the current hero visited. Also, you can refer to it easily with an indirect
+  reference (for example: !!<span lang="de">HE</span>998:...; ) <br>
+  <br>
+  <span lang="de">For a more detailed and explained version of HE receiver, read
+  <a target="_self" href="../other/tutor_right.htm#howto6">the HE receiver easily
+  explained</a> (ERM for dummies, by Qurqirish Dragon)</span></font></tt></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+      <tr>
+        <td nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!HE<font color="darkmagenta">#</font>:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" valign="top">
+
+<font class="Helvetica32" face="Arial" size="2">
+  The hero number of # (see <a href="../format/format_h.htm">Format
+          H</a> - each hero has a unique number in the game).</font>
+
+        </td>
+      <tr>
+        <td nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!HE</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">#2</font><font color="#FF0000">/</font><font color="#8B008B">#3</font><font size="3" color="#FF0000">:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;
+</font></font></b></td>
+        <td width="100%" valign="top">
+
+<font face="Arial" size="2"><font class="Helvetica32">The hero </font> at x,y,l
+coordinates<font class="Helvetica32" size="3"><br>
+&nbsp;&nbsp;
+</font>
+
+<b><font color="#8B008B">#1</font></b> = x<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font> = y<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font> = level <font class="Helvetica32"> (0-Surface,
+1-Underground)</font></font>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap valign="top"><b><font face="Arial" size="2"><font color="#FF0000">!!HE-1:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></td>
+        <td width="100%" valign="top">
+
+<font face="Arial" size="2">The hero who activated the trigger. Using this
+format simplifies things greatly as you do not need to keep changing the
+coordinates for every !!HE command if you move the trigger event or
+object.&nbsp;<br>
+<font color=purple> Note:
+When you load a saved game, the top Hero in the Hero scroll list appears to be active, but the MGO trigger (Spell Book) will not have a valid Hero number for HE-1 at this point! Use OW:A to check whether there is an active Hero, to avoid error messages.
+</font>
+</font>
+
+        </td>
+      </tr>
+  </table>
+
+  <p align="center"><strong><font face="Arial" size="2">COMMANDS</font></strong>
+
+  <table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td width="107" valign="top"><font size="2" face="Arial"><b><font color="#FF0000"><a name="A">A</a>1/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2</font></b><nobr><b><font color="#FF0000">;</font></b></nobr><b><font color="#FF0000"><br>
+          A2/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2/</font><font color="#8B008B">$</font><font color="#FF0000">3</font></b><nobr><b><font color="#FF0000">;</font></b></nobr><b><font color="#FF0000"><br>
+          A3/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2/</font><font color="#8B008B">$</font><font color="#FF0000">3</font></b><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top">
+
+<font face="Arial" size="2"><b>These commands let you equip, check, calculate, or
+delete one or more artifacts from a hero.</b><br>
+(When you equip/take off an artifact, <a href=../other/trigger_right.htm#ae target=principal>!?AE trigger</a> occurs.)<br>
+<br>
+For now you cannot add combo artifacts this way -- there is only one way to add
+them, to the hero's backpack: <font color="#0000FF"><b>
+!!HE-1:A129;</b></font><br>
+<br>
+  All artifacts start from 7 (Centaur's Axe) on.<br>
+  1000 is a magic book<br>
+  1001 on means a scroll with a spell 0 on (1001=0, 1002=1,...)<br>
+<br>
+
+<b>
+
+<font color="#FF0000">A1/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2</font>
+</b>
+- <b> Equip an artifact</b><br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - number of artifact. (see
+<a href="../format/format_a1.htm">Format
+          A1</a>).<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - position on the body where to place (see
+<a href="../format/format_ap.htm">Format
+AP</a>).<br>
+<span lang="de"><u><b>Notes</b></u></span><b><u>:</u></b><br>
+<span lang="de">&nbsp;- </span>If the slot is busy, the ERM Flag1 will be set to 0
+  otherwise to 1.<br>
+<span lang="de">&nbsp;- </span>If you use HE:A1 to equip an artifact that gives
+spells, such as a Tome, Spell Scroll or Spellbinder's Hat, the spell won't be
+added. It will only be added if the player unequips and reequips the artifact.</font> <span lang="de">
+<b><font face="Arial" size="2"><br>
+Note: </font></b><font face="Arial" size="2">this is solved
+using the new A4 parameter, which is availlable in WoG game versions 3.58 and later<br>
+</font></span><br>
+<span lang="de">&nbsp;- <font face="Arial" size="2">If you use the HE:A1 command
+to equip an artifact, it will equip into a locked slot and the slot won't
+register as busy.<br>
+<b>Note: </b>this is solved using the new A4 parameter, which is availlable in WoG game versions 3.58 and later</font></span><p><span lang="de">
+<font face="Arial" size="2">The HE#:A1 command is extended so it now supports
+backpack slots.</font></span></p>
+<p><font face="Arial" size="2"><b><font color="#FF0000">A2/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2/</font><font color="#8B008B">$</font><font color="#FF0000">3</font>
+</b>
+- <b> Calculate numbers of an artifact (get or check)</b><br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Number of artifact. (see <a href="../format/format_a1.htm">Format
+          A1</a>).<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Returns number of artifacts of the type hero has
+  (get or check syntax)<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> - Returns the numbers of equipped artifacts of the type
+  (get or check syntax)</font>
+
+</p>
+<p><font face="Arial" size="2"><b><font color="#FF0000">A3/</font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2/</font><font color="#8B008B">$</font></b><font color="#FF0000"><b>3</b>
+</font>
+
+ - <b> Remove several copies of artifact</b><br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Number of artifact. (see <a href="../format/format_a1.htm">Format
+          A1</a>).<br>
+&nbsp;&nbsp;<font color="#8B008B"><b> $2</b></font> - Numbers of copy to delete<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> - Flag to delete first equipped (1) or in backpack (0)</font>
+<span lang="de">_<br>
+</span>
+
+<font face="Arial" size="2"><span lang="de"><u><b>Notes</b></u></span><b><u>:</u></b></font><br>
+<font face="Arial" size="2"><span lang="de">&nbsp;- </span>If you remove an
+artifact that has added a spell to a hero's book with ERM (HE:A- or HE:A3), the
+spell remains in the hero's book permanently.<br>
+<span lang="de">&nbsp;- </span>If you remove an artifact with HE:A- it will
+correctly remove the added bonuses but if you remove it with HE:A3 it won't
+remove the bonuses.<br>
+<span lang="de">&nbsp;- If you remove a combo artifact with HE:A- it will
+correctly remove the locked slots and added bonuses too, but if you remove it
+with HE:A3 it won't remove either!</span></font></p>
+
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">A</font><span lang="de"><font color="#8B008B" face="Arial" size="2">4</font><font size=2 color=red>/</font><font size =2 color=purple>#</font></span></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;<span lang="de">
+        </span></font></b></nobr></font></td>
+
+        <td valign="top">
+
+<span lang="de"><font size="2">
+<span style="font-family: Arial; font-weight: 700">E</span></font></span><tt style="font-family: Arial"><span style="font-size: 10.0pt; font-weight: 700">quip
+an artifact<span lang="de"> </span></span>
+<span style="font-size: 10.0pt" lang="de">You can now automaticaly add spells
+from artifacts. Also, the locked slots problem solved</span><span lang="de" style="font-size: 10.0pt; font-weight: 700"><br>
+</span></tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><span style="font-size: 10.0pt; font-family: Courier New">
+<tt style="font-family: Arial">&nbsp; <span lang="de">U</span>se<span lang="de">s</span>
+an internal function for this so artifact will be equipped if</tt></span><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><span style="font-size: 10.0pt; font-family: Courier New">
+<tt style="font-family: Arial">possible and not equipped (put to backpack)
+otherwise.</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">&nbsp; Example:</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">!?LE4/2/0;</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">!!HE-1:A4/129;&nbsp; [equip Angelic
+Alliance]</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">!!HE-1:A4/15;&nbsp;&nbsp; [try to equip a
+shield but put to backpack]</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">!!HE-1:A4/1016; [equip Magic Arrow
+scroll]</tt><font face="Arial"><span style="font-size: 10.0pt"><br>
+</span></font><tt style="font-family: Arial">!!HE-1:A4/1000; [equip Magic Book]</tt></span></td>
+      </tr>
+	  
+	  <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">A5/</font><span lang="de"><font color="#8B008B" face="Arial" size="2">$1</font><font size=2 color=red>/</font><font size =2 color=purple>$2</font><font size=2 color=red>/</font><font size =2 color=purple>?$3</font><font size=2 color=red>/</font><font size =2 color=purple>?$4</font></span></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;<span lang="de">
+        </span></font></b></nobr></font></td>
+
+        <td valign="top">
+
+<span lang="de"><font size="2">
+<font face="Arial" color=black size=2>
+<b>Control artifact locks</b><br>
+&nbsp;&nbsp;&nbsp; <font color=purple>$1</font> - slot lock index (see below) <br>
+&nbsp;&nbsp;&nbsp; <font color=purple>$2</font> - number of locks in slot <br>
+&nbsp;&nbsp;&nbsp; <font color=purple>?$3</font> - (optional) returns the number of free artifact slots for the lock slot ($2 shouldn't exceed ?3) <br>
+&nbsp;&nbsp;&nbsp; <font color=purple>?$4</font> - (optional) returns the total number of artifact slots for the lock slot<br>
+<br>
+<pre>Here's the list of slot lock indexes (it's not the same as format AP):
+0   head
+1   shoulders
+2   neck
+3   right hand
+4   left hand
+5   torso
+6   rings
+7   feet
+8   misc. slots
+9   ballista (war machine 1)  
+10  ammo cart (war machine 2)  
+11  first aid tent (war machine 3)  
+12  catapult  
+13  spell book  </pre>
+</font> 
+</td>
+      </tr>
+	  
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">A<font color="darkmagenta">#</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Give/remove/check an artifact.&nbsp;</b><br>
+  <font color="#8B008B"><b>
+ #</b></font> is the artifact's number (see <a href="../format/format_a1.htm">Format
+          A1</a>).&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; If <font color="#8B008B"><b> # &gt; 0</b></font> the artifact will be added to the hero's backpack.&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; If <font color="#8B008B"><b> # &lt; 0</b></font> removes the artifact from all slots.<br>
+  <b><u>Comments:</u></b><br>
+  An artifact given with this command will not be automatically equipped and
+  will be placed in the hero's backpack.<br>
+  <br>
+  HE:A-1 command will delete all scrolls from the hero.&nbsp;<br>
+  <b>
+  <font color="#0000FF">Example:</font>
+  <font color="#008000"><br>
+  </font><font color="#FF0000">
+  !!HE106:A-1; </font> </b>  <font color="#FF0000">  [Remove all scrolls in Lydorie's possession]</font></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000"><a name="B">B</a>0/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top">
+  <p><font size="2" face="Arial"><b>Set/get the name of a hero.</b><br>
+Now if you customize a name but do not set a biography, it will display a hero's default  biography, rather than setting it to the same string as the customized name. So if you want to name Orin "Orin II", it will still display Orin's default biography.
+</font>
+  </p>
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">B1/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top"><font face="Arial" size="2"><b>Set/get the bios of a hero.</b><br>
+  <font color="#000000"><u><b>Comments:</b></u><br>
+          If it has a default name or bio, you will get a void string not default text.</font>
+  <br>
+          <b>
+          <font color="#0000FF">
+          Example:</font></b>
+          <font color="#008000"><br>
+          </font>
+          <font color="#FF0000">
+          <b>
+          !!IFv10:S3;<br>
+          !!IVz15:S^This is a new bios.^;</b><br>
+          <b>
+          !!HE-1:B1/?v10; </b> get the old bios of current hero to z[v10] -&gt; z3
+          string var<br>
+          <b>
+          !!HE-1:B1/z15;</b> set the new bios to z15 string var</font>
+          </font>
+
+          </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">B2/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;
+          </font></b></nobr></font>&nbsp;</td>
+
+        <td valign="top"><font face="Arial" size="2"><b>Set/get the class of a hero.</b><br>
+          &nbsp;&nbsp; <b><font color="#8B008B">$</font></b> is a class (0...17)<span lang="de">
+        <a href="../format/format_hc.htm">(Format HC)</a></span><br>
+ Divide $ to 2 and you will get a town/class type
+          </font>
+
+          </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">B3/</font><font color="#8B008B">?$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;
+          </font></b></nobr></font>&nbsp;<img src=..\images\new.gif></td>
+
+        <td valign="top"><font face="Arial" size="2"><b>Read a hero's default biography.</b><br>Get a hero's default biography text to a string variable.<br>
+This will always return the same text whether you changed the hero's biography text or not.
+  You may use only get syntax, like this:<br><b>
+<font color=darkmagenta><font color=red>!!HE</font>0<font color=red>:B</font>3<font color=red>/</font>?z25<font color=red>;</font></font><br></b>
+  This will store Orin's default biography in the z25 variable.
+
+
+                   </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="C">C</a></font><font color="darkmagenta" face="Arial" size="2">0</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">#</font></font><font color="darkmagenta" face="Arial" size="2">1</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">$</font></font><font color="darkmagenta" face="Arial" size="2">2</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">$</font></font><font color="darkmagenta" face="Arial" size="2">3</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Change monsters: format 1.</b><br>
+  </font>
+
+  <font face="Arial"><font size="2">&nbsp;<font color="#0000FF">#1</font> =
+  hero's slot number (slots are numbered 0..6)<br>
+  &nbsp;<font color="#0000FF">$2</font> = <span lang="de"><font color="#000080">
+  new</font> </span>monster type (</font></font><font face="Arial" size="2"><a href="../format/format_c.htm">Format C</a>)&nbsp;
+  </font>
+
+  <font face="Arial"><font size="2"><br>
+  &nbsp;<font color="#0000FF">$3</font> = number of monsters</font></font>
+
+  <font face="Arial"><font size="2"><br><br>
+  <font color="purple"><b>JG:</b> You may <b>not</b> use any variable indexed -1 or -2 in parameter $3.
+  Other negative indexes (f.e. y-3) are fine. </font></font>
+
+  <font size="2" color="#8B008B"><b>&nbsp;</b></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="C">C</a><font color="darkmagenta">1</font>/<font color="darkmagenta">#</font></font><font color="darkmagenta" face="Arial" size="2">1</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">$</font></font><font color="darkmagenta" face="Arial" size="2">2</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">$</font></font><font color="darkmagenta" face="Arial" size="2">3</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Change monsters: format 2.</b><br>
+  </font>
+
+  <font face="Arial" size="2">All monsters of type <font color="#0000FF">#1</font> will
+  change into:<br>
+  &nbsp;<font color="#0000FF">$2</font> (type: <a href="../format/format_c.htm">Format
+  C</a>)<br>
+  &nbsp;<font color="#0000FF">$3 </font>(number).</font> <br>
+  <br>
+  <font face="Arial" size="2"><span lang="de"><b><font color="#0000FF">Example</font>:</b><br>
+  <font color="#FF0000"><b>!!HE-1:</b></font></span><font color="#FF0000"><b>C1/0/1/d;</b></font> (all pikemen
+  change to halberdiers)</font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="C">C</a></font><font color="darkmagenta" face="Arial" size="2">2</font><font color="red" face="Arial" size="2">/<font color="darkmagenta">#</font></font><font color="darkmagenta" face="Arial" size="2">1</font><font color="red" face="Arial" size="2">/</font><font color="darkmagenta" face="Arial" size="2">#2</font><font color="red" face="Arial" size="2">/</font><font color="darkmagenta" face="Arial" size="2">#3</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Add a new stack of monsters to a hero.</b><br>
+  &nbsp;<font color="#0000FF">#1</font> = type of monsters (<a href="../format/format_c.htm">Format C</a>)&nbsp;<br>
+  &nbsp;<font color="#0000FF">#2</font> = number of monsters<br>
+  &nbsp;<font color="#0000FF">#3</font> = 1 - ask human to find room in the army
+  if all slots are filled.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; = 0 - use AI to add it (if it feels the addition is
+  more valuable than an existing stack)</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <nobr><b><font color="red" face="Arial" size="2">C<font color="darkmagenta">#1</font>/<font color="darkmagenta">#2</font>/</font><font face="Arial" size="2" color="#8B008B">....</font><font color="red" face="Arial" size="2">/</font><font color="darkmagenta" face="Arial" size="2">#14</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+<b>
+<font face="Arial" size="2">Change monsters : </font></b><font face="Arial" size="2"><b>Give to player a choice of monsters set.</b><br>
+  Use C command with 14 parameters:<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font>  = type of monster 1 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#2</b></font>  = number of monsters 1<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#3</b></font>  = type of monster 2 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#4</b></font>  = number of monsters 2<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#5</b></font>  = type of monster 3 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#6</b></font>  = number of monsters 3<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#7</b></font>  = type of monster 4 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#8</b></font>  = number of monsters 4<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#9</b></font>  = type of monster 5 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#10</b></font> = number of monsters 5<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#11</b></font> = type of monster 6 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#12</b></font> = number of monsters 6<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#13</b></font> = type of monster 7 (-1 = no)<span lang="de">
+</span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+&nbsp;&nbsp; <font color="#8B008B"><b>#14</b></font> = number of monsters 7<br>
+Now supports check syntax that lets you find out which troops were left. <font color=purple>No idea what this exactly means right now, to be tested</b><br>
+<b><font color="#0000FF">  Example:</font></b>
+<font color="#008000"><br>
+</font><font color="#FF0000">
+  This will be a dialog like when you leave creatures.<br>
+<b>!!HE-1:C5/6/7/8/9/10/11/12/13/14/15/16/17/18;<br>
+!!HE-1:C1/2/-1/0/-1/0/-1/0/-1/0/-1/0/-1/0;</b></font></font>
+        </td>
+      </tr>
+<tr><td width=107 valign=top><font color=red><b>C...</b></font><img src=../images/new.gif><br>
+<font size=2>(experience support)
+</td><td><font face=arial size=2>
+<b>Extended !!HE:C0, !!HE:C1 and !!HE:C2 syntax for setting or retaining Stack Experience.</b><br>
+<i> (Note: does not work with HE:C).</i><br><br>
+ Now these commands may have 5 or 6 parameters:<b>
+<font color=darkmagenta><font color=red>!!HE...:C</font>#<font color=red>/</font>#1<font color=red>/</font>$2<font color=red>/</font>$3<font color=red>/</font>$4<font color=red>/</font>$5<font color=red>;</font></font></b><br>
+&nbsp;&nbsp;<b>#</b> = 0 - change monsters (by slot)<br>
+&nbsp;&nbsp;<b>#</b> = 1 - change monsters (by type)<br>
+&nbsp;&nbsp;<b>#</b> = 2 - add monsters<br>
+&nbsp;&nbsp;<b>$4</b> = experience value (default is 0)<br>
+&nbsp;&nbsp;<b>$5</b> = experience modifier (default is 0)<br><br>
+<B>Supported $5 modifier values:</b>
+<br><br>
+<table cellspacing=0 cellpadding=0>
+<!-- <tr><td colspan=2><font size=2><b> </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2> </td></tr> -->
+<tr><td colspan=2><b><font size=2>Mode 0 - Use this mode to add additional creatures that have experience. </td></tr>
+<tr><td width=5%>&nbsp;</td>
+<td><font face=arial size=2>New creatures have their own experience $4, but old creatures (if you "add" monsters) keep their own experience. The result of experience per creature is calculated as:<br>
+  Exp=(ExpOld*NumOld+ExpNew*NumNew)/(NumOld+NumNew)<br>
+<br>
+a) Say you have a stack of 10 Monks with Exp 1000 (here and later per creature) and want to add 5 Monks with experience 3000.<br>
+The result will be: (1000*10+3000*5)/15=1666<br>
+Ex: HE...:C0/0/d/d100/5000/0;<br>
+  Add to the stack 100 creatures with exp 5000.<br>
+<br>
+b) If you add a creature of a different type, only the experience of the new creatures is taken. So if you have 10 Griffins Exp 1000 and want to add 5 Monks with experience 3000.<br>
+The result will be: 3000.<br>
+  This is used to avoid problems when you move stacks from one slot to another and the experience is mixed. Say you placed a stack of Griffins in the stack 1 and then changed it to Monks accidentally forgot to change experience (so it IS a stack of Monks but the system
+thinks that it IS a stack of Griffins). So now adding more Monks, the system will think that you changed the type of creatures and takes only experience of new creatures.<br>
+  Exception: if the stack has not gained experience yet the experience will be averaged as if you weren't changing the type (same as mode 1).<br>
+<br>
+  <b>Note:<br></b> do not use the 'd' modifier for $4 with mode 0.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 1 - The same as Mode 0 except that there is no check of creature type. So it always works according a) formula (above) whatever type of ex and new creature type you have.
+ </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>Examples.<br>
+a) you want to set creatures in slot to Pikemen and they should have the experience (per creature) of previous creatures in the stack (whatever they were) plus new 7 creatures has 50 exp. points.<br>
+<font color=red><b>!!HE...:C0/1/0/d7/50/1;</font><br>
+<br>
+  Note:</b><br> do not use the 'd' modifier for $4 with mode 1.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 2 - Use this mode to set experience for the whole stack. </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>The stack will always be set to $4 experience.<br>
+ Example: <br><font color=red><b>HE...:C0/0/d/d/5000/2;<br></b></font>
+  The stack will have experience 5000<br>
+<br>
+ <b>Note:</b><br> if you use the 'd' modifier with Mode 2 for $4, it will add the experience instead. This is identical to the operation of mode 3.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 3 - Use this mode to add additional experience to a stack. </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>Ex: <font color=red><b>HE...:C0/0/d/d/5000/3;</b></font><br>
+  The stack will have +5000 experience.<br>
+<br>
+New creatures take the experience of the old creatures plus $4. Experience is not distributed. So if you have a stack of 10 Monks with Exp 1000, want to add 5 Monks and add 3000 experience with Mode 3, the result is: 1000+3000=4000.<br>
+Ex: <b><font color=red>HE...:C0/0/d/d5/3000/3;<br></b></font>
+  The stack will have +5 creatures and +3000 experience.<br>
+<br>
+  You can also use this mode to add creatures to a stack without reducing the stack's experience, or change the type of creatures in the stack while keeping the experience unchanged.<br>
+<br>
+  You may use this modifier for temporary creature type changing as well, because the new stack will still have the same experience and if you change it then back, the stack will keep the experience.<br>
+<font color=red><b>!!HE...:C0/1/0/d/0/3;<br>
+!!HE...:C0/1/99/d/0/3;<br>
+!!HE...:C0/1/0/d/0/3;<br></b></font>
+<br>
+  Note: <br>if you use the 'd' modifier for $4 with mode 3 it will work the following way:<br>
+  <font color=red>StackExp=OldExp+OldExp+AdditionalExperience.</font><br> So if a stack had 200 experience, and you add 100 experience, it will have 200+200+100=500. <br>Then if you add another 100 experience it will have 500+500+100=1100.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 4 - Use this mode to add experience Levels (Ranks) to a stack. </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>New creatures take the experience of the old creatures plus experience equal to $4 levels.<br>
+Experience is not distributed. So if you have a stack of 10 Monks with Exp 1000, and want
+to add 5 Monks and add 3 experience levels, the result is:<br>
+1000+3levels=????<br>
+It uses the next calculation:<br>
+- we have E exp<br>
+- get a current stack exp. level L0<br>
+- get an exp. value E0 for level L0<br>
+- get a reminder dE as E-E0<br>
+- we have a level bonus L<br>
+- get a resulting level L1 as L0+L<br>
+- get an exp. value E1 for level L1<br>
+- get a final exp. E as E1+dE<br>
+Ex: <b><font color=red>HE...:C0/0/d/d/5/4;<br></font></b>
+  The stack will have +5 experience levels.<br>
+<br><b>
+  Note: </b><br>do not use the 'd' modifier for $4 with mode 4.<br><br> </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 5 - Use this mode if you upgrade creatures. </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>The same as Mode 3 but the experience of new creatures is taken as though you made an upgrade of old creatures. The new experience will be the old experience multiplied by the Upgrade Multiplier plus an experience bonus.<br>
+Ex: <b><font color=red>HE...:C0/0/d/d/500/5;<br></b></font>
+  The stack will have experience as if upgraded +500 experience.<br>
+<br><b>
+  Note: </b><br>do not use the 'd' modifier for $4 with mode 5.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 10 - Use this mode to add additional creatures with levels (ranks) of experience.
+ </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>This is the same as Mode 0 but $4 means additional levels (ranks) of new creature type experience.<br>
+Ex: <b><font color=red>HE...:C0/0/d/d100/5/10;<br></font></b>
+  Add to the stack 100 creatures with exp of Rank 5.<br>
+<b>  Note:<br></b> do not use the 'd' modifier for $4 with mode 10.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 11 - The same as Mode 10 but regardless of creature types.
+ </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>This is the same as Mode 1 but you add creatures with experience equal to $4 levels (ranks).<br>
+<br>
+Ex: <b><font color=red>HE...:C0/0/3/d100/5/11;</font></b><br>
+  Add to the stack 100 creatures with exp of Rank 5, but also changing their type to Marksmen.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 12 - Use this mode to set the experience level (rank) for the whole stack.
+
+ </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>This is he same as 2 but $4 means experience levels (ranks).<br>
+Ex: <b><font color=red>HE...:C0/0/d/d/5/12;<br></b></font><br>
+  The stack will have 5 levels (ranks) of experience.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 13 - Use this mode to set the equivalent percentage of experience for a new type of creature.
+
+ </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>This is the same as Mode 3 but it is assumed that you change the type of creatures and a new creature experience is taken as the same percentage that the old creatures have.<br>
+  So if you have a stack of Monks with exp. X and change it to a stack of Angels, the new experience will be:<br>
+<b>X*MaxA/MaxM+dE</b><br>
+  where MaxA is a max experience of an Angel and MaxM is a max experience of a Monk, dE is the added experience.<br>
+Ex: <b><font color=red>HE...:C0/0/../d/1000/13;<br></b></font>
+  The new stack gets the corresponding experience that the old stack had plus 1000 exp.<br>
+NewExp=OldExp*NewCreatureTypeR10Exp/<br>OldCreatureTypeR10Exp+ExtraExp.<br><br>
+ </td></tr>
+<tr><td colspan=2><font size=2><b>Mode 14 - The same as Mode 13 but an addition is experience levels (ranks). </td></tr>
+<tr><td width=5>&nbsp;</td>
+<td><font face=arial size=2>Ex: <b><font color=red>HE...:C0/0/../d/3/14;</b></font><br>
+  The new stack gets the corresponding experience that the old stack had plus 3 levels (ranks) of exp.
+ </td></tr>
+</table>
+</td></tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <b><font color="#FF0000" size="2" face="Arial"><a name="D">D</a></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+<b>
+<font size="2" face="Arial">Call upgrade
+dialog for hero's army (no parameters)</font></b>
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <b>
+
+<font size="2" face="Arial">
+  <font color="#FF0000"><a name="E">E</a></font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+<p>
+
+<font size="2" face="Arial">
+  <b>
+  Set/check/get experience# to the hero</b> <span lang="de">
+<a href="../format/format_hl.htm">(Format HL)</a></span></font></p>
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><font face="Arial" size="2"><nobr><b><font color="red">E<font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font></font><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>
+  Set/check/get hero's experience (additional syntax)</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - Experience points<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Hero's level</font> <font face="Arial" size="2">
+  <span lang="de"><a href="../format/format_hl.htm">(Format HL)</a></span></font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <font face="Arial" size="2"><nobr><b><font color="red">E<font color="darkmagenta">$1</font>/</font><font color="darkmagenta">?</font></b></nobr></font><nobr><b><font face="Arial" size="2"><font color="darkmagenta">$</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="red">/</font><font color="darkmagenta">1</font><font color="#FF0000">;</font></b></nobr></font><nobr><b><font face="Arial" size="2"><font color="darkmagenta">
+  </font></font></b></nobr>
+
+  &nbsp;</td>
+        <td valign="top">
+
+ <font face="Arial" size="2"><b>Additional Syntax</b><br>
+ The same as HE:E$/?$ but without redrawing<br>
+ For standard syntax some of them called redrawing always even if you check only.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="F">F</a><font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font>/<font color="darkmagenta">$4</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get primary skills.</b><br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$1 </font></b>= Attack<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$2 </b></font>= Defence<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$3 </b></font>= Power<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$4 </b></font>= Knowledge (<a href="../format/format_pk.htm">Format
+  PK</a>)</font>
+
+        </td>
+      </tr>
+<tr>
+<td width=107 valign=top><a name=g>
+<font color=red size=2 face=arial><b>G<font color=darkmagenta>$</font>;<img src=../images/new.gif></td><td><font size=2 face=arial>
+<b>Set initial hero's movement points</b><br>
+<b>$</b> - initial hero's movement points.<br>
+<i>  Comment:</i><br>
+  If you set both HE:W and HE:G options to the same value (any), you may dig for the Grail.
+
+
+</td></tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">F<font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font>/<font color="darkmagenta">$4</font></font><font face="Arial" size="2" color="#FF0000">/</font><font color="darkmagenta" face="Arial" size="2">1</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Additional syntax for primary skill checking.<br>
+  </b>Adding <b>/1</b> at the end of the command returns the <i><b>base value</b></i>
+  of a hero's primary skill without including artifact bonuses.<br>
+  &nbsp;&nbsp; <b><font color="#8B008B">$1 </font></b>= Attack<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$2 </b></font>= Defence<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$3 </b></font>= Power<font color="#8B008B"><b><br>
+  </b></font>&nbsp;&nbsp; <font color="#8B008B"><b>$4 </b></font>= Knowledge (<a href="../format/format_pk.htm">Format
+  PK</a>)<br>
+  <u><b>Comments:</b></u><br>
+  You can use only get or check syntax. You can also set it but it will do
+  nothing.<br>
+  e.g., <b><font color="#FF0000">!!HE-1:F?v100/?v101/?v102/?v103/1;</font></b></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="H">H</a><font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font>/<font color="darkmagenta">$4</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set army type for newly hired heroes.</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Slot number (0,1,2)<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Monster type (-1 means no monster)<span lang="de">
+  </span></font><font size="2" face="Arial">(<a href="../format/format_c.htm">Format C</a>)&nbsp; <br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> = Minimum value of monsters number<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$4</b></font> = Maximum value of monsters number (may be equal to min number for fixed number)</font>
+  <p><font face="Arial" size="2"><u><b>Comments:</b><br>
+  </u>This will be applied to a hero that CANNOT be hired right now. So if Orin
+  and Jeddite are currently available in a tavern, their army WILL NOT be
+  changed until next week. But if you change the army of Crag Hack and he will
+  be available to be hired after you hire Orin or Jeddite, he WILL have the army
+  that you set.</font></p>
+  <p><font face="Arial" size="2">Then, when you hire a hero that appears in a
+  Tavern in the beginning of the week, he will have 2 or 3 slots of army (it's
+  not possible to set 2 or 3 exactly). So you can set 1st and 2nd slots to
+  desired monsters and 3rd slot to -1 monster type. This will result in the hero
+  always having 2 slots of monsters. Then if you hire a Hero, he or she will
+  have only one slot of monsters and number 1.</font></p>
+  <font SIZE="2">
+  <p><b><font face="Arial" size="2" color="#0000FF">Example:
+  </font></b><font face="Arial" size="2" color="#008000"><br>
+  </font><font face="Arial" size="2" color="#FF0000">
+  Set Army of Orin to Gnoll at the game start<br>
+  <b>
+  !#HE0H0/99/3/3H1/-1/2/2H2/-1/0/0;</b></font></p>
+  <p><font face="Arial" size="2" color="#FF0000">This may be used later during a
+  game.<br>
+  <b>
+  !?LE3/7/0; Trigger for cycle<br>
+  !!DO21000/0/155/1P; Set Army to all Heroes<br>
+  !?FU21000;<br>
+  !!VRv1Sx16;<br>
+  !!HEv1H0/99/3/3H1/-1/2/2H2/-1/0/0;</b></font></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="I">I</a><font color="darkmagenta">$</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b><font color="#000000">Set/check/get spell points.&nbsp;</font></b><br>
+ Be sure to use d for relative change if you wish to add or
+  subtract rather than set.&nbsp;<br>
+  <b><font color="#0000FF"> Example:&nbsp;</font><font color="#008000"><br>
+  </font><font color="#FF0000">
+ !!HE-1:Id-1;</font></b> This will reduce the hero's
+  current spell points by 1.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <nobr><b><font face="Arial" size="2"><font color="red">I<font color="darkmagenta">$</font></font><font color="#FF0000">/</font><font color="darkmagenta">1</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font><nobr><b><font face="Arial" size="2"><font color="darkmagenta">
+  </font></font></b></nobr>
+
+  &nbsp;</td>
+        <td valign="top">
+
+ <font face="Arial" size="2"><b>Additional Syntax</b><br>
+ The same as HE:I$ but without redrawing<br>
+ For standard syntax some of them called redrawing always even if you check only.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <b>
+
+  <font face="Arial" size="2" color="#FF0000">
+  <a name="K">
+  K</a></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+ <font size="2" face="Arial"> <b> Instantly kills the hero (put this to a well - all fall inside :-)</b></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <nobr><b><font color="red" face="Arial" size="2">K</font><font face="Arial" size="2"><font color="darkmagenta">$</font><font color="#FF0000">/</font><font color="darkmagenta">1</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font><nobr><b><font face="Arial" size="2"><font color="darkmagenta">
+  </font></font></b></nobr>&nbsp;</td>
+        <td valign="top">
+
+ <font face="Arial" size="2"><b>Additional Syntax</b><br>
+ The same as HE:I$ but without redrawing<br>
+ For standard syntax some of them called redrawing always even if you check only.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <b>
+
+  <font face="Arial" size="2" color="#FF0000">
+  <a name="L">
+  L</a></font><font face="Arial" size="2" color="#8B008B">#</font><font face="Arial" size="2" color="#FF0000">^</font><font face="Arial" size="2" color="#8B008B">file.pcx</font><font face="Arial" size="2" color="#FF0000">^</font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+<font size="2" face="Arial"><b>Sets a hero's portrait to an external image file.</b><br>
+</font>
+
+<font face="Arial"><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font></font>
+
+<font size="2" face="Arial"><font color="#8B008B"><b># = 1</b></font> - Set small picture to file.pcx<br>
+</font>
+
+<font face="Arial"><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font></font>
+
+<font size="2" face="Arial"><font color="#8B008B"><b># = 2</b></font> - Set large picture to file.pcx<br>
+</font>
+
+<font face="Arial"><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font></font>
+
+<font size="2" face="Arial"><font color="#8B008B"><b># = 3</b></font> - Reset both pictures to default (no ^...^ allowed)<br>
+<b><u>
+  Comments:</u></b><br>
+  file.pcx will be searched for in heroes DATA directory. But you can use subdirectory. Example ^c\name.pcx^ - in &quot;c&quot;
+  subdirectory of the DATA dir. Or ^..\maps\1.1^ - in MAPS dir of Heroes.<br>
+  Important! The full length of file name (with subdirectory path) cannot be more than 12 characters.<br>
+The screen will be redrawn automatically if you change the hero's portrait.
+</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">L0/</font><font color="#8B008B">$</font></font><font color="#FF0000" size="2" face="Arial">;</font></b></td>
+        <td valign="top"><font face="Arial" size="2"><b>Set hero's portrait
+          to portrait number $. (Cf.CMD file).</b></font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">L4/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+
+  <td valign="top"><font face="Arial" size="2"><b>Sets both the
+    small and large portrait to the game portrait equal to $.</b></font>
+
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"> <b> <font size="2" face="Arial"> <font color="#FF0000"> L5/</font><font color="#8B008B">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font color="#8B008B">$2</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top"><font face="Arial" size="2"><b>Set a hero portraits.</b><br>
+          &nbsp;&nbsp; <b><font color="#8B008B">$1</font></b> - String variable for large pic (0-do not change)<br>
+          &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b>  <font color="#000000">  </font> - String variable for small pic (0-do not change)</font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="M">M</a><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get spell<span lang="de">:</span></b><span lang="de"><font color="#000080"> </font>only for spellbook</span><b><br>
+  </b>spell #1 (see <a href="../format/format_sp.htm">Format
+          SP)</a> &nbsp;<br>
+ at level $2 (0 = remove spell, 1 = give spell)</font> <br>
+  <br>
+  <span lang="de">
+          <font SIZE="2" face="Arial"><b>Note:</b></font></span>&nbsp;<font face="Arial" size="2"><span lang="de">To
+  check if spell is learned/gained or just learned use the two ways described
+  bellow:</span><br>
+  - You can check for a spell that the hero has learned *or* that he/she knows
+  due to a scroll or spell-giving artifact by using HE:M#/?$; In *either* case,
+  the variable will have a value of 1 if the hero has the spell.<br>
+  &nbsp;- You can check for a spell that the hero has learned but NOT one he/she only
+  knows from a scroll or spell-giving artifact by using HE:M=#/1; with flag 1
+  set to 1 the hero has learned the spell. If the hero has the spell from a
+  scroll or spell-giving artifact, flag 1 will still be set to 0</font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="N">N</a><font color="darkmagenta">$</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Check or get the hero's number.</b><br>
+  <u><b>Comments:</b></u><br>
+  Don't try to set the hero's number to something else. It won't work or will
+  cause instability.<br>
+  <b><font color="#0000FF">Example:</font> <font color="#FF0000">!!HE-1:N?v100;</font></b></font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="O">O</a><font color="darkmagenta">$</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get the hero's owner </b> (see
+  <a href="../format/format_e1.htm">Format
+          E1</a>).<br>
+  </font>
+
+<font face="Arial"><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font></font>
+
+  <font face="Arial" size="2"><b><font color="#8B008B">$</font></b> - player number that controls hero. If a hero isn't on the map and thus has
+  no owner, the number returned will be -1.<br>
+  <u><b>Comments:</b></u><br>
+  This command should work properly to let you change the owner of a player,
+  unlike in previous versions where the changeover didn't work completely.<br>
+  Note: If you try to give a hero to an owner that has 8 active heroes already, the
+  command will be just canceled. Check a hero's owner to be sure that he/she was transferred
+  successfully.</font>
+
+        </td>
+</tr><tr><td width=107 valign=top><font color=red size=2 face=arial><b>O... <img src=../images/new.gif>
+</td><td><font face=arial size=2>
+<b>Extended HE:O command syntax to use a "neutral" hero in a battle.</b><br><br>
+
+ Use a dummy second parameter in HE:O command (like HE...:O5/1; ) to use this way. If you use a two parameters syntax, it will directly change the hero's owner. You can use this to set an unowned hero to defend a neutral monster stack, but make sure that the owner is changed back to -1 after the battle is over. Note: if you change an unowned hero in this way to temporarily give it an owner (number 0..7), it can be read with HE:O, but BA:O will still return -1.
+
+
+</td></tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="P">P</a><font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get the hero to X = $1, Y = $2, level = $3.
+  (Move)<br>
+  <u>Comments:<br>
+  </u>
+  </b></font>
+
+  <font face="Arial"><tt><font face="Arial">In addition to its normal use of moving a hero on
+  the map, this command can also be used to bring a hero from the hero pool (not
+  currently &quot;in play&quot; into the game. After you bring the hero onto the map with
+  this command, you should then set the hero's owner with the HE:O command.</font></tt></font></td>
+        <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">P<font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">S</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top"><p><font face="Arial" size="2"><b>Move an opponent hero (not one of your
+          colour) with
+  sound and redraw operation:</b><br>
+          &nbsp;&nbsp; if <font color="#8B008B"><b> $&lt;>0</b></font> - move hero with sound and redraw (teleport)<br>
+          &nbsp;&nbsp; if <font color="#8B008B"><b> $=0</b></font> - old style (hero jump to the new place immediately)<br>
+   Old style of command (without $) suppose $=0</font></p>
+  </td>
+        </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000"><a name="R">R</a>0/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top"><font face="Arial" size="2"><b>Set/check/get hero's moral
+          (until next battle)</b></font>
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">R1/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top"><font face="Arial" size="2"><b>Set/check/get hero's luck
+          (until next battle)</b></font>
+
+          </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">R2/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+
+  <td valign="top"><font face="Arial" size="2"><b>Set/check/get sex
+    of a Hero</b></font> <br>
+  <tt><font face="Arial" size="2">Male=0, Female=1.</font></tt></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">R3/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set hero's availability in the hero pool&nbsp;for
+  all players<br>
+  &nbsp;</b></font><font face="Arial"><font size="2" color="#8B008B"><b>&nbsp;&nbsp;
+  </b></font></font><font face="Arial" size="2"><font color="#8B008B"><b>$</b></font>  - (set/check/get) enabled (1) or disabled (0) hero&nbsp;to hire to all</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000">R3/</font><font color="#8B008B">$1/$2</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set hero's availability in the hero pool&nbsp;for
+  each player</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> - (set/check/get) enabled (1) or disabled (0) hero to hire<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - (set/check/get) players that may hire (one bit - one
+  colour)<br>
+  <b><u>   Comments:&nbsp;</u></b><br>
+     $2 makes sense (will be set) only if you enable a hero.<br>
+     If you disable a hero that is owned by any player,
+        the hero will be killed.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">R4/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get a hero's Tactic control</b><br>
+  &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">-1</font></b> = Enable<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>0</b></font> = Disable</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">R5/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Maximum morale</b><br>
+  &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">1</font></b> = maximum morale set<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>0</b></font> = maximum morale not set</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">R6/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Maximum luck</b><br>
+  &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">1</font></b> = maximum luck set<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>0</b></font> = maximum luck not set</font>
+
+        </td>
+      </tr>
+	  
+		<tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">R7/</font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/get/check "visited object" flag</b><br>
+  &nbsp;&nbsp;&nbsp; <b><font color="#8B008B">$</font></b> - modifiers word<br>
+  In most cases, setting or clearing these bits won't change Luck, Morale, movement or spell points--they only set (or clear) the record of whether the hero has already visited a given type of structure in a given period, e.g., this week, for next battle, etc. However, it will set or clear any text associated with these structure if you click on the hero's Luck or Morale in the hero screen (e.g., "Temple Visited +1"), but you'll still have to set the hero's temporary Luck or Morale with the HE:R0 and HE:R1 commands. <br>
+	Slava writes;  I think it is correct for THIS current day. If you set a "affect a few days" like a Stable, I think the effect will be applied automatically on every next day until the effect ends up.<br>
+
+	<pre>  Bits:
+  00000001 = 1 MAGIC WELL
+  00000002 = 2 stable
+  00000004 = 4 BOUY
+  00000008 = 8 swan pond
+  00000010 = 16 IDOL OF FORTUNE (DAY 1-6)
+  00000020 = 32 fountain of fortune  (-1 LUCK)
+  00000040 = 64 WATERING HOLE
+  00000080 = 128 oasis
+  00000100 = 256 TEMPLE (DAY 1-6)
+  00000200 = 512 SHIPWRECK
+  00000400 = 1024 CRYPT
+  00000800 = 2048 DERELICT SHIP
+  00001000 = 4096 PYRAMID
+  00002000 = 8192 faerie ring
+  00004000 = 16384 FOUNTAIN OF YOUTH
+  00008000 = 32768 MERMAID
+  00010000 = 65536 RALLY FLAG
+  00020000 = 131072 ? (NO IDEA)
+  00040000 = 262144 in a boat (ONLY SET THIS IF HERO IS ON WATER OR IT CRASHES)
+  00080000 = 524288 ? (NO IDEA)
+  00100000 = 1048576 SIRENS
+  00200000 = 2097152 Warrior's Tomb
+  00400000 = 4194304 Maximum Luck (the same as HE:R6)
+  00800000 = 8388608 Maximum Moral (the same as HE:R5)
+  01000000 = 16772216 WOGSHADOWFAX (THIS RESETS MOVE TO ONE MILLION EACH TURN)
+  02000000 = 33554432 IDOL OF FORTUNE (DAY 7)
+  04000000 = 67108864 TEMPLE (DAY 7)
+  08000000 = 134217728 +1 LUCK FOUNTAIN OF FORTUNE
+  10000000 = 268435456 +2 LUCK FOUNTAIN OF FORTUNE
+  20000000 = 536870912 +3 LUCK FOUNTAIN OF FORTUNE
+  (38000000 = 939524096 mask for a type of fountain of fortune, total of the three values above)
+  </pre>
+
+        </td>
+      </tr>
+	  
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2">R<font color="darkmagenta">#1</font>/<font color="darkmagenta">$</font>/<font color="darkmagenta">#</font></font><font color="darkmagenta" face="Arial" size="2">2</font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>R command with redraw control&nbsp; (for all
+  HE:R commands)</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#1 </b></font>- R command number<br>
+  &nbsp;&nbsp;&nbsp; <font color="#8B008B"><b>$</b></font>&nbsp; - value<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#2 </b></font>- redraw flag (1=redraw,
+  0=no redraw)<br>
+  <b><u>Comments:</u></b><br>
+  The adventure screen will no longer be redrawn automatically after an HE:R
+  command. If you wish it to redraw, use this syntax with a redraw flag of 1.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+        <font face="Arial" size="2" color="#FF0000"><b><a name="S"></a>S</font><font face="Arial" size="2" color="#8B008B">$</font><font face="Arial" size="2" color="#FF0000">;</font><span lang="de"><b><font face="Arial" size="2" color="#333333"><img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+        <td valign="top">
+  <font face="Arial" size="2">Check
+  or set the number of known skills that are displayed</b><br>
+  $ - number of skills to show (0..8).<br>
+  <br>
+  <u><b>Comments:</b></u><br>
+  If you want to display only one skill, first swap it's display position to
+  slot<br>
+  number 1 and then limit the display to only 1 skill with this command.</font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><span lang="de"><b>
+        <font face="Arial" size="2" color="#FF0000">S</font></b></span><nobr><b><font color="red" face="Arial" size="2"><font color="darkmagenta">#1</font>/<font color="darkmagenta">$2</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get secondary skill&nbsp;</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> -
+ Skill number (see <a href="../format/format_ss.htm">Format SS</a>)<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> - Skill level (0=none, 1=basic, 2 =advanced, 3 =expert).<br>
+  <b><u>Comments:</u></b><br>
+ You can even set all(!) secondary skills (28
+          altogether) but only the first eight will show on the hero screen.</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b>
+        <font face="Arial" size="2" color="#FF0000"><b>S</font></b><font face="Arial" size="2" color="#8B008B">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">1;</font><span lang="de"><b><font face="Arial" size="2" color="#333333">
+        <img border="0" src="../images/new.gif" width="28" height="11"></font></b></span></td>
+
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get secondary skill<span lang="de">.
+Extended syntax.</span></b><br>
+$1 - is a number in display sequence (0 = not shown, 1..8 = slot index)<br>
+$2 - is a skill index (0...27)<br>
+<u><b>Comments:</b></u><br>
+You may use three types of syntax:<br>
+!!HE#:S?#1/#2/1; ask what display slot takes #2 skill to #1 var<br>
+!!HE#:S#1/?#2/1; ask what skill occupies display slot #1 to #2 var<br>
+!!HE#:S#1/#2/1; set display slot #1 to #2 skill<br>
+In the last case if another skill takes this slot, it will be set to<br>
+&quot;no slot&quot;. You can use the command twice to swap two skill positions.<br>
+<br>
+When setting skills with this command, you must use the following rules:<br>
+- you may move any two displayed skills to exchange their position;<br>
+- you must NOT set a skill to display if it's below Basic level (no skill);<br>
+- you must set skills to display in order (no empty spaces);<br>
+<br>
+Therefore you cannot use the command to hide a skill that's already<br>
+displayed. You also can't use it to set a skill to display if the hero<br>
+doesn't know the skill. Attempting either will usually display a different<br>
+&quot;phantom&quot; skill (perhaps Basic Wisdom) that will crash if clicked on.</font></td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000"><a name="T">T</a></font><font color="#8B008B">$</font><font color="#FF0000">1/</font><font color="#8B008B">$</font><font color="#FF0000">2/</font><font color="#8B008B">$</font><font color="#FF0000">3/</font><font color="#8B008B">$</font><font color="#FF0000">4/</font><font color="#8B008B">$</font><font color="#FF0000">5</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top">
+
+<font face="Arial" size="2"><b>Provoke a battle but only with one
+  type of monsters.</b><br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = x position of the battle<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = y position of the battle<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$3</b></font> = level of the battle<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$4</b></font> = type of monsters to fight (<a href=../format/format_c.htm target=annexe>Format C</a>)<br>
+&nbsp;&nbsp; <font color="#8B008B"><b>$5</b></font> = number of monsters to fight<br>
+<b><u>Comments:</u></b><br>
+x,y and level are used only for choosing the type of the ground and
+  corresponding bonuses.</font>
+
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="U">U</a><font color="darkmagenta">$1</font>/<font color="darkmagenta">$2</font>/<font color="darkmagenta">$3</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Set/check/get hero's patrol position and radius.&nbsp;</b><br>
+  &nbsp;&nbsp; Patrol position will be
+          set to X($1), Y($2) (the level is fixed).&nbsp;<br>
+  &nbsp;&nbsp; The radius will be set to $3
+          (&quot;set free&quot; if $3 = -1).</font>
+
+        </td>
+
+      <tr>
+        <td width="107" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="V">V</a></font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font><b><font face="Arial" size="2"><br>
+
+<font size="2" color="#FF0000">
+  V</font><font size="2" color="#8B008B">#1</font><font size="2" color="#FF0000">/</font><font size="2" color="#8B008B">#2</font><font size="2" color="#FF0000">/</font><font color="#8B008B">$3</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+
+        <td valign="top">
+<p>
+
+<font face="Arial"><b><font size="2"><font color="#FF0000">V</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font>
+
+ </font>
+
+          </b>
+
+<font size="2">
+
+  - <b> set/check/get if hero visited (1) or not (0) $2 all objects of type #1 ($2 is used as a bit mask)</b></font></font>
+
+          </p>
+<p>
+
+<font face="Arial"><b><font size="2"><font color="#FF0000">
+  V</font><font size="2" color="#8B008B">#1</font><font size="2" color="#FF0000">/</font><font size="2" color="#8B008B">#2</font><font size="2" color="#FF0000">/</font><font size="2" color="#8B008B">$3<br>
+</font></font></b><font size="2" color="#8B008B"><b>&nbsp;&nbsp; &nbsp;#1</b></font><font size="2" color="#000000">
+= Object type<br>
+</font><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font><font size="2" color="#000000">&nbsp;</font><font size="2" color="#8B008B"><b>#2</b></font><font size="2" color="#000000"> =
+Object number (0..31)<br>
+</font><font size="2" color="#8B008B"><b>&nbsp;&nbsp; </b></font><font size="2" color="#000000">&nbsp;</font><font size="2" color="#8B008B"><b>$3</b></font><font size="2" color="#000000"> =
+Hero visited (1) or not (0)</font></font>
+
+          </p>
+<p>
+
+<font face="Arial"><u>
+
+  <font size="2">
+
+  <b>
+
+  Types of objects (#1):</b><br>
+
+  </font>
+
+</u>
+
+<font size="2">
+
+  (Number in parenthesis is object type number)<br>
+
+  0 - Learning Stone (100)<br>
+  1 - Marletto Tower (23)<br>
+  2 - Garden of Revelation (32)<br>
+  3 - Mercenary Camp (51)<br>
+  4 - Star Axis (61)<br>
+  5 - Tree of Knowledge (102)<br>
+  6 - Library of Enlightenment (41)<br>
+  7 - Arena (4)<br>
+  8 - School of Magic (47)<br>
+  9 - School of War (107)<br>
+  <br>
+  <b><font color="#0000FF">Examples:</font></b>
+<font color="#008000"><br>
+  </font><font color="#FF0000">
+<b>
+  V0/0/0</b> - set the Learning stone number 0 to be &quot;not visited&quot; by the hero.<br>
+<b>V6/2/0</b> - set the Library of Enlightenment number 2 to be &quot;not
+visited&quot; by the hero.<br>
+<b>
+  V5/2</b> - set all Trees of Knowledge except second to be &quot;not visited&quot; (second one is visited).</font></font></font>
+
+          </p>
+  </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <b>
+
+  <font face="Arial" size="2">
+  <font color="#FF0000"><a name="W">W</a></font><font color="#8B008B">$</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+  <p>
+
+<font size="2" face="Arial">
+  <b>
+  Change Hero's movement points</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$</b></font> - points to change (W0,Wd-10,W?i,W&gt;=100...)<br>
+  This number is <i>not</i> the number of steps that the hero can take in a turn
+  but is a much higher number (usually between 1500 and 2000 depending on
+  fastest troop speed) that the game sets internally. This was probably done so
+  that they wouldn't have to deal with fractions when calculating terrain
+  bonuses and penalties (plus path finding, logistics, Boots of Speed, etc.) . On
+  grass terrain with mixed creatures, 1 step equals about 100 movement points.</font>
+
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="107" valign="top">
+
+  <nobr><b><font color="red" face="Arial" size="2">W</font><font face="Arial" size="2"><font color="darkmagenta">$</font><font color="#FF0000">/</font><font color="darkmagenta">1</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font><nobr><b><font face="Arial" size="2"><font color="darkmagenta">
+  </font></font></b></nobr>&nbsp;</td>
+        <td valign="top">
+
+ <font face="Arial" size="2"><b>Additional Syntax</b><br>
+ The same as HE:W$ but without redrawing<br>
+ For standard syntax some of them called redrawing always even if you check only.</font>
+
+        </td>
+      </tr>
+    <tr>
+        <td width="107" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="X">X</a><font color="darkmagenta">#(...)</font></font></b></nobr><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font>
+
+        </td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  <b>
+  Change hero's specialty. </b>(see <b>Table 1</b> below).<br>
+  # from 0 to 6. The number of other
+  parameters depends on a type of specialization #.
+</font>
+
+        </td>
+    </tr>
+<tr>
+<td width=107 valign=top><font face=arial size=2 color=red><b>X...<img src=../images/new.gif>
+</td><td><font face=arial size=2>
+<b>Extended HE:X command to control specialty settings: <font color=red><br>
+<br>
+!!HE#:X$1/$2/$3/$4/$5/$6/$7;</b></font> - get/set/check all speciality settings.<br>
+  $1...$7 - parameters. <br>
+<br>
+Speciality types (defined by $1)<br>
+<br>
+&nbsp;  $1=0 Secondary skills<br>
+&nbsp;&nbsp;&nbsp;    $2=secondary skill number (<a href=../format/format_ss.htm>see Format SS </a>)<br>
+&nbsp;&nbsp;   ($3...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=1 Creatures<br>
+&nbsp;&nbsp;&nbsp;    $2=creature type number (<a href=../format/format_c.htm>see Format C </a>)<br>
+&nbsp;&nbsp;   ($3...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=2 Resources<br>
+&nbsp;&nbsp;&nbsp;    $2=resource type (<a href=../format/format_r.htm>see Format R </a>)<br>
+&nbsp;&nbsp;   ($3...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=3 Spells<br>
+&nbsp;&nbsp;&nbsp;    $2=spell number (<a href=../format/format_sp.htm>see Format SP</a>)<br>
+&nbsp;&nbsp;   ($3...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=4 Creatures extra<br>
+&nbsp;&nbsp;&nbsp;    $2=creature type number (<a href=../format/format_c.htm>see Format C </a>)<br>
+&nbsp;&nbsp;&nbsp;    $3=attack bonus<br>
+&nbsp;&nbsp;&nbsp;    $4=defence bonus<br>
+&nbsp;&nbsp;&nbsp;    $5=damage bonus<br>
+&nbsp;   ($6...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=5 Speed +2 to all units<br>
+&nbsp;&nbsp;   ($2...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=6 Upgrades<br>
+&nbsp;&nbsp;&nbsp;    $2=creature 1 to upgrade(<a href=../format/format_c.htm>see Format C </a>)<br>
+&nbsp;&nbsp;&nbsp;    $6=creature 2 to upgrade(<a href=../format/format_c.htm>see Format C </a>)<br>
+&nbsp;&nbsp;&nbsp;    $7=creature to upgrade to(<a href=../format/format_c.htm>see Format C </a>)<br>
+&nbsp;&nbsp;   ($3...$5 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=7 Dragons<br>
+&nbsp;&nbsp;&nbsp;    $2=attack bonus<br>
+&nbsp;&nbsp;&nbsp;    $3=defense bonus<br>
+&nbsp;&nbsp;   ($4...$7 ignored, preferably 0)<br>
+<br>
+&nbsp;  $1=8 Extra WoG speciality<br>
+&nbsp;&nbsp;&nbsp;    $2=subtype<br>
+&nbsp;&nbsp;   ($3...$7 ignored, preferably 0)<br>
+<br>
+  <i>Comment:</i><br>
+  You may use 'd' modifier to ignore unchanged settings:
+HE:...:X8/2/d/d/d/d/d;<br>
+  The original syntax (number of parameters < 7) should work as before.<br>
+<br>
+<b>  Example.</b><br>
+  To check the current settings use:<br>
+<b><font color=red>!!HE#:X?y5/?y6/?y7/?y8/?y9/?y10/?y11; <br></font></b>
+<b>Note:</b><br>
+If you set it X7/???/$1/$2/$3 (so it will be compatible with X4
+syntax), so<br>
+??? - no matter (it is a placeholder for a creature type)<br>
+$1 is an attack bonus<br>
+$2 is a defence bonus<br>
+$3 is a damage (low and high) bonus. <br>
+</td>
+</tr>
+      <tr>
+      <td width="107" valign="top"><b><font size="2" face="Arial"><font color="#FF0000"><a name="Y">Y</a></font><font size="2" face="Arial" color="#8B008B">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$2</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#8B008B">$3</font><font size="2" face="Arial" color="#FF0000">/</font><font color="#8B008B">$4</font></font></b><font face="Arial" size="2"><nobr><b><font color="#FF0000">;</font></b></nobr></font></td>
+
+    <td valign="top">
+
+<font face="Arial" size="2"><b>See </b><a target=sommaire href="../other/bless.htm">Bless and Curse Section</a></font>
+
+    </td>
+      </tr>
+    </tbody>
+  </table>
+</font>
+
+  <p>
+
+  &nbsp;
+
+  <p>
+
+  <font face="Arial" size="2">
+<b><br>
+  Syntax <font color="red">X</font> options for <font color="red">HE</font>
+  receiver:</b></font>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+    <tbody>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">0/</font><font color="#8B008B" face="Arial" size="2">$</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  To <b> give to a hero a secondary skill </b> $ (see.
+  <a href="../format/format_ss.htm">Format
+          SS</a>)
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">1/</font><font color="#8B008B" face="Arial" size="2">$</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  To make the hero by the <b> master of creatures</b> $(and possibly $+1) (see.
+  <a href="../format/format_c.htm">Format C</a>).
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">2/</font><font color="#8B008B" face="Arial" size="2">$</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  To <b> generate the resources</b> $ each day. (see.
+  <a href="../format/format_r.htm">Format
+          R</a>).
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">3/</font><font color="#8B008B" face="Arial" size="2">$</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  To <b> give to the hero a spell</b> $ (see. <a href="../format/format_sp.htm">Format
+          SP</a>).
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><nobr><b><font color="red" face="Arial" size="2">4/</font><font color="#8B008B" face="Arial" size="2">$1</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$2</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$3</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$4</font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  Another way to make the hero by the <b> master of creatures</b> $1(and possibly $1+1)
+  (see <a href="../format/format_c.htm">Format
+          C</a>). $2 - bonus of monster's attack, $3 - bonus of monster's
+  defence, $4 - bonus of monster's damage.
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">5/</font><font color="#8B008B" face="Arial" size="2">2</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  <b>
+  Set hero's additional specialty to Sir Mullich's one</b> (All troops' speed +2)
+</font>
+
+        </td>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">6/</font><font color="#8B008B" face="Arial" size="2">$1</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$2</font><font color="red" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$3</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">
+  <b>
+  Upgrade of creatures type</b> $1 and $2 ($1+1 and $2+1 possible as well) to
+  creatures type $3. Upgrade's price is counted as difference between the prices
+  of the creatures (if its more than zero:-)
+</font>
+
+        </td>
+      </tr>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">7/</font><font color="#8B008B" face="Arial" size="2">$1</font><font color="#FF0000" face="Arial" size="2">/</font><font color="#8B008B" face="Arial" size="2">$2</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2"><b>Dragon Master.</b><br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = attack bonus.<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = defence bonus.
+  </font>
+
+        </td>
+      </tr>
+      <tr>
+        <td valign="top"><b><font color="red" face="Arial" size="2">8/</font><font face="Arial" size="2" color="#8B008B">#</font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top">
+
+  <font face="Arial" size="2">&nbsp;&nbsp; <font color="#8B008B"><b># = 1</b></font> - <b> Walking Darkness</b>. Shroud is replaced for
+  all other players as hero moves.<br>
+  &nbsp;&nbsp; <font color="#8B008B"><b># = 2</b></font> - <b> Town Builder</b>. Hero may choose which type to rebuild a destroyed town
+  as from any of the 9 available town types.</font>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p><font face="Arial" size="2"><b><u>Comments:</u></b><br>
+  For &quot;couple&quot;
+  creatures (basic and upgraded), if the first is changed, the second will also be changed.</font>
+  <p>
+
+  <font face="Arial" size="2">
+  In the line, options should not
+  be separated by other symbols and may be repeated with the last cancelling all
+  the previous. The same receiver can occur several times. There might be
+  comments between trigger's and receivers' descriptions.
+</font>
+
+</body>
+
+</html>

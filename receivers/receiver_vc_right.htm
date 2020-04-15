@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Variable</title>
+<base target="_self">
+</head>
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+  
+<p align="center"><strong><font face="Times New Roman CE" size="6">
+<span lang="de">V</font><font face="Times New Roman CE" size="5">ARIABLE</font><font face="Times New Roman CE" size="6">
+L</font><font face="Times New Roman CE" size="5">OG</font><font face="Times New Roman CE" size="6">
+C</font><font face="Times New Roman CE" size="5">ONTROL</font><font face="Times New Roman CE" size="6">
+(</font></span><font face="Times New Roman CE" size="6">VC<span lang="de">)</span></font><font face="Arial" size="2"><br>
+<font color="#333333">RECEIVER</font></font></strong> 
+<p> <font face="Arial" size="2"> <b> <font color="#333333">Used to log flags, variables, timers, functions<span lang="de">
+</span>(FU) 
+  and loops(<span lang="de"> </span>DO) used in the script<span lang="de">.</span></font></b></font></p>
+<p> <font face="Arial" size="2"> <b> It can save the log to an external file: 
+  </b><i>ERMVarsUsed.LOG<b> </b></i><b>for further use</b><i><b>.<br>
+  <font color="#FF0000">Attention:</font>
+<font color="#0000FF">This receiver should be used as an instruction (!#VC:...) 
+syntax otherwise it does not make sense.</font></b></i></font></p>
+<table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+      <tr>
+        
+    <td width="143" height="32" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!#VC:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        
+    <td width="100%" height="32" valign="top"> <font face="Arial" size="2">Variable 
+      Control</font> </td>
+      </tr>
+  </table>
+  <p align="center">
+
+<font face="Arial" size="2"><b><br>
+</b> 
+
+<strong>OPTIONS</strong>
+
+</font>
+
+  </p>
+  
+<p align="left"><font face="Arial" size="2"><strong> Commands with variable control</strong></font> 
+</p>
+<table border="2" width="100%" height="11" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr> 
+    <td width="14%" height="20" valign="top"><b><font face="Arial" size="2" color="#FF0000"><a name="B">B</a>;</font></b></td>
+    <td width="86%" height="20" valign="top"><font face="Arial" size="2"><b>Start 
+      logging used ERM variables</b></font></td>
+  </tr>
+  <tr> 
+    <td width="14%" height="22" valign="top"><b><font face="Arial" size="2"><font face="Arial" size="2" color="#FF0000"><a name="C">C</a>;</font></font></b></td>
+    <td width="86%" height="22" valign="top"><b><font face="Arial" size="2"> Clear 
+      the list of used ERM variables</font></b></td>
+  </tr>
+  <tr> 
+    <td width="14%" height="1" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"> 
+      <a name="E"> E</a>;</font></font></b></td>
+    <td width="86%" height="1" valign="top"><b><font face="Arial" size="2">Stop 
+      logging used ERM variables</font></b></td>
+  </tr>
+  <tr> 
+    <td width="14%" height="21" valign="top"><span lang="de"><b><a name="N">
+    <font face="Arial" size="2" color="#FF0000">N;</font></a></b></span></td>
+    <td width="86%" height="21" valign="top"><span lang="de"><b>
+    <font face="Arial" size="2">Stop</font></b></span><b><font face="Arial" size="2"> 
+    a cross-reference checking section</font></b></td>
+  </tr>
+  <tr> 
+    <td width="14%" height="21" valign="top"><span lang="de"><b><a name="Y">
+    <font face="Arial" size="2" color="#FF0000">Y;</font></a></b></span></td>
+    <td width="86%" height="21" valign="top"><b><font face="Arial" size="2">
+    <span lang="de">S</span>tart a cross-reference checking section</font></b></td>
+  </tr>
+  <tr> 
+    <td width="14%" height="16" valign="top"><b><font face="Arial" size="2"><font color="#FF0000"><a name="W">W;</a></font></font></b></td>
+    <td width="86%" height="16" valign="top"><b><font size="2" face="Arial">Write 
+      log to &quot;ERMVarsUsed.log&quot; file</font></b></td>
+  </tr>
+</table>
+  
+<p><br>
+<font face="Arial" size="2"><font color="#0000FF"><b>Comments.</b></font><br>
+<br>
+  Please note that the logging and saving to file 
+  operations are launched only when the ERM compiler executes these commands, this 
+  meaning during the wogification process of the map, before day 1. So you still 
+  have to launch the game and start a map in order to log your variables, functions 
+  and so on, from your script(s).<br>
+  <br>
+  You have to always use B and E in pairs.<span lang="de"> </span>You can use B and E command more than 
+  one time to control different
+  parts of script. The effect will be summed up.<br>
+<br>
+  <font color="#0000FF">Example: The v10 and v12 variables will be logged, and v11 skipped:</font><br>
+  <font color="#FF0000"><b>!#VC:CB;</b> </font><font color="#0000FF">clear list, start logging</font><font color="#FF0000"><br>
+  <b>!!VRv10:...;</b> </font><font color="#0000FF">using variable v10</font><font color="#FF0000"><br>
+  <b>!#VC:E;</b> </font><font color="#0000FF">stop logging</font><font color="#FF0000"><br>
+  <b>!!VRv11:...;</b> </font><font color="#0000FF">using variable v11</font><font color="#FF0000"><br>
+  <b>!#VC:B;</b> </font><font color="#0000FF">start logging</font><font color="#FF0000"><br>
+  <b>!!VRv12:...;</b> </font><font color="#0000FF">using variable v12</font><br>
+  <font color="#FF0000"><b>!#VC:EWC;</b></font> <font color="#0000FF">stop logging, writing log to <i>ERMVarsUsed.LOG</i> file, clear list</font><br>
+  As you have seen above, it is indicated to clear the list (C) before starting 
+  to log the first time, and when finished with all log operations.<br>
+<br>
+You can also use more than one Y and N sections.<br>
+<b><font color="#0000FF">Example:</font></b><br>
+<b><font color="#FF0000">!#VC:CB;<br>
+!!VRv10:...;<br>
+!!VRv11:...;<br>
+!#VC:Y;<br>
+!!VRv11:...;<br>
+!!VRv12:...;<br>
+!#VC:N;<br>
+!!VRv12:...;<br>
+!!VRv14:...;<br>
+!#VC:Y;<br>
+!!VRv14:...;<br>
+!#VC:N;<br>
+!!VRv13:...;<br>
+!#VC:EWC;</font></b><br>
+The next vars will be signed as cross referenced: v11 and v14;<br>
+and not cross-referenced: v10,v12,v13<br>
+(v12 is not cross-referenced because it was not used before checking)<br>
+  <br>
+  The VC instruction allows you to log these types of elements:<br>
+  1. flags : 1...1000<br>
+  2. v vars: v1...v10000<br>
+  3. w vars: w1...w100<br>
+  4. z vars: z1...z1000<br>
+All marked with:<br>
+- 'p' if used as a parameter;<br>
+- '&amp;' if used in &amp; condition section;<br>
+- '|' if used in | condition section;<br>
+- '*' if cross-referenced;<br>
+  5. Timers: TM1...TM100 <br>
+  - marked with 't' if a trigger was found<br>
+  - marked with 'r' if a receiver or instruction was found<br>
+  6. Functions/Loops: FU1...FU30000, DO1...DO30000<br>
+  - marked with 't' if a trigger (function definition) was found<br>
+  - marked with 'r' if a receiver or instruction (function call) was found<br>
+  - marked with 'd' if a receiver or instruction (cycle call) was found<br>
+  <br>
+  Also, VC <i>cannot</i> log an indirect referenced vars like this:<br>
+  !!VRvx10:...<br>
+  The index of v var is unknown here at loading time because x10 is undefined 
+  at that point.<br>
+  This means that if you want to be sure that a script (that is not created by 
+  you), you logged elements from, does not use indirect referenced variables, 
+  you have to check it manually, line for line. To avoid such a work in the 
+future, the 
+  proposition is to initialize all variables that you may use in your script like 
+  this:<br>
+  !#VR...:S0;</font><font face="Arial" size="2"><br>
+  at the top of the script, to be sure that this var will be logged</font><font face="Arial" size="2"><br>
+  <br>
+  You can log vars from several script files. Say, you can put !#VC:CB; in script00.erm 
+  file and !#VC:EWC; to script40.erm and you will get the complete list of vars 
+  in all script files from 0 to 40.<br>
+The log file is created at map loading and called as &quot;ERMVarsUsed.log&quot;. If such 
+file exists, it will be completely overwritten.<br>
+  <br>
+We recommend to use Y and N section to check your own script for vars/timers/functions 
+that are used in your script and in other scripts.<br>
+For this you should set a number for your script file to higher than any other 
+scripts, log vars in all scripts and use Y and N section in your script file.<br>
+Example:<br>
+You have scripts number 0,1,2,3,4,5...50 and want to check your script for 
+cross-reference with them.<br>
+1. Number your script as script99.erm (condition: 99 &gt; 50).<br>
+2. Add &quot;start logging&quot; in the beginning of the first script file (script00.erm):<br>
+!#VC:CB;<br>
+3. Add &quot;start cross-reference checking&quot; in the beginning of your script file 
+(script99.erm):<br>
+!#VC:Y;<br>
+4. Add &quot;stop cross-reference checking&quot; in the end of your script file 
+(script99.erm):<br>
+!#VC:N;<br>
+5. Add &quot;stop logging and write&quot; in the end of your script file (script99.erm):<br>
+!#VC:EWC;<br>
+Now, if your script uses variables/triggers/functions that were used in the 
+scripts 0...50, all of them will be marked in the log file with '*'.<br>
+If you want to make the same for your internal map scripts, assume scripts 
+number as a day of Timed Events and do the same.</font></p>
+</body>
+
+</html>

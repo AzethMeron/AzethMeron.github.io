@@ -1,0 +1,61 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>L<font size=5>O</font><font size=5>Ds MANAGEMENT</font> (LD)<br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Used for commands that load/unload custom LOD files, containing various resources such as graphics and animations. <br> <br>
+Loaded LODs are NOT stored in saved game, instead there is a list of them. This means
+that if the map uses a custom LOD file, you should have it if you want
+to load a saved game for this map. <br><br>
+Note: LOD will be loaded EVEN if it is already loaded, thus be careful with with using LD within repeatable triggers. </font></b> <font color=purple>What about multiplayer though?</font> <br><br> 
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+      <tr>
+        <td nowrap valign=top><font class=ermtext>!!LD:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top>Manage LOD files</td>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+  <tr><a name="L"></a>
+    <td valign=top><font class=ermtext>L<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
+    <td><b>Load a custom LOD file</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - a variable to store index of the loaded LOD file<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - a location folder for the file like in <a href="../receivers/receiver_un_left.htm#J">UN:J8</a><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - an index of Z variable that stores a name of the LOD file<br>
+	<font class=bnotes>Comment</font>:<br>
+	Loaded LOD files will be unloaded if you start a new game or load a save.
+  The list of loaded LOD files is stored in the saved game and thus all of them will be uploaded again if you load this save. <br>
+   $1 returns >=0 if loading successful, otherwise it is -1 <br>
+   $2 there is new path option, for Mods folder: 11 <br>
+   $3 may be local, global or static Z variable <br>
+  <tr><a name="T"></a>
+    <td valign=top><font class=ermtext>T<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
+    <td><b>Load a custom LOD temporarily</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - a variable to store index of the loaded LOD file<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - a location folder for the file like in UN:J9<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - an index of Z variable that stores a name of the LOD file<br>
+	<font class=bnotes>Comment</font>:<br>
+	Same as <a target=principal href="../receivers/receiver_ld_right.htm#L">LD:L</a> except loaded files are NOT listed in saved game. 
+  <tr><a name="U"></a>
+    <td valign=top><font class=ermtext>U<font class=param>$</font>;
+    <td><b>Unload a custom LOD file</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - a variable storing an index of the loaded LOD file<br>
+	<font class=bnotes>Comment</font>:<br>
+	Naturally, index must be >=0
+  </table><br><br>
+
+There is no need for filelist.txt in custom lods. <br><br>
+
+  You can use a several load/unload sequence in one game. Say you can
+use a different environment for the adventure map, dialogs or anything
+else. <br><br>
+  Note though that standard TXT files (like crtraits.txt and so) in
+game are parsed at game start. so even if you modify it, it does not
+affect the game unless you use "h3wog.lod". That one
+is loaded at game start. <br> 
+<br>
+  Example.<br>
+!#VRz35:S^my.lod^; <br>
+!#LD:L?v3/2/35; <br>
+  This will load my.lod file from MAPS folder. <br>
+</body>
+
+</html>

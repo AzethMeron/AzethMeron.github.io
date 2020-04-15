@@ -1,0 +1,571 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<a name=introduction></a><font face="Times New Roman CE"><b><font size=6>L</font><font size=5>UA <font size=6>S</font>CRIPTING <font size=6>L</font>ANGUAGE</b></font></p>
+<font size=2>WoG 3.59 introduces another programming language to cooperate with engine: Lua 5.1.4.  <br>
+All ERM commands can be accessed from Lua (with minor exceptions) but possibilities are far greater. <br>
+New towns, new commanders etc. can be scripted right in Lua.<br>
+Here you can find description of Lua: <a target=sommaire href="https://www.lua.org/manual/5.1/">https://www.lua.org/manual/5.1/</a> <br>
+I'll describe the syntax shortly. If you need more information, read Chapter 2 there.<br>
+Here is also a book about Lua: <a target=sommaire href="https://www.lua.org/pil/">https://www.lua.org/manual/5.1/</a> (note that this edition aims Lua 5.0, 
+and WoG uses Lua 5.1.4, so some information there may be out of date) <br>
+<br>
+To use Lua in global events of the map, place "ZVSL." at the beginning of event name. <br>
+E.g. "ZVSL.Give Army". For more information, check <a href="../other/tools.htm" target=sommaire>Tools</a>.<br>
+<br>
+<br>
+<a name=syntax></a><b><font size=4>===== LUA SYNTAX =====</font></b><br>
+<br>
+<b>Comments</b><br>
+Single line comments are written after '--'. Multyline comments start with '--[[' and end with ']]'. You can also put any number of '=' symbols between two brackets of multyline comment: '--[==[' ... ']==]'. Only closing brackets with the same number of '=' symbols would close such comment. <br>
+You can use ';' at the end of statements, but you can omit it. You can write statements on multiple lines without problems. <br>
+<br>
+<br>
+<b>Variables, assignment</b><br>
+Local variables: <br>
+&nbsp;local a = 5 <br>
+They are visible in the block they are declared in and in all embedded blocks (e.g. functions declared after the local variable). They aren't saved in savegame. <br>
+<br>
+Assignment: <br>
+&nbsp;a = 5&nbsp;&nbsp;-- set a to 5 <br>
+<br>
+Multiple assignment is supported: <br>
+&nbsp;x, y, z = 1, 2, 3 <br>
+<br>
+<b>Each script has its own set of variables (it's called environment)</b>. Variables stored in '_G' (e.g. _G.MyFunction) can be read by all scripts. Variables stored in 'global' (e.g. global.MyFunction) can be read by all scripts, but they aren't bound to the game you play. So, they aren't saved in a savegame, but persist when you start another map. 
+<b>Scripts themselves are also saved in savegame and are run each time the game is loaded</b>. This doesn't apply to scripts in &quot;Global&quot; folder, which behave somewhat similar to 'global' variables. <br>
+<br>
+The <b>'new'</b> veriable is true if the script is run the first time (that normally means it's a new game). Thus, you should initialize variables like this: <br>
+<pre>&nbsp;if new then 
+&nbsp;&nbsp;&nbsp;SomeNumber = 0 
+&nbsp;&nbsp;&nbsp;SomeString = &quot;&quot; 
+&nbsp;end </pre>
+Note that functions aren't saved to savegame, so you wouldn't normally create functions inside &quot;if new then&quot; block. <br>
+<br>
+<b>Types </b><br>
+Lua is scripting language with dynamic-typing. Thus, "variable is a variable". Any variable may hold value of any type. <br>
+<br>
+There are 6 main types of variables in Lua: number(floating-point), string, boolean(true/false), nil(a special value meaning 'not assigned'), table and function. There are also coroutines which are neat, but you probably won't need them. <br>
+<br>
+Strings are put in double quotes (&quot;Hello&quot;), single quotes ('Hello') or in double brackets ([[Hello]]). You can also put any number of '=' characters between the two brackets ([=[Hello]=]) <br>
+<b>Note that '\' character is used in escape sequences</b>, so you should write it twice if you want it to appear in the string enclised in single or double quotes. Strings enclosed in brackets interpret &quot;\&quot; as is. <b>I suggest using '/' insted of '\' in file paths.</b> <br>
+<br>
+Table is a set of key-value pairs. You can use any value as key. To create a table use following syntax: <br>
+<pre>&nbsp;a = {value1, value2, value3}		
+-- a[1] = value1, a[2] = value2, a[3] = value3 
+
+&nbsp;a = {value1, value2, key3 = value3, key4 = value4}	
+-- a[1] = value1, a[2] = value2, a[&quot;key3&quot;] = value3, a[&quot;key4&quot;] = value4 
+
+&nbsp;a = {[1] = value1, [2] = value2, [&quot;key3&quot;] = vakue3, [&quot;key4&quot;] = value4}   
+-- same as above </pre>
+<br>
+Instead of ',' you can use ';' - it would work completely the same. <br>
+You can also refer to table elements as a.key which is the same as a[&quot;key&quot;] <br>
+<br>
+Functions are as well kept in variables: <br>
+&nbsp;function Func1(param1, param2) <br>
+&nbsp;end <br>
+<br>
+is the same as <br>
+&nbsp;Func1 = function(param1, param2) <br>
+&nbsp;end <br>
+<br>
+So, Func1 is assigned the function. You can as well add 'local' word before function declaration to declare a local vairable: <br>
+&nbsp;local function Func1(param1, param2) <br>
+&nbsp;end <br>
+<br>
+this translates to <br>
+&nbsp;local Func1 <br>
+&nbsp;Func1 = function(param1, param2) <br>
+&nbsp;end <br>
+<br>
+Functions can take and return variable number of parameters: 
+<pre>&nbsp;function Sum(x, ...)
+&nbsp;&nbsp;&nbsp;if x then 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return x + Sum(...) 
+&nbsp;&nbsp;&nbsp;else 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0 
+&nbsp;&nbsp;&nbsp;end 
+&nbsp;end </pre>
+  <br>
+&nbsp;function MultiParamTwoRet(...) <br>
+&nbsp;&nbsp;&nbsp;local params = {...}  -- pack all parameters into a table <br>
+&nbsp;&nbsp;&nbsp;return params[1], params[#params]  -- return the first and the last parameter passed to the function <br>
+&nbsp;end <br>
+<br>
+A function may return variable number of values by creating a table with the values and using unpack() on it. <br>
+<pre>&nbsp;function MultipleReturn(value, repeats)
+&nbsp;&nbsp;&nbsp;local ret = {} 
+&nbsp;&nbsp;&nbsp;for i = 1, repeats do 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret[i] = value 
+&nbsp;&nbsp;&nbsp;end 
+&nbsp;&nbsp;&nbsp;return unpack(ret) 
+&nbsp;end </pre>
+<br>
+A function can return all results of another function or leave just some of them. <br>
+&nbsp;return f(x)   
+-- return all results of f <br>
+<pre>
+&nbsp;return (f(x))   	-- results adjusted to 1 (all other results are discarded, except the first) 
+&nbsp;return 2 * f(x)   -- results adjusted to 1 (and multiplied by 2) 
+&nbsp;return x, f(x)   	-- return x and all results of f 
+&nbsp;f(x); return   	-- results discarded </pre>
+<br><br>
+<b>Operations </b><br>
+Numerical operators: +, -, *, /, %(devision reminder), ^(power). <br>
+<pre>&nbsp;i = (i + 3)*2 
+&nbsp;i = 2^0.5   -- i = 1,4142135623731 </pre>
+Note that / is a floating-point devision. For integer division you should use Div or math.floor function: <br>
+<pre>&nbsp;i = i:div(2) 
+&nbsp;i = math.floor(i/2)  -- the same as above </pre>
+And % works with negative numbers in a way unusual for programming languages - it's always positive, like in math. <br>
+The equation &quot;A:div(B)*B + A%B == A&quot; always holds. <br>
+Strings are automatically converted to numbers when used in numerical operations: <br>
+<pre>&nbsp;i = 5 + &quot;3&quot;   -- i = 8 
+&nbsp;i = 5 + &quot;hello&quot;   -- an error will be shown saying that the string isn't convertable to number </pre>
+<br>
+Strings concatination: .. <br>
+&nbsp;s = &quot;Hello, &quot;..&quot;world!&quot;   -- s = &quot;Hello, world!&quot; <br>
+You can use numbers in cancatination. They are automatically converted to string: <br>
+&nbsp;s = &quot;Babilon &quot;..5   -- s = &quot;Babilon 5&quot; <br>
+<br>
+Comparsion operators: ==, ~=(this is 'not equal'), &lt;=, &gt;=, &lt;, &gt; <br>
+&nbsp;b = (5 ~= 3)   -- b = true <br>
+<br>
+Operators 'not', 'and', 'or'. <br>
+You can use any types as arguments. When you pass a non-boolean, only nil is considered false. Any other value, including number 0, is taken for true. <br>
+'not' always returns a boolean. 'not not' will convert a type to boolean: <br>
+<pre>
+&nbsp;i = not false      			-- i = true 
+&nbsp;i = not true     			-- i = false 
+&nbsp;i = not not nil    			-- i = false 
+&nbsp;i = not not &quot;Hi!&quot;  			-- i = true
+&nbsp;i = not not 0      			-- i = true </pre>
+'or' works this way: it returns the first argument if it's not false and not nil, otherwise it returns the second.<br>
+<br>
+This allows you to use it in an interesting way. Let's say there is a function 'f' that returnes some number or 'nil' in case it fails. If you want to use default value in case of 'nil' you can do it in compact way: <br>
+&nbsp;i = f() or 5   -- here the default value is 5. If f returns a number, it would be used. In case of 'nil' the second operand would be used which is the default value. <br>
+'and' works this way: it returns the first argument if it's false or nil, otherwise it returns the second. <br>
+It can also be used in interesting ways. For example, if you want to call function 'f', but it may be undefined, you can use the following: <br>
+&nbsp;i = f and f()  -- if f is not defined i would be 'nil', otherwise f would be called. <br>
+As usual, 'and' has a higher priority than 'or'. We can put two examples together: <br>
+&nbsp;i = f and f() or 5  -- if f is undefined or if it returns 'nil', the default value 5 would be used. <br>
+You can do a conditional expression this way: <br>
+&nbsp;i = condition and vIfTrue or vIfFalse  -- same as (condition ? vIfTrue : vIfFalse) in C, but only in case vIfTrue can't be false or nil. <br>
+If vIfTrue isn't false or nil, this is the same as the following: <br>
+&nbsp;if condition then <br>
+&nbsp;&nbsp;&nbsp;i = vIfTrue <br>
+&nbsp;else <br>
+&nbsp;&nbsp;&nbsp;i = vIfFalse <br>
+&nbsp;end <br>
+<br>
+For example, you can convert a boolean value to number (1 or 0) this way: <br>
+&nbsp;i = b and 1 or 0  -- where 'b' is boolean. If 'b' is true, 'i' will be 1. If 'b' is false, 'i' would be 0.<br>
+<br>
+Length operator: # <br>
+For a string it returns number of characters. <br>
+&nbsp;i = #&quot;Hello&quot;   -- i = 5 <br>
+For tables it returns number of integer keys starting with 1 and going without gaps: <br>
+&nbsp;i = #{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, d = 5, e = 6}  -- i = 3, because &quot;a&quot;, &quot;b&quot;, &quot;c&quot; are at indexes 1,2,3 and &quot;d&quot; and &quot;e&quot; aren't numerical. <br>
+&nbsp;i = #{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, nil, &quot;d&quot;}  -- i may be 3 or 5. In case there are gaps (nil's) the result is undefined. <br>
+<br><br>
+<b>Conditional statement: if-else-elseif </b><br>
+If follows the same definition of truth as 'not', 'and, and 'or'. <br>
+&nbsp;if &lt;condition&gt; then <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+<br>
+&nbsp;if &lt;condition&gt; then <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;else <br>
+&nbsp;&nbsp;&nbsp;&lt;do something else&gt; <br>
+&nbsp;end <br>
+<br>
+There is also 'elseif' keyword. <br>
+&nbsp;if &lt;condition&gt; then <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;elseif &lt;condition 2&gt; then <br>
+&nbsp;&nbsp;&nbsp;&lt;do something 2&gt; <br>
+&nbsp;elseif &lt;condition 3&gt; then <br>
+&nbsp;&nbsp;&nbsp;&lt;do something 3&gt; <br>
+&nbsp;..... -- any number of elseif's <br>
+&nbsp;else  -- (there can be no else, just elseif's) <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+<br>
+For example, let's choose American president by his index: <br>
+&nbsp;i = 3 <br>
+&nbsp;if i == 0 then <br>
+&nbsp;&nbsp;&nbsp;president = &quot;Bush&quot; <br>
+&nbsp;elseif i == 1 then <br>
+&nbsp;&nbsp;&nbsp;president = &quot;Obama&quot; <br>
+&nbsp;elseif i == 2 then <br>
+&nbsp;&nbsp;&nbsp;president = &quot;McCain&quot; <br>
+&nbsp;elseif i == 3 then <br>
+&nbsp;&nbsp;&nbsp;president = &quot;Pacman&quot; <br>
+&nbsp;else <br>
+&nbsp;&nbsp;&nbsp;president = &quot;Chtulhu&quot; <br>
+&nbsp;end <br>
+ -- as a result for i = 3, president = &quot;Pacman&quot;<br> 
+<br><br>
+<b>Basic loop: while </b><br>
+&nbsp;while &lt;condition&gt; do <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+<br><br>
+<b>Less basic loop: for </b><br>
+The first form: <br>
+&nbsp;for &lt;variable&gt; = &lt;start value&gt;,&lt;stop value&gt; do <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+<br>
+Example: <br>
+&nbsp;s = &quot;&quot; <br>
+&nbsp;for i = 1,7 do <br>
+&nbsp;s = s..i <br>
+&nbsp;end <br>
+ -- s = &quot;1234567&quot; <br>
+Here 'i' is loop variable, '1' is starting value, '7' is stop value. <br>
+<br>
+You can also specify increment: <br>
+&nbsp;for &lt;variable&gt; = &lt;start value&gt;,&lt;stop value&gt;,&lt;increment&gt; do <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+<br>
+Example: <br>
+&nbsp;s = &quot;&quot; <br>
+&nbsp;for i = 1,7,2 do <br>
+&nbsp;&nbsp;&nbsp;s = s..i <br>
+&nbsp;end <br>
+ -- s = &quot;1357&quot; <br>
+Here 'i' is loop variable, '1' is starting value, '7' is stop value, '2' is increment. <br>
+<br>
+The second form: <br>
+&nbsp;for &lt;1 or more variables&gt; in &lt;iterator&gt; do <br>
+&nbsp;&nbsp;&nbsp;&lt;do something&gt; <br>
+&nbsp;end <br>
+Iterator is a special function that returns the values that the variable will take. <br>
+<br>
+Example: <br>
+&nbsp;for k, v in pairs({a = 5, b = 7}) do  -- pairs() iterates over a table and returns &lt;key&gt;,&lt;value&gt; pairs in random order <br>
+&nbsp;&nbsp;&nbsp;print(k, v) <br>
+&nbsp;end <br>
+<br>
+&nbsp;-- Result will be found in LuaLog.txt: <br>
+&nbsp;-- a&nbsp;&nbsp;5 <br>
+&nbsp;-- b&nbsp;&nbsp;7 <br>
+&nbsp;--  *OR* <br>
+&nbsp;-- b&nbsp;&nbsp;7 <br>
+&nbsp;-- a&nbsp;&nbsp;5 <br>
+  <br>
+&nbsp;for f in path.find(&quot;Mods/Wog/Wogify/*.lua&quot;) do  -- path.find will find all files that match the given mask. <br>
+&nbsp;&nbsp;&nbsp;print(f)  -- print script path <br>
+&nbsp;end <br>
+<br><br>
+<a name=ERM></a><b><font size=4>===== ERM IN LUA ===== </font> </b><br>
+All ERM commands can be accessed from Lua (exception: VR cannot be used for floating-point numbers). <br>
+Let's start with <br>
+&nbsp;IF:M(&quot;Hello world!&quot;)  -- !!IF:M^Hello world!^ <br>
+As you see, there are no &quot;!#&quot; or &quot;!!&quot; and we simply put the parameters in parentheses. <br>
+<br>
+Note that we still must use parentheses after the command letter, even if the command doesn't have any parameters: <br>
+&nbsp;FU:E()  -- !!FU:E; <br>
+<br>
+Now, this is what we do if the reciever itself needs parameters: <br>
+&nbsp;FU(555):P(1,2)  -- !!FU555:P1/2; <br>
+<br>
+A convenience feature: you can put the first numerical parameter right after the command letter: <br>
+&nbsp;CA(4,5,0):M2(0, 1, 10)  -- !!CA4/5/0:M2/0/1/10; <br>
+As you can see, &quot;M1&quot; and &quot;M2&quot; are written in this manner in Help too: M2/$1/$2/$3; So, it's natural to write such commands this way. However, use this feature only where it fits. ( e.g. don't do this: FU(555):P1(2) ) <br>
+<br>
+Now here is some get syntax: <br>
+&nbsp;local t, st = CA(4,5,0):M2(0, ?v, ?v)  -- !!CA4/5/0:M2/0/?y1/?y2; <br>
+&nbsp;local name = UN:A(2, 9, ?z)  -- !!UN:A2/9/?z-1; <br>
+&nbsp;&quot;?v&quot; means that it's a get syntax for an integer. &quot;?z&quot; is a get syntax for string variables. Instead of being written to some variable, the value is returned from the function. <br>
+I used &quot;t&quot;,&quot;st&quot; instead of &quot;y1&quot;,&quot;y2&quot; in Lua code. To make Lua example completely identical to ERM (if you need to access y1 and y2 from ERM for some reason) you can set actual &quot;y1&quot; and &quot;y2&quot; ERM vars. The y-variables can be accessed as ERM.y1 and ERM.y2 from Lua. So, the first example would look like <br>
+&nbsp;ERM.y1, ERM.y2 = CA(4,5,0):M2(0, ?v, ?v) <br>
+&nbsp;ERM[&quot;z-1&quot;] = UN:A(2, 9, ?z) <br>
+Add syntax: <br>
+&nbsp;CA(4,5,0):M2(0, nil, {5})  -- !!CA4/5/0:M2/0/d/d5; <br>
+Here you can see &quot;{5}&quot; as equivalent of &quot;d5&quot; in ERM and &quot;nil&quot; is interpretated as &quot;d0&quot; in ERM calls, so the value is kept unchanged. <br>
+<br>
+?ptr: <br>
+There's also ?ptr to get address of an integer value the reciever operates on. This is for use with mem module in Lua or UN:C command. 0 is returned if the reciever doesn't support ?ptr. <br>
+&nbsp;ptr = MA:P(13, ?ptr) <br>
+<br>
+Special cases: <br>
+1) Sometimes commands require index of z variable. You can simply pass the string itself or ?z in all or almost all such cases. <br>
+2) The VR reciever still can be used. You must pass a number or a string to VR(). The action would be performed on it and it will be returned as the first result. <br>
+&nbsp;x = VR(1):R(4)  -- means that random value up to 4 is added to 1 and the result is stored in x <br>
+&nbsp;token0 = VR(&quot;&quot;):M2(&quot;A string.of ,,tokens\nand some more tokens&quot;, 0)  -- get the first token of the string <br>
+If you use get syntax, the get results would be returned after the VR() operand, even if the command doesn't change the operand: <br>
+&nbsp;local _,i = VR(&quot;  sting&quot;):M5(?v)  -- I used the variable '_' as a dummy to keep the first returned value witch is the string &quot;  string&quot; itself. <br>
+3) Also note that ERM strings are limited with 511 characters. All arguments to recievers and returned values are truncated if they take more than 511 characters. In Lua itself strings length isn't limited. <br>
+4) FU:E cannot be used to exit Lua function, you should use 'return' for that. The goto itself works, but happens after the Lua code has done it's job. So, to go to another reciever immediately use code like this: <br>
+&nbsp;do <br>
+&nbsp;&nbsp;&nbsp;return FU:E(-2)  -- for example we want to get to previous handler of the trigger <br>
+&nbsp;nd <br>
+5) MC:S should be used this way: <br>
+&nbsp;MC(&quot;macro&quot;):Sv(555)  -- note that it is reversed and there should be no $ or @ signs around macro name <br>
+&nbsp;MC(&quot;macro&quot;):S(555)  -- set macro for number <br>
+When setting a macro for number, MC:S returns the number. So, you can set a macro right in the function declaration: <br>
+&nbsp;FU(MC(&quot;hex2xy&quot;):S(10)).? = function() <br>
+&nbsp;end <br>
+<br><br>
+<b>ERM Triggers </b><br>
+Here is how you create triggers: <br>
+<br>
+&nbsp;OB(4, 5, 0).? = function()   -- !?OB4/5/0; <br>
+&nbsp;end <br>
+<br>
+&nbsp;OB(4, 5, 0).$ = function()   -- !$OB4/5/0 post trigger <br>
+&nbsp;end <br>
+<br>
+You can also insert triggers in the beginning of triggers list. For example, this is useful in situation with scripts that temporary change spell points for one battle. If pre-battle triggers that store current spell points are inserted in the end of triggers list and post-battle scripts that restore spell points are inserted in the beginning, there would be no conflicts.<br> 
+<br>
+&nbsp;OB(4, 5, 0).first? = function()   -- inserted before all other !?OB4/5/0 triggers <br>
+&nbsp;end <br>
+<br>
+&nbsp;OB(4, 5, 0).first$ = function()   -- inserted before all other !$OB4/5/0 post triggers <br>
+&nbsp;end <br>
+<br><br>
+<b>ERM variables </b><br>
+You can access all ERM variables from Lua. However, you should avoid using local ERM variables as they aren't guaranteed to be local in case of Lua. <br>
+<br>
+Here's how you do it: <br>
+&nbsp;ERM.v15 = 5  -- set v15 <br>
+&nbsp;ERM.v[15] = 5  -- another way to set v15, the number can be a variable here <br>
+&nbsp;i = ERM.v15  -- of course you can also get value of v15 <br>
+Same thing with z,y,e: <br>
+&nbsp;ERM.z5 = &quot;my string&quot;  -- set z5 <br>
+&nbsp;ERM[1] = true  -- set flag 1 <br>
+&nbsp;ERM[1] = false  -- reset flag 1 <br>
+&nbsp;ERM.flags[1] = false  -- same as above <br>
+In similar way you can work with simple variables and 'c': <br>
+&nbsp;day = ERM.c  -- get current day <br>
+&nbsp;ERM.c = ERM.c + 1  -- you can set current day from Lua, but be careful with that. I haven't tested this much. Maybe this won't work in multiplayer, maybe it will cause bugs in some scripts. Dunno if it can cause game bugs somehow. <br>
+&nbsp;ERM.i = 5  -- set i <br>
+Macros: <br>
+&nbsp;ERM.$macro$ = 5  -- set macro variable $macro$ to 5 <br>
+&nbsp;ERM.$macro$ = &quot;Hi&quot;  -- set macro variable $macro$ to &quot;Hi&quot; (for z-var macros) <br>
+<br>
+You can also get a range of variables: <br>
+&nbsp;x,y,z = ERM.v(998, 1000) -- get v998 - v1000 <br>
+<br><br>
+<b><a name=organisation></a><font size=4>===== SCRIPTS ORGANISATION =====</font></b><br>
+Lua scripts should be placed in one of the following folders: <br>
+Mods\Wog\Wogify\ - Wogify scripts <br>
+Mods\Wog\Scripts\ - library scripts <br>
+Mods\Wog\Map\ - scripts that are loaded before map scripts, even if &quot;no wogification&quot; is set in WoG Options <br>
+Mods\Wog\Global\ - scripts that run when the game is started <br>
+<br>
+In global events of the map, place &quot;ZVSL.&quot; at the beginning of event name. E.g. &quot;ZVSL.Give Army&quot;. <br>
+Check <a href="../other/tools.htm" target=sommaire>Tools</a> for more informations about Mod support and script organisation.<br>
+<br><br>
+<b>VERY important keyword: require </b><br>
+The scripts in &quot;Scripts&quot; folder aren't loaded on startup, but must be loaded with use of &quot;require&quot; function instead. <br>
+<br>
+Example: <br>
+&nbsp;local BP = require(&quot;BattlePos&quot;) <br>
+<br>
+This will load &quot;BattlePos&quot; script and assign its environment (that is, the set of variables the script operates on) to BP variable. That is, you can access &quot;hex2xy&quot; function declared in BattlePos as &quot;BP.hex2xy&quot;. <br>
+Note: &quot;require&quot; isn't limited to scripts from &quot;Scripts&quot; folder, you can load Wogify scripts this way too. <br>
+<br>
+You can access loaded scripts via &quot;scripts&quot; table. <br>
+&nbsp;local BP = scripts[&quot;BattlePos&quot;] <br>
+If &quot;BattlePos&quot; was already loaded BP will be assigned its environment, otherwise it will be &quot;nil&quot;. <br>
+There is also a table called &quot;scriptvars&quot;, but I won't go into detail about it here. <br>
+<br><br>
+<b>Localisation </b><br>
+As far as I know, there is no "proper" way for localisation support. Current convention is to use text_ files in Scripts folder to store most of strings. <br>
+For example: <br> 
+<pre>
+local StrLib = require "text_Example"
+TM(1,-1,1,255).first? = function()
+	Message(StrLib.mess)
+end </pre>
+Meanwhile, text_Example.lua in Scripts folder:<pre>
+mess = "This is example"</pre>
+<br><br>
+<a name=WoG></a><b><font size=4>===== WOG FUNCTIONS =====</font></a> </b>
+<br>
+<b>Message </b><br>
+There is Message function for Lua instead of IF:M and IF:Q. It's easier to use and should work quicker. <br>
+&nbsp;Message(&quot;Hello world!&quot;)   -- this is preferable way of HelloWorlding <br>
+You can use it in one of following ways: <br>
+<pre>
+&nbsp;Message(&quot;msg&quot;, mode) 
+&nbsp;Message(&quot;msg&quot;, mode, t1, st1) 
+&nbsp;Message(&quot;msg&quot;, mode, t1, st1, t2, st2) 
+&nbsp;Message(&quot;msg&quot;, mode, t1, st1, t2, st2, t3, st3) 
+&nbsp;Message(&quot;msg&quot;, mode, t1, st1, t2, st2, t3, st3, x, y) 
+&nbsp;Message(&quot;msg&quot;, mode, t1, st1, t2, st2, t3, st3, x, y, timeout) 
+&nbsp;&quot;msg&quot;   = text of message. It doesn't have to be a srting. Variable of any kind would be converted to text. I.e. Message(5) is appropriete. 
+&nbsp;mode    = type of message(1 - message, 2 - request, 4 - right click message, 7 - choose one picture, 10 - choose one picture with Cancel) 
+&nbsp;t1, st1 = type and subtype of 1st picture
+&nbsp;t2, st2 = type and subtype of 2nd picture 
+&nbsp;t3, st3 = type and subtype of 3rd picture 
+&nbsp;x, y    = coordinates of message 
+&nbsp;timeout = it works only in multiplayer mode. The message will be automatically closed after the time passes. </pre>
+<br>
+If you can use braces instead of parentheses you can also use symbolic names of parameters: <br>
+&nbsp;Message{Text = &quot;msg&quot;, mode = 4, t1 = 8, st1 = 9, x = 50} <br>
+<pre>
+Here is the full set of arguments: <br>
+Number		Name		Meaning 
+1		text		Message text 
+2   		mode		Type of message 
+3   		t1  		picture 1 type 
+4   		st1		picture 1 subtype 
+5   		t2  		picture 2 type
+6   		st2		picture 2 subtype 
+7   		t3		picture 3 type 
+8   		st3		picture 3 subtype 
+9   		x		x coordinate 
+10  		y		y coordinate 
+11  	  	timeout		Time to show the message in multiplayer mode 
+12  		caption		Not used now. . </pre>
+<br>
+You can also combine passing parameters by order and by name: <br>
+&nbsp;Message{&quot;msg&quot;, 2, x = 50, y = 50)  -- message = &quot;msg&quot;, mode = 2, x = 50, y = 50 <br>
+<br>
+The Message returns result similar to IF:Q(with one exception): <br>
+&nbsp;f Message(&quot;msg&quot;, 2) then  -- the player clicked Ok <br>
+The exception is mode 10. In mode 10 it returns '1' for picture 1, '2' for picture 2 and 'false' for Cancel. <br>
+<br><br>
+<b>MessageEx </b><br>
+MessageEx function can display a message with up to 8 customizable pictures and support all modes of Message (and IF:Q). <br>
+Usage: <br>
+<pre>MessageEx(&quot;msg&quot;,  {picture 1}, {picture 2}, ...) 
+MessageEx(&quot;msg&quot;, mode,  {picture 1}, {picture 2}, ...) 
+MessageEx(&quot;msg&quot;, mode, x, y,  {picture 1}, {picture 2}, ...) 
+MessageEx(&quot;msg&quot;, mode, x, y, timeout,  {picture 1}, {picture 2}, ...) </pre>
+<br>
+Named arguments are also supported, like in Message: <br>
+MessageEx{&quot;Hello world!&quot;, mode = 4} <br>
+<br>
+The result is similar to Message: <br>
+false - Cancel <br>
+1 - first pic or Ok in simple question <br>
+2 - second pic <br>
+<br>
+Pictures: <br>
+Pictures are either standard pictures: <br>
+&nbsp;{type, subtype} <br>
+Or custom pictures: <br>
+&nbsp;{def, cadre, text, hint} <br>
+<br>
+def   = name of def file <br>
+cadre = cadre of the def <br>
+text  = text under the picture <br>
+hint  = right-click hint (alternatively, this can be a function that gets be called on right click on the picture) <br>
+<br>
+Example: <br>
+MessageEx(&quot;Hi&quot;, 7, {&quot;artifact.def&quot;, 1, &quot;Big Red Book&quot;, &quot;This book is big&quot;}, {8, 2}, {8, 3}, {8, 4}) <br>
+Here the mode is 7 (choose between two pictures), first picture is custom, while other 3 pictures are standard artifacts. <br>
+<br><br>
+<b>debug.Message</b><br>
+Use debug.Message while debugging a script to display values of some variables or just display a message that shows that the execution reached some point. 
+The message will contain line number from which the debug.Message function was called. 
+You can specify any number of parameters. Each of them would be displayed on a separate line. 
+It's also a good idea to have a local variable with a shorter name for it while you are debugging your script. <br>
+<br>
+Example:<br>
+<pre> local msg = debug.Message  -- for convenience 
+ msg()  -- shows &quot;Debug Message on line 4&quot; 
+ msg(4, false, &quot;Hi!&quot;) 
+--[[ the last one shows: 
+Debug Message on line 5 
+4 
+false 
+Hi! 
+--]] </pre>
+<br><br>
+<b>ManyPicsMessage</b><br>
+ManyPicsMessage(msg, t1, st1, t2, st2, ...) is Lua analog of IF:N. It displays a dialog with any number of pictures on the screen. <br>
+You can also add 'x' and 'y' parameters when using braces. <br>
+Examples: <br>
+&nbsp;ManyPicsMessageManyPicsMessage{&quot;First 5 artifacts:&quot;;  8,0; 8,1; 8,2; 8,3; 8,4;  x = 10, y = 10}  -- display a dialog with pictures of first 5 artifacts at point (10,10). <br>
+Note that ';' in table declaration is the same as ','. I used both ';' and ',' to make the call more readable. <br>
+<br><br>
+<b>pcall2 </b><br>
+pcall (f, arg1, arg2) <br>
+Calls function f with the given arguments in protected mode. If an error occurs in the called function, it is shown on screen, but the calling function continues execution. 
+Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message. <br>
+<br><br>
+<b>ErrorMessage </b><br>
+If for some reason you had to use pcall instead of pcall2, you should use ErrorMessage to display the error. <br>
+<br><br>
+<b>Bitwise operations </b><br>
+You can use hexadecimal numbers. You should write '0x' before them: <br>
+<pre>i = 0xFF   -- i = 255
+
+ bit.Or(x, y)      -- VR:|  (x | y in C) 
+ bit.And(x, y)     -- VR:&amp;  (x &amp; y in C) 
+ bit.Xor(x, y)     -- VR:^  (x ^ y in C) 
+ bit.Not(x)        -- (~x in C) 
+ bit.AndNot(x, y)  -- (x &amp; ~y in C) </pre>
+<br>
+Probably, you wouldn't need Xor. <br>
+Use bit.And(x, y) to check presense of flag y in x <br>
+Use bit.Or(x, y) to add flag y to x. <br>
+Use bit.AndNot(x, y) to remove flag y from x. <br>
+<br>
+You can use shorter form: <br>
+x:Or(y), x:And(y), x:Not() and so on. <br>
+<br>
+Example 1: <pre>
+ i = MA:X(0, ?v)  -- get Pikeman flags 
+ if i:And(0x10000) ~= 0 then  -- check for &quot;no enemy retaliation&quot; bit presense 
+	Message(&quot;No retaliation&quot;) 
+ end 
+or simply 
+ if MA:X(0, ?v):And(0x10000) ~= 0 then 
+	Message(&quot;No retaliation&quot;) 
+ end </pre>
+<br>
+<pre>Example 2: 
+ i = MA:X(0, ?v)  -- get Pikeman flags 
+ i = i:Or(0x10000)  -- give Pikeman &quot;no enemy retaliation&quot; ability 
+ MA:X(0, i)  -- set Pikeman flags 
+or simply 
+ MA:X(0, MA:X(0, ?v):Or(0x10000)) </pre>
+<br>
+<pre>Example 3: 
+ i = MA:X(63, ?v)  -- get Vampire Lord flags 
+ i = i:AndNot(0x10000)  -- remove &quot;no enemy retaliation&quot; ability 
+ MA:X(63, i)  -- set Vampire Lord flags 
+or simply 
+ MA:X(63, MA:X(63, ?v):AndNot(0x10000)) </pre>
+<br><br>
+<b>math.round </b><br>
+math.round(number) returns the nearest integer. You can also write number:round(). <br>
+Example: <br>
+math.round(3.14) = 3 <br>
+math.round(3.5) = 4 <br>
+<br><br>
+<b>path.find  </b><br>
+path.find(mask, dir) iterates through all files that match the given mask. If 'dir' is false or nil, it returns all files that match the mask. If 'dir' is true, it returns directories. The mask is relative to the game directory. You should use it in 'for' statement. <br>
+Examples: <br>
+<pre> for f in path.find(&quot;Mods/Standard/Wogify/*.lua&quot;) do  -- find all .lua files in Mods\Standard\Wogify directory. 
+	dofile(f)  -- run Lua script (you shouldn't do this!) 
+ end 
+  
+ for mod in path.find(&quot;Mods/*&quot;, true)  -- find all directories in the Mods folder 
+	for f in path.find(mod..&quot;/Wogify/*.lua&quot;)  -- find all files in the Wogify folder of the mod 
+		dofile(f)  -- run Lua script (you shouldn't do this!)
+	end 
+ end </pre>
+<br>
+Note: dofile doesn't create script environment, so you can't load scripts with code like this. Currently all scripts loaded with &quot;dofile&quot;, &quot;loadstring&quot; and other such functions share the same environment. <br>
+As you see, I use '/' instead of '\', bacause '\' must be written twice in strings ('\\')<br> </pre> </font></font>
+</body>
+
+</html>

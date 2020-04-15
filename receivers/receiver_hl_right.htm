@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-za">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>2</title>
+<base target="annexe">
+<LINK href=../other/styles.css rel=stylesheet type=text/css>
+</head>
+
+<body background="../images/intile.jpg">
+
+<p align="center"><b><font face="Times New Roman CE" size="6"><span lang="de">
+H</font><font face="Times New Roman CE" size="5">ERO</font><font face="Times New Roman CE" size="6"> 
+L</font><font face="Times New Roman CE" size="5">EVEL</font><font face="Times New Roman CE" size="6"> 
+(</font></span><font face="Times New Roman CE" size="6">HL</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+</font></span><font face="Arial" size="2"><font color="#333333">RECEIVER</font></font></b>
+</p>
+
+<p><font color="#333333"><b><font face="Arial" size="2">Lets you control what skills (primary and secondary) 
+  a hero may choose when gaining a new level. It must be used with the <a href=../other/trigger_right.htm#hl target=principal>!?HL</a> or <a href=../other/trigger_right.htm#hl target=principal>!?HL trigger</a></font></b>
+</font> 
+</p>
+<table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%">
+	
+      <tr>    
+    <td width="75" height="32" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial"><span lang="de"><b><font face="Arial" size="2"><font color="#FF0000">!!HL:</font><font color="#8B008B">XXXX</font><font color="#FF0000">;</font></font></b></span></font></b></td>
+        
+    <td width="647" height="32" valign="top"> <span lang="de">
+    <font size="2" face="Arial">Hero 
+      level controlle</font></span><font face="Arial" size="2">r</font></td>
+      </tr>
+  </table>
+<p align="center"><strong><font face="Arial" size="2">OPTIONS</font></strong><font face="Arial" size="2">&nbsp;<font color="#8B008B"> 
+  </font></font></p>
+
+<table border="2" width="100%" bordercolorlight="#000000" bordercolordark="#000000">
+	
+	<tr>
+	<a name="R"></a>
+    <td valign=top><font class=ermtext>R<font class=param>?$</font>;
+    <td><b>Get number of secondary skill chosen by player in level up dialog</b><br>
+	See (<a target="annexe" href="../format/format_ss.htm">Format SS</a>) <br>
+	
+	</tr>
+	
+  <tr>
+    <td width="14%" valign="top"><b><font size="2" face="Arial" color="#FF0000"><a name="S"><font color=red>S</font></a></font><font size="2" face="Arial" color="#800080">$1</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#800080">$2</font><font size="2" face="Arial" color="#FF0000">/</font><font size="2" face="Arial" color="#800080">$3</font><font size="2" face="Arial" color="#FF0000">;</font></b></td>
+    <td valign="top"><font size="2" face="Arial"><b>Get (in !$HL) or set (in !?HL) set primary and secondary skills that a hero can take.</b><br>
+     &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Set/check/get a +1 primary skill (0...3)
+    <a href="../format/format_pk.htm">Format
+     PK</a>.<br>
+     &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> = Get/set a next level of left second skill (-2,-1.0..27)
+    <a href="../format/format_ss.htm">Format
+     SS</a><br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -2 = do not change<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -1 = not allowed to choose (no skill)<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0... = number of secondary skill<br>
+     &nbsp;&nbsp; <b><font color="#8B008B">$3 </font></b>= Get/set a next level of right second skill (-2,-1.0..27)
+    <a href="../format/format_ss.htm">Format
+     SS</a><br>
+     <b><u>
+      Comments:</u></b><br>
+     This receiver may be used only inside !?HL trigger and takes
+     effect for the current level gain only.<br>
+     <b><font color="#0000FF">
+      Example:</font><font color="#008000"><br>
+ </font><font color="#FF0000">
+     !?HL-1; </font></b><font color="#FF0000"> every one who gains a new level<b><br>
+     !!HL:S0/-1/-1; </b> set Attack+1 and no choice for secondary skills</font></font></td>
+  </tr>
+</table>
+<font size=2>
+<br>
+<br>
+Example:<br>
+ZVSE<br>
+* this script lets heroes learn all 28 skills<br>
+<br>
+!#VRv100:S0;<br>
+<br>
+!?HL-1;<br>
+!!HE-1:S=8;<br>
+!!VRv100&1:S1;<br>
+!!HE-1&1:S7; [set number of shown skills to 7 to allow new skills]<br>
+!!HL&1:Sd/-2/-2; [generate skills again]<br>
+<br>
+!$HL-1&v100<>0; [if we altered the number of shown skills]<br>
+!!VRv100:S0;<br>
+!!HE-1:S8; [restore the number of shown skills]<br>
+</font>
+</body>
+
+</html>

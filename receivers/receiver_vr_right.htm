@@ -1,0 +1,439 @@
+<html>
+
+<head>
+<title>Variable</title>
+<base target="_self">
+</head>
+<body background="../images/intile.jpg" bgproperties="fixed">
+
+  <p align="center"><strong><font face="Times New Roman CE" size="6">
+  <span lang="de">V</font><font face="Times New Roman CE" size="5">ARIABLES  </font><font face="Times New Roman CE" size="6">
+  (</font></span><font face="Times New Roman CE" size="6">VR</font><span lang="de"><font face="Times New Roman CE" size="6">)</font><font face="Arial" size="2"><br>
+  </font></span><font face="Arial" size="2" color="#333333">RECEIVER</font></strong>
+  <p>
+
+<font face="Arial" size="2">
+
+<b>
+
+<font color="#333333">Used for managing variables (setting, comparing
+and doing math with them)</font>.</b></font></p>
+
+  <p>
+
+<font face="Arial" size="2">
+
+<b>
+ </p>
+
+  <p>
+
+<tt>
+  <font size="2" face="Arial"><span lang="de">For a more detailed and explained
+version of VR receiver and variables, read
+<a target="_self" href="../other/tutor_right.htm#howto4">the VR receiver easily explained</a>
+(ERM for dummies, by Qurqirish Dragon)</span></font></tt></p>
+
+  <table border="2" bordercolorlight="#000000" bordercolordark="#000000" width="100%" cellspacing="1">
+      <tr>
+        <td width="90" nowrap valign="top"><b><font color="red" size="2" class="Helvetica32" face="Arial">!!VR@:<font color="darkmagenta">XXXX</font>;</font></b></td>
+        <td width="100%" valign="top"><font face="Arial" size="2">
+<i>All numeric variables are integer variables and have a range of -2147483647...+2147483647</i><br>
+<style>td {font:12px arial}</style>
+<table cellspacing=0>
+<tr><td></td><td><b>c</td><td> stores game active day number</td></tr>
+<tr><td></td><td><b>d</td><td> current value</td></tr>
+<tr><td></td><td><b>e1..e100 </td><td> Function floating point variables</td></tr>
+<tr><td><img src=../images/new.gif></td><td><b>e-1..e-100</td><td> Trigger local floating point variables</td></tr>
+<tr><td></td><td><b>'f'..'t'</td><td> Standard variables ('quick variables')</td></tr>
+<tr><td></td><td><b>v1..v1000</td><td>  Standard variables</td></tr>
+<tr><td></td><td><b>w1..w100</td><td> Hero variables</td></tr>
+<tr><td><img src=../images/new.gif></td><td><b>w101..w200</td><td> Hero variables</td></tr>
+<tr><td></td><td><b>x1..x16</td><td>  Function parameters</td></tr>
+<tr><td></td><td><b>y1..y100</td><td> Function local variables</td></tr>
+<tr><td><img src=../images/new.gif></td><td><b>y-1..y-100</td><td> Trigger-based local integer variables</td></tr>
+<tr><td></td><td><b>z1..z1000</td><td> String variables</td></tr>
+<tr><td></td><td> <b>z-1..z-10</td><td> Function local string variables</td></tr>
+</table>
+</td>
+      </tr>
+  </table>
+  <p align="center">
+
+<font face="Arial" size="2"><b><br>
+</b>
+<strong>OPTIONS</strong>
+</font>
+  </p>
+<table border="2" width="100%" height="16" bordercolorlight="#000000" bordercolordark="#000000" cellspacing="1">
+  <tr>
+<td valign="top"><b><font face="Arial" size="2">var<br><font color="#FF0000"><a name="C">C</a></font><font face="Arial" size="2" color="#800080">$1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$3...</font><font color="red" size="2" class="Helvetica32" face="Arial">;<br>
+</font></b></td>
+    <td width="86%" height="1" valign="top"><font face="Arial" size="2"> <b> !!VR$:C$1/$2/$3... up to 16 parameters&nbsp;<br>
+Set/check v vars.&nbsp;</b><br>
+      &nbsp;&nbsp; $ - v variable that is first in sequence.&nbsp;<br>
+      &nbsp;&nbsp; $1 - set/check a first ($) v variable&nbsp;<br>
+      &nbsp;&nbsp; $2 - set/check a second ($+1) v variable&nbsp;<br>
+      &nbsp;&nbsp; $3 - set/check a third ($+2) v variable&nbsp;<br>
+...&nbsp;<br>
+      <font color="#0000FF"><b>
+Example:</b>&nbsp;</font>
+      <font color="#008000"><br>
+      </font>
+      <b>
+<font color="#FF0000">!!VRv123:C23/v15/?i/y4;&nbsp;<br>
+</font><font color="#0000FF">
+Result:&nbsp;</font><font color="#FF0000"><br>
+v123=23, v124=v15, i=v125, v126=y4<br>
+&nbsp;</font>
+      <font color="#008000"><br>
+</font><font color="#0000FF">
+      Example by Donald:</font>
+      <font color="#008000"><br>
+</font></b>Remember we have the VR:C command to define tables; it's a much<span lang="de">
+    </span>cleaner way to
+do stuff like look up a spell number. So for example: <font color="#FF0000">
+      <b>
+<br>
+<br>
+!!VRv600:C0/3/5/15/27/31/32/35/37/41/42/43/46/53/54;  </font>[table of 1st level spell
+numbers]<font color="#FF0000"><br>
+    </font>
+    </b></font>
+      <b>
+    <font color="#FF0000" face="Arial" size="2">
+      !!VRy1:S600 R14; </font><font face="Arial" size="2">
+      [random # 600-614]</font><font color="#FF0000" face="Arial" size="2"><br>
+    !!VRvx16:Svy1; </font><font face="Arial" size="2">
+      [now vx16 is a random 1st level spell #]</font></b></td>
+  </tr>
+  <tr>
+    <td width="14%" valign="top"><b>string<br><font face="Arial" size="2"><font color="#FF0000"><a name="H">H</a></font><font color="#800080">#</font></font></b></td>
+    <td width="86%" valign="top"><font face="Arial" size="2"><b>Checks whether a z
+      variable stores an empty string or not</b><br>
+      &nbsp;&nbsp;&nbsp; # is a number of flag to store the result<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =1 if there is a text<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =0 if string is empty.<br>
+    All signs like Space, New Line, Carriage Return, Tabulation are skipped and
+      treated as NO characters.<br>
+      <b>
+<font color="#0000FF">  Example:</font>
+      <font color="#008000"><br>
+      </font><font color="#FF0000">
+  !!VRz100:S^Hello!^;<br>
+  !!VRz101:S^^;<br>
+  !!VRz102:S^      ^;<br>
+  !!VRz100:H300;</font></b>   <font color="#FF0000">   flag300=1<b><br>
+  !!VRz101:H301; </b>   flag301=0<br>
+      <b>  !!VRz102:H302; </b>   flag302=0</font></font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><a name="M"><font color=red>M1/z</font>#1<font color=red>/</font>#2<font color=red>/</font>#3<font color=red>;<BR><img src=../images/new.gif></td>
+    <td valign="top"><font face="Arial" size="2">
+<b>Get a substring.</b><br>
+<font color=red><b>!!VRz#:M1/z#1/#2/#3;</b></font><br>
+  Get a substring from z#1 and set it to z#.<br>
+  <b>z#</b>  - a variable that receives the result; may be standard or local z variable.<br>
+  <b>z#1</b> - a variable that is a source; may be standard, local or extended z variable.<br>
+  <b>#2</b>  - start position of z#1 string to copy (0 based).<br>
+  <b>#3</b>  - length of substring to copy.<br>
+  <b>Example:</b><br>
+<b><font color=red>!!VRz1:S^NTV PLUS for Heroes!^;</b><br>
+<b>!!VRz2:M1/z1/4/7;</b><br></font>
+ In result we have z2 = "PLUS fo"<br>
+      </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><font color=red>M2/z</font>#1<font color=red>/</font>#2<font color=red>;<br><img src=../images/new.gif width="28" height="11"></td>
+    <td valign="top"><font face="Arial" size="2">
+<b>Get a token.</b><br>
+<font color=red><b>!!VRz#:M2/z#1/#2</b></font><br>
+  Get a specific token <b>#2</b> from <b>z#1</b> and set it to <b>z#</b>.<br>
+&nbsp;&nbsp;  <b>z#</b>  - a variable that receives the result; may be standard or local <b>z</b> variable.<br>
+&nbsp;&nbsp;  <b>z#1</b> - a variable that is a source; may be standard, local or extended <b>z</b> variable.<br>
+&nbsp;&nbsp;  <b>#2</b>  - a token number (0 based).<br>
+<i>  Comments:</i><br>
+  Delimiters are: space, comma, dot, tabulator, new line.<br>
+<b>  Example:</b><br>
+  For a string:<br>
+"A string.of ,,tokens<br>
+and some  more tokens"<br>
+  We have the next tokens:<br>
+&nbsp;&nbsp; 0 -> "A"<br>
+&nbsp;&nbsp; 1 -> "string"<br>
+&nbsp;&nbsp; 2 -> "of"<br>
+&nbsp;&nbsp; 3 -> "tokens"<br>
+&nbsp;&nbsp; 4 -> "and"<br>
+&nbsp;&nbsp; 5 -> "some"<br>
+&nbsp;&nbsp; 6 -> "more"<br>
+&nbsp;&nbsp; 7 -> "tokens"<br>
+     </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><font color=red>M3/</font>#1<font color=red>/</font>#2<font color=red>;<br><img src=../images/new.gif width="28" height="11"><br></font>
+<font color=red>M3/</font>#1;<br><img src=../images/new.gif width="28" height="11"></td>
+    <td width="86%" height="48" valign="top"><font face="Arial" size="2">
+<b>Integer to alpha conversion.</b><br>
+<font color=red><b>!!VRz#:M3/#1/#2;</b></font><br>
+or<br>
+<font color=red><b>!!VRz#:M3/#1;</b></font><br>
+  Convert a number to a string.<br>
+  <b>z#  </b>- a variable that receives the result; may be standard or local <b>z</b> variable.<br>
+  <b>#1</b>  - any number (or any numeric variable) to be converted.<br>
+  <b>#2 </b> - radix; a base of a value (default is 10)<br>
+<b> Examples:<br></b>
+<font color=red><b>  !!VRz1:M3/123; </b>-> z1="123"<br>
+<b>  !!VRz1:M3/123/10;</b> -> z1="123"</font> (the same as above)<br>
+<font color=red><b>  !!VRz1:M3/-123; </b>-> z1="-123"<br>
+<b>  !!VRz1:M3/127/16;</b> -> z1="0x7F"</font> (hexadecimal)
+      </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><font color=red>M4/</font>$<font color=red>;<br><img src=../images/new.gif width="28" height="11"></td>
+    <td width="86%" height="48" valign="top"><font face="Arial" size="2">
+<b>Get the length of a string.</b><br>
+<b>$</b>- any numerical variable (to store the length)<br>
+<i>Comment:</i> Includes the full length, including leading and trailing spaces.
+      </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><font color=red>M5/</font>$<font color=red>;<br><img src=../images/new.gif width="28" height="11"></td>
+    <td width="86%" height="48" valign="top"><font face="Arial" size="2">
+<b>Get the first non-space character position.</b><br>
+<b>$</b> - any numerical variable (to store the position)<br>
+<i>  Comment:</i> If there are no leading spaces, the position is 0. If the string is empty, the position is -1.
+      </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>string<br><font face="Arial" size="2"><font face="Arial" size="2" color="darkmagenta"><font color=red>M6/</font>$<font color=red>;<br><img src=../images/new.gif width="28" height="11"></td>
+    <td width="86%" height="48" valign="top"><font face="Arial" size="2">
+<b>  Get the last non-space character position.</b><br>
+<b>$ - any numerical variable (to store the position)<br>
+  Comment: If there are no trailing spaces, the position is the length of the string -1. If the string is empty, the position is 0.
+</td></tr><tr><td colspan=2><font face=arial size=2>
+  <b>Example for commands M4/$; M5/$; M6/$; :<br></b>
+<b><font color=red>!!VRz10:S^  Abc def   ^;</font></b> [Assign text to string z10]<br>
+<b><font color=red>!!VRz10:M4/y5;</b> </font>[Get length to y5]<br>
+<b><font color=red>!!VRz10:M5/y6;</b></font> [Get 1st non-space position to y6]<br>
+<font color=red><b>!!VRz10:M6/y7;</b> </font>[Get last non-space position to y7]<br>
+<br>
+<font color=red><b>M4</b></font>: y5 returns 12.<br>
+<font color=red><b>M5</b></font>: y6 returns 2.<br>
+<font color=red><b>M6</b></font>: y7 returns 8.
+      </td>
+  </tr>
+  <tr>
+    <td valign="top"><b>var<br><font face="Arial" size="2"><font face="Arial" size="2" color="#FF0000"><a name="R">R</a></font><font color="#800080">x</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Generates a random value from 0 to
+      x (inclusive)
+  and ADDS this to the current value.</b><br>
+      <b>
+      <font color="#0000FF">Example:</font><u>
+      <font color="#008000"><br>
+      </font>
+      </u><font color="#FF0000">!!VRi:R25</font></b><font color="#FF0000">... </font>
+    will generate a random value from 0 to x (including) and ADD this to the 
+    current value</font></td>
+  </tr>
+  
+   <tr>
+    <td valign="top"><b>var<BR>
+    <font face="Arial" size="2" color="#FF0000">R</font><font face="Arial" size="2" color="#800080">#</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">; 
+    <img src=../images/new.gif width="28" height="11">	</font></b></td>
+    <td valign="top"><font size="2" face="Arial"><b>
+    Extended syntax for VR@:R command</b><br>
+    # - dummy parameter (is not used)<br>
+    $ - set random seed.<br> <br>
+    </font></td>
+  </tr>
+  
+  <tr>
+    <td valign="top"><b>var<BR>
+    <font face="Arial" size="2" color="#FF0000">R</font><font face="Arial" size="2" color="#800080"></font><font face="Arial" size="2" color="#FF0000"></font><font face="Arial" size="2" color="#800080">$</font><font face="Arial" size="2" color="#FF0000">; 
+    <img src=../images/new.gif width="28" height="11">	</font></b></td>
+    <td valign="top"><font size="2" face="Arial"><b>
+    New extended syntax for VR:R command</b><br>
+    $ - get/check/set random seed.<br>
+    In this receiver you MUST omit variable name! Thus, !!VRy1:R?y1 is WRONG and !!VR:R?y1 is GOOD. <br> 
+     <br>
+    <i>Comment:</i><br>
+    If you are not sure that the random generator is in identical stage at both 
+    PCs, you may just reset it to an identical seed and then generate a number. <br>
+    <br>
+    Example: <br>
+!!VR:R/?v1; will store current random seed in v1 <br>
+!!VR:R/v1; will set random seed to v1 <br>
+    <br>
+    On start of a battle random seed is set to some value that don't change if you load savegame and attack the same monsters again. So, if you need some real randomness in battle, use: <br>
+!!VRv1:S0 T2147483647 R/v1; randomize - use random seed based on current time <br
+    
+    </font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><nobr>var<BR><font face="Arial" size="2"><font color="#FF0000">
+  <a name="S">
+  S</a></font><font color="#800080">#</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font>
+<br>string<BR><font color=red face=arial size=2>S^<font color=darkmagenta>text</font>^;
+</b></td>
+    <td><font face="Arial" size="2"><b>Set var @ to # or set string @ to text (text may be formatted)</b></font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b>
+var<BR><font face="Arial" size="2"><font color="#FF0000"><a name="T">T</a></font><font color="#800080">$</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td width="86%" height="1" valign="top"><font face="Arial" size="2"><b>Generate a random
+      value from 0 to $ and add this to the current value of the variable</b><br>
+      Random value based on time value. In some cases these values may be more
+      &quot;random&quot; than with the R command.<br>
+      <u><b>Comments:</b></u><br>
+      Also, for those of you using VR:T to generate random numbers: if you generate more than
+      one number at once, they'll all be the same. So use VR:R in those situations.<br>
+      T is a time based command. And if they both meet at one command line<br>
+it is too little delay between them and as a result the values are the same.</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="1" valign="top"><a name="U"></a><span lang="de">
+    <b>string<br><font color="#FF0000">U</font><font color="#8B008B">#</font><font color="#FF0000">;</font></span><img src=../images/new.gif width="28" height="11"></td>
+    <td width="86%" height="1" valign="top"><font face="Arial" size="2"><b>
+    Search for a substring within a string: <font color=red>VRz#:U&lt;substring&gt;</font></b><br>
+    <br>
+    Format can be: !!VRz#1:Uz#2; or !!VRz#1:U^Text^;<br>
+    <br>
+    Searches for the substring z#2 or ^Text^ within the z#1 string and<br>
+    sets Flag 1 to TRUE if there is such a substring, otherwise to FALSE.<br>
+    <br>
+    Z var in both sides may be of any type (standard, local, ERT based).<br>
+    This mean that this command may be easily ERTified.<br>
+    <br>
+    <u><b>Comments:</b></u><br>
+    This uses a case insensitive algorithm, so &quot;Sword&quot; equals &quot;sword&quot; and<br>
+    &quot;SwOrD&quot;. It skips leading and trailing spaces (and new line characters), so<br>
+    &quot; Hi &quot;, &quot; hI&quot; and &quot; hi &quot; all means just &quot;HI&quot; (all translated to upper<br>
+    case before searching).<br>
+    It does not skip any space or new line characters that are located inside<br>
+    of the text. So &quot;Hi,&nbsp;it's me&quot; and &quot;Hi,&nbsp;&nbsp;&nbsp;it's me&quot; are different.<br>
+    Both strings are processed before search procedure is executed. So the text<br>
+    like this &quot;Hi,%Z5!&quot; will become &quot;Hi,Slava!&quot; (if z5 is set to &quot;Slava&quot;) before<br>
+    processing.<br>
+    <br>
+    <b><font color="#0000FF">Example</font></b>. Here you will have both
+    messages &quot;Yes!&quot; and &quot;Yes again!&quot;:<br>
+    <b><font color="#FF0000">ZVSE<br>
+    !#VRz100:S^ Sword<br>
+    <br>
+    ^;<br>
+    !#VRz200:S^<br>
+    This_is the_sword text<br>
+    <br>
+    <br>
+    ^;<br>
+    !#VRz200:Uz100;<br>
+    !#IF&amp;1:M^Yes!^;<br>
+    !#VRz200:U^<br>
+    <br>
+    sWorD<br>
+    ^;<br>
+    !#IF&amp;1:M^Yes again!^;</font></b></font></td>
+  </tr>
+<tr><td valign=top><a name=v><B>string<br><font face="Arial" size="2" color=red><b>V<font color=darkmagenta>$</font>;<img src=../images/new.gif width="28" height="11">
+</td><td><font face="Arial" size="2"><b> Convert string to value.</b><br>
+  Convert a string to an integer or floating point value<br>
+  <b><font color=darkmagenta>$</b></font> is any integer (<b>f...t,v#,w#,x#,y#</b>) or fl.(e) variable<br>
+  <b><font color=red>z<b><font color=darkmagenta>#</b></b></font></font> - a var that is a source; may be standard, local or extended z<br>
+<i>  Comments.<br></i>
+  You may use a ...e... syntax (engineering fl.p. format).<br>
+  If value may not be converted it is set to 0.<br>
+  Leading or trailing space characters are ignored.<br>
+<b>  Examples:</b><br>
+&nbsp;  "123" -> 123<br>
+&nbsp;  "+123" -> 123 (the same as above)<br>
+&nbsp;  "-123" -> -123<br>
+&nbsp;  ".325" -> 0.325<br>
+&nbsp;  "-1.25e+1" -> -12.5 (-1.25 * 10^1)<br>
+
+</td></tr>
+</table>
+
+  <p align="left"><font face="Arial" size="2"><strong>
+  Logical bit operations
+  </strong></font>
+
+  </p>
+<table border="2" width="100%" height="82" bordercolorlight="#000000" bordercolordark="#000000"> 
+<tr>
+    <td width="14%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">
+  &</font><font color="#800080">#</font>;</font></b></td>
+    <td width="86%" valign="top"><font face="Arial" size="2"><b>
+Check or remove specific bit of a variable </b><br>
+&nbsp;&nbsp; & does a logical AND on the bits of a variable and can be used to check if a specific bit has
+been set. For example, to test if the variable v1 has the 5th bit (16) set, use: !!VRv1:&16;
+v1 will be set to 16 if bit 5 is set and 0 if it isn't. This can be very
+useful when checking monster flags.<br>
+<br>
+For example:<br>
+!!BRx16:F?i; [read flags]<br>
+!!VRi:&33554432; [just look at waiting bit]<br>
+!!IF&i>0:M^This stack is waiting.^;<br>
+<br>
+&nbsp;&nbsp;You can also clear (remove) a specific bit without touching the other bits
+in a variable. To do so, use the negative minus one of the bit value you
+wish to remove. For example, to remove the 5th bit (16), use -17, e.g.,
+!!VRv1:&-17;<br>
+</font></td>
+  </tr>
+  <tr>
+    <td width="14%" height="1" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">
+  |</font><font color="#800080">#</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td width="86%" height="1" valign="top"><font face="Arial" size="2"><b>Set a specific bit of a variable</b><br>
+&nbsp;&nbsp;  | does a logical OR on the bits of a variable and can be used to set a
+specific bit without changing the other bits. For example, to set the 6th
+bit (32) for v1, use: !!VRv1:|32;<br>
+&nbsp;&nbsp;If v1 already had this bit set, nothing is changed. If it didn't, it now has this bit set. This
+can be very useful for adding new flags to a monster if you don't know which ones it already
+has, and in fact, this is really the only completely safe way to do so.</font></td>
+  </tr>
+<tr><td><b><font color=red face=arial size=2>X<font color=darkmagenta>$</font>;</td><td><b>Does a logical XOR on a bits of a variable</td></tr>
+</table>
+  <p align="left"><font face="Arial" size="2"><strong>
+  Arithmetic Operations with
+  Variables
+  </strong></font>
+
+  </p>
+<table border="2" width="100%" height="82" bordercolorlight="#000000" bordercolordark="#000000">
+  <tr>
+    <td valign="top"><b><font color="#FF0000" face="Arial" size="2">
+ var<br> +</font><font color="#800080" face="Arial" size="2">#</font><font color="red" size="2" class="Helvetica32" face="Arial">;
+string<br> +^<font color=darkmagenta>text</font>^;
+</font>
+
+</b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Add # to the variable
+<br>or<br>add the text to the end of the source string</font></td>
+  </tr>
+  <tr>
+    <td><b><font color="#FF0000" face="Arial" size="2">
+var<br>  -</font><font color="#800080" face="Arial" size="2">#</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td><font face="Arial" size="2"><b>Subtract # from the variable</b><br>
+</td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font color="#FF0000" face="Arial" size="2">
+var<br>  *</font><font color="#800080" face="Arial" size="2">#</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Multiply the variable by #</b></font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font color="#FF0000" face="Arial" size="2">
+var<br>  :</font><font color="#800080" face="Arial" size="2">#</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Divide the variable by #</b> (do not divide by zero -
+      you will get an error message)
+      </font></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><font face="Arial" size="2"><font color="#FF0000">
+var<br>  %</font><font color="#800080">#</font></font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
+    <td valign="top"><font face="Arial" size="2"><b>Set the variable to the reminder from division by #</b><br>
+  No brackets please :-)</font></td>
+  </tr>
+</table>
+</body>
+</html>
