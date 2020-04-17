@@ -73,10 +73,10 @@ pursue the player's hero relentlessly.</font></p>
     <b><font color="#FF0000" face="Arial" size="2"><a name="M">M</a></font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color=red>1</font><font color=red>;</font>
       &nbsp;</font></td>
     <td valign="top" width="514"><font face="Arial" size="2"><b>
-      Manage weight (AI value) of square</b><br>
-      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current weight (AI value)<br>
-      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base weight (AI value) unchanged by ERM commands.  <br> 
-      Don't change M$2/1 value via ERM commands. <br>
+      Manage movement-to-reach of square</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current number of movement points needed to reach the square<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base number of movement points needed to reach the square, unchanged by ERM commands. <br>
+      Don't change W$2/1 value via ERM commands. <br>
       Use only within <a href="../other/trigger_right.htm#ai" target=principal>!?AI</a> trigger.
       <br><br>
       <b>Example:</b><br>
@@ -84,32 +84,6 @@ pursue the player's hero relentlessly.</font></p>
 !!AI:M?v1; [get distance to object in movement points]<br>
 !!AI&v1>500:W1000000; [this is the ultimate goal of every AI hero that stands further than 5 squares from it]<br>
 [however, note that the object will be ignored if it's beyond AI thinking radius]<br>
-      <br><br>
-      
-      <b>Here are examples of standard weights:</b><br>
-Stables:<br>
-&nbsp;&nbsp;   If it gives more movement points than the hero spends to get to it, the weight is 10000. Otherwise, the weight is 50 + (importance of cavaliers upgrade).<br>
-<br>
-Keymaster's Tent:<br>
-&nbsp;&nbsp;   5000, if it's needed.<br>
-<br>
-Objects that give moral or luck:<br>
-&nbsp;&nbsp;   Weight is 0 if the hero can't reach the square at this turn. Weight is usually proportional to army strength (total AI value of army). For morale - if all stacks are undead, the weight is 0.<br>
-<br>
-Objects that give a resource:<br>
-&nbsp;&nbsp;   (resource count)*(resource importance for the owner)<br>
-<br>
-Fountain of Youth (it gives +200 movement and +1 morale):<br>
-&nbsp;&nbsp;   If it's closer than 200 movement points, the weight is 10000. Otherwise, the weight is the usual weight of moral enhancement, AI:M$ is decreased by 200 (so, it doesn't match AI:M$/1 even without any triggers).<br>
-<br>
-Shipyard:<br>
-&nbsp;&nbsp;   1000, if it's needed.<br>
-<br>
-Weight of guarded objects depends on bonus and comparsion of hero's army and defending army.<br>
-<br>
-Mine:<br>
-&nbsp;&nbsp;   (2 or 3)*(resource count per day)*(resource importance for the owner) - (guards penalty to weight)<br>
-&nbsp;&nbsp;   "2 or 3" is 2 if it's a neutral mine and 3 if the mine belongs to other player (even an ally! This is probably a bug).<br>
         </font></td>
   </tr>
   
@@ -170,16 +144,16 @@ Mine:<br>
       reason, it's often a good idea to specify a specific hero to avoid too
       much chaos.</font></td>
   </tr>
-  
-  <tr>
+ 
+	<tr>
     <td width="137" valign="top"><b><font color="#FF0000" face="Arial" size="2"><a name="W">W</a></font><font face="Arial" size="2" color="#8B008B">$1</font><font color=red>;</font><br>
     <b><font color="#FF0000" face="Arial" size="2"><a name="W">W</a></font><font face="Arial" size="2" color="#8B008B">$2</font><font color="#FF0000" face="Arial" size="2">/</font><font face="Arial" size="2" color=red>1</font><font color=red>;</font>
       &nbsp;</font></td>
     <td valign="top" width="514"><font face="Arial" size="2"><b>
-      Manage movement-to-reach of square</b><br>
-      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current number of movement points needed to reach the square<br>
-      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base number of movement points needed to reach the square, unchanged by ERM commands. <br>
-      Don't change W$2/1 value via ERM commands. <br>
+      Manage weight (AI value) of square</b><br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$1</b></font> = Current weight (AI value)<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$2</b></font> = Base weight (AI value) unchanged by ERM commands.  <br> 
+      Don't change M$2/1 value via ERM commands. <br>
       Use only within <a href="../other/trigger_right.htm#ai" target=principal>!?AI</a> trigger.
       <br><br>
       <b>Example:</b><br>
@@ -187,6 +161,32 @@ Mine:<br>
 !!AI:M?v1; [get distance to object in movement points]<br>
 !!AI&v1>500:W1000000; [this is the ultimate goal of every AI hero that stands further than 5 squares from it]<br>
 [however, note that the object will be ignored if it's beyond AI thinking radius]<br>
+      <br><br>
+      
+      <b>Here are examples of standard weights:</b><br>
+Stables:<br>
+&nbsp;&nbsp;   If it gives more movement points than the hero spends to get to it, the weight is 10000. Otherwise, the weight is 50 + (importance of cavaliers upgrade).<br>
+<br>
+Keymaster's Tent:<br>
+&nbsp;&nbsp;   5000, if it's needed.<br>
+<br>
+Objects that give moral or luck:<br>
+&nbsp;&nbsp;   Weight is 0 if the hero can't reach the square at this turn. Weight is usually proportional to army strength (total AI value of army). For morale - if all stacks are undead, the weight is 0.<br>
+<br>
+Objects that give a resource:<br>
+&nbsp;&nbsp;   (resource count)*(resource importance for the owner)<br>
+<br>
+Fountain of Youth (it gives +200 movement and +1 morale):<br>
+&nbsp;&nbsp;   If it's closer than 200 movement points, the weight is 10000. Otherwise, the weight is the usual weight of moral enhancement, AI:M$ is decreased by 200 (so, it doesn't match AI:M$/1 even without any triggers).<br>
+<br>
+Shipyard:<br>
+&nbsp;&nbsp;   1000, if it's needed.<br>
+<br>
+Weight of guarded objects depends on bonus and comparsion of hero's army and defending army.<br>
+<br>
+Mine:<br>
+&nbsp;&nbsp;   (2 or 3)*(resource count per day)*(resource importance for the owner) - (guards penalty to weight)<br>
+&nbsp;&nbsp;   "2 or 3" is 2 if it's a neutral mine and 3 if the mine belongs to other player (even an ally! This is probably a bug).<br>
         </font></td>
   </tr>
 </table>
