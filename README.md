@@ -7,5 +7,5 @@ For whatever reason i've decide to skip those, should be incorporated one day.<b
 [+] !?BA54 - called on both sides(?) after showing battlefield (after showing tactics dialog in case tactics is enabled).
 
 <b>To-do</b>
-- Make those fkin CD:B to work
+- CD:B simply doesn't work at all
 - Check !?BA trigger after flee
