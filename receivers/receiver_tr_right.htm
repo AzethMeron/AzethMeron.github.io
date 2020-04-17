@@ -16,7 +16,6 @@
 </center>
 <p><b><font size="-1" face="Arial" color="#333333">Used to set terrain types or change
 passability of a square.</b><br><br>
-Supports indirect syntax (TR112 = TRv112/v113/v114)<br>
 </font><p>&nbsp;
 <table borderColorDark="#000000" width="100%" borderColorLight="#000000" border="2">
   <tbody>
@@ -25,6 +24,13 @@ Supports indirect syntax (TR112 = TRv112/v113/v114)<br>
       <td valign="top"><font size="-1" face="Arial">Set a Terrain type or change passability
         of a square at the specified x,y,l location.</font></td>
     </tr>
+	  
+    <tr>
+      <td noWrap valign="top"><b><font size="-1" face="Arial"><font color="#ff0000">!!TR</font><font color="#800080">#</font><font color="#800080"></font><font color="#ff0000">:</font><font color="#800080">XXXX</font><font color="#ff0000">;</font></font></b></td>
+      <td valign="top"><font size="-1" face="Arial">Alternative method to above. Uses indirect reference: <br>
+x=v[#], y=v[#+1], l=v[#+2]
+    </tr>
+	  
   </tbody>
 </table>
 <center>
@@ -243,37 +249,37 @@ River Configuration:</font></u></b>
       <td width="50%" valign="top"><font size="-1" face="Arial">00, 01, 02, 03 - 4 styles of
         segment</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ +-¦</font><br>
+        <font size="-1" face="Courier">Â¦ +-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">04 - segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦-+-¦</font><br>
+        <font size="-1" face="Courier">Â¦-+-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">05, 06 - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">Â¦---Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">07, 08 - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ ¦-¦</font><br>
+        <font size="-1" face="Courier">Â¦ Â¦-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">09, 0A - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">Â¦ Â¦ Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">0B, 0C - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">Â¦---Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
   </tbody>
@@ -305,49 +311,49 @@ Road Configuration:</font></u></b><br>
       <td width="50%" valign="top"><font size="-1" face="Arial">00,01,02,03,04,05 - 6 styles
         of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ +-¦</font><br>
+        <font size="-1" face="Courier">Â¦ +-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">06, 07 - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ ¦-¦</font><br>
+        <font size="-1" face="Courier">Â¦ Â¦-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">08, 09 - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">Â¦---Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">0A, 0B - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">Â¦ Â¦ Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">0C, 0D - 2 styles of segment:</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦---¦</font><br>
+        <font size="-1" face="Courier">Â¦---Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">0E - segment</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ ¦ ¦</font><br>
+        <font size="-1" face="Courier">Â¦ Â¦ Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">0F - segment</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦ --¦</font><br>
+        <font size="-1" face="Courier">Â¦ --Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
     <tr>
       <td width="50%" valign="top"><font size="-1" face="Arial">10 - segment</font></td>
       <td width="50%" valign="top"><font size="-1" face="Courier">+---+</font><br>
-        <font size="-1" face="Courier">¦-+-¦</font><br>
+        <font size="-1" face="Courier">Â¦-+-Â¦</font><br>
         <font size="-1" face="Courier">+---+</font></td>
     </tr>
   </tbody>
