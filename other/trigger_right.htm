@@ -325,10 +325,10 @@ at any dialog item.<br><font class=notes>Notes</font>:<br>
 <tr>
  <td valign=top><a name=ge></a><font class=ermtext>!?GE<font class=param>#</font>;</font></td>
  <td valign=top><b>This is a &quot;global&quot; event with number #.</b><br> 
- The # must be first in the Event text (the event title doesn't matter).<br>
- This number WON'T APPEAR later in message text in the game as long as it's used by a trigger.<br>
+ The # must be first in the Event text, separated from rest with newline. 
+ This number WON'T APPEAR later in message text in the game as long as it's used by a trigger. The event title doesn't matter.<br>
  <font class=example>Example</font>:<br>
- Global event with text &quot;<font class=ermtext>1230There you
+ Global event with text &quot;<font class=ermtext>1230<br>There you
  are!</font>&quot; transforms to &quot;<font class=ermtext>There you are!</font>&quot; with number 1230.
  <br><i>To change a global event, use the <nobr><a href=../receivers/receiver_ge.htm target=sommaire>GE Receiver</a></nobr>.</i></td>
 </tr>
