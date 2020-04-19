@@ -33,12 +33,13 @@ For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save fi
 <br><br>
 <font size=4><b><a name=mods></a>MOD SUPPORT</b></font><br>
 Scripts organisation:<br>
-Mods/ModName/Global - Lua scripts loaded and parsed at the start of the GAME, not the map. <br>
-Mods/ModName/Map - Lua scripts loaded and executed when map is started, AND every time you load saved game.<br>
-Mods/ModName/Wogify - Lua scripts that run ONLY when wogification is enabled<br>
-Mods/ModName/ERM - ERM scripts executed when map is started, only if wogification is enabled<br>
-Mods/ModName/Scripts - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
-If you want to use ERM triggers in Lua, you CAN'T put them in 'Global' scripts. 'Map' works fine. Wogify untested<br>
+<b>Mods/ModName/Global</b> - Lua scripts loaded and parsed at the start of the GAME, not the map. <br>
+<b>Mods/ModName/Map</b> - Lua scripts loaded and executed when map is started, AND every time you load saved game.<br>
+<b>Mods/ModName/Wogify</b> - Lua scripts that run ONLY when wogification is enabled<br>
+<b>Mods/ModName/ERM</b> - ERM scripts executed when map is started, only if wogification is enabled<br>
+<b>Mods/ModName/Scripts</b> - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
+If you want to use ERM triggers in Lua, you CAN'T put them in 'Global' scripts. 'Map' works fine. Wogify untested.
+Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
 <br>
 Sequence Lua+ERM:<br>
 1. Lua function: global.events.EnterMap() ... end<br>
