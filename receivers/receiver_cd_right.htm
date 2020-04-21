@@ -56,6 +56,7 @@ initiated by a player.</font>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - town type (<a target="annexe" href="../format/format_t.htm">Format T</a>) <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - structure index (<a target="annexe" href="../format/format_u.htm">Format U</a>) <br>	
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font>  - flag, 0=disabled, 1=enabled
+	<br><font color=purple>Tests indicate that this receiver doesn't work at all, or syntax is wrong. No idea wht to do with that.</font>
 	</tr>
   
   <tr>
@@ -68,6 +69,7 @@ initiated by a player.</font>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - dword 1 representing dependencies <br>
 	Every set bit in $1 (dword 0) or in $2 (dword 1) means that this structure may be build only when a structure represented by this bit is built.<br>
 	Example: $1=0x00000024 means that this structure may be build only when Magic Guild Lvl 3 and Tavern both built.
+	<br><font color=purple>Tests indicate that this receiver doesn't work at all, or syntax is wrong. No idea wht to do with that.</font>
 	</tr>
 	
 	<tr>
@@ -79,6 +81,7 @@ initiated by a player.</font>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - structure index that #2 is depended of <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#4</font> - structure index that #2 is depended of <br>
 	You may add up to 14 dependencies. You cannot check or get it with this command, use B1 for it. <br>
+	<br><font color=purple>Tests indicate that this receiver doesn't work at all, or syntax is wrong. No idea wht to do with that.</font>
 	</tr>
 	
 	<tr>
@@ -90,6 +93,7 @@ initiated by a player.</font>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - dword 0 exclusive buildings <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - dword 1 exclusive buildings <br>
 	If this structure is built all exclusive structures will be removed from the town screen. Syntax same with B1.
+	<br><font color=purple>Tests indicate that this receiver doesn't work at all, or syntax is wrong. No idea wht to do with that.</font>
 	</tr>
 	
 	<tr>
@@ -101,6 +105,7 @@ initiated by a player.</font>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - number of exclusive structure <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#4</font> - number of exclusive structure <br>
 	You may add up to 14 dependencies. If this structure is built all exclusive structures will be removed from the town screen. Syntax same with B2.
+	<br><font color=purple>Tests indicate that this receiver doesn't work at all, or syntax is wrong. No idea wht to do with that.</font>
 	</tr>
   
   <tr>
