@@ -9,4 +9,4 @@ For whatever reason i've decide to skip those, should be incorporated one day.<b
 <b>To-do</b>
 - CD:B simply doesn't work at all
 - Check !?BA trigger after flee
-- DL template layour doesn't work. Incorporate ERA-style.
+- DL template layout doesn't work (on linux). Incorporate ERA-style.
