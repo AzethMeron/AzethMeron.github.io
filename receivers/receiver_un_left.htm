@@ -253,8 +253,8 @@ The next two zeros are just to make sure that we have 4 parameters, no less.<br>
       &nbsp;&nbsp; <b><font color="#8B008B">$1 </font></b>- Size of integer in bytes (1, 2 or 4)<br>
       &nbsp;&nbsp; <b><font color="#8B008B">$2 </font></b>- Integer to write (decimal) or name of variable to store value<br>
       <u><b>Comment:</b></u><br>
-      <font color=purple>I think that $1 should be # rather than $. <br>
-      It is taken from ERA 2.9 ERM help and isn't actually tested quite yet.
+	     This isn't a toy. Use only if you know what you do. <br>
+      <font color=purple>It is taken from ERA 2.9 ERM help and isn't actually tested quite yet.
       </font></font></p>
     </td>
   </tr>
@@ -849,6 +849,18 @@ Option index should be unique to a save/load procedure (one option number per z 
       by a player (1) or Enable Town Demolition by a player (0)<br>
   # = 5 and $ = WoGify: random maps and maps beginning "wogify_" (0), all WoG format maps (1), all Heroes 3 maps of any format (2)<br>
   # = 6 and $ = Heroes start with Commanders (0) or they must be hired (1)<br>
+	    # = 7 and $ = Dwelling accumulation enabling(1)/disabling(0)<be>
+	    # = 8 and $ = Guards accumulation enabling(1)/disabling(0)<br>
+	    # = 9 and $ = Sylvan Centaur creation enabled (1) or disabled (0)<br>
+	    # = 10 and $ = Troop Stacks left will rejoin (1) or won't rejoin (0) their owner<br>
+	    # = 900 and $ = Stack Experience Disabled (0) or Enabled (1) <br>
+	    # = 901 and $ = Stack Experience System (0..3)<br>
+	    # = 902 and $ = can (1) or cannot(0)leave artifact on the map<br>
+	    # = 903 and $ = cheating is enabled (0) or disabled (1)<br>
+	    # = 904 and $ = Error message enabled (0) or disabled (1)<br>
+	    # = 905 and $ = If error occured, $ set to 1 regardless of P904<br>
+	    # = 906 and $ = Enable(0) or disable (1) gaining of stack experience in battle<br>
+	    
 &nbsp;&nbsp;      <u><b>Comments:</b></u><br>
 &nbsp;&nbsp;&nbsp;&nbsp;  Both WoGified and Non-WoGified WoG maps with <span lang="de">no</span> scripts will use the WoGify Options selected for enabling or disabling the features above.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;  To set Commanders so they must be hired at a town for 100 gold instead of heroes automatically starting with them, you must use UN:P6/1
