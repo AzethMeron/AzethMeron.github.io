@@ -88,7 +88,27 @@ SN.first? = function()
 	end
 	print(played_sound) -- for research purposes
 end</pre>
-</font></font>
+
+<br>
+<font size = 3><b>Iterate through all objects of given type and subtype </b></font> <br>
+Type - type of object<br>
+Subtype - subtype of object<br>
+vind - index of v-var that will store coords<br>
+func - function to call, arguments: x, y, z, args<br>
+args - argument you can pass to function inside loop. Use as table to pass multiple arguments<br>
+<pre>ObjectIterate = function(Type, Subtype, vind, func, args)
+	local NumberOfObjects = UN:U(Type,Subtype,?v)
+	ERM.v[vind] = -1
+	ERM.v[vind+1] = -1
+	ERM.v[vind+2] = 0
+	for i = 1,NumberOfObjects,1 do
+		UN:U(Type,Subtype,-1,vind)
+		func(ERM.v[vind], ERM.v[vind+1], ERM.v[vind+2], args)
+	end
+end</pre>
+</font>
+
+</font>
 </body>
 
 </html>
