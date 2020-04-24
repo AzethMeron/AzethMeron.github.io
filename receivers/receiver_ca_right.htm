@@ -198,12 +198,9 @@ For example, start a game with a couple of dwellings and a Portal of Summoning i
   <tr>
     <td width="16%" valign="top"><b><font face="Arial" size="2"><font color="#FF0000">M4/</font><font color="#800080">#</font><font color="#FF0000">/</font><font color="#800080">?$</font><font color="#FF0000">;</font></font></b></td>
     <td width="84%" valign="top"><font face="Arial" size="2"><b>Get/check monster growth per week</b> <br>
-    &nbsp;&nbsp; <font color=purple>#</font> - Tier of monster<br>
+    &nbsp;&nbsp; <font color=purple>#</font> - Tier of monster (0..6)<br>
     &nbsp;&nbsp; <font color=purple>?$</font> - Variable to store monster growth <br>
-	<font color=purple> Almost no documentation for that one. Need to test those things out:<br>
-	- Tiers are 0..6 or 1..7? <br>
-	- Is is get/check, or get/check/set? Cause documents use simple $ instead of ?$<br>
-	- If dwelling of given tier isn't build, what is return value?</font>
+	If dwelling of given tier is NOT built, 0 is returned.
     </font></td>
   </tr>
   
@@ -223,15 +220,14 @@ For example, start a game with a couple of dwellings and a Portal of Summoning i
     <b><font color="#800000"><br>
     !!CAx/y/l:O?variable; </font></b>or<font color="#800000"><b><br>
     !!CA#:O?variable; </b></font><br>
-    </font></b>and check if<font color="#000080"> </font><font color="#800000">
+    </b>and check if<font color="#000080"> </font><font color="#800000">
     <b>variable</b></font><font color="#000080"> </font>is -1 (replace <font color="#800000"> variable</font><font color="#000080"> </font>with ERM variable type. See <font color="#000080">
-    <a target="principal" href="../other/variable.htm">Flag&amp;Variable</a>, <a href="receiver_vr_right.htm" target="principal">VR</a>
-    and <a href="receiver_fu_right.htm" target="principal">FU</a> </font>sections.<b><font color="#800000"><br>
+    <a target="sommaire" href="../other/variable.htm">Flag&amp;Variable</a>, <a href="receiver_vr.htm" target="sommaire">VR</a>
+    and <a href="receiver_fu.htm" target="sommaire">FU</a> </font>sections.<b><font color="#800000"><br>
     </font></b>
     <br>
-    </font><b>Note</b>:<i><font color="#000080"> </font></i>Please note that if owner is neutral (value for object owner is -1), there
-    is no need to get alliance team. <br>
-    &nbsp;If however you do so, the resulted team number is shown as 0 (which in most
+    <b>Note</b>:<i><font color="#000080"> </font></i>Please note that if owner is neutral (value for object owner is -1), there
+    is no need to get alliance team. If however you do so, the resulted team number is shown as 0 (which in most
     cases is the same alliance number for human red player)</span></font></td>
   </tr>
   <tr>
