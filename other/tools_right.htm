@@ -41,7 +41,7 @@ Scripts organisation:<br>
 If you want to use ERM triggers in Lua, you CAN'T put them in 'Global' scripts. 'Map' works fine. Wogify untested.
 Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
 <br>
-All loaded scripts from Map, Wogify, Scripts and ERM folders are stored in savefile, together with their environment (variables etc.)
+All loaded scripts from Map, Wogify, Scripts and ERM folders are stored in savefile, together with their environment (variables etc, excluding local variables)
 Script names cannot overlap EVEN IF STORED in different catalogs. So, you can't have TEMP.lua in both Map and Wogify. <br>
 <br>
 Sequence Lua+ERM:<br>
