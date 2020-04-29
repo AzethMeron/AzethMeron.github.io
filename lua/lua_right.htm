@@ -46,6 +46,7 @@ The <b>'new'</b> veriable is true if the script is run the first time (that norm
 &nbsp;&nbsp;&nbsp;SomeNumber = 0 
 &nbsp;&nbsp;&nbsp;SomeString = &quot;&quot; 
 &nbsp;end </pre>
+<b>This is proper way of initialising variables</b>, initialising them outside "if new" block <b>will</b> cause them to be <b>reseted</b> every time you load the game and <b>might</b> cause bugs. <br>
 Note that functions aren't saved to savegame, so you wouldn't normally create functions inside &quot;if new then&quot; block. <br>
 <br>
 <b>Types </b><br>
