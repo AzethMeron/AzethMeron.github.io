@@ -41,13 +41,12 @@ Multiple assignment is supported: <br>
 <b>Each script has its own set of variables (it's called environment)</b>. Variables stored in '_G' (e.g. _G.MyFunction) can be read by all scripts. Variables stored in 'global' (e.g. global.MyFunction) can be read by all scripts, but they aren't bound to the game you play. So, they aren't saved in a savegame, but persist when you start another map. 
 <b>Scripts themselves are also saved in savegame and are run each time the game is loaded</b>. This doesn't apply to scripts in &quot;Global&quot; folder, which behave somewhat similar to 'global' variables. <br>
 <br>
-The <b>'new'</b> veriable is true if the script is run the first time (that normally means it's a new game). Thus, you should initialize variables like this: <br>
+The <b>'new'</b> veriable is true if the script is run the first time (that normally means it's a new game). <br>
 <pre>&nbsp;if new then 
 &nbsp;&nbsp;&nbsp;SomeNumber = 0 
 &nbsp;&nbsp;&nbsp;SomeString = &quot;&quot; 
 &nbsp;end </pre>
-<b>This is proper way of initialising variables</b>, initialising them outside "if new" block <b>will</b> cause them to be <b>reseted</b> every time you load the game and <b>might</b> cause bugs. <br>
-Note that functions aren't saved to savegame, so you wouldn't normally create functions inside &quot;if new then&quot; block. <br>
+<b>This is proper way of initialising variables</b>, initialising them outside "if new" block <b>will</b> cause them to be reseted every time you load the game and <b>might</b> cause bugs in multiplayer. <br>
 <br>
 <b>Types </b><br>
 Lua is scripting language with dynamic-typing. Thus, "variable is a variable". Any variable may hold value of any type. <br>
