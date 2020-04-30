@@ -45,20 +45,21 @@ Because 'Global' scripts are parsed at game start, you can't use ERM triggers in
 Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
 <br>
 All loaded scripts from Map, Wogify, Scripts and ERM folders are stored in savefile, together with their environment (variables etc.) Chosen "wog options" are saved too.
-Script names cannot overlap EVEN IF in different catalogs. So, you can't have TEMP.lua in both Map and Wogify. <br>
+Script names cannot overlap EVEN IF in different catalogs. So, you can't have TEMP.lua in both Map and Wogify.<br>
+<br>
+Every mod has its own environments (including Options) and list of scripts, so mods can't overlap each other.<br>
 <br>
 Sequence Lua+ERM:<br>
-1. Lua function: global.events.EnterMap() ... end<br>
+1. Lua from 'Global' folder: function global.events.EnterMap() ... end<br>
 2. Scrpts from 'Map' folder<br>
 3. ERM !# from timed events<br>
 4. Lua from 'Wogify' folder<br>
 4. ERM !# from 'ERM' folder<br>
 and so on. Files .erm, .ert and .lua are (probably) loaded in alphabetical order<br>
 <br>
-All scripts are loaded ALWAYS with order given earlier.<br>
-Variable 'ModName' stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
+Variable <b>'ModName'</b> stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
 "WoG Options" menu can be created by placing .txt file in Mods/ModName/Options folder.<br>
-Name of .txt file matters, cause it will be name of variable in Lua. You will understand it in a while<br>
+Name of .txt file matters, cause it will be name of variable in Lua. You will understand it in a while.<br>
 <br>
 Let's call it 'Opt.txt'. Of course, we need to follow strict template inside this file.<br>
 To seperate informations, <b>use tabs</b>.<br>
