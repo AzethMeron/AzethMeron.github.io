@@ -33,16 +33,17 @@ For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save fi
 <br><br>
 <font size=4><b><a name=mods></a>MOD SUPPORT</b></font><br>
 Scripts organisation:<br>
-<b>Mods/ModName/Global</b> - Lua scripts loaded and parsed at the start of the GAME, not the map. <br>
+<b>Mods/ModName/Global</b> - Lua scripts loaded and executed at the start of the GAME, not the map. <br>
 <b>Mods/ModName/Map</b> - Lua scripts loaded and executed when map is started, AND every time you load saved game. <br>
 <b>Mods/ModName/Wogify</b> - Lua scripts that run ONLY when wogification is enabled<br>
 <b>Mods/ModName/ERM</b> - ERM scripts executed when map is started, only if wogification is enabled<br>
 <b>Mods/ModName/Scripts</b> - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
+<br>
 Because 'Global' scripts are parsed at game start, you can't use ERM triggers in here unless within blocks like 'function global.events.EnterMap() end'.
 Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
 <br>
 All loaded scripts from Map, Wogify, Scripts and ERM folders are stored in savefile, together with their environment (variables etc.)
-Script names cannot overlap EVEN IF STORED in different catalogs. So, you can't have TEMP.lua in both Map and Wogify. <br>
+Script names cannot overlap EVEN IF in different catalogs. So, you can't have TEMP.lua in both Map and Wogify. <br>
 <br>
 Sequence Lua+ERM:<br>
 1. Lua function: global.events.EnterMap() ... end<br>
