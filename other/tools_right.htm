@@ -51,10 +51,11 @@ Every mod has its own environment (including Options) and list of scripts, so mo
 <br>
 Sequence Lua+ERM:<br>
 1. Lua from 'Global' folder: function global.events.EnterMap() ... end<br>
-2. Scrpts from 'Map' folder<br>
-3. ERM !# from timed events<br>
-4. Lua from 'Wogify' folder<br>
-4. ERM !# from 'ERM' folder<br>
+2. Lua scripts from 'Map' folder<br>
+3. Lua scripts from timed events<br>
+4. ERM !# from timed events<br>
+5. Lua from 'Wogify' folder<br>
+6. ERM !# from 'ERM' folder<br>
 and so on. Files .erm, .ert and .lua are (probably) loaded in alphabetical order<br>
 <br>
 Variable <b>'ModName'</b> stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
