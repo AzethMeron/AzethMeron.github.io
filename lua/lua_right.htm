@@ -384,7 +384,7 @@ If &quot;BattlePos&quot; was already loaded BP will be assigned its environment,
 There is also a table called &quot;scriptvars&quot;, but I won't go into detail about it here. <br>
 <br><br>
 <b>Localisation </b><br>
-As far as I know, there is no "proper" way for localisation support. Current convention is to use text_ files in Scripts folder to store most of strings. <br>
+Current convention is to use text_ files in Scripts folder to store most of strings. <br>
 For example: <br> 
 <pre>
 local StrLib = require "text_Example"
@@ -393,6 +393,7 @@ TM(1,-1,1,255).first? = function()
 end </pre>
 Meanwhile, text_Example.lua in Scripts folder:<pre>
 mess = "This is example"</pre>
+Note: there actually is proper localisation support written by GrayFace. You can use it with Localize function. No idea how it works yet.
 <br><br>
 <a name=WoG></a><b><font size=4>===== WOG FUNCTIONS =====</font></a> </b>
 <br>
