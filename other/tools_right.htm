@@ -25,13 +25,14 @@ Exceptions:<br>
 2) for QW:A you can pass -1 to restore original value, as before<br>
 <br><br>
 <font size=4><b><a name=multiplayer></a>MULTIPLAYER SUPPORT</b></font><br>
-Well... looks like 3.59 doesn't support multiplayer at all. Checked with unspported HD Mod, so should be checked without it.<br>
-Lua manual by not-sure-who (probably GrayFace, may he live forever) mentions that some variables (except local and _G) are kept in savefile, aswell as scripts (again, except some like if new then... end). Thus it should be possible to keep synchronisation and support multiplayer.<br>
-Even if online multiplayer is not supported now, this definitely can be fixed, though we need more people working on it. <br>
+Most scripts and vars are stored in savefile, so supporting multiplayer shouldn't be too much problematic. Although, for now, it isn't supported. <br>
 <br>
 Of course, with properly supported MP mode, you still need to make MP-compatible scripts. You can learn more about synchronization in <a href="tutor.htm" target=sommaire>ERM tutorials</a>, section 'Expert' <br>
 <br>
 For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save file" error.<br>
+Tests without HD Mod: managed to connect, but there was error after receiving savefile (player 2 day 1) and despite chosen heroes to start with level 5, player's hero had lvl1 while all heroes in tavern was 5-level. <br>
+There were multiple script errors (ERM) mostly on host side. Game didn't crash and allowed to continue playing. Some of scripts worked properly. <br>
+Further tests required. <br> 
 <br><br>
 <font size=4><b><a name=mods></a>MOD SUPPORT</b></font><br>
 Scripts organisation:<br>
