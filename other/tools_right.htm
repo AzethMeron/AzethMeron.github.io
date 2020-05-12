@@ -30,7 +30,7 @@ Most scripts and vars are stored in savefile, so supporting multiplayer shouldn'
 Of course, with properly supported MP mode, you still need to make MP-compatible scripts. You can learn more about synchronization in <a href="tutor.htm" target=sommaire>ERM tutorials</a>, section 'Expert' <br>
 <br>
 For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save file" error.<br>
-Tests without HD Mod: managed to connect, but there was error after receiving savefile (player 2 day 1) and despite chosen heroes to start with level 5, player's hero had lvl1 while all heroes in tavern was 5-level. <br>
+Tests without HD Mod: managed to connect, but there was error after receiving savefile (player 2 day 1) and despite chosen heroes to start with level 5, player's hero had lvl1 while all heroes in tavern was 5-level. 
 There were multiple script errors (ERM) mostly on host side. Game didn't crash and allowed to continue playing. Some of scripts worked properly. <br>
 Further tests required. <br> 
 <br><br>
@@ -41,6 +41,8 @@ Scripts organisation:<br>
 <b>Mods/ModName/Wogify</b> - Lua scripts that run ONLY when wogification is enabled<br>
 <b>Mods/ModName/ERM</b> - ERM scripts loaded when map is started, only if wogification is enabled<br>
 <b>Mods/ModName/Scripts</b> - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
+To use Lua in global events of the map, place "ZVSL." at the beginning of event NAME. <br>
+E.g. "ZVSL.Give Army". <br>
 <br>
 Because 'Global' scripts are parsed at game start, you can't use ERM triggers in here.(maybe you can within blocks like 'function global.events.EnterMap() end', not tested)
 Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
