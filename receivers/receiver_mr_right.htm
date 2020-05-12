@@ -85,6 +85,7 @@ inside !?MR trigger sections.</font></b></p>
 	A workaround script for WoG. version 3.58f: 
 	</font><pre>
 	!?FU29999; Get mon ID ;vx1 - stack (init=-1)
+	!!VRvx1:S-1;
 	!!UN:C42147184/4/?y1; 
 	!!VRy1:+56; 
 	!!UN:Cy1/4/?y2; Get target position of a spell.
@@ -92,9 +93,9 @@ inside !?MR trigger sections.</font></b></p>
 	!!BU:Ey2/?y3; Get monster ID at position y2
 	!!FU&y3=-1:E;
 	!!VRvx1:Sy3;
+	
 	!?MR1;
-	!!VRv2:S-1;
-	!!FU29999:Pv2;
+	!!FU29999:P2;
 	!!FU&v2=-1:E;
 	</pre>
 	</font></td>
