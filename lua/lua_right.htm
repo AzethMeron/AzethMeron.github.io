@@ -8,13 +8,12 @@
 <body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
 <p align="center">
 <a name=introduction></a><font face="Times New Roman CE"><b><font size=6>L</font><font size=5>UA <font size=6>S</font>CRIPTING <font size=6>L</font>ANGUAGE</b></font></p>
-<font size=2>WoG 3.59 introduces another programming language to cooperate with engine: Lua 5.1.4.  <br>
+<font size=2>WoG 3.59 introduces another programming language to cooperate with engine: LuaJIT.  <br>
 All ERM commands can be accessed from Lua (with minor exceptions) but possibilities are far greater. <br>
 New towns, new commanders etc. can be scripted right in Lua.<br>
+<br>
 Here you can find description of Lua: <a target=sommaire href="https://www.lua.org/manual/5.1/">https://www.lua.org/manual/5.1/</a> <br>
 I'll describe the syntax shortly. If you need more information, read Chapter 2 there.<br>
-Here is also a book about Lua: <a target=sommaire href="https://www.lua.org/pil/">https://www.lua.org/pil/</a> (note that this edition aims Lua 5.0, 
-and WoG uses Lua 5.1.4, so some information there may be out of date) <br>
 <br>
 To use Lua in global events of the map, place "ZVSL." at the beginning of event NAME. <br>
 E.g. "ZVSL.Give Army". <br>
@@ -30,7 +29,7 @@ You can use ';' at the end of statements, but you can omit it. You can write sta
 <b>Variables, assignment</b><br>
 Local variables: <br>
 &nbsp;local a = 5 <br>
-They are visible in the block they are declared in and in all embedded blocks (e.g. functions declared after the local variable). They aren't saved in savegame. <br>
+They are visible in the block they are declared in and in all embedded blocks (e.g. functions declared after the local variable). They aren't saved in savegame. It is good programming style to use local variables whenever possible. <br>
 <br>
 Assignment: <br>
 &nbsp;a = 5&nbsp;&nbsp;-- set a to 5 <br>
@@ -69,7 +68,7 @@ Table is a set of key-value pairs. You can use any value as key. To create a tab
 Instead of ',' you can use ';' - it would work completely the same. <br>
 You can also refer to table elements as a.key which is the same as a[&quot;key&quot;] <br>
 <br>
-Functions are as well kept in variables: <br>
+Functions are kept in variables aswell: <br>
 &nbsp;function Func1(param1, param2) <br>
 &nbsp;end <br>
 <br>
@@ -77,7 +76,7 @@ is the same as <br>
 &nbsp;Func1 = function(param1, param2) <br>
 &nbsp;end <br>
 <br>
-So, Func1 is assigned the function. You can as well add 'local' word before function declaration to declare a local vairable: <br>
+So, Func1 is assigned with the function. You can as well add 'local' word before function declaration to declare a local vairable: <br>
 &nbsp;local function Func1(param1, param2) <br>
 &nbsp;end <br>
 <br>
