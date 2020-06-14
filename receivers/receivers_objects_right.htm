@@ -277,21 +277,21 @@ will execute XXXX commands for mine with location stored in v998/v999/v1000.<b>
     <a href="../format/format_cg.htm">Format
       CG</a>)<br>
       <b><font color="#FF0000"><br>
-      M</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">/</font><font color="#8B008B">$3</font></b> - set the monster to hire<br>
+      M</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">/</font><font color="#8B008B">$3</font></b> - set/get/check the monster to hire<br>
       &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Slot (0...3) - you can hire up to 4 different monsters at one
       dwelling.<br>
-      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Type of the monster (-1=disable this slot)
+      &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> = Type of the monster (-1=disable this slot)
       (<a href="../format/format_c.htm">Format C</a>)<br>
-      &nbsp;&nbsp; <b><font color="#8B008B">#3</font></b> = Number to hire<b><font color="#FF0000"><br>
+      &nbsp;&nbsp; <b><font color="#8B008B">$3</font></b> = Number to hire<b><font color="#FF0000"><br>
       <br>
       G</font><font color="#8B008B">#1</font><font color="#FF0000">/</font><font color="#8B008B">$2</font><font color="#FF0000">/</font><font color="#8B008B">$3
-      </font></b> - set the monster as a Guard<br>
+      </font></b> - set/get/check the monster as a Guard<br>
       &nbsp;&nbsp; <font color="#8B008B"><b>#1</b></font> = Slot (0...6)<br>
-      &nbsp;&nbsp; <b><font color="#8B008B">#2</font></b> = Type of the monster (-1=no monster there). See
+      &nbsp;&nbsp; <b><font color="#8B008B">$2</font></b> = Type of the monster (-1=no monster there). See
       </font><font face="Arial" size="2"><a href="../format/format_c.htm">Format C</a><br>
-      &nbsp;&nbsp; <font color="#8B008B"><b>#3 </b></font> = Number of Monsters<br>
+      &nbsp;&nbsp; <font color="#8B008B"><b>$3 </b></font> = Number of Monsters<br>
       <b><font color="#FF0000"><br>
-      O</font><font color="#8B008B">$</font></b> - Set up an owner (-1=nobody's)<br><br>
+      O</font><font color="#8B008B">$</font></b> - Set/get an owner (-1=nobody's)<br><br>
 <b>O$/1;</b> pass control over a dwelling to another player<br>
 &nbsp;&nbsp;  <b>$</b> = is a new owner.<br>
 &nbsp;&nbsp;  The second parameter is a dummy but use 1 there.<br>
@@ -345,12 +345,12 @@ will execute XXXX commands for mine with location stored in v998/v999/v1000.<b>
       &nbsp;&nbsp; <b>
       <font color="#800080">#1</font> </b> = Slot (0...6)<br>
       &nbsp;&nbsp; <b>
-      <font color="#800080">#2</font> </b> = Type of the monster (-1=no monster there). See </font><font face="Arial" size="2">
+      <font color="#800080">$2</font> </b> = Type of the monster (-1=no monster there). See </font><font face="Arial" size="2">
       <a href="../format/format_c.htm">Format C</a><br>
       &nbsp;&nbsp; <b>
-      <font color="#800080">#3</font> </b> = Number of Monsters</font></p>
+      <font color="#800080">$3</font> </b> = Number of Monsters</font></p>
       <p><font face="Arial" size="2"><b><font color="#800080">F</font><font color="#FF0000">$</font></b>
-      : Set/check/get if you can delete the guards
+      : Set/check/get if you can delete (remove?) the guards
       (1=no, 0=yes).</font></td>
   </tr>
   <tr>
