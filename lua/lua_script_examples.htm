@@ -21,7 +21,7 @@ Wrapper for WoG path.find() function that allows to easily get random file match
 		i = i+1
 	end
 	-- If found none, return nil
-	if filetab == nil then
+	if #filetab == 0 then
 		return nil
 	end
 	-- Getting Mods/ dir
@@ -34,7 +34,7 @@ Wrapper for WoG path.find() function that allows to easily get random file match
 	end
 	-- Returning given string
 	local output = filetab[math.random(#filetab)]
-	output = string.gsub(output,dir,"")
+	output = string.gsub(output,dir.."\\","")
 	return (output)
 end</pre>
 <br>
