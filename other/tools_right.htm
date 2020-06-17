@@ -62,8 +62,7 @@ Sequence Lua+ERM:<br>
 and so on. Files .erm, .ert and .lua are (probably) loaded in alphabetical order<br>
 <br>
 Variable <b>'ModName'</b> stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
-"WoG Options" menu can be created by placing .txt file in Mods/ModName/Options folder.<br>
-Name of .txt file matters, cause it will be name of variable in Lua. You will understand it in a while.<br>
+"WoG Options" menu can be created by placing .txt file in Mods/ModName/Options folder. Name itself doesn't actually matters<br>
 <br>
 Let's call it 'Opt.txt'. Of course, we need to follow strict template inside this file.<br>
 To seperate informations, <b>use tabs</b>.<br>
@@ -96,14 +95,14 @@ Trees	Animated brighter trees and lakes		"move"			true	true	TODO: Proper text, h
 This creates group of 3 options. You can pick only one of them at one time.<br>
 <b>You need to make scripts to have chosen options in mind</b>. Corelated example:<br>
 <pre>function global.events.EnterMap()
-    if Opt.Trees == "move" then
+    if Options.Trees == "move" then
         LD:T(?v, 11, ModName.."/Lods/TreeMove.lod")
-    elseif Opt.Trees == "wog" then
+    elseif Options.Trees == "wog" then
         LD:T(?v, 11, ModName.."/Lods/TreeWog.lod")
     end
 end</pre>
 <br>
-where Opt is name of .txt in Options folder without extension. ('Opt.txt') <br>
+Options is variable (array) stoting chosen WoG options, declared in Opt.txt
 <br>
 About <b>LODs</b>: currently there are 2 in /Data/ folder, h3wog.lod and h3std.lod. Those are loaded automatically at the very start of the game. If there is "h3custom.lod", it is loaded aswell.
 Standard TXT files (like crtraits.txt and so) in game are parsed at game setup, so it can't be changed with <a href="../receivers/receiver_ld.htm" target=sommaire>LD receiver</a>.
