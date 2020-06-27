@@ -327,13 +327,24 @@ Here is how you create triggers: <br>
 &nbsp;OB(4, 5, 0).$ = function()   -- !$OB4/5/0 post trigger <br>
 &nbsp;end <br>
 <br>
+&nbsp;OB(4, 5, 0).pre = function()   -- !?OB4/5/0; <br>
+&nbsp;end <br>
+<br>
+&nbsp;OB(4, 5, 0).post = function()   -- !$OB4/5/0 post trigger <br>
+&nbsp;end <br>
+<br>
 You can also insert triggers in the beginning of triggers list. For example, this is useful in situation with scripts that temporary change spell points for one battle. If pre-battle triggers that store current spell points are inserted in the end of triggers list and post-battle scripts that restore spell points are inserted in the beginning, there would be no conflicts.<br> 
 <br>
 &nbsp;OB(4, 5, 0).first? = function()   -- inserted before all other !?OB4/5/0 triggers <br>
 &nbsp;end <br>
 <br>
+&nbsp;OB(4, 5, 0).FiRsTpRe = function()   -- inserted before all other !?OB4/5/0 triggers. Lettercase in extension doesn't matter <br>
+&nbsp;end <br>
+<br>
 &nbsp;OB(4, 5, 0).first$ = function()   -- inserted before all other !$OB4/5/0 post triggers <br>
 &nbsp;end <br>
+<br>
+Note: don't create triggers using $, it causes internal error. Eventually this should be fixed, but won't happen anytime soon. Please, use .post 
 <br><br>
 <b>ERM variables </b><br>
 You can access all ERM variables from Lua. However, you should avoid using local ERM variables as they aren't guaranteed to be local in case of Lua. <br>
