@@ -338,12 +338,13 @@ You can also insert triggers in the beginning of triggers list. For example, thi
 &nbsp;OB(4, 5, 0).first? = function()   -- inserted before all other !?OB4/5/0 triggers <br>
 &nbsp;end <br>
 <br>
-&nbsp;OB(4, 5, 0).FiRsTpRe = function()   -- inserted before all other !?OB4/5/0 triggers. Lettercase in extension doesn't matter <br>
+&nbsp;OB(4, 5, 0).FiRsTpRe = function()   -- inserted before all other !?OB4/5/0 triggers <br>
 &nbsp;end <br>
 <br>
 &nbsp;OB(4, 5, 0).first$ = function()   -- inserted before all other !$OB4/5/0 post triggers <br>
 &nbsp;end <br>
 <br>
+Lettercase in extension doesn't matter <br>
 Note: don't create triggers using $, it causes internal error. Eventually this should be fixed, but won't happen anytime soon. Please, use .post 
 <br><br>
 <b>ERM variables </b><br>

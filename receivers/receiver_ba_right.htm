@@ -138,10 +138,28 @@
       </tr>
       <tr>
     <td width="17%" valign="top"><b><font size="2" face="Arial" color="#FF0000">B</font><font face="Arial" size="2"><font color="#FF0000">^</font><font color="#8B008B">file.pcx</font><font color="#FF0000">^<font color="red" face="Arial" size="2">;</font></font></font></b></td>
-    <td width="83%" valign="top"><font face="Arial" size="2"><b>Set a custom picture for a battlefield.</b><br>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Set a custom picture for a battlefield - old syntax</b><br>
       <b><u>     Comments:</u></b><br>
-      Path to the file.pcx is taken from DATA folder. As usual       filename+extension must not be longer than 12 chars.</font></td>
+      Path to the file.pcx is taken from DATA folder. As usual filename+extension must not be longer than 12 chars. <br>
+	  JG: Looks like the path might be longer than 12 characters actually <br>
+	  This is old syntax and doesn't work with Lua+ERM. You should use the one below. 
+	  </font></td>
       </tr>
+	  
+	  <tr>
+    <td width="17%" valign="top"><b>
+	<font size="2" face="Arial"><font color="#FF0000">B<font color=purple>#</font>/<font color=purple>1</font>;</font>
+	</font></b></td>
+    <td width="83%" valign="top"><font face="Arial" size="2"><b>Set a custom picture for a battlefield - new syntax</b><br>
+	&nbsp;&nbsp; <font color="#8B008B"><b>#</b></font> - string, path to file. Might be z-var or ^^ constant<br>
+	&nbsp;&nbsp; <b><font color="#8B008B">1</font></b> - dummy parameter, but use 1 here<br>
+      <b><u>     Comments:</u></b><br>
+	  Same as above, but works with Lua. <br>
+      Path to the file.pcx is taken from DATA folder. As usual filename+extension must not be longer than 12 chars. <br>
+	  JG: Looks like the path might be longer than 12 characters actually <br>
+	  </font></td>
+      </tr>
+	  
       <tr>
         <td width="109" height="42" valign="top"><nobr><b><font color="red" face="Arial" size="2"><a name="D">D</a></font><font color="darkmagenta"><font size="2">#</font><font color="red" face="Arial" size="2">;</font></font></b></nobr></td>
         <td width="549" height="42" valign="top">
