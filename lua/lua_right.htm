@@ -284,18 +284,19 @@ A convenience feature: you can put the first numerical parameter right after the
 &nbsp;CA(4,5,0):M2(0, 1, 10)  -- !!CA4/5/0:M2/0/1/10; <br>
 As you can see, &quot;M1&quot; and &quot;M2&quot; are written in this manner in Help too: M2/$1/$2/$3; So, it's natural to write such commands this way. However, use this feature only where it fits. ( e.g. don't do this: FU(555):P1(2) ) <br>
 <br>
-Now here is some get syntax: <br>
+Now here is some <b>get</b> syntax: <br>
 &nbsp;local t, st = CA(4,5,0):M2(0, ?v, ?v)  -- !!CA4/5/0:M2/0/?y1/?y2; <br>
 &nbsp;local name = UN:A(2, 9, ?z)  -- !!UN:A2/9/?z-1; <br>
 &nbsp;&quot;?v&quot; means that it's a get syntax for an integer. &quot;?z&quot; is a get syntax for string variables. Instead of being written to some variable, the value is returned from the function. <br>
 I used &quot;t&quot;,&quot;st&quot; instead of &quot;y1&quot;,&quot;y2&quot; in Lua code. To make Lua example completely identical to ERM (if you need to access y1 and y2 from ERM for some reason) you can set actual &quot;y1&quot; and &quot;y2&quot; ERM vars. The y-variables can be accessed as ERM.y1 and ERM.y2 from Lua. So, the first example would look like <br>
 &nbsp;ERM.y1, ERM.y2 = CA(4,5,0):M2(0, ?v, ?v) <br>
 &nbsp;ERM[&quot;z-1&quot;] = UN:A(2, 9, ?z) <br>
-Add syntax: <br>
+<br>
+<b>Add</b> syntax: <br>
 &nbsp;CA(4,5,0):M2(0, nil, {5})  -- !!CA4/5/0:M2/0/d/d5; <br>
 Here you can see &quot;{5}&quot; as equivalent of &quot;d5&quot; in ERM and &quot;nil&quot; is interpretated as &quot;d0&quot; in ERM calls, so the value is kept unchanged. <br>
 <br>
-?ptr: <br>
+<b>?ptr</b>: <br>
 There's also ?ptr to get address of an integer value the reciever operates on. This is for use with mem module in Lua or UN:C command. 0 is returned if the reciever doesn't support ?ptr. <br>
 &nbsp;ptr = MA:P(13, ?ptr) <br>
 <br>
