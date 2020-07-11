@@ -1,4 +1,4 @@
-<b>WoG 3.59 ERM Help (for Alpha 8.0)</b>
+<b>WoG 3.59 ERM Help (for Alpha 8.1+)</b>
 
 <b>Skipped entries</b> <br>
 For whatever reason i've decide to skip those, should be incorporated one day.<br>
@@ -10,3 +10,7 @@ For whatever reason i've decide to skip those, should be incorporated one day.<b
 - CD:B simply doesn't work at all
 - Check !?BA trigger after flee
 - DL template layout doesn't work (on linux). Incorporate ERA-style.
+
+<b>New entries:</b>
+BA:B$/1 - new syntax, for Lua support
+New Lua trigger syntax: .pre, .post
