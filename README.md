@@ -12,5 +12,7 @@ For whatever reason i've decide to skip those, should be incorporated one day.<b
 - DL template layout doesn't work (on linux). Incorporate ERA-style.
 
 <b>New entries:</b>
+
 BA:B$/1 - new syntax, for Lua support
+
 New Lua trigger syntax: .pre, .post
