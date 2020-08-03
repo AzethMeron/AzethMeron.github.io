@@ -2,119 +2,52 @@
 
 <head>
 	<LINK href=../other/styles.css rel=stylesheet type=text/css>
-	<base target="annexe">
+	<base target="blank">
 </head>
 <script src=../other/scripts.js></script>
 <body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
 <p align="center">
 <a name=introduction></a><font face="Times New Roman CE"><b><font size=6>T</font><font size=5>OOLS</b></font></p>
-<font size=2>There are some very useful documents, regarding universal tools provided by WoG 3.59 engine. Some for simple high-level scripters, some for low-level modders.<br>
+<font size=2>There are some useful programs that can be used to enhance gameplay experience of ease the life of mod makers, alongside with brief description and download links.<br>
 <br><br>
-<font size=4><b><a name=strings></a>NEW STRINGS MANAGEMENT SYNTAX</b></font><br>
-For <b>UN:A#/9-11/$, UN:G0, UN:G1, UN:G2, SS:W,N,D, HT:, OB:H, HO:H, UN:K2, MP:S, QW:A</b> <br>
-If you pass a string constant (^hi!^) or a z-string (global or local), the value is copied into internal buffer (you don't need to use up a z variable for each object which hint you change).
-If you use get syntax for a string (?z1), it's set to the current value (even if the value wasn't customized). <br>
+
+<font size=4><b><a name=dialog></a>Dialog Editor</b></font><br>
+Created by GrayFace. Links: <a href=https://sites.google.com/site/sergroj/wog/H3DialogsDL.rar?attredirects=0>ORIGINAL</a> <a href=https://drive.google.com/file/d/1foG1ofaR1cZf-1FHL30iHjjcXMWrjBaR/view?usp=sharing>MIRROR</a> <br>
+!!DL reciever lets you create custom dialogs for WoG TE / Era / 3.59. No help for this one. Development isn't continued.<br>
 <br>
-Usual syntax works the same:<br>
-If you pass 0, the original value is restored.<br>
-If you pass number, corresponding z-var is used and all changes made to z-var are reflected to the value. ERT strings are also supported.<br>
-If you use get/check syntax with a number (?v1), z variable index is returned. 0 is returned if the value wasn't customized. Negative values are returned if the custom string is stored in internal buffer.<br>
+
+<font size=4><b><a name=defpreview></a>DefPreview</b></font><br>
+Created by GrayFace. Links: <a href=https://github.com/GrayFace/Misc/releases/download/DefPreview-1.2.1/DefPreview.rar>ORIGINAL</a> <a href=https://drive.google.com/file/d/1-U-PXammDlCP9bFx7gcGUJWdRrNMKq-W/view?usp=sharing>MIRROR</a> <br>
+Shows .def files, lets you extract frames and make a def-list for Def Tool.<br>
 <br>
-Exceptions:<br>
-1) UN:K2 doesn't retrieve a standard new week message.<br>
-2) for QW:A you can pass -1 to restore original value, as before<br>
-<br><br>
-<font size=4><b><a name=multiplayer></a>MULTIPLAYER SUPPORT</b></font><br>
-Most scripts and vars are stored in savefile, so supporting multiplayer shouldn't be too much problematic. Although, for now, it isn't supported. <br>
+
+<font size=4><b><a name=deftool></a>DefTool</b></font><br>
+Created by GrayFace. Links: <a href=https://github.com/GrayFace/Misc/releases/download/H3DefTool-3.4.2/H3DefTool.rar>ORIGINAL</a> <a href=https://drive.google.com/file/d/1T-OJ6KifXyJycHcOVOXXrYQIsfS_cdyj/view?usp=sharing>MIRROR</a> <br>
+Lets you create .def files. It can also help with editing interface pictures. Inside app you can access brief introduction.<br>
+Polish tutorial attached in MIRROR. <br>
 <br>
-Of course, with properly supported MP mode, you still need to make MP-compatible scripts. You can learn more about synchronization in <a href="tutor.htm" target=sommaire>ERM tutorials</a>, section 'Expert' <br>
+
+<font size=4><b><a name=defmaker></a>DefMaker</b></font><br>
+Created by ???. Links: <a href=https://www.vault.acidcave.net/file.php?id=10>ACIDCAVE</a> <a href=https://drive.google.com/file/d/1BfrmX8vnH2njHwbZAW0_MspzimFMFIhD/view?usp=sharing>MIRROR</a> <br>
+Another program made to create .def files. Includes semi-automatic generator for animations. <br>
 <br>
-For current time, playing via TCP with HD Mod (disabled HD+) causes "bad save file" error.<br>
-Tests without HD Mod: managed to connect, but there was error after receiving savefile (player 2 day 1) and despite chosen heroes to start with level 5, player's hero had lvl1 while all heroes in tavern was 5-level. 
-There were multiple script errors (ERM) mostly on host side. Game didn't crash and allowed to continue playing. Some of scripts worked properly. <br>
-Further tests required. <br> 
-<br><br>
-<font size=4><b><a name=mods></a>MOD SUPPORT</b></font><br>
-Scripts organisation:<br>
-<b>Mods/ModName/Global</b> - Lua scripts loaded and executed at the start of the GAME, not the map. <br>
-<b>Mods/ModName/Map</b> - Lua scripts loaded and executed when map is started, AND every time you load saved game. <br>
-<b>Mods/ModName/Wogify</b> - Lua scripts that run ONLY when wogification is enabled<br>
-<b>Mods/ModName/ERM</b> - ERM scripts loaded when map is started, only if wogification is enabled<br>
-<b>Mods/ModName/Scripts</b> - Lua library scripts, to be loaded with "require". Those AREN't executed automatically<br>
-To use Lua in global events of the map, place "ZVSL." at the beginning of event NAME. <br>
-E.g. "ZVSL.Give Army". <br>
+
+<font size=4><b><a name=textedit></a>TextEdit</b></font><br>
+Created by GrayFace. Links: <a href=https://github.com/GrayFace/Misc/releases/download/TxtEdit-1.4.1/TxtEdit.rar>ORIGINAL</a> <a href=https://drive.google.com/file/d/1Qd3gpegFq4Qwl6w7xfgNTFAt4sgnQQpL/view?usp=sharing>MIRROR</a> <br>
+Txt tables editor for Heroes 3 and M&M. Use it to modify/create WoG Options file, creature info and many more<br>
 <br>
-Because 'Global' scripts are parsed at game start, you can't use ERM triggers in here.(maybe you can within blocks like 'function global.events.EnterMap() end', not tested)
-Note that scripts are loaded "ondemand", but LIST of all scripts is loaded at game start, so if you add brand new scriptfile you must restart the game.<br> 
+
+<font size=4><b><a name=mmarchive></a>MMArchive</b></font><br>
+Created by GrayFace. Links: <a href=https://github.com/GrayFace/Misc/releases/download/MMArchive-1.3.1/MMArchive.rar>ORIGINAL</a> <a href=https://drive.google.com/file/d/1cMkVAp0NZVvZjI-axQ_Pr9_O0QzrQUwf/view?usp=sharing>MIRROR</a> <br>
+Fully-featured M&M and Heroes 3 archives editor. Supports all archive types except ".hwl", thus includes .lod, .snd, .vid<br>
 <br>
-All loaded scripts from Map, Wogify, Scripts and ERM folders are stored in savefile, together with their environment (variables etc.) Chosen "wog options" are saved too.
-Script names cannot overlap EVEN IF in different catalogs. So, you can't have TEMP.lua in both Map and Wogify.<br>
+
+<font size=4><b><a name=monpower></a>MonPower</b></font><br>
+Created by GrayFace. Links: <a href=https://sites.google.com/site/sergroj/wog/H3MonPower.rar?attredirects=0>ORIGINAL</a> <a href=https://drive.google.com/file/d/1qYhnG7KCOelhpZtO0lOdMp_QXcZQaf4b/view?usp=sharing>MIRROR</a> <br>
+Calculates strength of monsters. The output values somewhat resemble AI Value and Fight Value. Only accounts for basic parameters (ignores Speed, shooting etc.)<br>
 <br>
-Every mod has its own environment (including Options) and list of scripts, so mods can't overlap nor easily edit variables of others.<br>
-<br>
-Sequence Lua+ERM:<br>
-1. Lua from 'Global' folder: function global.events.EnterMap() ... end<br>
-2. Lua scripts from 'Map' folder<br>
-3. Lua scripts from timed events<br>
-4. ERM !# from timed events<br>
-5. Lua from 'Wogify' folder<br>
-6. ERM !# from 'ERM' folder<br>
-and so on. Files .erm, .ert and .lua are (probably) loaded in alphabetical order<br>
-<br>
-Variable <b>'ModName'</b> stores name of mod. So, to reach folder 'Lods', you can use ModName.."/Lods/"<br>
-"WoG Options" menu can be created by placing .txt file in Mods/ModName/Options folder. Name itself doesn't actually matters<br>
-<br>
-Let's call it 'Opt.txt'. Of course, we need to follow strict template inside this file.<br>
-To seperate informations, <b>use tabs</b>.<br>
-<br>
-Header (copy-paste to 1st line): 
-<pre>Name$	Text$	ERM	Value	On	NoMP	Cosmetic	Hint$	LongHint$	(comment)-</pre>
-Literally, just copy-paste. It has to be there. <br>
-All entrances follows this template. Special cases are managed with different "Name" options.<br> 
-Special "names": <br>
-category:<br>
-group:<br>
-Enabled<br>
-<br>
-ERM section means WOG options: UN:P (i think, untested)<br>
-Value means "value written to variable if given option is chosen". Can be anything, string, int, boolean.<br>
-No idea for NoMP, Cosmetic,<br>
-<br>
-Following that, you have to attach Mod's display name and hint:
-<pre>Enabled	Mod Display Name						Hint	LongHint?</pre>
-Well now, you can place categories, groups and entrances.
-<pre>category:	Name of category
-group:	Name of group</pre>
-All now we have to do is add actual options, following template in Header. <br>
-<br>
-Here is example:
-<pre>group:	Pick your poison. Trees i mean
-Trees	Standard SoD trees		false			true	TODO: Proper text, hint and description
-Trees	WoG trees		"wog"			true	Not included yet
-Trees	Animated brighter trees and lakes		"move"			true	true	TODO: Proper text, hint and description</pre>
-This creates group of 3 options. You can pick only one of them at one time.<br>
-<b>You need to make scripts to have chosen options in mind</b>. Corelated example:<br>
-<pre>function global.events.EnterMap()
-    if Options.Trees == "move" then
-        LD:T(?v, 11, ModName.."/Lods/TreeMove.lod")
-    elseif Options.Trees == "wog" then
-        LD:T(?v, 11, ModName.."/Lods/TreeWog.lod")
-    end
-end</pre>
-<br>
-<b>Options</b> is variable (table) storing chosen WoG options, declared in Opt.txt <br>
-<br>
-About <b>LODs</b>: currently there are 2 in /Data/ folder, h3wog.lod and h3std.lod. Those are loaded automatically at the very start of the game. If there is "h3custom.lod", it is loaded aswell.
-Standard TXT files (like crtraits.txt) are parsed at game setup, so it can't be changed with <a href="../receivers/receiver_ld.htm" target=sommaire>LD receiver</a>.
-Thus, if you want to overrite them, you must use h3wog, h3std or h3custom. Currently there are no custom LODs in /Mods/ directory to be automatically loaded.<br>
-<br><br>
-<font size=4><b><a name=memory></a>GET MEMORY ADDRESS</b></font><br>
-New experimental parameters syntax to get memory address. Now you can use <b>d?</b> to get address of an integer value. This is useful when working with UN:C command. If a command doesn't support this, the value returned is 0. In Lua use <b>?ptr</b> for this.
-Not sure what functionality it provides, my bet is you can use it with Lua 'mem' module or to some low-level modding.
-<br>
-Example:<br>
-!#MA:P13/d?v1; [get Archangels hit points address in v1]<br>
-!#IF:M^%V1^;<br>
+
+
 </font></font>
 </body>
 
