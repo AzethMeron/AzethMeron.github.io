@@ -12,8 +12,8 @@ Note: LOD will be loaded EVEN if it is already loaded, thus be careful with usin
         <td nowrap valign=top><font class=ermtext>!!LD:<font class=param>XXXX</font>;</font>
         <td width=100% valign=top>Manage LOD files</td>
 <tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
-  <tr><a name="L"></a>
-    <td valign=top><font class=ermtext>L<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
+  <tr>
+    <td valign=top><a name="L"></a><font class=ermtext>L<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
     <td><b>Load a custom LOD file</b><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - a variable to store index of the loaded LOD file<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - a location folder for the file like in <a href="../receivers/receiver_un_left.htm#J">UN:J8</a><br>
@@ -24,16 +24,16 @@ Note: LOD will be loaded EVEN if it is already loaded, thus be careful with usin
    $1 returns >=0 if loading successful, otherwise it is -1 <br>
    $2 there is new path option, for Mods folder: 11 <br>
    $3 may be local, global or static Z variable <br>
-  <tr><a name="T"></a>
-    <td valign=top><font class=ermtext>T<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
+  <tr>
+    <td valign=top><a name="T"></a><font class=ermtext>T<font class=param>?$1</font>/<font class=param>$2</font>/<font class=param>$3</font>;
     <td><b>Load a custom LOD temporarily</b><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$1</font> - a variable to store index of the loaded LOD file<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - a location folder for the file like in UN:J9<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - an index of Z variable that stores a name of the LOD file<br>
 	<font class=bnotes>Comment</font>:<br>
 	Same as <a target=principal href="../receivers/receiver_ld_right.htm#L">LD:L</a> except loaded files are NOT listed in saved game. 
-  <tr><a name="U"></a>
-    <td valign=top><font class=ermtext>U<font class=param>$</font>;
+  <tr>
+    <td valign=top><a name="U"></a><font class=ermtext>U<font class=param>$</font>;
     <td><b>Unload a custom LOD file</b><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - a variable storing an index of the loaded LOD file<br>
 	<font class=bnotes>Comment</font>:<br>
