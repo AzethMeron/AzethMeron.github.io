@@ -15,7 +15,11 @@
   <font face="Times New Roman CE" size="5"><span lang="de">AND</span></font><font face="Times New Roman CE" size="6"> 
   C</font><font face="Times New Roman CE" size="5">URSES</font></strong><p align="left"><font face="Arial" size="2"><b>
   <font color="#333333">Give,
-  remove or adjust blessings and curses on a specific hero.</font></b></font><p align="center">&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000">
+  remove or adjust blessings and curses on a specific hero.<br>
+  <br>
+  You can edit attributes of EVERY curse and setup unusued ones with <a target=sommaire href="../receivers/receiver_cr.htm">CR receivver</a>. However, hard-coded effects (mostly) cannot be changed.
+  
+  </font></b></font><p align="center">&nbsp;<table border="2" bordercolorlight="#000000" bordercolordark="#000000">
       <tr>
         <td width="143" height="16" nowrap><b><font color="red" size="2" class="Helvetica32" face="Arial">!!HE<font color="darkmagenta">#</font>:</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">Y</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$1</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$2</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$3</font><font size="2" class="Helvetica32" face="Arial" color="#FF0000">/</font><font color="darkmagenta" size="2" class="Helvetica32" face="Arial">$4</font><font color="red" size="2" class="Helvetica32" face="Arial">;</font></b></td>
         <td width="100%" height="16">
@@ -76,7 +80,7 @@ object.&nbsp;</font>
     <td width="181%">
 
 <font face="Arial" size="2"><b>Add/change/remove a curse.</b><br>
-&nbsp;&nbsp; $1 - number of curse from 1 to 65<br>
+&nbsp;&nbsp; $1 - number of curse from 1 to 100<br>
 &nbsp;&nbsp; $2 - the power of curse (not used for Blinding and Lock)<br>
 &nbsp;&nbsp; $3 - the length in days of the curse<br>
 &nbsp;&nbsp; $4 - what to do<br>
@@ -139,7 +143,7 @@ Special case: HE:Y0/0/0/3 - remove all curses/blessings from the hero.<br><br>
   <p>
 
 <font size="2" face="Arial"><b>New HE:Y syntax</b><br>
-&nbsp;&nbsp; <font color=purple>$1</font> - number of curse from 1 to 65 <br>
+&nbsp;&nbsp; <font color=purple>$1</font> - number of curse from 1 to 100 <br>
 &nbsp;&nbsp; <font color=purple>$2</font> - the power of curse (not used for Blinding and Lock) <br>
 &nbsp;&nbsp; <font color=purple>$3</font> - length of curse (in days) <br>
 <br>
@@ -1068,6 +1072,23 @@ HE:Y0/0/0/3 - remove all curses/blessings from the hero.<br>
         Hero's movement.</b><br>
         Type=65. <br>
         Value=movements to add.</font>
+      </td>
+    </tr>
+	
+	<tr>
+      <td width="109" valign="top">
+ <b>
+  <font face="Arial" size="2">Custom curses<br> 66 - 100<br>
+ </font>
+  </b>
+      </td>
+      <td width="46" valign="middle">
+      
+      </td>
+      <td width="439" valign="top"><font face="Arial" size="2"><b>Custom curses</b><br>
+        Type=66..100. <br>
+        Doesn't have predefined picture, description nor effect upon granted. You can freely edit those with <a target=sommaire href="../receivers/receiver_cr.htm">CR receivver</a> and make scripts granting effects.
+		</font>
       </td>
     </tr>
   </table>

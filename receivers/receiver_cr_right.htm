@@ -1,0 +1,122 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>C<font size=5>U<font size=6>R</font>SE</font><font size=5> SUPPORT </font> (CR)<br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Used for commands that modify attributes of Curses and Blessings. You can alter existing ones as well as create new.<br> 
+All changes made are stored in savefile. You can edit attributes of EVERY curse and setup unusued ones. However, hard-coded effects (mostly) cannot be changed.<br><br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+      <tr>
+        <td nowrap valign=top><font class=ermtext>!!CR<font color=purple>#</font>:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top><b>Setup Curse/Blessing</b><br>
+		&nbsp;&nbsp;<font class=param>#</font> - number (type) of curse, from 1 to 100 (See <a href="../other/bless.htm">Blessings/Curses</a>)
+		</td>
+	<tr>
+        <td nowrap valign=top><font class=ermtext>!!CR:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top><b>Other Curse-related commands</b><br>
+		If command DOESN'T modify any curse, you can omit # argument.
+		</td>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+  <tr><a name="B"></a>
+    <td valign=top><font class=ermtext>B<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>$</font>;
+    <td><b>Get/Set "cannot visit object on adventure map" attribute</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - type of object (See <a href="../format/format_ob.htm">Format OB</a>)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - subtype of object<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 0 visiting object enabled <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 1 visiting object disabled <br>
+	<font class=bnotes>Comment</font>:<br>
+	One curse might forbid entrance to many different objects.<br>
+	You cannot block WoG Object (type=63) except Pyramid.
+	
+	
+  <tr><a name="D"></a>
+    <td valign=top><font class=ermtext>D<font class=param>$</font>;
+    <td><b>Get/Set description of curse</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - string, description of curse<br>
+	<font class=bnotes>Comment</font>:<br>
+	String might be 256 characters long.
+	
+  <tr><a name="F"></a>
+    <td valign=top><font class=ermtext>F<font class=param>?$</font>;
+    <td><b>Find free (unused) type of curse</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - unused type of curse (-1 if all slots are taken)<br>
+	<font class=bnotes>Comment</font>:<br>
+	Returns type of unintialised/unused curse. <br>
+	You can use it to setup your own curse, without worrying about overriding,
+	
+  <tr><a name="P"></a>
+    <td valign=top><font class=ermtext>P<font class=param>$</font>;
+    <td><b>Get/Set picture of curse</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - string, path to picture<br>
+	<font class=bnotes>Comment</font>:<br>
+	Path might be 64 characters long. It's relative to Heroes 3 main folder.<br>
+	All old pictures are BMP files, 44x44 pixels.
+	
+  <tr><a name="R"></a>
+    <td valign=top><font class=ermtext>R<font class=param>#1</font>/<font class=param>?$2</font>/<font class=param>?$3</font>;
+    <td><b>Get random curse/blessing</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - type of curse<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - (optional) random value (power) for this curse<br>
+	<font class=bnotes>Comment</font>:<br>
+	Uses same "pools" that are used for Sphinx reward/penalty..<br>
+	Third parameter is optional. It generates random value for given curse withing boundaries specified in CR:S receiver. 
+	
+  <tr><a name="S"></a>
+    <td valign=top><font class=ermtext>S<font class=param>#1</font>/<font class=param>?$2</font>;
+    <td><b>Check whether curse of given type belongs to given pool</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> = 0 doesn't belong<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> = 1 belong<br>
+	<font class=bnotes>Comment</font>:<br>
+	Uses same "pools" that are used for Sphinx reward/penalty..<br>
+	This allows you to check whether given cursetype is indeed curse, or bless. Actually can be both :)
+	
+  <tr><a name="S"></a>
+    <td valign=top><font class=ermtext>S<font class=param>#1</font>/<font class=param>?$2</font>/<font class=param>?$3</font>/<font class=param>?$4</font>;
+    <td><b>Check whether curse of given type belongs to given pool - Extended syntax</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - belongs (1) or not (0)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - Minimum value (power)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$4</font> - Maximum value (power)<br>
+	<font class=bnotes>Comment</font>:<br>
+	Uses same "pools" that are used for Sphinx reward/penalty..<br>
+	Note that if parameter $2=0 (curse not in this pool) values of $4 and $5 are undefined. <br>
+	Minimum/maximum values determines power of curse granted by Sphinx. 
+	
+  <tr><a name="S"></a>
+    <td valign=top><font class=ermtext>S<font class=param>#1</font>/0;
+    <td><b>Exclude from curse pool</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1) pool<br>
+	<font class=bnotes>Comment</font>:<br>
+	Uses same "pools" that are used for Sphinx reward/penalty..<br>
+	Excluding curse from either pool will make it unavailable for Sphinx and CR:R receiver. <br>
+	You can try to remove curse from pool it doesn't belong to - it's ignored.
+	
+  <tr><a name="S"></a>
+    <td valign=top><font class=ermtext>S<font class=param>#1</font>/1/<font class=param>#2</font>/<font class=param>#3</font>;
+    <td><b>Add to curse pool</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - Minimum value (power)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - Maximum value (power)<br>
+	<font class=bnotes>Comment</font>:<br>
+	Uses same "pools" that are used for Sphinx reward/penalty..<br>
+	Minimum/maximum values determines power of curse granted by Sphinx. <br>
+	Makes curse available for CR:R and Sphinx.<br>
+	If you add curse to pool it's already in, it doesn't create new entry but overrides previous one
+	
+  <tr><a name="X"></a>
+    <td valign=top><font class=ermtext>X<font class=param>^filename^</font>/<font class=param>#1</font>;
+    <td><b>Log all data regarding cursetypes</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>filename</font> - name of file where data will be logged <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - skip empty entries (1) or don't (0)<br>
+	
+  </table><br><br>
+  
+  <b>Note about multiplayer</b><br>
+  If you want to make scripts using curses in combat, beware that HE:Y might NOT show correct value on remote PC. Using HE-10 or HE-20 will NOT help there. 
+  Information about curses granted to heroes ISN'T stored in hero data. You have to check wheter hero has given curse on host PC then send this data to remote PC via <a target=sommaire href="../receivers/receiver_ip.htm">IP Receiver</a>.
+</body>
+
+</html>
