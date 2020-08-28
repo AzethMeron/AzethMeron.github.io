@@ -4,8 +4,9 @@
 <center><b><font face="Times New Roman CE"><font size=6>C<font size=5>U<font size=6>R</font>SE</font><font size=5> SUPPORT </font> (CR)<br>
 <font face=Arial size=2><font color=#333333>RECEIVER</center>
 <br>
-Used for commands that modify attributes of Curses and Blessings. All changes made are stored in savefile.<br> 
-You can edit attributes of EVERY curse and setup unusued ones. However, hard-coded effects (mostly) cannot be changed.<br><br>
+Used to setup and change attributes of Curses and Blessings. <br>
+You can modify ANY curse, but remember that hardcoded effects (mostly) cannot be turned off. <br><br>
+All changes are saved in savefile and resetted upon starting new game.<br><br>
 Introduced in Alpha 8.2<br><br>
 <table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
       <tr>
@@ -27,8 +28,9 @@ Introduced in Alpha 8.2<br><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 0 visiting object enabled <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> = 1 visiting object disabled <br>
 	<font class=bnotes>Comment</font>:<br>
+	Same effect as curses 22..63 from 3.58f<br>
 	One curse might forbid entrance to many different objects.<br>
-	You cannot block WoG Objects (type=63) except Pyramid.
+	You cannot block <a target=sommaire href="../other/castle object.htm">WoG Objects</a> (type=63) except Pyramid.
 	
 	
   <tr>
@@ -43,8 +45,8 @@ Introduced in Alpha 8.2<br><br>
     <td><b>Find free (unused) type of curse</b><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - unused type of curse (-1 if all slots are taken)<br>
 	<font class=bnotes>Comment</font>:<br>
-	Returns type of unintialised/unused curse. <br>
-	You can use it to setup your own curse, without worrying about overriding,
+	Returns type (number) of unintialised/unused curse. <br>
+	You can use it to setup your own curse, without worrying about overriding any other.
 	
   <tr>
     <td valign=top><a name="P"></a><font class=ermtext>P<font class=param>$</font>;
@@ -57,7 +59,7 @@ Introduced in Alpha 8.2<br><br>
   <tr>
     <td valign=top><a name="R"></a><font class=ermtext>R<font class=param>#1</font>/<font class=param>?$2</font>/<font class=param>?$3</font>;
     <td><b>Get random curse/blessing</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curses (0) or blessings (1) pool<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - type of curse<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - (optional) random value (power) for this curse<br>
 	<font class=bnotes>Comment</font>:<br>
@@ -66,46 +68,43 @@ Introduced in Alpha 8.2<br><br>
 	
   <tr>
     <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#1</font>/<font class=param>?$2</font>;
-    <td><b>Check whether curse of given type belongs to given pool</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+    <td><b>Manage Sphinx reward/penalty pool - Get syntax</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curses (0) or blessings (1) pool<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> = 0 doesn't belong<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> = 1 belong<br>
 	<font class=bnotes>Comment</font>:<br>
-	Uses same "pools" that are used for Sphinx reward/penalty..<br>
-	This allows you to check whether given cursetype is indeed curse, or bless. Actually can be both :)
+	Allows to check if Sphinx considers given cursetypa as "curse" or "blessing". Actually can be both :)
 	
   <tr>
     <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#1</font>/<font class=param>?$2</font>/<font class=param>?$3</font>/<font class=param>?$4</font>;
-    <td><b>Check whether curse of given type belongs to given pool - Extended syntax</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+    <td><b>Manage Sphinx reward/penalty pool - Get extended syntax</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curses (0) or blessings (1) pool<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - belongs (1) or not (0)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - Minimum value (power)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$4</font> - Maximum value (power)<br>
 	<font class=bnotes>Comment</font>:<br>
-	Uses same "pools" that are used for Sphinx reward/penalty..<br>
-	Note that if parameter $2=0 (curse not in this pool) values of $4 and $5 are undefined. <br>
-	Minimum/maximum values determines power of curse granted by Sphinx. 
+	Minimum/maximum values determine boundaries for power of curse granted by Sphinx and randomly-generated via CR:R. <br>
+	If parameter $2=0 (curse not in this pool) values of $4 and $5 are undefined.
 	
   <tr>
     <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#1</font>/0;
-    <td><b>Exclude from curse pool</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1) pool<br>
+    <td><b>Manage Sphinx reward/penalty pool - Exclude from pool</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curses (0) or blessings (1) pool<br>
 	<font class=bnotes>Comment</font>:<br>
-	Uses same "pools" that are used for Sphinx reward/penalty..<br>
 	Excluding curse from either pool will make it unavailable for Sphinx and CR:R receiver. <br>
 	You can try to remove curse from pool it doesn't belong to - it's ignored.
 	
   <tr>
     <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#1</font>/1/<font class=param>#2</font>/<font class=param>#3</font>;
-    <td><b>Add to curse pool</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1)<br>
+    <td><b>Manage Sphinx reward/penalty pool - Add to pool</b><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1) pool<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - Minimum value (power)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - Maximum value (power)<br>
 	<font class=bnotes>Comment</font>:<br>
-	Uses same "pools" that are used for Sphinx reward/penalty..<br>
-	Minimum/maximum values determines power of curse granted by Sphinx. <br>
-	Makes curse available for CR:R and Sphinx.<br>
-	If you add curse to pool it's already in, it doesn't create new entry but overrides previous one
+	Makes curse available for CR:R and Sphinx.
+	Minimum/maximum values determine boundaries for power of curse granted by Sphinx and randomly-generated via CR:R. 
+	You can use it to store default/preffered power for curse. If #3=#2, "randomly" generated value will be constant.<br>
+	If you add curse to pool it's already in, it doesn't create new entry but overrides previous one.
 	
   <tr>
     <td valign=top><a name="X"></a><font class=ermtext>X<font class=param>^filename^</font>/<font class=param>#1</font>;
