@@ -80,8 +80,8 @@ Introduced in Alpha 8.2<br><br>
     <td><b>Manage Sphinx reward/penalty pool - Get extended syntax</b><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curses (0) or blessings (1) pool<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$2</font> - belongs (1) or not (0)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - Minimum value (power)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$4</font> - Maximum value (power)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$3</font> - Minimum value (power, range -32,768..32,767)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$4</font> - Maximum value (power, ranga -32,768..32,767)<br>
 	<font class=bnotes>Comment</font>:<br>
 	Minimum/maximum values determine boundaries for power of curse granted by Sphinx and randomly-generated via CR:R. <br>
 	If parameter $2=0 (curse not in this pool) values of $4 and $5 are undefined.
@@ -98,8 +98,8 @@ Introduced in Alpha 8.2<br><br>
     <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#1</font>/1/<font class=param>#2</font>/<font class=param>#3</font>;
     <td><b>Manage Sphinx reward/penalty pool - Add to pool</b><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - curse (0) or blessing (1) pool<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - Minimum value (power)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - Maximum value (power)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - Minimum value (power, range -32,768..32,767)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#3</font> - Maximum value (power, range -32,768..32,767)<br>
 	<font class=bnotes>Comment</font>:<br>
 	Makes curse available for CR:R and Sphinx.
 	Minimum/maximum values determine boundaries for power of curse granted by Sphinx and randomly-generated via CR:R. 
