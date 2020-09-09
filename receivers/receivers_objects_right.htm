@@ -447,6 +447,23 @@ G<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font>/<font color
   You cannot set a scroll as an artifact; the game will treat it wrong and then crash.<br>
   The CB receiver should also work with Dragon Utopia, Crypt, Derelict Ship, and Shipwreck.<br>
 
+	<tr>
+    <td height="32" width="133" valign="top"><b><font face="Arial" size="2" color="#FF0000">!!MK</font><font face="Arial" size="2" color="#8B008B">#1</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#2</font><font face="Arial" size="2" color="#FF0000">/</font><font face="Arial" size="2" color="#8B008B">#3</font><font face="Arial" size="2" color="#FF0000">:</font><font face="Arial" size="2" color="#8B008B">XXXX</font><font face="Arial" size="2" color="#FF0000">;<br>Alpha 8.2</font></b></td>
+    <td height="32" width="354" valign="top">
+       </font></b><font face="Arial" size="2"><a name=blackmarket><b><font color=red>!!MK<font color=darkmagenta>#1</font>/<font color=darkmagenta>#2</font>/<font color=darkmagenta>#3</font>:</font></b>
+	   <b>Black Market</b> at x,y,l coordinates.<br>
+      (Black Markets are type 7)<br>
+	  <br>
+	  &nbsp;&nbsp;<b><font color=red>A<font color=darkmagenta>#</font>/<font color=darkmagenta>$</font>;</font></b> - Get/set artifact in given slot<br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;<font color=darkmagenta>#</font> - slot (0..6) <br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;<font color=darkmagenta>$</font> - set/get artifact (<a href="../format/format_a1.htm">Format A1</a>) <br>
+		 <br>
+		&nbsp;&nbsp;<b><font color=red>I<font color=darkmagenta>$</font>;</font></b> - Get/set index of Black Market's pool<br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;<font color=darkmagenta>$</font> - index (0 up to Number of Black Markets on Map - 1) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;You can setup multiple Black Markets to use same pool of artifacts - buying artifact in one will make it unavailable in other one aswell. Technically it's same as OB:C, except it secures type (doesn't work if type <> 7) and index value ( 0 <= index <= number_of_artifacts-1, otherwise error is shown)
+      
+	  </font></td>
+  </tr>
 
 </td>
   </tr>
