@@ -475,7 +475,11 @@ G<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font>/<font color
 objects using an immediate instruction (!#) at map start-up rather than using a
 standard receiver that follows a trigger. This is because these object setup
 commands often don't work as immediate instructions, or worse, will cause the
-map to crash.</font></p>
+map to <font color=red>crash</font>.</font></p>
+
+<p><font face="Arial" size="2">There is one thing that worrys me: for example, Black Markets has allocated memory at map start (between !# and PI) There is one pool (7 slots) for every Black Market on map. OB:C stores index in this list. So, if you have 3 Black Markets, first found (topleft-topright-bottomleft-bottomright) has OB:C = MK:I = 0, next one has 1, last one will be 2.<br>
+What exactly happens if you place new Black Market with ERM though? Will it have non-existant pool 3 (this will likely cause segfault when visited) or will it be 0 - the same pool as first Black Market on map? <br>
+Same issue might apply to other objects, so be careful. Everything can be dealt with smart coding :) </font></p>
 
 <p><font face="Arial" size="2">Now you can not only set but also get the string
 parameters. You can use it when M command is used to set name/message.<br>
