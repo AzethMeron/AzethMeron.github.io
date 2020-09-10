@@ -26,11 +26,19 @@ Exceptions:<br>
 <br><br>
 <font size=4><b><a name=memory></a>GET MEMORY ADDRESS</b></font><br>
 New experimental parameters syntax to get memory address. Now you can use <b>d?</b> to get address of an integer value. This is useful when working with UN:C command. If a command doesn't support this, the value returned is 0. In Lua use <b>?ptr</b> for this.
-Not sure what functionality it provides, my bet is you can use it with Lua 'mem' module or to some low-level modding.
 <br>
 Example:<br>
 !#MA:P13/d?v1; [get Archangels hit points address in v1]<br>
 !#IF:M^%V1^;<br>
+<br>
+You can use this to bypass some hardcoded boundaries, that are meant to make ERM more secure. For example, following lua script will allow you to edit base AI Weight, which is meant to be get-only<br>
+<pre>AI.pre = function()
+	local pointer = AI:M(?ptr,1)
+	Message(AI:M(?v,1))
+	UN:C(pointer,4,10)
+	Message(AI:M(?v,1))
+end</pre>
+While this is generally bad idea - it is possible to do. d? syntax seems to properly distinguish local variables (that cannot be accessed) from global variables, so if you get address different than 0 it should work properly.<br>
 <br><br>
 <font size=4><b><a name=multiplayer></a>MULTIPLAYER SUPPORT</b></font><br>
 Most scripts and vars are stored in savefile, so supporting multiplayer shouldn't be too much problematic. Although, for now, it isn't supported. <br>

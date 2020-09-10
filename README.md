@@ -15,3 +15,4 @@ For whatever reason i've decide to skip those, should be incorporated one day.<b
 - BA:B$/1 - new syntax, for Lua support
 - New Lua trigger syntax: .pre, .post
 - New receiver: CR. Changes for Blessings & Curses
+- New receiver: MK. Black Market
