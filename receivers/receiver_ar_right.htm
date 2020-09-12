@@ -133,8 +133,29 @@ Now you can not only set but also get the string parameters. You can use it when
         <td valign="top" height="32"><font face="Arial" size="2"><b>Set/Check/get the number of spell to set up the Scroll.</b>
         <a href="../format/format_sp.htm">Format SP</a><br>
           When used with a resource,
-          sets/checks/gets amount of resource.</font></td>
+          sets/checks/gets amount of resource
+		  </font></td>
       </tr>
+	  
+	  <tr>
+        <td valign="top" height="32"><b><font face="Arial" size="2"><font color="#FF0000"><a name="V">V</a></font><font color="#8B008B">$</font></font><font color="red" face="Arial" size="2">;</font></b></td>
+        <td valign="top" height="32"><font face="Arial" size="2"><b>Set/Check/get artifact special behaviour</b><br>
+		Everyone who played H2 remembers that in order to pick up some artifacts (lying on the ground), you had to have a given skill or pay with gold. Hardly anyone knows, but this function has also remained in H3<br>
+        &nbsp;&nbsp;<font color=darkmagenta>$</font>=0 - Default: just pick up artifact<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=1 - Offer to buy an artifact for 2000 gold<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=2 - Wisdom is required to pick up artifact<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=3 - Leadership is required to pick up artifact<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=4 - Offer to buy an artifact for 2500 gold and 3 wood<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=5 - Offer to buy an artifact for 3000 gold and 5 wood<br>
+		&nbsp;&nbsp;<font color=darkmagenta>$</font>=6 - The artifact has a guard (another way to enable it)<br>
+		&nbsp;&nbsp;Any value greater than 6 makes artifact unrecoverable <br>
+		<b>Comments</b> <br>
+		Doesn't work when used as instruction - use !?PI; <br>
+		This artifact MUST be added to the map in the editor. <br>
+		It cannot contain any text, guards etc (<font color=purple>untested</font>)
+		  </font></td>
+      </tr>
+	  
       <tr>
         <td valign="top" height="32"><nobr><b><font color="red" face="Arial" size="2"><a name="X">X</a><font color="darkmagenta">#</font></font></b></nobr><b><font color="red" face="Arial" size="2">;</font></b></td>
         <td valign="top" height="32">
