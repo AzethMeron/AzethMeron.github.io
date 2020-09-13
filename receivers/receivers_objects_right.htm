@@ -461,7 +461,7 @@ G<font color=darkmagenta>#1</font>/<font color=darkmagenta>$2</font>/<font color
 		 <br>
 		&nbsp;&nbsp;<b><font color=red>I<font color=darkmagenta>$</font>;</font></b> - Get/set index of Black Market's pool<br>
 		 &nbsp;&nbsp;&nbsp;&nbsp;<font color=darkmagenta>$</font> - index (0 up to Number of Black Markets on Map - 1) <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;You can setup multiple Black Markets to use same pool of artifacts - buying artifact in one will make it unavailable in other one aswell. Technically it's same as OB:C, except it secures type (doesn't work if type <> 7) and index value ( 0 <= index <= number_of_artifacts-1, otherwise error is shown)
+	&nbsp;&nbsp;&nbsp;&nbsp;You can setup multiple Black Markets to use same pool of artifacts - buying artifact in one will make it unavailable in other one aswell. Technically it's same as OB:C, except it secures type (doesn't work if type <> 7) and index value ( 0 <= index <= number_of_black_markets-1, otherwise error is shown)
       
 	  </font></td>
   </tr>
@@ -480,7 +480,7 @@ map to <font color=red>crash</font>.</font></p>
 
 <p><font face="Arial" size="2">There is one thing that worrys me: for example, Black Markets has allocated memory at map start (between !# and PI) There is one pool (7 slots) for every Black Market on map. OB:C stores index in this list. So, if you have 3 Black Markets, first found (topleft-topright-bottomleft-bottomright) has OB:C = MK:I = 0, next one has 1, last one will be 2.<br>
 What exactly happens if you place new Black Market with ERM though? Will it have non-existant pool 3 (this will likely cause segfault when visited) or will it be 0 - the same pool as first Black Market on map? <br>
-Same issue might apply to other objects, so be careful. Everything can be dealt with smart coding :) </font></p>
+Same issue might apply to other objects, so be careful. Everything can be managed with smart coding though :) </font></p>
 
 <p><font face="Arial" size="2">Now you can not only set but also get the string
 parameters. You can use it when M command is used to set name/message.<br>
