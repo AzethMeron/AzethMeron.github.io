@@ -1,0 +1,63 @@
+<html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
+<script src=../other/scripts.js></script>
+<body background=../images/intile.jpg bgproperties=fixed>
+<center><b><font face="Times New Roman CE"><font size=6>V<font size=5>ALUE</font><font size=5> SLOTS</font> (VA)<br>
+<font face=Arial size=2><font color=#333333>RECEIVER</center>
+<br>
+Create slots for numerical and string variables, access them via names instead of index. <br>
+Allows to store (virtually) unlimited data, and possibility to easily exchange data between Lua and ERM.<br>
+<br>
+Introduced in Alpha 8.2 <br>
+</font></b><br><br>
+<table border=2 bordercolorlight=#000000 bordercolordark=#000000 width="100%">
+      <tr>
+        <td nowrap valign=top><font class=ermtext>!!VA<font class=param>#</font>:<font class=param>XXXX</font>;</font>
+        <td width=100% valign=top><b>Store data in named memory slots</b><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - mode<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 0 slots are stored in savefile, and are local for map <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 1 slots are local for map, but not stored in savefile (temporary slots)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 2 slots are stored in savefile, but are NOT local for map. <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;Prime functionality: passing values from one campaign map to another<br>
+		<br>
+		<b>Comments</b><br>
+		Slots in mode 2 are cleared ONLY when game is turned off.<br>
+		Slots in mode 1 are cleared anytime map is started or loaded. In MP mode they are (probably) cleared every day! <br>
+		
+		</td>
+<tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
+
+  <tr>
+    <td valign=top><a name="A"></a><font class=ermtext>A<font class=param>#</font>/<font class=param>$</font>;
+    <td><b> Access data in slot</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value in slot <br>
+	Accessing slots that doesn't exist cause ERM error.
+
+  <tr>
+    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$</font>;
+    <td><b>Check whether slot exists</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - exist (1) or doesn't (0) 
+
+  <tr>
+    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$1</font>/<font class=param>?$2</font>;
+    <td><b>Check whether slot exists - extended syntax</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - exist (1) or doesn't (0) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - type (0=v-var, 1=z-var, -1 if doesn't exist)
+   
+  <tr>
+    <td valign=top><a name="I"></a><font class=ermtext>I<font class=param>#1</font>/<font class=param>#2</font>;
+    <td><b>Initialise (create) slot</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 32 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - type (0=v-var, 1=z-var)<br>
+	<font class=bnotes>Comment</font>:<br>
+	Creating slots that already exist (has same 'mode' and 'name') cause ERM error.
+  
+  </table><br><br>
+  
+  It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG variable. Limit is 32 characters, so you have some space for ya. Lettercase MATTERS.<br>
+  
+</body>
+
+</html>
