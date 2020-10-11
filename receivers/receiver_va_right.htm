@@ -57,8 +57,10 @@ Introduced in Alpha 8.2 <br>
   </table><br><br>
   
   It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG variable. Claimed variable "wog_" would mean that 'namespace' wog_ is claimed and can't be used, which can be useful for running multiple mods and checking whether they overlap.<br>
-  <br>
   You can use any string (up to 32 characters) as name, so you have some space for ya. Lettercase MATTERS.<br>
+  <br>
+  You can store numerical values in slot created with type=0. Those slots are 4 bytes integer, identical to v-vars. <br>
+  Slot created with type=1 can store ERM strings. Like all z-variables, those are 512 characters long.<br>
   <br>
   Memory slots (VA Receiver) are cool, grants many new posibilities, but comes with handicap: they are SLOW. Because of that slowness, you should avoid accessing them in loops. 
   Best idea is to get value from slot into temporary variable (y-var), do some operations on this var, then write it into memory slot.<br>
