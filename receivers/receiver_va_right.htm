@@ -5,7 +5,7 @@
 <font face=Arial size=2><font color=#333333>RECEIVER</center>
 <br>
 Create slots for numerical and string variables, access them via names instead of index. <br>
-Allows to store (virtually) unlimited data, and possibility to easily exchange data between Lua and ERM.<br>
+Allows to store (virtually) unlimited data, and easily exchange data between Lua and ERM.<br>
 <br>
 Introduced in Alpha 8.2 <br>
 </font></b><br><br>
@@ -20,9 +20,9 @@ Introduced in Alpha 8.2 <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;Prime functionality: passing values from one campaign map to another<br>
 		<br>
 		<b>Comments</b><br>
+		None of memory slots are transfered during combat in MP mode.<br>
 		Slots in mode 2 are cleared ONLY when game is turned off.<br>
 		Slots in mode 1 are cleared anytime map is started or loaded. In MP mode they are (probably) cleared every day! <br>
-		
 		</td>
 <tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
 
@@ -56,7 +56,17 @@ Introduced in Alpha 8.2 <br>
   
   </table><br><br>
   
-  It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG variable. Limit is 32 characters, so you have some space for ya. Lettercase MATTERS.<br>
+  It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG variable. Claimed variable "wog_" would mean that 'namespace' wog_ is claimed and can't be used, which can be useful for running multiple mods and checking whether they overlap.<br>
+  <br>
+  You can use any string (up to 32 characters) as name, so you have some space for ya. Lettercase MATTERS.<br>
+  <br>
+  Memory slots (VA Receiver) are cool, grants many new posibilities, but comes with handicap: they are SLOW. Because of that slowness, you should avoid accessing them in loops. 
+  Best idea is to get value from slot into temporary variable (y-var), do some operations on this var, then write it into memory slot.<br>
+  Example:<pre><font color=red>!?PI</font>;
+<font color=purple>!!VA</font>0:A^%Z1_red^/?y1; 
+... [do some operations here]
+<font color=purple>!!VA</font>0:A^%Z1_red^/y1; 
+</pre>
   
 </body>
 
