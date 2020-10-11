@@ -15,6 +15,8 @@ For <b>UN:A#/9-11/$, UN:G0, UN:G1, UN:G2, SS:W,N,D, HT:, OB:H, HO:H, UN:K2, MP:S
 If you pass a string constant (^hi!^) or a z-string (global or local), the value is copied into internal buffer (you don't need to use up a z variable for each object which hint you change).
 If you use get syntax for a string (?z1), it's set to the current value (even if the value wasn't customized). <br>
 <br>
+Additionally, most receivers that used to require z-var index (like UN:N, LD:L,T) now accepts any type of z-var, as well as constant ^^ strings. <br>
+<br>
 Usual syntax works the same:<br>
 If you pass 0, the original value is restored.<br>
 If you pass number, corresponding z-var is used and all changes made to z-var are reflected to the value. ERT strings are also supported.<br>
