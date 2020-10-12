@@ -45,6 +45,11 @@ Introduced in Alpha 8.2 <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - exist (1) or doesn't (0) <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - type (0=v-var, 1=z-var, -1 if doesn't exist)
+	
+	<tr>
+    <td valign=top><a name="E"></a><font class=ermtext>E<font class=param></font><font class=param></font>;
+    <td><b>Remove ALL slots with given mode</b><br>
+	Generally it is very bad idea, though might be useful with mode=2;
    
   <tr>
     <td valign=top><a name="I"></a><font class=ermtext>I<font class=param>#1</font>/<font class=param>#2</font>;
@@ -53,6 +58,12 @@ Introduced in Alpha 8.2 <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - type (0=v-var, 1=z-var)<br>
 	<font class=bnotes>Comment</font>:<br>
 	Creating slots that already exist (has same 'mode' and 'name') cause ERM error.
+	
+  <tr>
+    <td valign=top><a name="R"></a><font class=ermtext>R<font class=param>#</font><font class=param></font>;
+    <td><b>Remove slot with given name</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
+	Removing non-existant slot is ignored.
   
   </table><br><br>
   
@@ -69,6 +80,15 @@ Introduced in Alpha 8.2 <br>
 ... [do some operations here]
 <font color=purple>!!VA</font>0:A^%Z1_red^/y1; 
 </pre>
+<br>
+  Slots mode 2 are problematic because they can "wander" between saves. Created for passing values from one scenario to another, they are not cleared upon entering mew game, but are saved and loaded from savefile.  <br>
+  Because of this, line <br>
+  <pre><font color=yellow>!#VA</font>2:I^wog_temp^/0;</pre>
+  will work fine first time map is started, but if you restart scenario, you will get ERM error.<br>
+  <br>
+  Furthemore, slot ^wog_temp^ will stay in memory after starting another game and will be stored in savefile of  this game. Potentially this can cause blobbing saves.<br>
+  <br>
+  During loading all overlapping VA2 slots are overriden with those stored in savefile.<br>
   
 </body>
 
