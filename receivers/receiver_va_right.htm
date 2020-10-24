@@ -16,12 +16,9 @@ Introduced in Alpha 8.2 <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - mode<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 0 slots are stored in savefile, and are local for map <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 1 slots are local for map, but not stored in savefile (temporary slots)<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 2 slots are stored in savefile, but are NOT local for map. <br>
-		&nbsp;&nbsp;&nbsp;&nbsp;Prime functionality: passing values from one campaign map to another.<br>
 		<br>
 		<b>Comments</b><br>
 		None of memory slots are transfered during combat in MP mode.<br>
-		Slots in mode 2 are cleared ONLY when game is turned off.<br>
 		Slots in mode 1 are cleared anytime map is started or loaded. In MP mode they are (probably) cleared every day! <br>
 		</td>
 <tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
@@ -57,7 +54,7 @@ Introduced in Alpha 8.2 <br>
 	<tr>
     <td valign=top><a name="E"></a><font class=ermtext>E<font class=param></font><font class=param></font>;
     <td><b>Remove ALL slots with given mode</b><br>
-	Generally it is very bad idea, though might be useful with mode=2;
+	Generally it is very bad idea.
    
   <tr>
     <td valign=top><a name="I"></a><font class=ermtext>I<font class=param>#1</font>/<font class=param>#2</font>;
@@ -88,15 +85,7 @@ Introduced in Alpha 8.2 <br>
 ... [do some operations here]
 <font color=purple>!!VA</font>0:A^%Z1_red^/y1; 
 </pre>
-<br>
-  Slots mode 2 are problematic because they can "wander" between saves. Created for passing values from one scenario to another, they are not cleared upon entering mew game, but are saved and loaded from savefile.  <br>
-  Because of this, line <br>
-  <pre><font color=yellow>!#VA</font>2:I^wog_temp^/0;</pre>
-  will work fine first time map is started, but if you restart scenario, you will get ERM error.<br>
-  <br>
-  Furthemore, slot ^wog_temp^ will stay in memory after starting another game and will be stored in savefile of  this game. Potentially this can cause blobbing saves.<br>
-  <br>
-  During loading all overlapping VA2 slots are overriden with those stored in savefile.<br>
+
   
 </body>
 
