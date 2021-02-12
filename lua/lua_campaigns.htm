@@ -1,0 +1,84 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<font face="Times New Roman CE"><b><font size=6><font size=7>L</font>UA: NEW CAMPAIGNS SUPPORT</font></b></font></p>
+<font size=2>
+New campaigns might be added to Menu Screen using Lua scripts parsed at game start (fe. 'global' folder in mod directory).
+Support itself is written into 3.59 engine, script responsible for that is 'Lua/Misc/Campaign.lua'. <br>
+<br>
+Ingame, it looks like this <br><br>
+<div class="img"><img src="../images/campaign.png" /></div> <br>
+
+You can programm external campaign by adding new entry to global array 'CampaignPacks'. Format:
+<pre>CampaignPacks[some_name] = { -- name=string, must be unique, so it's good idea to use ModName+smt
+	Button = {X, Y, File, Name, Hint }, 	-- parameters for menu button. 
+						-- X,Y are position in pixels, 
+						-- File is DEF file with button
+						-- Name, Hint - selfexplanatory
+	Picture,  -- background picture (pcx) to be used in campaign select 
+	Campaigns = { 	-- array of arrays
+		{ 	-- each campaign is defined by array with given format
+			File, 		-- h3c file with campaign
+			Label, 		-- Name of this campaign 
+			Picture, 	-- pcx file with picture
+		}, 
+		-- here add 6 more
+	}
+}</pre>
+<div class="img"><img src="../images/campaign2.png" /></div> <br>
+<br>Example: original WoG campaign programmed using external campaign support <br>
+<pre>CampaignPacks.WogStandard = { -- note: CampaignPacks.WogStandard = CampaignPacks["WogStandard"]
+	Button = {X = 100, Y = 400, File = "ZSSSOD.DEF", Name = "WogStandard", Hint = "Select In The Wake Of Gods campaign"},
+	Picture = "campzall.pcx",
+	Campaigns = {
+		{
+			File = "Zc1.h3c",
+			Label = "In the Wake of Gods",
+			Picture = "campz01.pcx",
+		},
+		{
+			File = "Zc2.h3c",
+			Label = "The Samaritan",
+			Picture = "campz02.pcx",
+		},
+		{
+			File = "Zc3.h3c",
+			Label = "A Life of A-d-v-e-n-t-u-r-e",
+			Picture = "campz03.pcx",
+		},
+		{
+			File = "Zc4.h3c",
+			Label = "Evil Way Home",
+			Picture = "campz04.pcx",
+		},
+		{
+			File = "Zc5.h3c",
+			Label = nil,
+			Picture = "campz05.pcx",
+		},
+		{
+			File = "Zc6.h3c",
+			Label = nil,
+			Picture = "campz06.pcx",
+		},
+		{
+			File = "Zc7.h3c",
+			Label = nil,
+			Picture = "campz07.pcx",
+		},
+	},
+}
+</pre>
+<br>
+
+</font>
+
+</body>
+
+</html>
