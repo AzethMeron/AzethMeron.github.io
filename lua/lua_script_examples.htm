@@ -97,14 +97,16 @@ vind - index of v-var that will store coords<br>
 func - function to call, arguments: x, y, z, args<br>
 args - argument you can pass to function inside loop. Use as table to pass multiple arguments<br>
 <pre>ObjectIterate = function(Type, Subtype, vind, func, args)
+	local prev_x, prev_y, prev_z = ERM.v[vind], ERM.v[vind+1], ERM.v[vind+2]
 	local NumberOfObjects = UN:U(Type,Subtype,?v)
 	ERM.v[vind] = -1
-	ERM.v[vind+1] = -1
+	ERM.v[vind+1] = 0
 	ERM.v[vind+2] = 0
 	for i = 1,NumberOfObjects,1 do
 		UN:U(Type,Subtype,-1,vind)
 		func(ERM.v[vind], ERM.v[vind+1], ERM.v[vind+2], args)
 	end
+	ERM.v[vind], ERM.v[vind+1], ERM.v[vind+2] = prev_x, prev_y, prev_z
 end</pre>
 </font>
 
