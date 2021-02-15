@@ -8,27 +8,32 @@
 <body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
 <p align="center">
 <a name=introduction></a><font face="Times New Roman CE"><b><font size=5>WoG functions, <font size=6>S</font>td<font size=6>L</font>ib</b></font></p>
-<font size=2>Expansion to WoG functions, realising some common tasks without using ERM receivers. <br>
+<font size=2>Extension to WoG functions, realising some common tasks without using ERM receivers. <br>
+Made mostly to avoid using ERM variables/flags, some has possibilities that couldn't be achieved via receivers. <br>
 <br><br>
 
 
 <font size=4><b><a name=lod></a>StdLib.Lod</b></font><br>
-Functions allowing to load/unload Custom Lods.<br>
+Functions allowing to load/unload Custom Lods, similar to LD but expanded by support for permanent LODs.<br>
 <pre>StdLib.Lod = {
-	-- 
+	-- Modes (kinds), used in Load function. You can use those instead of hardcoding values.
 	Temp = function() ... end,
 	Stored = function() ... end,
 	Perm = function() ... end,
 
-	Unload = function(ind) ... end,
+	Unload = function(ind) ... end, -- LD:U
 	-- ind - index of LOD file to be unloaded
 	-- return -1 if there was error
 	--         0 if everything went smoothly
 	
-	Load = function(location, name, mode) ... end
+	Load = function(location, name, mode) ... end -- LD:T, LD:L and more
 	-- location - modifier for location, like in UN:J8
 	-- name - name of LOD file
 	-- mode - mode/kind
+	--      mode = StdLib.Lod.Stored() means "Normal mode. Lod filename is stored in savefile, it is automatically loaded when loading game and unloaded upon resetting/starting new game".
+	--      mode = StdLib.Lod.Temp() means "Temporary mode. Lod is unloaded upon resetting/starting new game. It isn't loaded automatically".
+	--      mode = StdLib.Lod.Perm() means "Permanent mode. Lod isn't unloaded nor loaded automatically."
+	--      Stored and Temp mode makes sense only after starting a map. Perm mode should be used only on startup.
 	-- return index of loaded lod, -1 if error occured
 }</pre>
 <br><br>
@@ -36,23 +41,24 @@ Functions allowing to load/unload Custom Lods.<br>
 
 
 <font size=4><b><a name=objects></a>StdLib.Objects</b></font><br>
-Now you can iterate through/access objects without claiming ERM variables.<br>
+Operation on adventure map objects..<br>
 <pre>StdLib.Objects = {
-	Calculate = function(t,st) ... end,
+	Calculate = function(t,st) ... end, -- Get number of adventure map objects
 	-- t - type
-	-- st - subtype
+	-- st - subtype (-1 for any)
 	-- return: number of objects of given type/subtype
 	
-	Iterate = function(t,st,func,args) ... end,
+	Iterate = function(t,st,func,args) ... end, -- Iterate thorough all objects of given type, subtype, call function for every object on map
 	-- t - type
-	-- st - subtype
+	-- st - subtype (-1 for any)
 	-- func - function(x,y,z,args) to be called in loop
 	-- args - arguments passed as "args" to "func"
 	-- return -1 if error occured
+	-- note - arguments x,y,z are copied into function 'func', so any changes to them are local and won't affect loop execution.
 	
 	Find = function(t,st,ind) ... end
 	-- t - type
-	-- st - subtype
+	-- st - subtype (-1 for any)
 	-- ind - number of object (1..num)
 	-- return x,y,z value
 	-- if error occured, x,y,z are filled with 'nil'
@@ -62,7 +68,7 @@ Now you can iterate through/access objects without claiming ERM variables.<br>
 
 <font size=4><b><a name=universal></a>StdLib.Universal</b></font><br>
 <pre>StdLib.Universal = {
-	DoesFileExist = function(name, location) ... end
+	DoesFileExist = function(name, location) ... end -- Check if file with given name and location exists
 	-- name - name of file
 	-- location - modifier for location, like in UN:J8
 	-- check if file exists
