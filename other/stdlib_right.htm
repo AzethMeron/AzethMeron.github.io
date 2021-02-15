@@ -1,0 +1,78 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+	<LINK href=../other/styles.css rel=stylesheet type=text/css>
+	<base target="annexe">
+</head>
+<script src=../other/scripts.js></script>
+<body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
+<p align="center">
+<a name=introduction></a><font face="Times New Roman CE"><b><font size=5>WoG functions, <font size=6>S</font>td<font size=6>L</font>ib</b></font></p>
+<font size=2>Expansion to WoG functions, realising some common tasks without using ERM receivers. <br>
+<br><br>
+
+
+<font size=4><b><a name=lod></a>StdLib.Lod</b></font><br>
+Functions allowing to load/unload Custom Lods.<br>
+<pre>StdLib.Lod = {
+	-- 
+	Temp = function() ... end,
+	Stored = function() ... end,
+	Perm = function() ... end,
+
+	Unload = function(ind) ... end,
+	-- ind - index of LOD file to be unloaded
+	-- return -1 if there was error
+	--         0 if everything went smoothly
+	
+	Load = function(location, name, mode) ... end
+	-- location - modifier for location, like in UN:J8
+	-- name - name of LOD file
+	-- mode - mode/kind
+	-- return index of loaded lod, -1 if error occured
+}</pre>
+<br><br>
+
+
+
+<font size=4><b><a name=objects></a>StdLib.Objects</b></font><br>
+Now you can iterate through/access objects without claiming ERM variables.<br>
+<pre>StdLib.Objects = {
+	Calculate = function(t,st) ... end,
+	-- t - type
+	-- st - subtype
+	-- return: number of objects of given type/subtype
+	
+	Iterate = function(t,st,func,args) ... end,
+	-- t - type
+	-- st - subtype
+	-- func - function(x,y,z,args) to be called in loop
+	-- args - arguments passed as "args" to "func"
+	-- return -1 if error occured
+	
+	Find = function(t,st,ind) ... end
+	-- t - type
+	-- st - subtype
+	-- ind - number of object (1..num)
+	-- return x,y,z value
+	-- if error occured, x,y,z are filled with 'nil'
+}</pre>
+<br><br>
+
+
+<font size=4><b><a name=universal></a>StdLib.Universal</b></font><br>
+<pre>StdLib.Universal = {
+	DoesFileExist = function(name, location) ... end
+	-- name - name of file
+	-- location - modifier for location, like in UN:J8
+	-- check if file exists
+	-- 0 means error or doesnt exists
+	-- 1 means file exists
+}</pre>
+
+
+
+</font></font>
+</body>
+
+</html>
