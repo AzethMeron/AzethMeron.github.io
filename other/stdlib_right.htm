@@ -27,7 +27,7 @@ Functions allowing to load/unload Custom Lods, similar to LD but expanded by sup
 	--         0 if everything went smoothly
 	
 	Load = function(location, name, mode) ... end -- LD:T, LD:L and more
-	-- location - modifier for location, like in UN:J8
+	-- location - modifier for location, like in <a href="../receivers/receiver_un_left.htm" target=annexe>UN:J8</a>
 	-- name - name of LOD file
 	-- mode - mode/kind
 	--      mode = StdLib.Lod.Stored() means "Normal mode. Lod filename is stored in savefile, it is automatically loaded when loading game and unloaded upon resetting/starting new game".
@@ -44,20 +44,20 @@ Functions allowing to load/unload Custom Lods, similar to LD but expanded by sup
 Operation on adventure map objects..<br>
 <pre>StdLib.Objects = {
 	Calculate = function(t,st) ... end, -- Get number of adventure map objects
-	-- t - type
+	-- t - type (<a href="../format/format_ob.htm" target=annexe>Format OB</a>)
 	-- st - subtype (-1 for any)
 	-- return: number of objects of given type/subtype
 	
 	Iterate = function(t,st,func,args) ... end, -- Iterate thorough all objects of given type, subtype, call function for every object on map
-	-- t - type
+	-- t - type (<a href="../format/format_ob.htm" target=annexe>Format OB</a>)
 	-- st - subtype (-1 for any)
 	-- func - function(x,y,z,args) to be called in loop
-	-- args - arguments passed as "args" to "func"
+	-- args - arguments passed as "args" to "func", might be array or nil 
 	-- return -1 if error occured
 	-- note - arguments x,y,z are copied into function 'func', so any changes to them are local and won't affect loop execution.
 	
 	Find = function(t,st,ind) ... end
-	-- t - type
+	-- t - type (<a href="../format/format_ob.htm" target=annexe>Format OB</a>)
 	-- st - subtype (-1 for any)
 	-- ind - number of object (1..num)
 	-- return x,y,z value
@@ -70,10 +70,10 @@ Operation on adventure map objects..<br>
 <pre>StdLib.Universal = {
 	DoesFileExist = function(name, location) ... end -- Check if file with given name and location exists
 	-- name - name of file
-	-- location - modifier for location, like in UN:J8
+	-- location - modifier for location, like in <a href="../receivers/receiver_un_left.htm" target=annexe>UN:J8</a>
 	-- check if file exists
-	-- 0 means error or doesnt exists
-	-- 1 means file exists
+	--      0 means error or doesnt exists
+	--      1 means file exists
 }</pre>
 
 
