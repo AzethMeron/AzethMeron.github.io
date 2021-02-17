@@ -8,7 +8,7 @@
 <body background="../images/intile.jpg" lang="pl-PL" dir="ltr">
 <p align="center">
 <a name=introduction></a><font face="Times New Roman CE"><b><font size=5>WoG functions, <font size=6>S</font>td<font size=6>L</font>ib</b></font></p>
-<font size=2>Extension to WoG functions, realising some common tasks without using ERM receivers. <br>
+<font size=2>Extension to WoG functions, realising some common tasks without using ERM receivers.
 Made mostly to avoid using ERM variables/flags, some has possibilities that couldn't be achieved via receivers. <br>
 <br><br>
 
@@ -17,16 +17,16 @@ Made mostly to avoid using ERM variables/flags, some has possibilities that coul
 Functions allowing to load/unload Custom Lods, similar to LD but expanded by support for permanent LODs.<br>
 <pre>StdLib.Lod = {
 	-- Modes (kinds), used in Load function. You can use those instead of hardcoding values.
-	Temp = function() ... end,
-	Stored = function() ... end,
-	Perm = function() ... end,
+	Stored = function() ... end, 	-- Stored() = 0, but use this function anyway for forward compability
+	Temp = function() ... end, 	-- Temp() = 1, but use this function anyway for forward compability
+	Perm = function() ... end, 	-- Perm() = 2, but use this function anyway for forward compability
 
-	Unload = function(ind) ... end, -- LD:U
+	Unload = function(ind) ... end, -- works exactly like LD:U
 	-- ind - index of LOD file to be unloaded
 	-- return -1 if there was error
 	--         0 if everything went smoothly
 	
-	Load = function(location, name, mode) ... end -- LD:T, LD:L and more
+	Load = function(location, name, mode) ... end -- includes LD:T, LD:L and more
 	-- location - modifier for location, like in <a href="../receivers/receiver_un_left.htm" target=annexe>UN:J8</a>
 	-- name - name of LOD file
 	-- mode - mode/kind
@@ -36,6 +36,7 @@ Functions allowing to load/unload Custom Lods, similar to LD but expanded by sup
 	--      Stored and Temp mode makes sense only after starting a map. Perm mode should be used only on startup.
 	-- return index of loaded lod, -1 if error occured
 }</pre>
+By placing script in 'global' folder of mod, one can use StdLib.Lod.Load with mode=Perm() to load LOD file during startup. This should allow to use new resources in main menu, and perhaps to overrirde standard TXT files (needs verification) <br>
 <br><br>
 
 
@@ -56,13 +57,14 @@ Operation on adventure map objects..<br>
 	-- return -1 if error occured
 	-- note - arguments x,y,z are copied into function 'func', so any changes to them are local and won't affect loop execution.
 	
-	Find = function(t,st,ind) ... end
+	Find = function(t,st,ind) ... end -- Get coordinates of an object
 	-- t - type (<a href="../format/format_ob.htm" target=annexe>Format OB</a>)
 	-- st - subtype (-1 for any)
 	-- ind - number of object (1..num)
 	-- return x,y,z value
 	-- if error occured, x,y,z are filled with 'nil'
 }</pre>
+Example: <pre> StdLib.Objects.Iterate(98,-1,function(x,y,z,arg) CA(x,y,z):I(2) end, nil) </pre> will iterate through all towns, and set their display to "destroyed".<br>
 <br><br>
 
 
