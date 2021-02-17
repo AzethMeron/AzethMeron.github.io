@@ -61,7 +61,7 @@
 !?FU18;
 !!UN:Ux1/x2/?y1;                   [All objects of given type y1]
 !!VRv5:S-1;                        [Reset X variable]
-!!VRv6:S-1;                        [Reset Y variable]
+!!VRv6:S0;                         [Reset Y variable]
 !!VRv7:S0;                         [Reset Z variable]
 !!VRv1091:Sx3;                     [Set magical number]
 !!DO29927/1/y1/1:Px1/x2/x4/x5/x6/x7;
@@ -111,7 +111,7 @@
 **           ?x2 - output, stack number
 **           x16 - analised stack
 !?FU29943;
-!!VRy2:S-1;          [Set up output vessel: y2]
+!!VRy2:S-1;          [Initialise output vessel: y2]
 !!BMx16:T?y1;        [Get Creature type: y1]
 !!VRy2&y1=x1:Sx16;   [If analised stack is the one we seek, set up output vessel]
 !!VRx16&y1=x1:S9999; [Exit loop if creature has been found]
