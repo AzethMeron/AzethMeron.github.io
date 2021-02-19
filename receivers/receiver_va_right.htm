@@ -44,6 +44,31 @@ Introduced in Alpha 8.2 <br>
 	Accessing non-existant name or incorrect index will cause ERM Error.
 	
   <tr>
+    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$</font>;
+    <td><b>Check whether block exists, get address of data</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - address of data (if doesn't exist, returns 0) <br>
+	<b>Comments</b><br>
+	If you want to know if block with given name exists, just check if returned value is &lt&gt0 <br>
+	Address returned here can be used with UN:C receiver - tho it is suggested to use VA wrappers instead.
+
+  <tr>
+    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$1</font>/<font class=param>?$2</font>;
+    <td><b>Check whether block exists, get address of data - extended syntax</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - address of data (if doesn't exist, returns 0) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - length of block in bytes (if doesn't exist, returns -1)<br>
+	<b>Comments</b><br>
+	In case of VA:V and VA:Z, length isn't equal to number of valid indexes. 
+	
+  <tr>
+    <td valign=top><a name="R"></a><font class=ermtext>R<font class=param>#</font><font class=param></font>;
+    <td><b>Remove block</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
+	<b>Comments</b><br>
+	Removing non-existant block will cause ERM error.
+	
+  <tr>
     <td valign=top><a name="V"></a><font class=ermtext>V<font class=param>#1</font>/<font class=param>#2</font>;
     <td><b>Create (initialise) block of v-vars (integers)</b><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
@@ -76,24 +101,6 @@ Introduced in Alpha 8.2 <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value of given z-var <br>
 	<b>Comments</b><br>
 	Accessing non-existant name or incorrect index will cause ERM Error. 
-	
-  <tr>
-    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$</font>;
-    <td><b>Check whether block exists, get address of data</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - address of data (if doesn't exist, returns 0) <br>
-	<b>Comments</b><br>
-	If you want to know if block with given name exists, just check if returned value is &lt&gt0 <br>
-	Address returned here can be used with UN:C receiver - tho it is suggested to use VA wrappers instead.
-
-  <tr>
-    <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$1</font>/<font class=param>?$2</font>;
-    <td><b>Check whether block exists, get address of data - extended syntax</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - address of data (if doesn't exist, returns 0) <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - length of block in bytes (if doesn't exist, returns -1)<br>
-	<b>Comments</b><br>
-	In case of VA:V and VA:Z, length isn't equal to number of valid indexes. 
   
   </table><br><br>
   Name must be unique within "mode". You can have variables with the same name in different "modes" though.<br>
