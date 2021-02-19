@@ -1,10 +1,10 @@
 <html><head><LINK href=../other/styles.css rel=stylesheet type=text/css><base target=annexe></head>
 <script src=../other/scripts.js></script>
 <body background=../images/intile.jpg bgproperties=fixed>
-<center><b><font face="Times New Roman CE"><font size=6>V<font size=5>ALUE</font><font size=5> SLOTS</font> (VA)<br>
+<center><b><font face="Times New Roman CE"><font size=5> NAMED <font size=6>D</font>ATA<font size=6>B</font>LOCKS, VALUE SLOTS </font><br>
 <font face=Arial size=2><font color=#333333>RECEIVER</center>
 <br>
-Create slots for numerical and string variables, access them via names instead of index. <br>
+Create named memory blocks, to store numerical or string variables and arrays. <br>
 Allows to store (virtually) unlimited data, and easily exchange data between Lua and ERM.<br>
 <br>
 Introduced in Alpha 8.2 <br>
@@ -14,8 +14,9 @@ Introduced in Alpha 8.2 <br>
         <td nowrap valign=top><font class=ermtext>!!VA<font class=param>#</font>:<font class=param>XXXX</font>;</font>
         <td width=100% valign=top><b>Store data in named memory slots</b><br>
 		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - mode<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 0 slots are stored in savefile, and are local for map <br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 1 slots are local for map, but not stored in savefile (temporary slots)<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 0 are local blocks, stored in savefile <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 1 are temporary blocks, removed every time game is started or loaded<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> = 2 are permanent blocks, not bound to savefile and never removed automatically<br>
 		<br>
 		<b>Comments</b><br>
 		None of memory slots are transfered during combat in MP mode.<br>
@@ -24,66 +25,97 @@ Introduced in Alpha 8.2 <br>
 <tr><td align=center colspan=2 class=rowforoptions><font face=Arial size=2><br><b>OPTIONS</b><br><br></font></td></tr>
 
   <tr>
-    <td valign=top><a name="A"></a><font class=ermtext>A<font class=param>#</font>/<font class=param>$</font>;
-    <td><b> Access data in slot</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters) <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value in slot <br>
-	Accessing slots that doesn't exist cause ERM error.
-  
+    <td valign=top><a name="B"></a><font class=ermtext>B<font class=param>#1</font>/<font class=param>#2</font>;
+    <td><b>Create (initialise) block of bytes</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - length of datablock <br>
+	<b>Comments</b><br>
+	This command is considered low-level, if you're simple scripter use V or Z command instead.<br>
+	All bytes in datablock are initialised with zeros. 
+	
   <tr>
-    <td valign=top><a name="A"></a><font class=ermtext>A<font class=param>#1</font>/<font class=param>$</font>/<font class=param>#2</font>;
-    <td><b> Access data in slot - extended syntax</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 32 characters) <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value in slot <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - type (0=v-var, 1=z-var)<br>
-	Same as above, but accessing non-existant slot will create this slot instead of showing ERM error. No need to use VA:I.
-
+    <td valign=top><a name="B"></a><font class=ermtext>B<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>$</font>;
+    <td><b>Get/set value of byte in block</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - index (from 0 up to length-1) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value of given byte <br>
+	<b>Comments</b><br>
+	This command is considered low-level, if you're simple scripter use V or Z command instead.<br>
+	Accessing non-existant name or incorrect index will cause ERM Error.
+	
+  <tr>
+    <td valign=top><a name="V"></a><font class=ermtext>V<font class=param>#1</font>/<font class=param>#2</font>;
+    <td><b>Create (initialise) block of v-vars (integers)</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - number of v-vars to be stored in datablock <br>
+	<b>Comments</b><br>
+	All v-vars in block (array) are initialised with zeros.
+	
+  <tr>
+    <td valign=top><a name="V"></a><font class=ermtext>V<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>$</font>;
+    <td><b>Get/set value of v-var (integer) in block</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - index <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value of given v-var <br>
+	<b>Comments</b><br>
+	Accessing non-existant name or incorrect index will cause ERM Error. 
+	
+  <tr>
+    <td valign=top><a name="Z"></a><font class=ermtext>Z<font class=param>#1</font>/<font class=param>#2</font>;
+    <td><b>Create (initialise) block of z-vars (strings)</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - number of z-vars to be stored in datablock <br>
+	<b>Comments</b><br>
+	All z-vars in block (array) are initialised with empty strings.
+	
+  <tr>
+    <td valign=top><a name="Z"></a><font class=ermtext>Z<font class=param>#1</font>/<font class=param>#2</font>/<font class=param>$</font>;
+    <td><b>Get/set value of z-var (strings) in block</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - index <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>$</font> - get/set value of given z-var <br>
+	<b>Comments</b><br>
+	Accessing non-existant name or incorrect index will cause ERM Error. 
+	
   <tr>
     <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$</font>;
-    <td><b>Check whether slot exists</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - exist (1) or doesn't (0) 
+    <td><b>Check whether block exists, get address of data</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - address of data (if doesn't exist, returns 0) <br>
+	<b>Comments</b><br>
+	If you want to know if block with given name exists, just check if returned value is &lt&gt0 <br>
+	Address returned here can be used with UN:C receiver - tho it is suggested to use VA wrappers instead.
 
   <tr>
     <td valign=top><a name="C"></a><font class=ermtext>C<font class=param>#</font>/<font class=param>?$1</font>/<font class=param>?$2</font>;
-    <td><b>Check whether slot exists - extended syntax</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - exist (1) or doesn't (0) <br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - type (0=v-var, 1=z-var, -1 if doesn't exist)
-	
-	<tr>
-    <td valign=top><a name="E"></a><font class=ermtext>E<font class=param></font><font class=param></font>;
-    <td><b>Remove ALL slots with given mode</b><br>
-	Generally it is very bad idea.
-   
-  <tr>
-    <td valign=top><a name="I"></a><font class=ermtext>I<font class=param>#1</font>/<font class=param>#2</font>;
-    <td><b>Initialise (create) slot</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 32 characters)<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#2</font> - type (0=v-var, 1=z-var)<br>
-	<font class=bnotes>Comment</font>:<br>
-	Creating slots that already exist (has same 'mode' and 'name') cause ERM error.
-	
-  <tr>
-    <td valign=top><a name="R"></a><font class=ermtext>R<font class=param>#</font><font class=param></font>;
-    <td><b>Remove slot with given name</b><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 32 characters)<br>
-	Removing non-existant slot is ignored.
+    <td><b>Check whether block exists, get address of data - extended syntax</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - name (z-var or constant string, up to 31 characters)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$1</font> - address of data (if doesn't exist, returns 0) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$2</font> - length of block in bytes (if doesn't exist, returns -1)<br>
+	<b>Comments</b><br>
+	In case of VA:V and VA:Z, length isn't equal to number of valid indexes. 
   
   </table><br><br>
-  
-  It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG variable. Claimed variable "wog_" would mean that 'namespace' wog_ is claimed and can't be used, which can be useful for running multiple mods and checking whether they overlap.<br>
-  You can use any string (up to 32 characters) as name, so you have some space for ya. Lettercase MATTERS.<br>
+  Name must be unique within "mode". You can have variables with the same name in different "modes" though.<br>
   <br>
-  You can store numerical values in slot created with type=0. Those slots are 4 bytes integer, identical to v-vars. <br>
-  Slot created with type=1 can store ERM strings. Like all z-variables, those are 512 characters long.<br>
+  It's best to use "modular" naming convention, to prevent overlapping. For example, name "wog_name" would be WoG datablock. Claimed name "wog_" would mean that 'namespace' wog_ is claimed and can't be used, which can be useful for running multiple mods and checking whether they overlap.<br>
+  You can use any string (up to 31 characters) as name, so you have some space for ya. Lettercase MATTERS.<br>
+  <br>
+  There's no distinction between datablocks created with VA:B, VA:V and VA:Z. Commands V and Z are created for easier usage of those blocks, but for executable, datablock is just array of bytes with length stored in integer right before.
+  You can access any datablock using any of these, it won't cause ERM error - however you'll likely find non-sensical data inside, and doing so is considered a very poor idea. <br>
+  <br>
+  You can create single variables by creating arrays with length=1, for example <br>
+  <font color=yellow>!#VA</font>0:V^wog_example^/1; <br>
+will create array with only one v-var inside, which you can access using <br>
+<font color=yellow>!#VA</font>0:V^wog_example^/0/?v1; <br>
+index=0 because we're using C notations, indexing from 0 up to (length-1)<br>
   <br>
   Memory slots (VA Receiver) are cool, grants many new posibilities, but comes with handicap: they are SLOW. Because of that slowness, you should avoid accessing them in loops. 
   Best idea is to get value from slot into temporary variable (y-var), do some operations on this var, then write it into memory slot.<br>
   Example:<pre><font color=red>!?PI</font>;
-<font color=purple>!!VA</font>0:A^%Z1_red^/?y1; 
+<font color=purple>!!VA</font>0:V^wog_example^/0/?y1; 
 ... [do some operations here]
-<font color=purple>!!VA</font>0:A^%Z1_red^/y1; 
+<font color=purple>!!VA</font>0:V^wog_example^/0/y1; 
 </pre>
 
   
