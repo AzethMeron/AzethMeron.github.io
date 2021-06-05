@@ -75,21 +75,22 @@ L</font><font face="Times New Roman CE" size="5">EVEL</font><font face="Times Ne
 <font size=2>
 <br>
 <br>
-Example:<br>
-ZVSE<br>
-* this script lets heroes learn all 28 skills<br>
-<br>
-!#VRv100:S0;<br>
-<br>
-!?HL-1;<br>
-!!HE-1:S=8;<br>
-!!VRv100&1:S1;<br>
-!!HE-1&1:S7; [set number of shown skills to 7 to allow new skills]<br>
-!!HL&1:Sd/-2/-2; [generate skills again]<br>
-<br>
-!$HL-1&v100<>0; [if we altered the number of shown skills]<br>
-!!VRv100:S0;<br>
-!!HE-1:S8; [restore the number of shown skills]<br>
+<pre>Example:
+ZVSE
+* this script lets heroes learn all 28 skills
+
+!#VRv100:S0;
+
+!?HL-1;
+!!HE-1:S=8;
+!!VRv100&1:S1;
+!!HE-1&1:S7; [set number of shown skills to 7 to allow new skills]
+!!HL&1:Sd/-2/-2; [generate skills again]
+
+!$HL-1&v100<>0; [if we altered the number of shown skills]
+!!VRv100:S0;
+!!HE-1:S8; [restore the number of shown skills]
+</pre>
 </font>
 </body>
 
