@@ -116,14 +116,6 @@ Introduced in Alpha 8.2 <br>
 will create array with only one v-var inside, which you can access using <br>
 <font color=yellow>!#VA</font>0:V^wog_example^/0/?v1; <br>
 index=0 because we're using C notations, indexing from 0 up to (length-1)<br>
-  <br>
-  Memory slots (VA Receiver) are cool, grants many new posibilities, but comes with handicap: they are SLOW. Because of that slowness, you should avoid accessing them in loops. 
-  Best idea is to get value from slot into temporary variable (y-var), do some operations on this var, then write it into memory slot.<br>
-  Example:<pre><font color=red>!?PI</font>;
-<font color=purple>!!VA</font>0:V^wog_example^/0/?y1; 
-... [do some operations here]
-<font color=purple>!!VA</font>0:V^wog_example^/0/y1; 
-</pre>
 
   
 </body>
