@@ -69,6 +69,14 @@ Introduced in Alpha 8.2 <br>
 	Removing non-existant block will cause ERM error.
 	
   <tr>
+    <td valign=top><a name="S"></a><font class=ermtext>S<font class=param>#</font>/<font class=param>?$</font>;
+    <td><b>Get size of datatype (v-var, z-var) in bytes</b><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#</font> - mode (1 for v-var, 2 for z-var)<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>?$</font> - size of datatype in bytes <br>
+	<b>Comments</b><br>
+	Combined with VA:C, can be used to determine how many variables can be stored in datablock.
+	
+  <tr>
     <td valign=top><a name="V"></a><font class=ermtext>V<font class=param>#1</font>/<font class=param>#2</font>;
     <td><b>Create (initialise) block of v-vars (integers)</b><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;<font class=param>#1</font> - name (z-var or constant string, up to 31 characters)<br>
